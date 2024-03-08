@@ -7,6 +7,7 @@ const siteTheme = (mode) => {
         ? {
             primary: {
               main: "#ff5200", //orange
+              mainOpacity: "#ffae87", //dead orange
             },
 
             background: {
@@ -31,6 +32,7 @@ const siteTheme = (mode) => {
         : {
             primary: {
               main: "#ff5200", //orange
+              mainOpacity: "#ffae87", //dead orange
             },
 
             background: {

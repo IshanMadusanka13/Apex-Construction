@@ -14,11 +14,13 @@ import {
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import { useSelector } from 'react-redux';
 
 function Header() {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const user = useSelector((state) => state.user);
 
   const toggleDrawer = (isOpen) => (event) => {
     setIsDrawerOpen(isOpen);
@@ -28,7 +30,7 @@ function Header() {
     const homeSection = document.getElementById('home-section');
     if (homeSection) {
       homeSection.scrollIntoView({ behavior: 'smooth' });
-    }else{
+    } else {
       window.location.href = '/'
     }
   };
@@ -37,7 +39,7 @@ function Header() {
     const aboutUsSection = document.getElementById('about-us-section');
     if (aboutUsSection) {
       aboutUsSection.scrollIntoView({ behavior: 'smooth' });
-    }else{
+    } else {
       window.location.href = '/'
     }
   };
@@ -46,8 +48,20 @@ function Header() {
     const contactUsSection = document.getElementById('contact-us-section');
     if (contactUsSection) {
       contactUsSection.scrollIntoView({ behavior: 'smooth' });
-    }else{
+    } else {
       window.location.href = '/'
+    }
+  };
+
+  const getProfileLink = () => {
+    if (user) {
+      if (user.userType === 'admin') {
+        return '/adminprofile';
+      } else if (user.userType === 'customer') {
+        return '/customerprofile';
+      } else {
+        return '/employeeprofile';
+      }
     }
   };
 
@@ -74,11 +88,11 @@ function Header() {
             sx={{ alignItems: "center", cursor: "pointer" }}
           >
             <Button href="/">
-            <img
-              alt="logo"
-              src="/img/logo.png"
-              style={{ height: 70, width: 200 }}
-            />
+              <img
+                alt="logo"
+                src="/img/logo.png"
+                style={{ height: 70, width: 200 }}
+              />
             </Button>
           </Typography>
           <div style={{ marginLeft: 60 }}></div>
@@ -87,75 +101,21 @@ function Header() {
               sx={{
                 display: "flex",
                 alignItems: "center",
-				"& > :not(:last-child)": { mr: "1em" },
+                "& > :not(:last-child)": { mr: "1em" },
                 flexGrow: 1,
                 justifyContent: 'flex-end',
               }}
             >
               <Box>
                 <Button
-                    key="home"
-                    onClick={scrollToHome}
-                    color="inherit"
-                    sx={{
-                      color: theme.palette.text.default,
-                      fontSize: "18px",
-                      fontWeight: "500",
-                      marginRight: "1em",
-                      textDecoration: "none",
-                      "&:hover": {
-                        color: theme.palette.text.main,
-                        fontWeight: "bold",
-                      },
-                    }}
-                  >
-                    Home
-                  </Button>
-                <Button
-                    key="about"
-                    onClick={scrollToAboutUs}
-                    color="inherit"
-                    sx={{
-                      color: theme.palette.text.default,
-                      fontSize: "18px",
-                      fontWeight: "500",
-                      marginRight: "1em",
-                      textDecoration: "none",
-                      "&:hover": {
-                        color: theme.palette.text.main,
-                        fontWeight: "bold",
-                      },
-                    }}
-                  >
-                    AboutUs
-                  </Button>
-                  <Button
-                    key="contact"
-                    onClick={scrollToContactUs}
-                    color="inherit"
-                    sx={{
-                      color: theme.palette.text.default,
-                      fontSize: "18px",
-                      fontWeight: "500",
-                      marginRight: "1em",
-                      textDecoration: "none",
-                      "&:hover": {
-                        color: theme.palette.text.main,
-                        fontWeight: "bold",
-                      },
-                    }}
-                  >
-                    Contact Us
-                  </Button>
-              </Box>
-              <Box style={{ marginLeft: 'auto' }}>
-                <Button
-                  href="/login"
+                  key="home"
+                  onClick={scrollToHome}
                   color="inherit"
                   sx={{
                     color: theme.palette.text.default,
                     fontSize: "18px",
                     fontWeight: "500",
+                    marginRight: "1em",
                     textDecoration: "none",
                     "&:hover": {
                       color: theme.palette.text.main,
@@ -163,8 +123,81 @@ function Header() {
                     },
                   }}
                 >
-                  Login
+                  Home
                 </Button>
+                <Button
+                  key="about"
+                  onClick={scrollToAboutUs}
+                  color="inherit"
+                  sx={{
+                    color: theme.palette.text.default,
+                    fontSize: "18px",
+                    fontWeight: "500",
+                    marginRight: "1em",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: theme.palette.text.main,
+                      fontWeight: "bold",
+                    },
+                  }}
+                >
+                  AboutUs
+                </Button>
+                <Button
+                  key="contact"
+                  onClick={scrollToContactUs}
+                  color="inherit"
+                  sx={{
+                    color: theme.palette.text.default,
+                    fontSize: "18px",
+                    fontWeight: "500",
+                    marginRight: "1em",
+                    textDecoration: "none",
+                    "&:hover": {
+                      color: theme.palette.text.main,
+                      fontWeight: "bold",
+                    },
+                  }}
+                >
+                  Contact Us
+                </Button>
+              </Box>
+              <Box style={{ marginLeft: 'auto' }}>
+                {user ? ( 
+                  <Button
+                    href={getProfileLink()}
+                    color="inherit"
+                    sx={{
+                      color: theme.palette.text.default,
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      textDecoration: "none",
+                      "&:hover": {
+                        color: theme.palette.text.main,
+                        fontWeight: "bold",
+                      },
+                    }}
+                  >
+                    Profile
+                  </Button>
+                ) : (
+                  <Button
+                    href="/login"
+                    color="inherit"
+                    sx={{
+                      color: theme.palette.text.default,
+                      fontSize: "18px",
+                      fontWeight: "500",
+                      textDecoration: "none",
+                      "&:hover": {
+                        color: theme.palette.text.main,
+                        fontWeight: "bold",
+                      },
+                    }}
+                  >
+                    Login
+                  </Button>
+                )}
               </Box>
             </Box>
           )}

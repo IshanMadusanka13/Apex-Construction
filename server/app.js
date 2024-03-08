@@ -1,12 +1,20 @@
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
+import customerRouter from './routes/CustomerRouter.js';
+import userRouter from "./routes/UserRouter.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
+//Including Routers
+app.use('/user', userRouter);
+app.use('/customer', customerRouter);
+
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
 })
+
+export default app;

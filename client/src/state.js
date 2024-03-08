@@ -10,11 +10,17 @@ export const globalSlice = createSlice({
     name: "global",
     initialState,
     reducers: {
+
         setMode: (state) => {
             state.mode = state.mode === 'light' ? 'dark' : 'light';
         },
+
+        setCredentials: (state, action) => {
+            state.user = action.payload.user;
+            state.token = action.payload.token;
+        }
     }
 })
 
-export const { setMode } = globalSlice.actions;
+export const { setMode, setCredentials } = globalSlice.actions;
 export default globalSlice.reducer;
