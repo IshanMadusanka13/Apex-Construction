@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, MenuItem } from "@mui/material";
+import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
 import { timedSuccessAlert, userTypes } from "../../utils.js";
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 function AddEmployee() {
 
     const navigate = useNavigate();
+    const theme = useTheme();
     const loggedUser = useSelector((state) => state.user);
 
     const [employeeDetails, setEmployeeDetails] = useState({
@@ -70,6 +71,7 @@ function AddEmployee() {
             container
             spacing={2}
             component="form"
+            sx={theme.palette.gridBody}
             noValidate
             onSubmit={handleSubmit}
         >

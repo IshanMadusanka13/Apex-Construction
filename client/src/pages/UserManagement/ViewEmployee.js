@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup } from "@mui/material";
+import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID, SEARCH_EMPLOYEE } from "../../EndPoints";
 import { timedSuccessAlert, userTypes } from "../../utils.js";
@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 function ViewEmployee() {
 
     const navigate = useNavigate();
+    const theme = useTheme();
 
     const [searchData, setsearchData] = useState({
         value: "",
@@ -58,6 +59,7 @@ function ViewEmployee() {
             container
             spacing={2}
             component="form"
+            sx={theme.palette.gridBody}
             noValidate
             onSubmit={handleSubmit}
         >

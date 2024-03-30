@@ -36,16 +36,7 @@ export default function Login() {
         const user = response.data.user;
         const token = response.data.token;
         dispatch(setCredentials({ user, token }));
-
-        if (user.userType === userTypes.ADMIN) {
-
-        } else if (user.userType === userTypes.CUSTOMER) {
-          timedSuccessAlert("Signed in successfully");
-          navigate('/customerprofile');
-        } else {
-          timedSuccessAlert("Signed in successfully");
-          navigate('/employeeprofile');
-        }
+        navigate('/userDashboard');
 
       })
       .catch((error) => {
