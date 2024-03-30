@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import {
   Avatar,
   Button,
@@ -17,9 +16,9 @@ import { useNavigate } from 'react-router-dom';
 import { LOGIN } from "../../EndPoints";
 import { setCredentials } from '../../state';
 import { useDispatch } from 'react-redux';
+import { userTypes, errorAlert, timedSuccessAlert } from "../../utils";
 
 export default function Login() {
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
   const theme = useTheme();
   const dispatch = useDispatch();
@@ -36,21 +35,22 @@ export default function Login() {
       .then((response) => {
         const user = response.data.user;
         const token = response.data.token;
-        dispatch(setCredentials({user, token}));
+        dispatch(setCredentials({ user, token }));
 
-        if (user.userType === "admin") {
+        if (user.userType === userTypes.ADMIN) {
 
-        } else if (user.userType === "customer") {
+        } else if (user.userType === userTypes.CUSTOMER) {
+          timedSuccessAlert("Signed in successfully");
           navigate('/customerprofile');
-        } else if (user.userType === "employee") {
+        } else {
+          timedSuccessAlert("Signed in successfully");
           navigate('/employeeprofile');
         }
-        
+
       })
       .catch((error) => {
-        alert("fail");
+        errorAlert("Incorect Credentials");
         console.log(error);
-        setErrorMessage("Incorrect Credentials");
       });
   };
 
@@ -124,13 +124,7 @@ export default function Login() {
             >
               Login
             </Button>
-            {errorMessage && (
-              <Box mt={2}>
-                <Typography variant="body1" color="error">
-                  Error: {errorMessage}
-                </Typography>
-              </Box>
-            )}
+
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

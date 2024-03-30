@@ -5,5 +5,6 @@ const userRouter = express.Router();
 
 //userRouter.get('/', protect, UserController.getAllUsers);
 userRouter.post('/login', UserController.loginUser);
+userRouter.put('/changepassword', UserController.changePassword);
 
 export default userRouter;

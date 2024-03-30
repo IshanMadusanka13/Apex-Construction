@@ -12,6 +12,7 @@ import Typography from "@mui/material/Typography";
 import { useNavigate } from 'react-router-dom';
 import { CREATE_CUSTOMER } from '../../EndPoints';
 import axios from 'axios';
+import { errorAlert } from "../../utils.js";
 
 export default function Signup() {
 
@@ -39,18 +40,18 @@ export default function Signup() {
     const oldNicRegex = /^[0-9]{9}[vVxX]$/;
     const newNicRegex = /^\d{12}$/;
     if (!oldNicRegex.test(nic) && !newNicRegex.test(nic)) {
-      alert("Please enter a valid NIC number.");
+      errorAlert("Please enter a valid NIC number.");
       return;
     }
 
     const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
     if (!phoneRegex.test(mobileNo)) {
-      alert("Please enter a valid mobile number.");
+      errorAlert("Please enter a valid mobile number.");
       return;
     }
 
-    if(password !== cpassword){
-      alert("Password and Confirm Password doesnt match");
+    if (password !== cpassword) {
+      errorAlert("Password and password confirmation does not match");
       return;
     }
 

@@ -7,35 +7,38 @@ import {
   CardContent,
   Container,
   Grid,
-  List, 
-  ListItem, 
-  ListItemIcon, 
-  ListItemText,
   TextField,
   Typography,
   useTheme,
   Zoom
 } from "@mui/material";
-import { 
-  PeopleAlt, 
-  Description, 
-  SentimentSatisfied, 
+import {
+  PeopleAlt,
+  Description,
+  SentimentSatisfied,
   EmojiEvents,
   Phone,
   LocationOn,
   Email,
-  Timelapse, 
-  Done  } from '@mui/icons-material';
+  Timelapse
+} from '@mui/icons-material';
 
 const HomePage = () => {
   return (
-    <div>
-      <HeroSection />
-      <AboutSection />
-      <TestimonialSection />
-      <AchievementSection />
-      <TeamSection />
-      <ContactSection />
+    <div style={{
+      backgroundImage: "url(/img/bg-img.jpg)",
+      backgroundSize: "cover",
+      backgroundAttachment: "fixed",
+      backgroundPosition: "center",
+    }}>
+      <Box sx={{ backgroundColor: "rgba(237, 242, 247, 0.98)" }}>
+        <HeroSection />
+        <AboutSection />
+        <TestimonialSection />
+        <AchievementSection />
+        <TeamSection />
+        <ContactSection />
+      </Box>
     </div>
   );
 };
@@ -47,12 +50,13 @@ function HeroSection() {
   const heroBox = {
     backgroundImage: "url(/img/hero-bg1.png)",
     backgroundSize: "cover",
+    backgroundAttachment: "fixed",
     backgroundPosition: "center",
     height: "100vh",
   };
   return (
     <Box id="home-section" component="section" sx={heroBox}>
-      <Box sx={{ display: "flex", alignItems: "center", height: "100%" }}>
+      <Box sx={{ display: "flex", alignItems: "center", height: "100%", backgroundColor: "rgba(0,0,0,.5)" }}>
         <Container>
           <Box className="banner_content" sx={{ color: "#ffffff" }}>
             <Typography variant="subtitle1" sx={{ textTransform: "uppercase" }}>
@@ -110,26 +114,14 @@ function HeroSection() {
 const AboutSection = () => {
 
   const theme = useTheme();
-  const WhyLeft = [
-    "Reliable Service Delivery",
-    "Expertise in Industry Standards",
-    "Transparent Communication",
-    "Tailored Solutions for You"
-  ];
-  
-  const WhyRight = [
-    "Commitment to Excellence",
-    "Timely Project Completion",
-    "Customer-Centric Approach",
-    "Proven Track Record"
-  ];
-  
+
   return (
     <Box
-    id="about-us-section"
+      id="about-us-section"
       sx={{
         height: '75vh',
         margin: 10,
+        marginBottom: 2,
         '& h3': {
           fontSize: 25,
           margin: '0 0 20px',
@@ -175,52 +167,23 @@ const AboutSection = () => {
         },
       }}
     >
-        <Grid container spacing={3}>
-          <Grid item xs={12} md={6}>
-            <img src="img/sideimg.png" alt="" sx={{ width: '100%'}} />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box sx={{ padding: '0 20px' }}>
-              <Typography variant="h2" gutterBottom>
-                About Us
-              </Typography>
-              <Typography variant="body1" gutterBottom sx={{ fontFamily: theme.palette.typography.poppins, fontSize: 18 }}>
-              We are a passionate team of construction enthusiasts dedicated to revolutionizing the way projects are managed and executed.
-  
-              Our mission is to empower construction professionals with innovative tools and technologies that streamline processes, enhance collaboration, and drive project success
-              </Typography>
-              <Typography variant="h3" gutterBottom>
-                Why Choose Us?
-              </Typography>
-              <Grid container spacing={3}>
-                <Grid item xs={6}>
-                  <List>
-                    {WhyLeft.map((item, index) => (
-                      <ListItem key={index}>
-                        <ListItemIcon>
-                          <Done />
-                        </ListItemIcon>
-                        <ListItemText primary={item} sx={{ fontSize: 18 }} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Grid>
-                <Grid item xs={6}>
-                  <List>
-                  {WhyRight.map((item, index) => (
-                      <ListItem key={index}>
-                        <ListItemIcon>
-                          <Done />
-                        </ListItemIcon>
-                        <ListItemText primary={item} sx={{ fontSize: 18 }} />
-                      </ListItem>
-                    ))}
-                  </List>
-                </Grid>
-              </Grid>
-            </Box>
-          </Grid>
+      <Grid container spacing={3}>
+        <Grid item xs={12} md={6}>
+          <img src="img/sideimg.png" alt="" sx={{ width: '100%' }} />
         </Grid>
+        <Grid item xs={12} md={6}>
+          <Box sx={{ padding: '0 20px' }}>
+            <Typography variant="h2" gutterBottom>
+              About Us
+            </Typography>
+            <Typography variant="body1" gutterBottom sx={{ fontFamily: theme.palette.typography.poppins, fontSize: 18 }}>
+              We are a passionate team of construction enthusiasts dedicated to revolutionizing the way projects are managed and executed.
+
+              Our mission is to empower construction professionals with innovative tools and technologies that streamline processes, enhance collaboration, and drive project success
+            </Typography>
+          </Box>
+        </Grid>
+      </Grid>
     </Box>
   );
 };
@@ -229,37 +192,37 @@ const TestimonialSection = () => {
 
   const theme = useTheme();
   const testimons = [
-  {
-    img: "img/testimonial-1.jpg",
-    text: "Apex Construction delivered exceptional results on our project. Their dedication to excellence and attention to detail were evident in every aspect of their work.",
-    name: "John Smith"
-  },
-  {
-    img: "img/testimonial-2.jpg",
-    text: "We were thoroughly impressed by the professionalism and expertise of the Apex Construction team. They surpassed all our expectations and delivered outstanding results.",
-    name: "Emily Johnson"
-  },
-  {
-    img: "img/testimonial-3.jpg",
-    text: "Choosing Apex Construction was the best decision we made for our project. Their commitment to quality and customer satisfaction is unmatched.",
-    name: "Michael Brown"
-  },
-  {
-    img: "img/testimonial-4.jpg",
-    text: "Apex Construction sets the standard for excellence in the industry. Their team's dedication to delivering top-notch results is truly commendable.",
-    name: "Sarah Davis"
-  },
-  {
-    img: "img/testimonial-5.jpg",
-    text: "We couldn't be happier with the work done by Apex Construction. Their professionalism and attention to detail made the entire process seamless and stress-free.",
-    name: "Robert Miller"
-  },
-  {
-    img: "img/testimonial-6.jpg",
-    text: "Apex Construction exceeded our expectations in every way. Their commitment to quality and customer satisfaction is evident in the outstanding results they delivered.",
-    name: "Jonathon Smile"
-  }
-];
+    {
+      img: "img/testimonial-1.jpg",
+      text: "Apex Construction delivered exceptional results on our project. Their dedication to excellence and attention to detail were evident in every aspect of their work.",
+      name: "John Smith"
+    },
+    {
+      img: "img/testimonial-2.jpg",
+      text: "We were thoroughly impressed by the professionalism and expertise of the Apex Construction team. They surpassed all our expectations and delivered outstanding results.",
+      name: "Emily Johnson"
+    },
+    {
+      img: "img/testimonial-3.jpg",
+      text: "Choosing Apex Construction was the best decision we made for our project. Their commitment to quality and customer satisfaction is unmatched.",
+      name: "Michael Brown"
+    },
+    {
+      img: "img/testimonial-4.jpg",
+      text: "Apex Construction sets the standard for excellence in the industry. Their team's dedication to delivering top-notch results is truly commendable.",
+      name: "Sarah Davis"
+    },
+    {
+      img: "img/testimonial-5.jpg",
+      text: "We couldn't be happier with the work done by Apex Construction. Their professionalism and attention to detail made the entire process seamless and stress-free.",
+      name: "Robert Miller"
+    },
+    {
+      img: "img/testimonial-6.jpg",
+      text: "Apex Construction exceeded our expectations in every way. Their commitment to quality and customer satisfaction is evident in the outstanding results they delivered.",
+      name: "Jonathon Smile"
+    }
+  ];
 
   return (
     <Box id="testimonials" sx={{ marginBottom: 20 }}>
@@ -269,22 +232,22 @@ const TestimonialSection = () => {
         </Typography>
         <Grid container spacing={3}>
           {testimons.map((d, i) => (
-              <Grid item xs={12} md={4} key={`${d.name}-${i}`}>
-                <Box sx={{ position: 'relative', padding: '20px' }}>
-                  <Box sx={{ float: 'left', marginRight: '15px' }}>
-                    <Avatar src={d.img} alt="" sx={{ width: '64px', height: '64px', borderRadius: '50%' }} />
-                  </Box>
-                  <Box sx={{ position: 'relative', overflow: 'hidden' }}>
-                    <Typography variant="body1" sx={{ marginBottom: 0, fontStyle: 'italic' }}>
-                      "{d.text}"
-                    </Typography>
-                    <Typography variant="body2" sx={{ marginTop: '10px', fontWeight: 600, color: '#666' }}>
-                      - {d.name}
-                    </Typography>
-                  </Box>
+            <Grid item xs={12} md={4} key={`${d.name}-${i}`}>
+              <Box sx={{ position: 'relative', padding: '20px' }}>
+                <Box sx={{ float: 'left', marginRight: '15px' }}>
+                  <Avatar src={d.img} alt="" sx={{ width: '64px', height: '64px', borderRadius: '50%' }} />
                 </Box>
-              </Grid>
-            ))}
+                <Box sx={{ position: 'relative', overflow: 'hidden' }}>
+                  <Typography variant="body1" sx={{ marginBottom: 0, fontStyle: 'italic' }}>
+                    "{d.text}"
+                  </Typography>
+                  <Typography variant="body2" sx={{ marginTop: '10px', fontWeight: 600, color: '#666' }}>
+                    - {d.name}
+                  </Typography>
+                </Box>
+              </Box>
+            </Grid>
+          ))}
         </Grid>
       </Container>
     </Box>
@@ -328,26 +291,26 @@ const AchievementSection = () => {
         {achievements.map((achievement, index) => (
           <Grid item xs={4} md={2} key={index}>
             <Zoom id="zoomElement" in={isVisible} style={{ transitionDelay: isVisible ? '500ms' : '0ms' }}>
-            <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', backgroundColor: '#f5f5f5', borderRadius: 2 }}>
-              <CardContent sx={{ 
-                backgroundColor: theme.palette.primary.main, 
-                color: '#fff', 
-                borderRadius: '2px 2px 0 0', 
-                padding: '8px', 
-                display: 'flex', 
-                justifyContent: 'center', 
-                alignItems: 'center',
-                position: 'relative',
-                height: 100,
+              <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', backgroundColor: '#f5f5f5', borderRadius: 2 }}>
+                <CardContent sx={{
+                  backgroundColor: theme.palette.primary.main,
+                  color: '#fff',
+                  borderRadius: '2px 2px 0 0',
+                  padding: '8px',
+                  display: 'flex',
+                  justifyContent: 'center',
+                  alignItems: 'center',
+                  position: 'relative',
+                  height: 100,
                 }} className="triangulate">
-                {achievement.icon}{achievement.title}
-              </CardContent>
-              <CardContent sx={{ padding: '8px', height: 80}}>
-                <Typography variant="h4" align="center" sx={{ fontSize: 40, fontWeight: 35, color: theme.palette.primary.main }}>
-                  {achievement.count}
-                </Typography>
-              </CardContent>
-            </Card>
+                  {achievement.icon}{achievement.title}
+                </CardContent>
+                <CardContent sx={{ padding: '8px', height: 80 }}>
+                  <Typography variant="h4" align="center" sx={{ fontSize: 40, fontWeight: 35, color: theme.palette.primary.main }}>
+                    {achievement.count}
+                  </Typography>
+                </CardContent>
+              </Card>
             </Zoom>
           </Grid>
         ))}
@@ -360,27 +323,27 @@ const TeamSection = () => {
   const theme = useTheme();
   const TeamMembers = [
     {
-      img: "img/testimonial-3.jpg",
+      img: "img/team-1.jpg",
       name: "John Doe",
       job: "Project Manager"
     },
     {
-      img: "img/testimonial-5.jpg",
+      img: "img/team-2.jpg",
       name: "Mike Doe",
       job: "Construction Supervisor"
     },
     {
-      img: "img/testimonial-4.jpg",
+      img: "img/team-3.jpg",
       name: "Jane Doe",
       job: "Architect"
     },
     {
-      img: "img/testimonial-2.jpg",
+      img: "img/team-4.jpg",
       name: "Karen Doe",
       job: "Civil Engineer"
     }
   ];
-  
+
   return (
     <Box id="team" sx={{ height: 'auto', marginBottom: 20 }} style={{ background: theme.palette.background.default }}>
       <Typography
@@ -414,7 +377,7 @@ const TeamSection = () => {
       <Grid container spacing={2}>
         {TeamMembers.map((d, i) => (
           <Grid item xs={12} md={3} key={`${d.name}-${i}`}>
-            <img src={d.img} alt="team member" style={{ width: '80%', height: 'auto', marginLeft: '10%', marginRight: '10%'}} />
+            <img src={d.img} alt="team member" style={{ width: '80%', height: 'auto', marginLeft: '10%', marginRight: '10%' }} />
             <Typography variant="h4" gutterBottom align="center" sx={{ fontFamily: theme.palette.typography.poppins }}>
               {d.name}
             </Typography>
@@ -440,8 +403,6 @@ const ContactSection = () => {
     setState((prevState) => ({ ...prevState, [name]: value }));
   };
 
-  const clearState = () => setState({ ...initialState });
-
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(state.name, state.email, state.message);
@@ -463,46 +424,56 @@ const ContactSection = () => {
   };
 
   return (
-    <Container id="contact-us-section" sx={{ paddingTop: 10, paddingBottom: 10, background: theme.palette.background.white, color: theme.palette.text.default, fontStyle: theme.palette.typography.poppins }} style={{ maxWidth: '100%', height: 'auto' }}>
-      <Typography variant="h2" align="center" gutterBottom>
-        Get In Touch
-      </Typography>
-      <Typography variant="h5" paragraph>
-        Please fill out the form below to send us an email and we will get back to you as soon as possible.
-      </Typography>
-      <Grid container spacing={2} justifyContent="center" sx={{ marginTop: 5 }}>
-        <Grid item xs={12} md={8} sx={{ padding: 5 }}>
-          <form name="sentMessage" noValidate onSubmit={handleSubmit}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+    <Box id="contact-us-section" sx={{ background: theme.palette.background.white, color: theme.palette.text.default }}
+      style={{
+        maxWidth: '100%',
+        height: 'auto',
+        backgroundImage: "url(/img/contact-us-img.jpg)",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
+      }}>
+      <Box sx={{ backgroundColor: "rgba(0,0,0,.5)", paddingTop: 10, paddingBottom: 10, paddingLeft: 10, paddingRight: 10 }}>
+        <Box sx={{ backgroundColor: "rgba(240,240,240,.5)", borderRadius: 6, paddingTop: 5, paddingBottom: 5, paddingLeft: 5, paddingRight: 5 }}>
+          <Typography variant="h2" align="center" sx={{ fontStyle: theme.palette.typography.poppins }} gutterBottom>
+            Get In Touch
+          </Typography>
+          <Typography variant="h5" sx={{ fontStyle: theme.palette.typography.poppins }} paragraph>
+            Please fill out the form below to send us an email and we will get back to you as soon as possible.
+          </Typography>
+          <Grid container spacing={2} justifyContent="center" sx={{ marginTop: 5 }}>
+            <Grid item xs={12} md={8} sx={{ padding: 5 }}>
+              <form name="sentMessage" noValidate onSubmit={handleSubmit}>
+                <Grid container spacing={2}>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      id="name"
+                      name="name"
+                      label="Name"
+                      variant="outlined"
+                      required
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                  <Grid item xs={12} sm={6}>
+                    <TextField
+                      fullWidth
+                      id="email"
+                      name="email"
+                      label="Email"
+                      variant="outlined"
+                      required
+                      onChange={handleChange}
+                    />
+                  </Grid>
+                </Grid>
                 <TextField
-                  fullWidth
-                  id="name"
-                  name="name"
-                  label="Name"
-                  variant="outlined"
-                  required
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  fullWidth
-                  id="email"
-                  name="email"
-                  label="Email"
-                  variant="outlined"
-                  required
-                  onChange={handleChange}
-                />
-              </Grid>
-            </Grid>
-            <TextField
                   fullWidth
                   name="message"
-              id="message"
-              aria-label="Message"
-              placeholder="Message"
+                  id="message"
+                  aria-label="Message"
+                  placeholder="Message"
                   variant="outlined"
                   required
                   multiline
@@ -510,58 +481,60 @@ const ContactSection = () => {
                   onChange={handleChange}
                   sx={{ marginTop: 5 }}
                 />
-            <Button
-              variant="contained"
-              sx={{
-                background: theme.palette.primary.main,
-                padding: "0px 32px",
-                color: "#fff",
-                fontFamily: "Roboto, sans-serif",
-                fontSize: "12px",
-                fontWeight: "500",
-                lineHeight: "44px",
-                textAlign: "center",
-                border: "1px solid",
-                borderColor: theme.palette.primary.main,
-                cursor: "pointer",
-                textTransform: "uppercase",
-                transition: "all 300ms linear 0s",
-                borderRadius: "5px",
-                marginTop: "4em",
-                "&:hover": {
-                  backgroundColor: "transparent",
-                  borderColor: theme.palette.primary.main,
-                  color: theme.palette.primary.main,
-                },
-              }}
-            >
-              Submit
-            </Button>
-          </form>
-        </Grid>
-        <Grid item xs={12} md={3} sx={{ paddingLeft: 5 }}>
-          <Typography variant="h3">Contact Info</Typography>
-          <Typography variant="body1" paragraph>
-  <span>
-    <LocationOn /> Address
-  </span>{' '}
-  Colombo, Sri Lanka
-</Typography>
-<Typography variant="body1" paragraph>
-  <span>
-    <Phone /> Phone
-  </span>{' '}
-  0712345678
-</Typography>
-<Typography variant="body1" paragraph>
-  <span>
-    <Email /> Email
-  </span>{' '}
-  apexconstruction@gmail.com
-</Typography>
-          
-        </Grid>
-      </Grid>
-    </Container>
+                <Button
+                  variant="contained"
+                  sx={{
+                    background: theme.palette.primary.main,
+                    padding: "0px 32px",
+                    color: "#fff",
+                    fontFamily: "Roboto, sans-serif",
+                    fontSize: "12px",
+                    fontWeight: "500",
+                    lineHeight: "44px",
+                    textAlign: "center",
+                    border: "1px solid",
+                    borderColor: theme.palette.primary.main,
+                    cursor: "pointer",
+                    textTransform: "uppercase",
+                    transition: "all 300ms linear 0s",
+                    borderRadius: "5px",
+                    marginTop: "4em",
+                    "&:hover": {
+                      backgroundColor: "transparent",
+                      borderColor: theme.palette.primary.main,
+                      color: theme.palette.primary.main,
+                    },
+                  }}
+                >
+                  Submit
+                </Button>
+              </form>
+            </Grid>
+            <Grid item xs={12} md={3} sx={{ paddingLeft: 5 }}>
+              <Typography variant="h3" sx={{ fontStyle: theme.palette.typography.poppins }}>Contact Info</Typography>
+              <Typography variant="body1" paragraph>
+                <span>
+                  <LocationOn /> Address
+                </span>{' '}
+                Colombo, Sri Lanka
+              </Typography>
+              <Typography variant="body1" paragraph>
+                <span>
+                  <Phone /> Phone
+                </span>{' '}
+                0712345678
+              </Typography>
+              <Typography variant="body1" paragraph>
+                <span>
+                  <Email /> Email
+                </span>{' '}
+                apexconstruction@gmail.com
+              </Typography>
+
+            </Grid>
+          </Grid>
+        </Box>
+      </Box>
+    </Box>
   );
 };

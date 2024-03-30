@@ -1,6 +1,13 @@
 import mongoose from 'mongoose';
+const { Schema } = mongoose;
 
 const employeeSchema = new mongoose.Schema({
+
+    employeeId: {
+        type: String,
+        required: true,
+        unique: true
+    },
 
     firstName: {
         type: String,
@@ -18,6 +25,11 @@ const employeeSchema = new mongoose.Schema({
     },
 
     gender: {
+        type: String,
+        required: true
+    },
+
+    nic: {
         type: String,
         required: true
     },
@@ -43,7 +55,7 @@ const employeeSchema = new mongoose.Schema({
         unique: true
     },
 
-    phoneNumber: {
+    mobileNo: {
         type: String,
         required: true
     },

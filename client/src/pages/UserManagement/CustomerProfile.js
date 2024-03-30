@@ -5,6 +5,7 @@ import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import { useSelector } from 'react-redux';
+import { userTypes } from "../../utils.js";
 
 export default function CustomerProfile() {
   const [selectedContent, setSelectedContent] = useState("profile");
@@ -15,7 +16,7 @@ export default function CustomerProfile() {
   return (
     <Grid container spacing={3} style={{ marginTop: 60 }}>
       <Grid item xs={3}>
-        <ProfileSidebar onItemClick={handleSidebarItemClick} />
+        <ProfileSidebar onItemClick={handleSidebarItemClick} userType={userTypes.CUSTOMER} />
       </Grid>
       <Grid item xs={9}>
         <main style={{ padding: "20px" }}>
@@ -94,12 +95,11 @@ function Profile() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
 
     axios
       .post(UPDATE_CUSTOMER, customerDetails)
       .then((response) => {
-        console.log("sucess response - " + response.data.data);
+        console.log("sucess response - " + response);
       })
       .catch((error) => {
         console.log(error);
@@ -224,7 +224,7 @@ function Profile() {
           label="Company Name"
           name="companyName"
           autoComplete="companyName"
-          value={customerDetails.region}
+          value={customerDetails.companyName}
           onChange={(e) => handleChange('companyName', e.target.value)}
         />
       </Grid>
@@ -237,7 +237,7 @@ function Profile() {
           label="Business Type"
           name="businessType"
           autoComplete="businessType"
-          value={customerDetails.country}
+          value={customerDetails.businessType}
           onChange={(e) => handleChange('businessType', e.target.value)}
         />
       </Grid>

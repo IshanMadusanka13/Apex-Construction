@@ -14,13 +14,20 @@ import {
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { userTypes } from "../utils.js";
+import { setLogout } from '../state.js';
 
 function Header() {
+
   const theme = useTheme();
+  const dispatch = useDispatch();
+
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
   const user = useSelector((state) => state.user);
+
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
 
   const toggleDrawer = (isOpen) => (event) => {
     setIsDrawerOpen(isOpen);
@@ -53,16 +60,25 @@ function Header() {
     }
   };
 
+  const handleLoginBtn = ()=> {
+    window.location.href = '/login'
+  };
+
   const getProfileLink = () => {
     if (user) {
       if (user.userType === 'admin') {
         return '/adminprofile';
-      } else if (user.userType === 'customer') {
+      } else if (user.userType === userTypes.CUSTOMER) {
         return '/customerprofile';
       } else {
         return '/employeeprofile';
       }
     }
+  };
+
+  const handleLogout = () => {
+    dispatch(setLogout())
+    window.location.href = '/login'
   };
 
   return (
@@ -163,23 +179,43 @@ function Header() {
                 </Button>
               </Box>
               <Box style={{ marginLeft: 'auto' }}>
-                {user ? ( 
-                  <Button
-                    href={getProfileLink()}
-                    color="inherit"
-                    sx={{
-                      color: theme.palette.text.default,
-                      fontSize: "18px",
-                      fontWeight: "500",
-                      textDecoration: "none",
-                      "&:hover": {
-                        color: theme.palette.text.main,
-                        fontWeight: "bold",
-                      },
-                    }}
-                  >
-                    Profile
-                  </Button>
+                {user ? (
+                  <span>
+                    <Button
+                      href={getProfileLink()}
+                      color="inherit"
+                      sx={{
+                        color: theme.palette.text.default,
+                        fontSize: "18px",
+                        fontWeight: "500",
+                        marginRight: "1em",
+                        textDecoration: "none",
+                        "&:hover": {
+                          color: theme.palette.text.main,
+                          fontWeight: "bold",
+                        },
+                      }}
+                    >
+                      Profile
+                    </Button>
+
+                    <Button
+                      onClick={handleLogout}
+                      color="inherit"
+                      sx={{
+                        color: theme.palette.text.default,
+                        fontSize: "18px",
+                        fontWeight: "500",
+                        textDecoration: "none",
+                        "&:hover": {
+                          color: theme.palette.text.main,
+                          fontWeight: "bold",
+                        },
+                      }}
+                    >
+                      Logout
+                    </Button>
+                  </span>
                 ) : (
                   <Button
                     href="/login"
@@ -205,16 +241,18 @@ function Header() {
       </AppBar>
       <Drawer anchor="left" open={isDrawerOpen} onClose={toggleDrawer(false)}>
         <List>
-          {["Home", "About Us", "Contact Us"].map((text) => (
-            <ListItem
-              button
-              key={text}
-              href={`/${text.replace(" ", "")}`}
-              onClick={`/${text.replace(" ", "")}` && toggleDrawer(false)}
-            >
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
+          <ListItem button onClick={scrollToHome}>
+            <ListItemText primary="Home" />
+          </ListItem>
+          <ListItem button onClick={scrollToAboutUs}>
+            <ListItemText primary="About Us" />
+          </ListItem>
+          <ListItem button onClick={scrollToContactUs}>
+            <ListItemText primary="Contact Us" />
+          </ListItem>
+          <ListItem button onClick={handleLoginBtn}>
+            <ListItemText primary="Login" />
+          </ListItem>
         </List>
       </Drawer>
     </>
