@@ -49,8 +49,10 @@ export function errorAlert(content) {
 export function addRequestHeaders(loggedUser) {
   return (config) => {
     const userID = loggedUser && loggedUser._id;
+    const userType = loggedUser && loggedUser.userType;
     if (userID) {
       config.headers['UserID'] = userID;
+      config.headers['UserType'] = userType;
     }
     return config;
   };

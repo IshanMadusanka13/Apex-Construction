@@ -8,7 +8,6 @@ const EmployeeController = {
     createEmployee: async (req, res) => {
         try {
 
-            logger.info("Recieved Employee Create Request : " + JSON.stringify(req.body));
             const {
                 employeeId,
                 firstName,
@@ -60,7 +59,6 @@ const EmployeeController = {
 
     updateEmployee: async (req, res) => {
         try {
-            logger.info("Employee Update Request Recieved : " + JSON.stringify(req.body));
 
             const updatedEmployee = await Employee.findOneAndUpdate(
                 { email: req.body.email },
@@ -87,19 +85,15 @@ const EmployeeController = {
             var employee;
             switch (req.params.searchBy) {
                 case "userId":
-                    logger.info("Search Employee By UserId Request Received: " + req.params.value);
                     employee = await Employee.findOne({ user: req.params.value });
                     break;
                 case "employeeId":
-                    logger.info("Search Employee By employeeId Request Received: " + req.params.value);
                     employee = await Employee.findOne({ employeeId: req.params.value });
                     break;
                 case "email":
-                    logger.info("Search Employee By email Request Received: " + req.params.value);
                     employee = await Employee.findOne({ email: req.params.value });
                     break;
                 default:
-                    logger.info("Search Employee By Invalid Criteria Request Received: " + req.params.searchBy);
                     return res.status(400).json({ message: "Invalid Criteria" });
             }
             
@@ -117,8 +111,6 @@ const EmployeeController = {
     generateEmployeeId: async (req, res) => {
         try {
 
-            logger.info("Employee Id genertion request recieved");
-
             const count = await Employee.countDocuments();
             let empCount = count + 1000;
             let employeeId = "E" + empCount;
@@ -132,7 +124,6 @@ const EmployeeController = {
 
     deleteEmployeeByEmail: async (req, res) => {
         try {
-            logger.info("Employee delete request recieved");
 
             var userDeleteStatus = UserController.deleteUser(req.params.email);
 
@@ -154,8 +145,6 @@ const EmployeeController = {
 
     getEmployeeCount: async (req, res) => {
         try {
-
-            logger.info("Employee Count request recieved");
 
             const count = await Employee.countDocuments();
             res.status(200).json(count);

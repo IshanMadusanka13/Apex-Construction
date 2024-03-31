@@ -7,8 +7,6 @@ const CustomerController = {
 
     createCustomer: async (req, res) => {
         try {
-
-            logger.info("Customer Create Request Recieved"+ JSON.stringify(req.body))
             const {
                 firstName,
                 lastName,
@@ -52,7 +50,6 @@ const CustomerController = {
 
     updateCustomer: async (req, res) => {
         try {
-            logger.info("Customer Update Request Recieved"+ JSON.stringify(req.body))
     
             const updatedCustomer = await Customer.findOneAndUpdate(
                 {email: req.body.email},
@@ -74,7 +71,6 @@ const CustomerController = {
 
     getCustomerByUser: async (req, res) => {
         try {
-            logger.info("Search Customer By UserId Request Recieved")
             const customer = await Customer.findOne({ user: req.params.user });
             if (!customer) {
                 logger.error("Customer not found");
@@ -89,7 +85,6 @@ const CustomerController = {
 
     deleteCustomerByEmail: async (req, res) => {
         try {
-            logger.info("Customer delete request recieved");
 
             var userDeleteStatus = UserController.deleteUser(req.params.email);
 

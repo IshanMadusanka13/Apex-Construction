@@ -39,7 +39,6 @@ const UserController = {
     },
 
     loginUser: async (req, res) => {
-        logger.info("Login Request Recieved")
 
         const { email, password } = req.body
 
@@ -59,7 +58,6 @@ const UserController = {
     },
 
     changePassword: async (req, res) => {
-        logger.info("Change Password Request Recieved")
 
         const { email, currentPassword, newPassword } = req.body;
 
