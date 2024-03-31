@@ -46,6 +46,15 @@ export function errorAlert(content) {
   });
 }
 
+export function successAlert(content) {
+  Swal.fire({
+    icon: "success",
+    title: "Success",
+    text: content,
+    confirmButtonColor: "#ff5200"
+  });
+}
+
 export function addRequestHeaders(loggedUser) {
   return (config) => {
     const userID = loggedUser && loggedUser._id;
