@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import Swal from 'sweetalert2';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 export const userTypes = {
   ADMIN: 'admin',
@@ -42,3 +45,14 @@ export function errorAlert(content) {
     confirmButtonColor: "#ff5200"
   });
 }
+
+export function addRequestHeaders(loggedUser) {
+  return (config) => {
+    const userID = loggedUser && loggedUser._id;
+    if (userID) {
+      config.headers['UserID'] = userID;
+    }
+    return config;
+  };
+};
+

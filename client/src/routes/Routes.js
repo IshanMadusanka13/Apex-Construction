@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ErrorPage from "../pages/ErrorPage.js";
 import Home from "../pages/Home.js";
 import Login from "../pages/UserManagement/Login.js";
 import Signup from "../pages/UserManagement/SignUp.js";
@@ -17,6 +18,7 @@ const AppRoutes = () => {
 
         {/* General Routes */}
         <Route path="/home" element={<Home />} />
+        <Route path="/error/" element={<ErrorPage />} />
         <Route path="/" element={<Home />} />
 
       </Routes>

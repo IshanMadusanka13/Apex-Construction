@@ -10,24 +10,29 @@ import { useSelector } from 'react-redux';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import siteTheme from './theme';
 import { CssBaseline } from '@mui/material';
+import axios from 'axios';
+import { addRequestHeaders } from './utils';
 
 
 function App() {
-	
-	useEffect(() => {
-        document.title = 'Apex Construction';
-    }, []);
 
-    const mode = useSelector((state) => state.mode);
+  useEffect(() => {
+    document.title = 'Apex Construction';
+  }, []);
+
+  const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(siteTheme(mode)), [mode]);
-	
+  const loggedUser = useSelector((state) => state.user);
+
+  axios.interceptors.request.use(addRequestHeaders(loggedUser));
+
   return (
     <Box>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Header/>
-      <Routes/>
-      <Footer/>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Header />
+        <Routes />
+        <Footer />
       </ThemeProvider>
     </Box>
   );

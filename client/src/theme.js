@@ -31,7 +31,7 @@ const siteTheme = (mode) => {
           gridBody: {
             marginLeft: 1,
             padding: "20px",
-            width: "95%",
+            width: "98%",
             marginTop: "1vh",
             backgroundColor: "rgba(200, 200, 200, 0.4)",
             borderRadius: "10px",

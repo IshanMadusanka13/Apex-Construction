@@ -110,7 +110,7 @@ const EmployeeController = {
             res.status(200).json(employee);
         } catch (error) {
             logger.error("Error getting Employee");
-            res.status(500).json({ message: error.message });
+            res.status(500).json({ message: "Error getting Employee" });
         }
     },
 
@@ -151,6 +151,20 @@ const EmployeeController = {
             res.status(400).json({ message: error.message });
         }
     },
+
+    getEmployeeCount: async (req, res) => {
+        try {
+
+            logger.info("Employee Count request recieved");
+
+            const count = await Employee.countDocuments();
+            res.status(200).json(count);
+
+        } catch (error) {
+            logger.error("Error getting Employee Count");
+            res.status(500).json({ message: error.message });
+        }
+    }
 
 }
 export default EmployeeController;

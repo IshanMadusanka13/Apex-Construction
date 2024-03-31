@@ -32,19 +32,19 @@ const ProfileSidebar = (props) => {
       case userTypes.HR_MANAGER:
         return (
           <span>
-<ListItem button onClick={() => handleItemClick("addEmployee")} sx={{ backgroundColor: selectedContent === "addEmployee" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-            <ListItemIcon>
-              <PersonAddAlt1Icon />
-            </ListItemIcon>
-            {isMd && <ListItemText primary="Add Employee" />}
-          </ListItem>
+            <ListItem button onClick={() => handleItemClick("addEmployee")} sx={{ backgroundColor: selectedContent === "addEmployee" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <PersonAddAlt1Icon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="Add Employee" />}
+            </ListItem>
 
-          <ListItem button onClick={() => handleItemClick("viewEmployee")} sx={{ backgroundColor: selectedContent === "viewEmployee" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-            <ListItemIcon>
-            <VisibilityIcon />
-            </ListItemIcon>
-            {isMd && <ListItemText primary="View Employee" />}
-          </ListItem>
+            <ListItem button onClick={() => handleItemClick("viewEmployee")} sx={{ backgroundColor: selectedContent === "viewEmployee" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="View/Delete Employee" />}
+            </ListItem>
           </span>
         )
 
@@ -57,7 +57,7 @@ const ProfileSidebar = (props) => {
     <div
       style={{
         backgroundColor: theme.palette.primary.mainOpacity,
-        minHeight: "calc(100vh - 64px)",
+        height: '100%',
         padding: "20px",
       }}
     >

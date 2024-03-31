@@ -64,18 +64,6 @@ function Header() {
     window.location.href = '/login'
   };
 
-  const getProfileLink = () => {
-    if (user) {
-      if (user.userType === 'admin') {
-        return '/adminprofile';
-      } else if (user.userType === userTypes.CUSTOMER) {
-        return '/customerprofile';
-      } else {
-        return '/employeeprofile';
-      }
-    }
-  };
-
   const handleLogout = () => {
     dispatch(setLogout())
     window.location.href = '/login'
@@ -182,7 +170,7 @@ function Header() {
                 {user ? (
                   <span>
                     <Button
-                      href={getProfileLink()}
+                      href="/userDashboard"
                       color="inherit"
                       sx={{
                         color: theme.palette.text.default,

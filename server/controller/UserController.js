@@ -53,7 +53,7 @@ const UserController = {
             logger.info("User Login Succcess")
             res.status(200).json(userLogin)
         } else {
-            logger.info("User Login Failed")
+            logger.error("User Login Failed")
             res.status(400).json('Invalid Credenials');
         }
     },
@@ -80,11 +80,11 @@ const UserController = {
                 res.status(200).json('Changed password succesfully');
 
             } else {
-                logger.info("Incorrect Password")
+                logger.error("Incorrect Password")
                 res.status(400).json('Incorrect Password');
             }
         } else {
-            logger.info("User not Found")
+            logger.error("User not Found")
             res.status(400).json('User not Found');
         }
     },

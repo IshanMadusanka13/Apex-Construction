@@ -6,7 +6,7 @@ import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
-import { errorAlert, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 
@@ -24,8 +24,6 @@ export default function UserDashboard() {
     useEffect(() => {
         if (!loggedUser || !token) {
             navigate('/login');
-        }else{
-            console.log(loggedUser.userType);
         }
     }, []);
 
@@ -99,8 +97,7 @@ function EmployeeProfile() {
                     });
                 })
                 .catch((error) => {
-                    console.log(error);
-                    //navigate("/error");
+                    errorAlert(error.response.data.message);
                 });
         };
 
@@ -123,8 +120,7 @@ function EmployeeProfile() {
                 console.log("sucess response - " + response);
             })
             .catch((error) => {
-                console.log(error);
-                //navigate("/error");
+                errorAlert(error.response.data.message);
             });
     };
 
@@ -363,8 +359,7 @@ function CustomerProfile() {
                     });
                 })
                 .catch((error) => {
-                    console.log(error);
-                    //navigate("/error");
+                    errorAlert(error.response.data.message);
                 });
         };
 
@@ -387,8 +382,7 @@ function CustomerProfile() {
                 console.log("sucess response - " + response);
             })
             .catch((error) => {
-                console.log(error);
-                //navigate("/error");
+                errorAlert(error.response.data.message);
             });
     };
 
@@ -602,7 +596,7 @@ function ChangePassword(props) {
             })
             .catch((error) => {
                 console.log(error);
-                //navigate("/error");
+                errorAlert(error.response.data.message);
             });
     };
 

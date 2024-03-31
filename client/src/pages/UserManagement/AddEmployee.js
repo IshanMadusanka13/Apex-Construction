@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 
 function AddEmployee() {
@@ -44,7 +44,7 @@ function AddEmployee() {
                 })
                 .catch((error) => {
                     console.log(error);
-                    //navigate("/error");
+                    errorAlert(error.response.data.message);
                 });
         };
 
@@ -62,7 +62,7 @@ function AddEmployee() {
             })
             .catch((error) => {
                 console.log(error);
-                //navigate("/error");
+                errorAlert(error.response.data.message);
             });
     };
 
