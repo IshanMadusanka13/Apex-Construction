@@ -53,7 +53,14 @@ const AddNewPackage = () => {
     await axios
 
     .post("http://localhost:3001/package/addpackage", {
-      // package details
+      name: packageName,
+        price: price,
+        description: description,
+        duration: duration,
+        homeImage: homeImage,
+        modelLink: modelLink,
+        cost: mcost,
+        planImage: planImage,
     })
     .then((res) => {
       console.log(res);
@@ -64,6 +71,8 @@ const AddNewPackage = () => {
       errorAlert("An error occurred while adding the package. Please try again.");
     });
   };
+
+  
 
 //   useEffect(() => {
 //     const loadEmployeeId = async () => {
@@ -183,6 +192,7 @@ const AddNewPackage = () => {
                     name="price"
                     autoComplete="price"
                     autoFocus
+                    value={price}
                     onChange={(e) => setPrice(parseFloat(e.target.value))}
                 />
             </Grid>
@@ -197,6 +207,7 @@ const AddNewPackage = () => {
                     name="discription"
                     autoComplete="discription"
                     autoFocus
+                    value={description}
                     onChange={(e) => setDescription(parseFloat(e.target.value))}
                 />
             </Grid>
@@ -209,6 +220,7 @@ const AddNewPackage = () => {
                     label="Package Duration"
                     name="duration"
                     autoComplete="duration"
+                    value={duration}
                     onChange={(e) => setDuration(e.target.value)}
                 />
             </Grid>
@@ -224,6 +236,7 @@ const AddNewPackage = () => {
                     label="Package Monthly Payment"
                     name="mcost"
                     autoComplete="mcost"
+                    value={mcost}
                     onChange={(e) => setCost(parseFloat(e.target.value))}
                 />
                 
