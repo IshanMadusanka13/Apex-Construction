@@ -18,6 +18,13 @@ export const userTypes = {
   WORKER: "worker"
 };
 
+export const packageTypes = {
+  Gold: 'gold',
+  Silver: "silver",
+  Modern: "modern",
+  Budget: "budget",
+};
+
 const Toast = Swal.mixin({
   toast: true,
   position: "center",
