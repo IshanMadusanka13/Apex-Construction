@@ -5,8 +5,10 @@ import storage from "../../Apis/firebase.config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 //import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { errorAlert, packageTypes, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, packageTypes, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
+import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 
 
@@ -25,35 +27,23 @@ const AddNewPackage = () => {
   const [file, setFile] = useState();
 
   const navigate = useNavigate();
-  const goBack = () => {
-    navigate("/admin/Package");
-    
-  };
 
   const theme = useTheme();
   const loggedUser = useSelector((state) => state.user);
 
   const [error, seterror] = useState(false);
 
-  const onSubmit = async (e) => {
-
-  
-
-    
+  const onSubmit = (e) => {
+    e.preventDefault();
 
     if (!homeImage) {
-      alert("Please choose a file first!");
-
-      
+      errorAlert("Please choose a file first!");
       return;
     }
 
-  
-
-    await axios
-
-    .post("http://localhost:3001/package/addpackage", {
-      name: packageName,
+    axios
+      .post("http://localhost:3001/package/addpackage", {
+        name: packageName,
         price: price,
         description: description,
         duration: duration,
@@ -61,35 +51,35 @@ const AddNewPackage = () => {
         modelLink: modelLink,
         cost: mcost,
         planImage: planImage,
-    })
-    .then((res) => {
-      console.log(res);
-      goBack();
-    })
-    .catch((error) => {
-      console.log("Error while adding a new package:", error);
-      errorAlert("An error occurred while adding the package. Please try again.");
-    });
+      })
+      .then((res) => {
+        console.log(res);
+        successAlert("Package Created");
+      })
+      .catch((error) => {
+        console.log("Error while adding a new package:", error);
+        errorAlert("An error occurred while adding the package. Please try again.");
+      });
   };
 
-  
 
-//   useEffect(() => {
-//     const loadEmployeeId = async () => {
-//         axios
-//             .get(GET_EMPLOYEE_ID, {})
-//             .then((response) => {
-//                 console.log(response);
-//                 handleChange('packageId', response.data)
-//             })
-//             .catch((error) => {
-//                 console.log(error);
-//                 errorAlert(error.response.data.message);
-//             });
-//     };
 
-//     loadEmployeeId();
-// }, [navigate]);
+  //   useEffect(() => {
+  //     const loadEmployeeId = async () => {
+  //         axios
+  //             .get(GET_EMPLOYEE_ID, {})
+  //             .then((response) => {
+  //                 console.log(response);
+  //                 handleChange('packageId', response.data)
+  //             })
+  //             .catch((error) => {
+  //                 console.log(error);
+  //                 errorAlert(error.response.data.message);
+  //             });
+  //     };
+
+  //     loadEmployeeId();
+  // }, [navigate]);
 
 
   // image upload to firebase storage as in previous function
@@ -124,21 +114,21 @@ const AddNewPackage = () => {
     setFile(event.target.files[0]);
   }
 
-    return (
-        <Grid
-            container
-            spacing={2}
-            component="form"
-            sx={theme.palette.gridBody}
-            noValidate
-            onSubmit={onSubmit}
-        >
-            <Grid item xs={12}>
-                <Typography variant="h5" gutterBottom>
-                    Add Package
-                </Typography>
-            </Grid>
-            {/* <Grid item md={6}>
+  return (
+    <Grid
+      container
+      spacing={2}
+      component="form"
+      sx={theme.palette.gridBody}
+      noValidate
+      onSubmit={onSubmit}
+    >
+      <Grid item xs={12}>
+        <Typography variant="h5" gutterBottom>
+          Add Package
+        </Typography>
+      </Grid>
+      {/* <Grid item md={6}>
                 <TextField
                     margin="normal"
                     required
@@ -152,115 +142,120 @@ const AddNewPackage = () => {
                     disabled
                 />
             </Grid> */}
-            <Grid item md={6}>
-                <TextField
-                    select
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="name"
-                    label="Package Name"
-                    name="name"
-                    autoComplete="name"
-                    autoFocus
-                    value={packageName}
-                    onChange={(e) => setPackageName(e.target.value)}
-                > 
-                    {loggedUser.userType === userTypes.ADMIN && (
-                        <MenuItem key={packageTypes.ADMIN} value={packageTypes.ADMIN}>
-                            {packageTypes.ADMIN.toUpperCase()}
-                        </MenuItem>
-                    )}
-                    
-                    {Object.values(packageTypes)
-                        .filter(type => type !== 'admin' && type !== 'customer')
-                        .map((type) => (
-                            <MenuItem key={type} value={type}>
-                                {type.toUpperCase()}
-                            </MenuItem>
-                        ))}
-                </TextField>
-            </Grid>
+      <Grid item md={6}>
+        <TextField
+          select
+          margin="normal"
+          required
+          fullWidth
+          id="name"
+          label="Package Name"
+          name="name"
+          autoComplete="name"
+          autoFocus
+          value={packageName}
+          onChange={(e) => setPackageName(e.target.value)}
+        >
+          {loggedUser.userType === userTypes.ADMIN && (
+            <MenuItem key={packageTypes.ADMIN} value={packageTypes.ADMIN}>
+              {packageTypes.ADMIN.toUpperCase()}
+            </MenuItem>
+          )}
 
-            <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="price"
-                    label="Package Price"
-                    name="price"
-                    autoComplete="price"
-                    autoFocus
-                    value={price}
-                    onChange={(e) => setPrice(parseFloat(e.target.value))}
-                />
-            </Grid>
+          {Object.values(packageTypes)
+            .filter(type => type !== 'admin' && type !== 'customer')
+            .map((type) => (
+              <MenuItem key={type} value={type}>
+                {type.toUpperCase()}
+              </MenuItem>
+            ))}
+        </TextField>
+      </Grid>
 
-            <Grid item md={16}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="discription"
-                    label="Package Discription"
-                    name="discription"
-                    autoComplete="discription"
-                    autoFocus
-                    value={description}
-                    onChange={(e) => setDescription(parseFloat(e.target.value))}
-                />
-            </Grid>
-            <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="duration"
-                    label="Package Duration"
-                    name="duration"
-                    autoComplete="duration"
-                    value={duration}
-                    onChange={(e) => setDuration(e.target.value)}
-                />
-            </Grid>
+      <Grid item md={6}>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="price"
+          label="Package Price"
+          name="price"
+          autoComplete="price"
+          autoFocus
+          value={price}
+          onChange={(e) => setPrice(parseFloat(e.target.value))}
+        />
+      </Grid>
 
-            
+      <Grid item md={16}>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="discription"
+          label="Package Description"
+          name="discription"
+          autoComplete="discription"
+          autoFocus
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
+      </Grid>
+      <Grid item md={6}>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="duration"
+          label="Package Duration"
+          name="duration"
+          autoComplete="duration"
+          value={duration}
+          onChange={(e) => setDuration(e.target.value)}
+        />
+      </Grid>
 
-            <Grid item md={4}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="mcost"
-                    label="Package Monthly Payment"
-                    name="mcost"
-                    autoComplete="mcost"
-                    value={mcost}
-                    onChange={(e) => setCost(parseFloat(e.target.value))}
-                />
-                
-            </Grid>
 
-            <Grid item md={4}>
-                <img 
-                width = "300"
-                //height= {auto}
-                src={homeImage}></img>
 
-                <input
-                    type="file"
-                    className="file-input file-input-bordered file-input-sm w-[75%] max-w-xs ml-10"
-                    onChange={(e) => onUpload(e)}
-                />
-            </Grid>
+      <Grid item md={6}>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id="mcost"
+          label="Package Monthly Payment"
+          name="mcost"
+          autoComplete="mcost"
+          value={mcost}
+          onChange={(e) => setCost(parseFloat(e.target.value))}
+        />
 
-            <Button type="submit" variant="contained" sx={{ ml: 10, mt: 25, width: "50%", height: "10%" }}>
-                Create Package
-            </Button>
+      </Grid>
 
-        </Grid>
-    );
+      <Grid item md={4}>
+        <img
+          width="300"
+          //height= {auto}
+          src={homeImage}></img>
+
+        <Button
+          component="label"
+          variant="contained"
+          tabIndex={-1}
+          startIcon={<CloudUploadIcon />}
+          onChange={(e) => onUpload(e)}
+        >
+          Upload Image
+          <VisuallyHiddenInput type="file" />
+        </Button>
+      </Grid>
+
+      <Button type="submit" variant="contained" sx={{ ml: 10, mt: 25, width: "50%", height: "10%" }}>
+        Create Package
+      </Button>
+
+    </Grid>
+  );
 
 }
 
