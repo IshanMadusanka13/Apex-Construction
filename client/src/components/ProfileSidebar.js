@@ -45,6 +45,8 @@ const ProfileSidebar = (props) => {
               </ListItemIcon>
               {isMd && <ListItemText primary="View/Delete Employee" />}
             </ListItem>
+
+            
           </span>
         )
 
@@ -72,6 +74,21 @@ const ProfileSidebar = (props) => {
           </ListItemIcon>
           {isMd && <ListItemText primary="Profile" />}
         </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("addSiteDetails")} sx={{ backgroundColor: selectedContent === "addSiteDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="add Site Details" />}
+            </ListItem>
+            <ListItem button onClick={() => handleItemClick("AllSite")} sx={{ backgroundColor: selectedContent === "AllSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="AllSite" />}
+            </ListItem>
+
+        
 
         {setPrivileges()}
 

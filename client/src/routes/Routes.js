@@ -5,6 +5,7 @@ import Home from "../pages/Home.js";
 import Login from "../pages/UserManagement/Login.js";
 import Signup from "../pages/UserManagement/SignUp.js";
 import UserDashboard from "../pages/UserManagement/UserDashboard.js";
+//import AddSiteDetails from "../pages/SiteManagement/AddSiteDetails";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,9 @@ const AppRoutes = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/userDashboard" element={<UserDashboard />} />
+
+        {/* Site Management Routes
+        <Route path="/addSiteDetails" element={<AddSiteDetails/>} /> */}
 
         {/* General Routes */}
         <Route path="/home" element={<Home />} />

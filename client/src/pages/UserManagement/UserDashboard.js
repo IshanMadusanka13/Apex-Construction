@@ -9,6 +9,9 @@ import AddEmployee from "./AddEmployee";
 import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
+import AddSiteDetails from "../SiteManagement/AddSite.js";
+import AllSite from "../SiteManagement/AllSite.js";
+
 
 export default function UserDashboard() {
 
@@ -38,6 +41,8 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "addSiteDetails" && <AddSiteDetails />}
+                    {selectedContent === "AllSite" && <AllSite/>}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>
