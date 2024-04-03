@@ -23,14 +23,14 @@ function AllSite() {
     const loggedUser = useSelector((state) => state.user);
 
     const [employeeDetails, setEmployeeDetails] = useState({
-        custId:"",
+        custId: "",
         siteId: "",
         dateOfBirth: "",
         siteState: "",
         start: "",
         PhoneNo: "",
-        email:"",
-       
+        email: "",
+
     });
 
     const handleChange = (field, value) => {
@@ -72,6 +72,29 @@ function AllSite() {
             });
     };
 
+
+    function priceRow(qty, unit) {
+        return qty * unit;
+      }
+      
+      function createRow(desc, qty, unit) {
+        const price = priceRow(qty, unit);
+        return { desc, qty, unit, price };
+      }
+      function subtotal(items) {
+        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
+      }
+    //table eke danata rows tika
+    const rows = [
+        createRow('Paperclips (Box)', 100, 1.15),
+        createRow('Paper (Case)', 10, 45.99),
+        createRow('Waste Basket', 2, 17.99),
+    ];
+    const TAX_RATE = 0.07;
+    const invoiceSubtotal = subtotal(rows);
+    const invoiceTaxes = TAX_RATE * invoiceSubtotal;
+    const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+
     return (
         <Grid
             container
@@ -100,7 +123,7 @@ function AllSite() {
                     disabled
                 />
             </Grid>
-            
+
             <Grid item md={6}>
                 <TextField
                     margin="normal"
@@ -116,16 +139,57 @@ function AllSite() {
             </Grid>
 
 
+            <TableContainer component={Paper}>
+                <Table sx={{ minWidth: 700 }} aria-label="spanning table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align="center" colSpan={3}>
+                                Details
+                            </TableCell>
+                            <TableCell align="right">Price</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Desc</TableCell>
+                            <TableCell align="right">Qty.</TableCell>
+                            <TableCell align="right">Unit</TableCell>
+                            <TableCell align="right">Sum</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.map((row) => (
+                            <TableRow key={row.desc}>
+                                <TableCell>{row.desc}</TableCell>
+                                <TableCell align="right">{row.qty}</TableCell>
+                                <TableCell align="right">{row.unit}</TableCell>
+                                <TableCell align="right">{row.price}</TableCell>
+                            </TableRow>
+                        ))}
+                        <TableRow>
+                            <TableCell rowSpan={3} />
+                            <TableCell colSpan={2}>Subtotal</TableCell>
+                            <TableCell align="right">{invoiceSubtotal}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell>Tax</TableCell>
+                            <TableCell align="right">{TAX_RATE * 100}</TableCell>
+                            <TableCell align="right">{invoiceTaxes}</TableCell>
+                        </TableRow>
+                        <TableRow>
+                            <TableCell colSpan={2}>Total</TableCell>
+                            <TableCell align="right">{invoiceTotal}</TableCell>
+                        </TableRow>
+                    </TableBody>
+                </Table>
+            </TableContainer>
 
-           
-        
-            
+
+
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
                 Cancel
             </Button>
 
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
-                Conform Site Details 
+                Conform Site Details
             </Button>
         </Grid>
     );
