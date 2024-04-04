@@ -15,7 +15,7 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
-app.use('/package', packagesRouter);
+app.use('/packages', packagesRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');

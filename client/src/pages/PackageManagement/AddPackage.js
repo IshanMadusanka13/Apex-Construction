@@ -42,7 +42,7 @@ const AddNewPackage = () => {
     }
 
     axios
-      .post("http://localhost:3001/package/addpackage", {
+      .post("http://localhost:3001/packages/addpackage", {
         name: packageName,
         price: price,
         description: description,
@@ -50,7 +50,7 @@ const AddNewPackage = () => {
         homeImage: homeImage,
         modelLink: modelLink,
         cost: mcost,
-        planImage: planImage,
+        // planImage: planImage,
       })
       .then((res) => {
         console.log(res);
@@ -89,7 +89,7 @@ const AddNewPackage = () => {
     if (file === null) {
       return;
     }
-    const storageRef = ref(storage, `/package/${file.name}`);
+    const storageRef = ref(storage, `/packages/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -144,7 +144,7 @@ const AddNewPackage = () => {
             </Grid> */}
       <Grid item md={6}>
         <TextField
-          select
+          // select
           margin="normal"
           required
           fullWidth
@@ -156,7 +156,7 @@ const AddNewPackage = () => {
           value={packageName}
           onChange={(e) => setPackageName(e.target.value)}
         >
-          {loggedUser.userType === userTypes.ADMIN && (
+          {/* {loggedUser.userType === userTypes.ADMIN && (
             <MenuItem key={packageTypes.ADMIN} value={packageTypes.ADMIN}>
               {packageTypes.ADMIN.toUpperCase()}
             </MenuItem>
@@ -168,7 +168,7 @@ const AddNewPackage = () => {
               <MenuItem key={type} value={type}>
                 {type.toUpperCase()}
               </MenuItem>
-            ))}
+            ))} */}
         </TextField>
       </Grid>
 

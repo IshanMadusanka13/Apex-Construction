@@ -5,6 +5,7 @@ import Home from "../pages/Home.js";
 import Login from "../pages/UserManagement/Login.js";
 import Signup from "../pages/UserManagement/SignUp.js";
 import UserDashboard from "../pages/UserManagement/UserDashboard.js";
+import UpdatePackage from "../pages/PackageManagement/UpdatePackage.js";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,9 @@ const AppRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/error/" element={<ErrorPage />} />
         <Route path="/" element={<Home />} />
+
+        {/* Package Managemenet */}
+        <Route path="/updatePackage/:id" element={<UpdatePackage />} />
 
       </Routes>
     </Router>

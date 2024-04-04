@@ -1,12 +1,12 @@
 import express from "express";
 import {
-  approvePackage,
+  // approvePackage,
   createPackage,
   deletePackage,
-  getAllApprovedPackages,
+  // getAllApprovedPackages,
   getAllPackages,
   getPackageById,
-  getUnapprovedPackages,
+  // getUnapprovedPackages,
   updatePackage,
 } from "../controller/packageController.js";
 
@@ -18,12 +18,12 @@ packagesRouter.post("/addpackage", createPackage);
 
 packagesRouter.get("/getAllPackages", getAllPackages);
 
-packagesRouter.get("/getAllAprovedPackages", getAllApprovedPackages);
+//packagesRouter.get("/getAllAprovedPackages", getAllApprovedPackages);
 
 packagesRouter.get("/getPackageById/:id", getPackageById);
 
-packagesRouter.put("/approvePackage", approvePackage);
-packagesRouter.get("/getUnapprovedPackages", getUnapprovedPackages);
+//packagesRouter.put("/approvePackage", approvePackage);
+//packagesRouter.get("/getUnapprovedPackages", getUnapprovedPackages);
 packagesRouter.put("/updatePackage", updatePackage);
 packagesRouter.delete("/deletePackage", deletePackage);
 

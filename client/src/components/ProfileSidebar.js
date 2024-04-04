@@ -80,6 +80,13 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="addPackage" />}
         </ListItem>
 
+        <ListItem button onClick={() => handleItemClick("viewPackage")} sx={{ backgroundColor: selectedContent === "viewPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="viewPackage" />}
+        </ListItem>
+
         {setPrivileges()}
 
         <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>

@@ -11,6 +11,9 @@ import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
 
+import ViewPackage from "../PackageManagement/ViwePackage.js";
+import UpdatePackage from "../PackageManagement/UpdatePackage.js";
+
 export default function UserDashboard() {
 
     const navigate = useNavigate();
@@ -40,6 +43,8 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "addPackage" && <AddNewPackage />}
+                    {selectedContent === "viewPackage" && <ViewPackage />}
+                    {selectedContent === "updatePackage" && <UpdatePackage />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>
