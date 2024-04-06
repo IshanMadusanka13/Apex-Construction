@@ -23,8 +23,9 @@ function App() {
   const mode = useSelector((state) => state.mode);
   const theme = useMemo(() => createTheme(siteTheme(mode)), [mode]);
   const loggedUser = useSelector((state) => state.user);
+  const token = useSelector((state) => state.token);
 
-  axios.interceptors.request.use(addRequestHeaders(loggedUser));
+  axios.interceptors.request.use(addRequestHeaders(token));
 
   return (
     <Box>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { errorAlert, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 
 function AddEmployee() {
@@ -39,7 +39,6 @@ function AddEmployee() {
             axios
                 .get(GET_EMPLOYEE_ID, {})
                 .then((response) => {
-                    console.log(response);
                     handleChange('employeeId', response.data)
                 })
                 .catch((error) => {
@@ -57,8 +56,7 @@ function AddEmployee() {
         axios
             .post(CREATE_EMPLOYEE, employeeDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
-                timedSuccessAlert("Employee Created successfully");
+                successAlert(response.data.message);
             })
             .catch((error) => {
                 console.log(error);
