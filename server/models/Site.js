@@ -1,10 +1,9 @@
-import mongoose from "../db/conn.js";
+import mongoose from "mongoose";
 
 const siteSchema = new mongoose.Schema({
     custId : {
-        type : mongoose.Types.ObjectId,
+        type : String,
         required : true,
-        ref : "customer"
     },
     siteId : {
         type : String,
