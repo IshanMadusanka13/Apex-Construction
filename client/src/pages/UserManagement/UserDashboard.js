@@ -10,7 +10,12 @@ import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../u
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import AddSiteDetails from "../SiteManagement/AddSite.js";
-import AllSite from "../SiteManagement/AllSite.js";
+import AllSite from "../SiteManagement/monthlyReport.js";
+import StockReq from "../SiteManagement/StockReq.js";
+import MonthlyBill from "../SiteManagement/monthlyReport.js";
+import AllsiteDetails from "../SiteManagement/AllSiteDetail.js";
+import AllsiteDetail from "../SiteManagement/AllSiteDetail.js";
+import SiteProfile from "../SiteManagement/siteProfile.js";
 
 
 export default function UserDashboard() {
@@ -42,7 +47,10 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "addSiteDetails" && <AddSiteDetails />}
-                    {selectedContent === "AllSite" && <AllSite/>}
+                    {selectedContent === "MonthlyBill" && <MonthlyBill/>}
+                    {selectedContent === "StockReq" && <StockReq/>}
+                    {selectedContent === "SiteProfile" && <SiteProfile/>}
+                    {selectedContent === "AllSiteDetail" && <AllsiteDetail/>}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

@@ -16,7 +16,7 @@ import Paper from '@mui/material/Paper';
 
 
 
-function AllSite() {
+function StockReq() {
 
     const navigate = useNavigate();
     const theme = useTheme();
@@ -77,18 +77,26 @@ function AllSite() {
         return qty * unit;
       }
       
-      function createRow(desc, qty, unit) {
+      function createRow(RequestItem, qty, unit) {
         const price = priceRow(qty, unit);
-        return { desc, qty, unit, price };
+        return { RequestItem, qty, unit, price };
       }
       function subtotal(items) {
         return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
       }
+
+      
     //table eke danata rows tika
     const rows = [
-        createRow('Paperclips (Box)', 100, 1.15),
-        createRow('Paper (Case)', 10, 45.99),
-        createRow('Waste Basket', 2, 17.99),
+        createRow(''),
+        createRow(''),
+        createRow(''),
+        createRow(''),
+        createRow(''),
+        createRow(''),
+        createRow(''),
+        createRow(''),
+        createRow(''),
     ];
     const TAX_RATE = 0.07;
     const invoiceSubtotal = subtotal(rows);
@@ -106,7 +114,7 @@ function AllSite() {
         >
             <Grid item xs={12}>
                 <Typography variant="h5" gutterBottom>
-                    All Site Details
+                    Need Item
                 </Typography>
             </Grid>
             <Grid item md={6}>
@@ -135,6 +143,7 @@ function AllSite() {
                     autoComplete="custId"
                     autoFocus
                     onChange={(e) => handleChange('custId', e.target.value)}
+                   
                 />
             </Grid>
 
@@ -144,41 +153,40 @@ function AllSite() {
                     <TableHead>
                         <TableRow>
                             <TableCell align="center" colSpan={3}>
-                                Details
+                                Need Details Form
                             </TableCell>
-                            <TableCell align="right">Price</TableCell>
+                          
                         </TableRow>
                         <TableRow>
-                            <TableCell>Desc</TableCell>
-                            <TableCell align="right">Qty.</TableCell>
-                            <TableCell align="right">Unit</TableCell>
-                            <TableCell align="right">Sum</TableCell>
+                            <TableCell>RequestItem</TableCell>        
+                          <TableCell align="right">Quantity</TableCell>
+                            
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
-                            <TableRow key={row.desc}>
-                                <TableCell>{row.desc}</TableCell>
-                                <TableCell align="right">{row.qty}</TableCell>
-                                <TableCell align="right">{row.unit}</TableCell>
-                                <TableCell align="right">{row.price}</TableCell>
-                            </TableRow>
-                        ))}
-                        <TableRow>
-                            <TableCell rowSpan={3} />
-                            <TableCell colSpan={2}>Subtotal</TableCell>
-                            <TableCell align="right">{invoiceSubtotal}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>Tax</TableCell>
-                            <TableCell align="right">{TAX_RATE * 100}</TableCell>
-                            <TableCell align="right">{invoiceTaxes}</TableCell>
-                        </TableRow>
-                        <TableRow>
-                            <TableCell colSpan={2}>Total</TableCell>
-                            <TableCell align="right">{invoiceTotal}</TableCell>
-                        </TableRow>
-                    </TableBody>
+  {rows.map((row, index) => (
+    <TableRow key={index}>
+      <TableCell>
+        <TextField
+          value={row.requestItem}
+          onChange={(e) => handleChange(`requestItem${index}`, e.target.value)}
+          label="Request Item"
+          fullWidth
+        />
+      </TableCell>
+      <TableCell align="right">
+        <TextField
+          value={row.qty}
+          onChange={(e) => handleChange(`qty${index}`, e.target.value)}
+          label="Quantity"
+          type="number"
+          fullWidth
+        />
+      </TableCell>
+     
+    </TableRow>
+  ))}
+</TableBody>
                 </Table>
             </TableContainer>
 
@@ -189,11 +197,11 @@ function AllSite() {
             </Button>
 
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
-                Conform Site Details
+                Conform Site 
             </Button>
         </Grid>
     );
 
 }
 
-export default AllSite;
+export default StockReq;

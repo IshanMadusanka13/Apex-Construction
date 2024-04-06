@@ -169,12 +169,12 @@ function AddSiteDetails() {
             </Grid>
         
             
-            <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
+            <Button type="submit" variant="contained" sx={{ mt: 2, width: "20%" ,borderRadius:"5"}}>
                 Cancel
             </Button>
 
-            <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
-                Conform Site Details 
+            <Button type="submit" variant="contained" sx={{ mt: 2, width: "20%",borderRadius:"5" }}>
+                Conform 
             </Button>
         </Grid>
     );

@@ -81,11 +81,29 @@ const ProfileSidebar = (props) => {
               </ListItemIcon>
               {isMd && <ListItemText primary="add Site Details" />}
             </ListItem>
-            <ListItem button onClick={() => handleItemClick("AllSite")} sx={{ backgroundColor: selectedContent === "AllSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+            <ListItem button onClick={() => handleItemClick("MonthlyBill")} sx={{ backgroundColor: selectedContent === "MonthlyBIll" ? "rgba(0, 0, 0, 0.08)" : "" }}>
               <ListItemIcon>
                 <VisibilityIcon />
               </ListItemIcon>
-              {isMd && <ListItemText primary="AllSite" />}
+              {isMd && <ListItemText primary="Monthly BIll" />}
+            </ListItem>
+            <ListItem button onClick={() => handleItemClick("StockReq")} sx={{ backgroundColor: selectedContent === "StockReq" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="StockReqe" />}
+            </ListItem>
+            <ListItem button onClick={() => handleItemClick("SiteProfile")} sx={{ backgroundColor: selectedContent === "SiteProfile" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="SiteProfile" />}
+            </ListItem>
+            <ListItem button onClick={() => handleItemClick("AllSiteDetail")} sx={{ backgroundColor: selectedContent === "AllSiteDetail" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="All Site Details" />}
             </ListItem>
 
         
