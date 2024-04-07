@@ -115,6 +115,18 @@ function EmployeeProfile() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(employeeDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(employeeDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
+
         axios
             .put(UPDATE_EMPLOYEE, employeeDetails)
             .then((response) => {
@@ -378,6 +390,18 @@ function CustomerProfile() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(customerDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(customerDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
 
         axios
             .post(UPDATE_CUSTOMER, customerDetails)
