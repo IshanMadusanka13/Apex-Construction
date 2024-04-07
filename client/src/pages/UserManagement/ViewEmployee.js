@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme } from "@mui/material";
 import axios from "axios";
-import { CREATE_EMPLOYEE, DELETE_EMPLOYEE, GET_EMPLOYEE_COUNT, SEARCH_EMPLOYEE } from "../../EndPoints";
+import { DELETE_EMPLOYEE, GET_EMPLOYEE_COUNT, SEARCH_EMPLOYEE } from "../../EndPoints";
 import { errorAlert, successAlert } from "../../utils.js";
 
 

@@ -9,6 +9,7 @@ import AddEmployee from "./AddEmployee";
 import { errorAlert, loadErrorPage, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
+import LogReport from "./LogReport";
 
 export default function UserDashboard() {
 
@@ -38,6 +39,7 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

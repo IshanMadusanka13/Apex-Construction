@@ -11,5 +11,6 @@ employeeRouter.get('/getid', authorizeUser, EmployeeController.generateEmployeeI
 employeeRouter.put('/update', authorizeUser, EmployeeController.updateEmployee);
 employeeRouter.delete('/delete/:email/:userType', authorizeUser, EmployeeController.deleteEmployeeByEmail);
 employeeRouter.get('/getcount', authorizeUser, EmployeeController.getEmployeeCount);
+employeeRouter.get('/getlog/:month/:userId', EmployeeController.getLogData);
 
 export default employeeRouter;

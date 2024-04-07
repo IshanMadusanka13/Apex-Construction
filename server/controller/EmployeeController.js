@@ -1,4 +1,5 @@
 import Employee from '../models/Employee.js';
+import readLogFile from '../utils/logFileRead.js';
 import logger from '../utils/logger.js';
 import { sendEmployeeInitialPassword } from '../utils/sendMail.js';
 import UserController from './UserController.js';
@@ -96,7 +97,7 @@ const EmployeeController = {
                 default:
                     return res.status(400).json({ message: "Invalid Criteria" });
             }
-            
+
             if (!employee) {
                 logger.error("Employee not found");
                 return res.status(404).json({ message: 'Employee not found' });
@@ -153,7 +154,16 @@ const EmployeeController = {
             logger.error("Error getting Employee Count");
             res.status(500).json({ message: error.message });
         }
-    }
+    },
 
-}
+    getLogData: async (req, res) => {
+        try {
+            res.json(readLogFile(req.params.month, req.params.userId));
+        } catch (error) {
+            console.error('Error fetching logs:', error);
+            res.status(500).json({ message: 'Error fetching logs' });
+        }
+    }
+};
+
 export default EmployeeController;
