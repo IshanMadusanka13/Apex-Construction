@@ -1,11 +1,11 @@
 import express from 'express';
-const FleetRouter = express.Router();
 import Fleetcontroller from '../controller/Fleetcontroller.js';
 
+const FleetRouter = express.Router();
 
-FleetRouter.get('/FleetDetails', Fleetcontroller.FleetDetails);
-FleetRouter.post('/createFleetDetail', Fleetcontroller.addFleetDetail);
-FleetRouter.post('/updateFleetDetail', Fleetcontroller.updateFleetDetail);
-FleetRouter.post('/deleteFleetDetail', Fleetcontroller.deleteFleetDetail);
+FleetRouter.get('/search', Fleetcontroller.getFleets);
+FleetRouter.post('/create', Fleetcontroller.addFleet);
+FleetRouter.put('/update', Fleetcontroller.updateFleet);
+FleetRouter.delete('/delete/:vehicleid', Fleetcontroller.deleteFleet);
 
 export default FleetRouter;

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 const Schema = mongoose.Schema;
 
-const FleetDetailSchema = new Schema({
+const FleetSchema = new Schema({
     Vehicleid: Number,
     VehicleType: String,
     VehicleNo: String,
@@ -14,6 +14,6 @@ const FleetDetailSchema = new Schema({
 
 });
 
-const FleetDetail = mongoose.model('FleetDetail' , FleetDetailSchema);
+const Fleet = mongoose.model('Fleet' , FleetSchema);
 
-export default FleetDetail;
+export default Fleet;
