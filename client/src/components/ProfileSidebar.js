@@ -45,6 +45,15 @@ const ProfileSidebar = (props) => {
               </ListItemIcon>
               {isMd && <ListItemText primary="View/Delete Employee" />}
             </ListItem>
+
+            <ListItem button onClick={() => handleItemClick("FleetDetails")} sx={{ backgroundColor: selectedContent === "FleetDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="Trasport details" />}
+            </ListItem>
+
+           
           </span>
         )
 
