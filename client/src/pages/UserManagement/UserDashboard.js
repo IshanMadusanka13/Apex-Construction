@@ -10,6 +10,7 @@ import { errorAlert, loadErrorPage, successAlert, timedSuccessAlert, userTypes }
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
+import FleetDetails from "../Transportation managment/FleetDetails.js";
 
 export default function UserDashboard() {
 
@@ -38,6 +39,7 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType == userTypes.CUSTOMER) && <CustomerProfile />}
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
+                    {selectedContent === "FleetDetails" && <FleetDetails/>}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}

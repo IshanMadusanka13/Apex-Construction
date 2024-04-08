@@ -4,6 +4,7 @@ import "dotenv/config";
 import customerRouter from './routes/CustomerRouter.js';
 import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
+import FleetRouter from "./routes/FleetRouter.js";
 
 const app = express();
 
@@ -14,9 +15,10 @@ app.use(express.json());
 app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
+app.use('/fleet', FleetRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
-})
+});
 
 export default app;
