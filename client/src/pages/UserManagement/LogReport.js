@@ -11,7 +11,7 @@ import "jspdf-autotable";
 function LogReport() {
 
     const theme = useTheme();
-    const [showGenerateButton, setShowGenerateButton] = useState(false);
+    const [showGrid, setShowGrid] = useState(false);
     const [searchData, setsearchData] = useState({
         month: "",
         userId: "all",
@@ -50,7 +50,7 @@ function LogReport() {
                     Message: log.msg
                 }));
                 setTableData({ columns, rows });
-                setShowGenerateButton(true);
+                setShowGrid(true);
             })
             .catch((error) => {
                 console.log(error);
@@ -135,17 +135,15 @@ function LogReport() {
                 <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
                     View
                 </Button>
-                {showGenerateButton && (
+            </Grid>
+            {showGrid && (
+                <Grid item md={11} sx={theme.palette.gridBody}>
+                    <CustomizedTable columns={tableData.columns} rows={tableData.rows} />
                     <Button onClick={generatePDF} variant="contained" sx={{ mt: 3, width: "50%", ml: 1 }}>
                         Generate PDF
                     </Button>
-                )}
-            </Grid>
-            <Grid item md={11} sx={theme.palette.gridBody}>
-
-                <CustomizedTable columns={tableData.columns} rows={tableData.rows} />
-
-            </Grid>
+                </Grid>
+            )}
         </Grid>
     );
 
