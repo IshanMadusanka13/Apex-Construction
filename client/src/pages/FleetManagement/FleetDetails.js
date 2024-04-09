@@ -90,6 +90,11 @@ const FleetDetails = () => {
       });
   }
 
+  const handleUpdate = (content) => {
+    setSelectedFleetDetail(content.row);
+    setIsEdit(true);
+  }
+
   return (
     <Box>
       <FleetForm
@@ -101,10 +106,7 @@ const FleetDetails = () => {
       />
       <FleetTable
         rows={FleetDetails}
-        selectedUser={data => {
-          setSelectedFleetDetail(data);
-          setIsEdit(true);
-        }}
+        selectedUser={handleUpdate}
         deleteFleetDetail={data => {
           window.confirm("Are you sure?") && deleteFleetDetail(data);
         }}

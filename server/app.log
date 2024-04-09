@@ -38,3 +38,13 @@
 {"level":50,"time":1712464917357,"pid":10128,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
 {"level":30,"time":1712466273577,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
 {"level":50,"time":1712466273606,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712619378405,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712619382117,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1712619392864,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712619393501,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712619398621,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712619399338,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712619401296,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1712619401971,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1712621046589,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712621047228,"pid":6924,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}

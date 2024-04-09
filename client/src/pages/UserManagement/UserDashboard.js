@@ -10,7 +10,7 @@ import { errorAlert, loadErrorPage, successAlert, timedSuccessAlert, userTypes }
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
-import FleetDetails from "../Transportation managment/FleetDetails.js";
+import FleetDetails from "../FleetManagement/FleetDetails.js";
 
 export default function UserDashboard() {
 
