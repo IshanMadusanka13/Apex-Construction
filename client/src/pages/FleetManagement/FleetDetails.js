@@ -80,9 +80,10 @@ const FleetDetails = () => {
   }
 
   const deleteFleetDetail = (data) => {
-    Axios.delete('http://localhost:3001/fleet/delete', data)
+    Axios.delete('http://localhost:3001/fleet/delete/'+data.Vehicleid)
       .then(() => {
         getFleetDetails();
+        successAlert("Data Deleted Succesfully");
       })
       .catch(error => {
         errorAlert(error.response.data.message);
