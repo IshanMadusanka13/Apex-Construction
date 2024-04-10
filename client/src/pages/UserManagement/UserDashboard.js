@@ -13,6 +13,12 @@ import AddNewPackage from "../PackageManagement/AddPackage.js";
 
 import ViewPackage from "../PackageManagement/ViwePackage.js";
 import UpdatePackage from "../PackageManagement/UpdatePackage.js";
+import PaymentForm from "../FinanceManagement/ComMakePayment.js";
+import CusPaymentForm from "../FinanceManagement/CusAddCardDetails.js";
+import AddressForm from "../FinanceManagement/CusMakePayment.js";
+import Review from "../FinanceManagement/PaymentReview.js";
+import Checkout from "../FinanceManagement/PaymentSuccess.js";
+// import ComViewPayment from "../FinanceManagement/ComPaymentDashboard.js";
 
 export default function UserDashboard() {
 
@@ -45,6 +51,13 @@ export default function UserDashboard() {
                     {selectedContent === "addPackage" && <AddNewPackage />}
                     {selectedContent === "viewPackage" && <ViewPackage />}
                     {selectedContent === "updatePackage" && <UpdatePackage />}
+
+                    {selectedContent === "comMakePayment" && <PaymentForm />}
+                    {selectedContent === "cusAddCardDetails" && <CusPaymentForm />}
+                    {selectedContent === "addressForm" && <AddressForm />}
+                    {selectedContent === "review" && <Review />}
+                    {selectedContent === "checkout" && <Checkout />}
+
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

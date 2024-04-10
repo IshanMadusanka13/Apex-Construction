@@ -86,6 +86,36 @@ const ProfileSidebar = (props) => {
           </ListItemIcon>
           {isMd && <ListItemText primary="viewPackage" />}
         </ListItem>
+        <ListItem button onClick={() => handleItemClick("comMakePayment")} sx={{ backgroundColor: selectedContent === "comMakePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="comMakePayment" />}
+        </ListItem>
+        <ListItem button onClick={() => handleItemClick("cusAddCardDetails")} sx={{ backgroundColor: selectedContent === "cusAddCardDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="cusAddCardDetails" />}
+        </ListItem>
+        <ListItem button onClick={() => handleItemClick("addressForm")} sx={{ backgroundColor: selectedContent === "addressForm`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="addressForm" />}
+        </ListItem>
+        <ListItem button onClick={() => handleItemClick("review")} sx={{ backgroundColor: selectedContent === "review`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="review" />}
+        </ListItem>
+        <ListItem button onClick={() => handleItemClick("checkout")} sx={{ backgroundColor: selectedContent === "checkout`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="checkout" />}
+        </ListItem>
 
         {setPrivileges()}
 
