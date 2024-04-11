@@ -5,6 +5,10 @@ import Home from "../pages/Home.js";
 import Login from "../pages/UserManagement/Login.js";
 import Signup from "../pages/UserManagement/SignUp.js";
 import UserDashboard from "../pages/UserManagement/UserDashboard.js";
+import Users from "../pages/FeedbackManagement/Users.js";
+import UsersTable from "../pages/FeedbackManagement/UsersTable.js";
+import Complaints from "../pages/FeedbackManagement/Complaint.js";
+import Auths from "../pages/FeedbackManagement/Auth.js";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +24,13 @@ const AppRoutes = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/error/" element={<ErrorPage />} />
         <Route path="/" element={<Home />} />
+
+
+         {/* Feedback Management Routes */}
+        <Route path='/users' element={<Users />} />
+        <Route path='/usersTable' element={<UsersTable />} />
+        <Route path='/complaints' element={<Complaints />} />
+        <Route path='/auths' element={<Auths />} />
 
       </Routes>
     </Router>
