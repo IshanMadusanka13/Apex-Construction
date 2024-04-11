@@ -13,7 +13,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
+import StockRequest from "../../../../server/models/StockRequest.js";
+import { errorAlert, successAlert,timedSuccessAlert, userTypes } from "../../utils.js";
 
 
 function StockReq() {
@@ -38,37 +39,20 @@ function StockReq() {
             ...prevDetails,
             [field]: value,
         }));
-    };
-
-    useEffect(() => {
-        const loadEmployeeId = async () => {
-            axios
-                .get(GET_EMPLOYEE_ID, {})
-                .then((response) => {
-                    console.log(response);
-                    handleChange('', response.data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                    //navigate("/error");
-                });
-        };
-
-        loadEmployeeId();
-    }, [navigate]);
+    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
         axios
-            .post(CREATE_EMPLOYEE, employeeDetails)
+            .post("http://localhost:3001/StockReques/create", StockRequest )
             .then((response) => {
                 console.log("sucess response - " + response);
-                timedSuccessAlert("Employee Created successfully");
+                successAlert("Site Created successfully");
             })
             .catch((error) => {
                 console.log(error);
-                //navigate("/error");
+                errorAlert(error.response.data.message);
             });
     };
 
@@ -88,20 +72,17 @@ function StockReq() {
       
     //table eke danata rows tika
     const rows = [
-        createRow(''),
-        createRow(''),
-        createRow(''),
-        createRow(''),
-        createRow(''),
-        createRow(''),
-        createRow(''),
-        createRow(''),
-        createRow(''),
+        createRow(1, '', ''),
+        createRow(2, '', ''),
+        createRow(3, '', ''),
+        createRow(4, '', ''),
+        createRow(5, '', ''),
+        createRow(6, '', ''),
+        createRow(7, '', ''),
+        createRow(8, '', ''),
+        createRow(9, '', ''),
     ];
-    const TAX_RATE = 0.07;
-    const invoiceSubtotal = subtotal(rows);
-    const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-    const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+  
 
     return (
         <Grid

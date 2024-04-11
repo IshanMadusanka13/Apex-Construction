@@ -117,7 +117,7 @@ function AllsiteDetail() {
                             <TableRow key={index}>
                                 <TableCell>
                                     <TextField
-                                        value={row.employeeId}
+                                        value={row.cusId}
                                         onChange={(e) => {
                                             const updatedRows = [...rows];
                                             updatedRows[index].employeeId = e.target.value;

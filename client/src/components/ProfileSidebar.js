@@ -81,11 +81,11 @@ const ProfileSidebar = (props) => {
               </ListItemIcon>
               {isMd && <ListItemText primary="add Site Details" />}
             </ListItem>
-            <ListItem button onClick={() => handleItemClick("MonthlyBill")} sx={{ backgroundColor: selectedContent === "MonthlyBIll" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+            <ListItem button onClick={() => handleItemClick("MonthlyReport")} sx={{ backgroundColor: selectedContent === "MonthlyReport" ? "rgba(0, 0, 0, 0.08)" : "" }}>
               <ListItemIcon>
                 <VisibilityIcon />
               </ListItemIcon>
-              {isMd && <ListItemText primary="Monthly BIll" />}
+              {isMd && <ListItemText primary="Monthly Report" />}
             </ListItem>
             <ListItem button onClick={() => handleItemClick("StockReq")} sx={{ backgroundColor: selectedContent === "StockReq" ? "rgba(0, 0, 0, 0.08)" : "" }}>
               <ListItemIcon>

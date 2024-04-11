@@ -133,7 +133,7 @@ function AddSiteDetails() {
                     id="end"
                     label="End"
                     name="end"
-                    autoComplete="end"
+                    autoComplete="end" 
                     onChange={(e) => handleChange('end', e.target.value)}
                 />
             </Grid>

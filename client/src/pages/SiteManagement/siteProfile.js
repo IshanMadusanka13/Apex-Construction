@@ -1,83 +1,56 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, CircularProgress, LinearProgress, useTheme, Avatar } from "@mui/material";
+import { TextField, Typography, Button, Grid, CircularProgress, useTheme, Avatar } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints.js";
-import { timedSuccessAlert, userTypes } from "../../utils.js";
+import { timedSuccessAlert } from "../../utils.js";
 import { useSelector } from 'react-redux';
 
 function SiteProfile() {
-
     const navigate = useNavigate();
     const theme = useTheme();
     const loggedUser = useSelector((state) => state.user);
 
-    const [employeeDetails, setEmployeeDetails] = useState({
-        custId:"",
+    const [siteDetails, setSiteDetails] = useState({
         siteId: "",
-        dateOfBirth: "",
-        siteState: "",
-        start: "",
-        PhoneNo: "",
-        email:"",
+        siteName: "",
+        siteLocation: "",
+        siteProgress: "",
     });
 
-    // State for customer photo
-    const [customerPhoto, setCustomerPhoto] = useState(null);
-
-    // State for circular progress visibility
+    const [sitePhoto, setSitePhoto] = useState(null);
     const [loading, setLoading] = useState(false);
 
     const handleChange = (field, value) => {
-        setEmployeeDetails((prevDetails) => ({
+        setSiteDetails((prevDetails) => ({
             ...prevDetails,
             [field]: value,
         }));
     };
 
-    useEffect(() => {
-        const loadEmployeeId = async () => {
-            setLoading(true); // Start the loading indicator
-            axios
-                .get(GET_EMPLOYEE_ID, {})
-                .then((response) => {
-                    console.log(response);
-                    handleChange('', response.data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                    //navigate("/error");
-                })
-                .finally(() => {
-                    setLoading(false); // Stop the loading indicator
-                });
-        };
-
-        loadEmployeeId();
-    }, [navigate]);
-
     const handlePhotoUpload = (event) => {
         const photo = event.target.files[0];
-        setCustomerPhoto(photo);
+        setSitePhoto(photo);
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        setLoading(true);
 
-        // You need to handle photo upload here using customerPhoto state
-        setLoading(true); // Start the loading indicator
+        // Upload site photo logic here using sitePhoto state
+
         axios
-            .post(CREATE_EMPLOYEE, employeeDetails)
+            .post(CREATE_EMPLOYEE, siteDetails)
             .then((response) => {
                 console.log("success response - " + response);
-                timedSuccessAlert("Employee Created successfully");
+                timedSuccessAlert("Site Created successfully");
             })
             .catch((error) => {
                 console.log(error);
                 //navigate("/error");
             })
             .finally(() => {
-                setLoading(false); // Stop the loading indicator
+                setLoading(false);
             });
     };
 
@@ -100,48 +73,63 @@ function SiteProfile() {
                     margin="normal"
                     required
                     fullWidth
-                    id=""
-                    label="Employee Id"
-                    name="employeeId"
-                    autoComplete="employeeId"
-                    value={employeeDetails.employeeId}
+                    id="siteId"
+                    label="Site ID"
+                    name="siteId"
+                    autoComplete="siteId"
+                    value={siteDetails.siteId}
+                    onChange={(e) => handleChange('siteId', e.target.value)}
                     autoFocus
-                    disabled
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="siteName"
+                    label="Site Name"
+                    name="siteName"
+                    autoComplete="siteName"
+                    value={siteDetails.siteName}
+                    onChange={(e) => handleChange('siteName', e.target.value)}
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="siteLocation"
+                    label="Site Location"
+                    name="siteLocation"
+                    autoComplete="siteLocation"
+                    value={siteDetails.siteLocation}
+                    onChange={(e) => handleChange('siteLocation', e.target.value)}
+                />
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="siteProgress"
+                    label="Site Progress"
+                    name="siteProgress"
+                    autoComplete="siteProgress"
+                    value={siteDetails.siteProgress}
+                    onChange={(e) => handleChange('siteProgress', e.target.value)}
                 />
             </Grid>
             <Grid item md={6}>
                 <input
-                    accept="image1/*"
+                    accept="image/*"
                     id="contained-button-file"
                     multiple
                     type="file"
                     style={{ display: "none" }}
                     onChange={handlePhotoUpload}
                 />
-                <label htmlFor="contained-button-file">
-                    <Button variant="contained" component="span">
-                        Upload Customer Photo
-                    </Button>
-                </label>
-                {customerPhoto && <Avatar alt="Customer Photo" src={URL.createObjectURL(customerPhoto)} />}
-            </Grid>
-            
-            <Grid item md={6}>
-                <input
-                    accept="image2/*"
-                    id="contained-button-file"
-                    multiple
-                    type="file"
-                    style={{ display: "none" }}
-                    onChange={handlePhotoUpload}
-                />
-
                 <label htmlFor="contained-button-file">
                     <Button variant="contained" component="span">
                         Upload Site Photo
                     </Button>
                 </label>
-                {customerPhoto && <Avatar alt="Customer Photo" src={URL.createObjectURL(customerPhoto)} />}
+                {sitePhoto && <Avatar alt="Site Photo" src={URL.createObjectURL(sitePhoto)} />}
             </Grid>
 
             {/* Add circular progress here */}
@@ -151,7 +139,6 @@ function SiteProfile() {
                 </Grid>
             )}
             
-            {/* Add your other form fields and components here */}
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
                 Cancel
             </Button>

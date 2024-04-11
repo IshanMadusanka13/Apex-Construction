@@ -1,98 +1,65 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
-import axios from "axios";
-import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints.js";
-import { timedSuccessAlert, userTypes } from "../../utils.js";
-import { useSelector } from 'react-redux';
+import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
+import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-
-function MonthlyBill() {
+import { errorAlert, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
+import axios from 'axios';
+function MonthlyReport() {
 
     const navigate = useNavigate();
     const theme = useTheme();
-    const loggedUser = useSelector((state) => state.user);
 
-    const [employeeDetails, setEmployeeDetails] = useState({
-        custId: "",
-        siteId: "",
-        dateOfBirth: "",
-        siteState: "",
-        start: "",
-        PhoneNo: "",
-        email: "",
-    });
 
-    const handleChange = (field, value) => {
-        setEmployeeDetails((prevDetails) => ({
-            ...prevDetails,
-            [field]: value,
-        }));
+    
+
+    // State to manage table rows
+    const [rows, setRows] = useState([
+        { desc: 'Stock Cost', qty: 0, unit: 0 },
+        { desc: 'Transport Cost', qty: 0, unit: 0 },
+        { desc: 'Salary Cost', qty: 0, unit: 0 },
+        { desc: 'Utility Bill Cost', qty: 0, unit: 0 },
+    ]);
+
+    // Function to handle changes in table rows
+    const handleChange = (index, field, value) => {
+        const updatedRows = [...rows];
+        updatedRows[index][field] = value;
+        setRows(updatedRows);
     };
 
-    useEffect(() => {
-        const loadEmployeeId = async () => {
-            axios
-                .get(GET_EMPLOYEE_ID, {})
-                .then((response) => {
-                    console.log(response);
-                    handleChange('', response.data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                    //navigate("/error");
-                });
-        };
-
-        loadEmployeeId();
-    }, [navigate]);
-
-    const handleSubmit = (event) => {
-        event.preventDefault();
-
-        axios
-            .post(CREATE_EMPLOYEE, employeeDetails)
-            .then((response) => {
-                console.log("sucess response - " + response);
-                timedSuccessAlert("Employee Created successfully");
-            })
-            .catch((error) => {
-                console.log(error);
-                //navigate("/error");
-            });
+    // Function to calculate subtotal
+    const subtotal = () => {
+        return rows.reduce((sum, row) => sum + (row.qty * row.unit), 0);
     };
 
-
-    function TotalRow(qty, unit) {
-        return qty * unit;
-    }
-
-    function createRow(desc, qty, unit) {
-        return { desc, qty, unit, Total: qty * unit, textfield: '' };
-    }
-
-    function subtotal(items) {
-        return items.map(({ Total }) => Total).reduce((sum, i) => sum + i, 0);
-    }
-
-    // Table data
-    const rows = [
-        createRow('Stock Cost',"",""),
-        createRow('Transport Cost',"",""),
-        createRow('Salary Cost',"","" ),
-        createRow('Utility Bill Cost',"",""),
-    ];
+    // Constants for tax rate and total calculation
     const TAX_RATE = 0.07;
-    const invoiceSubtotal = subtotal(rows);
+    const invoiceSubtotal = subtotal();
     const invoiceTaxes = TAX_RATE * invoiceSubtotal;
     const invoiceTotal = invoiceTaxes + invoiceSubtotal;
+
+    // Function to handle form submission
+    const handleSubmit = (event) => {
+        event.preventDefault();
+       
+        axios
+        .post("http://localhost:3001/MonthlyReport/create",MonthlyReport )
+        .then((response) => {
+            console.log("sucess response - " + response);
+            successAlert("Site Created successfully");
+        })
+        .catch((error) => {
+            console.log(error);
+            errorAlert(error.response.data.message);
+        });
+    };
 
     return (
         <Grid
@@ -105,25 +72,11 @@ function MonthlyBill() {
         >
             <Grid item xs={12}>
                 <Typography variant="h5" gutterBottom>
-                    Monthly Bill
+                    Monthly Report 
                 </Typography>
             </Grid>
             <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id=""
-                    label="Employee Id"
-                    name="employeeId"
-                    autoComplete="employeeId"
-                    value={employeeDetails.employeeId}
-                    autoFocus
-                    disabled
-                />
-            </Grid>
-
-            <Grid item md={6}>
+                {/* Input for custId */}
                 <TextField
                     margin="normal"
                     required
@@ -133,11 +86,10 @@ function MonthlyBill() {
                     name="custId"
                     autoComplete="custId"
                     autoFocus
-                    onChange={(e) => handleChange('custId', e.target.value)}
                 />
             </Grid>
 
-
+            {/* Table for bill details */}
             <TableContainer component={Paper}>
                 <Table sx={{ minWidth: 700 }} aria-label="spanning table">
                     <TableHead>
@@ -149,72 +101,68 @@ function MonthlyBill() {
                         <TableRow>
                             <TableCell>Desc</TableCell>
                             <TableCell align="left">Quantity</TableCell>
-                            <TableCell align="left">unit</TableCell>
+                            <TableCell align="left">Unit</TableCell>
                             <TableCell align="left">Total</TableCell>
-                           
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {rows.map((row) => (
+                        {rows.map((row, index) => (
                             <TableRow key={row.desc}>
                                 <TableCell>{row.desc}</TableCell>
                                 <TableCell align="left">
-                                <TextField
+                                    {/* Input for quantity */}
+                                    <TextField
                                         fullWidth
-                                        value={row.Qty}
-                                        onChange={(e) => handleChange('Qty', e.target.value)}
+                                        value={row.qty}
+                                        onChange={(e) => handleChange(index, 'qty', parseInt(e.target.value, 10))}
                                     />
                                 </TableCell>
                                 <TableCell align="left"> 
-                                <TextField
+                                    {/* Input for unit */}
+                                    <TextField
                                         fullWidth
                                         value={row.unit}
-                                        onChange={(e) => handleChange('unit', e.target.value)}
+                                        onChange={(e) => handleChange(index, 'unit', parseInt(e.target.value, 10))}
                                     />
                                 </TableCell>
-                                
                                 <TableCell align="left">
-                                <TextField
-                                        fullWidth
-                                        value={row.Total}
-                                        onChange={(e) => handleChange('Total', e.target.value)}
-                                    />
-
+                                    {/* Display total */}
+                                    {row.qty * row.unit}
                                 </TableCell>
                             </TableRow>
                         ))}
+                        {/* Subtotal row */}
                         <TableRow>
                             <TableCell rowSpan={3} />
                             <TableCell colSpan={3}>Subtotal</TableCell>
                             <TableCell align="left">{invoiceSubtotal}</TableCell>
                         </TableRow>
+                        {/* Tax row */}
                         <TableRow>
                             <TableCell>Tax</TableCell>
-                            <TableCell align="left">{TAX_RATE * 100}</TableCell>
-                            <TableCell align="left">{invoiceTaxes}</TableCell>
+                            <TableCell align="left">{(TAX_RATE * 100).toFixed(2)}</TableCell>
+                            <TableCell align="left">{invoiceTaxes.toFixed(2)}</TableCell>
                             <TableCell />
                         </TableRow>
+                        {/* Total row */}
                         <TableRow>
                             <TableCell colSpan={3}>Total</TableCell>
-                            <TableCell align="left">{invoiceTotal}</TableCell>
+                            <TableCell align="left">{invoiceTotal.toFixed(2)}</TableCell>
                             <TableCell />
                         </TableRow>
                     </TableBody>
                 </Table>
             </TableContainer>
 
-
-
+            {/* Buttons */}
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
                 Cancel
             </Button>
-
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
-                Conform 
+                Confirm
             </Button>
         </Grid>
     );
-
 }
 
-export default MonthlyBill;
+export default MonthlyReport;
