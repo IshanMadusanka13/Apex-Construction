@@ -1,5 +1,4 @@
-const { response } = require('../app');
-const Auth = require('../models/authModel');
+import Auth from '../models/authModel.js';
 
 const getAuth = (req, res, next) => {
     Auth.find()
@@ -52,8 +51,4 @@ const deleteAuth = (req, res, next) => {
      
 }
 
-exports.getAuth = getAuth;
-exports.addAuth= addAuth;
-exports.updateAuth = updateAuth;
-exports.deleteAuth = deleteAuth;
-
+export default { getAuth, addAuth, updateAuth, deleteAuth };

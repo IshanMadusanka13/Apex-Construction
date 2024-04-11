@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const authSchema = new Schema({
     id:Number,
@@ -13,4 +13,4 @@ const authSchema = new Schema({
 
 const Auth = mongoose.model('Auth' , authSchema);
 
-module.exports = Auth;
+export default Auth;

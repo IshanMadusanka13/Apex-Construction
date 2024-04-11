@@ -1,5 +1,4 @@
-const { response } = require('../app');
-const Complaint = require('../models/complaintModel');
+import Complaint from '../models/complaintModel.js';
 
 const getComplaint = (req, res, next) => {
     Complaint.find()
@@ -52,8 +51,4 @@ const deleteComplaint = (req, res, next) => {
      
 }
 
-exports.getComplaint = getComplaint;
-exports.addComplaint= addComplaint;
-exports.updateComplaint = updateComplaint;
-exports.deleteComplaint = deleteComplaint;
-
+export default { getComplaint, addComplaint, updateComplaint, deleteComplaint };

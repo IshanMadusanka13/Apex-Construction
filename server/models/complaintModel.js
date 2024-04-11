@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+const { Schema } = mongoose;
 
 const complaintSchema = new Schema({
     name: String,
@@ -12,4 +12,4 @@ const complaintSchema = new Schema({
 
 const Complaint = mongoose.model('Complaint' , complaintSchema);
 
-module.exports = Complaint;
+export default Complaint;

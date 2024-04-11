@@ -1,10 +1,11 @@
-const express = require('express');
-const routerc = express.Router();
-const complaintController = require('../Controllers/complaintController');
+import express from 'express';
+import complaintController from '../controller/complaintController.js';
 
-routerc.get('/complaints', complaintController.getComplaint);
-routerc.post('/createcomplaint', complaintController.addComplaint);
-routerc.post('/updatecomplaint', complaintController.updateComplaint);
-routerc.post('/deletecomplaint', complaintController.deleteComplaint);
+const complaintRouter = express.Router();
 
-module.exports = routerc;
+complaintRouter.get('/complaints', complaintController.getComplaint);
+complaintRouter.post('/createcomplaint', complaintController.addComplaint);
+complaintRouter.post('/updatecomplaint', complaintController.updateComplaint);
+complaintRouter.post('/deletecomplaint', complaintController.deleteComplaint);
+
+export default complaintRouter;

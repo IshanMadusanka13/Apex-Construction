@@ -1,10 +1,11 @@
-const express = require('express');
-const routera = express.Router();
-const authController = require('../Controllers/authController');
+import express from 'express';
+import authController from '../controller/authController.js';
 
-routera.get('/auths', authController.getAuth);
-routera.post('/createauth', authController.addAuth);
-routera.post('/updateauth', authController.updateAuth);
-routera.post('/deleteauth', authController.deleteAuth);
+const authRouter = express.Router();
 
-module.exports = routera;
+authRouter.get('/auths', authController.getAuth);
+authRouter.post('/createauth', authController.addAuth);
+authRouter.post('/updateauth', authController.updateAuth);
+authRouter.post('/deleteauth', authController.deleteAuth);
+
+export default authRouter;
