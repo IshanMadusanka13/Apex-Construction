@@ -72,7 +72,7 @@ export default function PaymentForm() {
             gap: 2,
           }}
         >
-          {/* <Card
+          <Card
             raised={paymentType === 'creditCard'}
             sx={{
               maxWidth: { sm: '100%', md: '50%' },
@@ -90,7 +90,7 @@ export default function PaymentForm() {
                 <Typography fontWeight="medium">Card</Typography>
               </CardContent>
             </CardActionArea>
-          </Card> */}
+          </Card>
           <Card
             raised={paymentType === 'bankTransfer'}
             sx={{
@@ -112,7 +112,7 @@ export default function PaymentForm() {
           </Card>
         </RadioGroup>
       </FormControl>
-      {/* {paymentType === 'creditCard' && (
+      {paymentType === 'creditCard' && (
         <Box
           sx={{
             display: 'flex',
@@ -213,7 +213,7 @@ export default function PaymentForm() {
             label="Remember credit card details for next time"
           />
         </Box>
-      )} */}
+      )}
 
       {paymentType === 'bankTransfer' && (
         <Box

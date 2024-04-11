@@ -73,43 +73,41 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="Profile" />}
         </ListItem>
 
-        <ListItem button onClick={() => handleItemClick("addPackage")} sx={{ backgroundColor: selectedContent === "addPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+        <ListItem button onClick={() => handleItemClick("makePayment")} sx={{ backgroundColor: selectedContent === "makePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
-          {isMd && <ListItemText primary="addPackage" />}
+          {isMd && <ListItemText primary="makePayment" />}
         </ListItem>
 
-        <ListItem button onClick={() => handleItemClick("viewPackage")} sx={{ backgroundColor: selectedContent === "viewPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="viewPackage" />}
-        </ListItem>
         <ListItem button onClick={() => handleItemClick("comMakePayment")} sx={{ backgroundColor: selectedContent === "comMakePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
           {isMd && <ListItemText primary="comMakePayment" />}
         </ListItem>
+
         <ListItem button onClick={() => handleItemClick("cusAddCardDetails")} sx={{ backgroundColor: selectedContent === "cusAddCardDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
           {isMd && <ListItemText primary="cusAddCardDetails" />}
         </ListItem>
+
         <ListItem button onClick={() => handleItemClick("addressForm")} sx={{ backgroundColor: selectedContent === "addressForm`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
           {isMd && <ListItemText primary="addressForm" />}
         </ListItem>
+
         <ListItem button onClick={() => handleItemClick("review")} sx={{ backgroundColor: selectedContent === "review`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
           {isMd && <ListItemText primary="review" />}
         </ListItem>
+
         <ListItem button onClick={() => handleItemClick("checkout")} sx={{ backgroundColor: selectedContent === "checkout`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />

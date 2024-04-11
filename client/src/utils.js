@@ -25,6 +25,12 @@ export const packageTypes = {
   Budget: "budget",
 };
 
+export const billers = {
+  WATER: 'Water',
+  ELECTRICITY: "Electricity",
+  MOBILE: "Mobile",
+};
+
 const Toast = Swal.mixin({
   toast: true,
   position: "center",

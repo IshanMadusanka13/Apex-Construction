@@ -7,18 +7,12 @@ import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
 import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
-import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
-import AddNewPackage from "../PackageManagement/AddPackage.js";
-
-import ViewPackage from "../PackageManagement/ViwePackage.js";
-import UpdatePackage from "../PackageManagement/UpdatePackage.js";
 import PaymentForm from "../FinanceManagement/ComMakePayment.js";
 import CusPaymentForm from "../FinanceManagement/CusAddCardDetails.js";
 import AddressForm from "../FinanceManagement/CusMakePayment.js";
 import Review from "../FinanceManagement/PaymentReview.js";
-//import Checkout from "../FinanceManagement/PaymentSuccess.js";
-// import ComViewPayment from "../FinanceManagement/ComPaymentDashboard.js";
+import MakePayment from "../FinanceManagement/MakePayment";
 
 export default function UserDashboard() {
 
@@ -48,10 +42,8 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
-                    {selectedContent === "addPackage" && <AddNewPackage />}
-                    {selectedContent === "viewPackage" && <ViewPackage />}
-                    {selectedContent === "updatePackage" && <UpdatePackage />}
 
+                    {selectedContent === "makePayment" && <MakePayment />}
                     {selectedContent === "comMakePayment" && <PaymentForm />}
                     {selectedContent === "cusAddCardDetails" && <CusPaymentForm />}
                     {selectedContent === "addressForm" && <AddressForm />}
