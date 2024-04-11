@@ -34,6 +34,7 @@ export function createPackage(req, res) {
       res.send(result);
     })
     .catch((err) => {
+      logger.error(err);
       res.status(500).json({ message: "Error creating package" });
     });
 }

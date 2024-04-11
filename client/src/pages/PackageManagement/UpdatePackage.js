@@ -23,6 +23,7 @@ const UpdatePackage = (values) => {
 
 
   const onSubmit = (e) => {
+    e.preventDefault();
     console.log(
       packageId,
       packageName,
@@ -78,9 +79,9 @@ const UpdatePackage = (values) => {
 
   if (!values) {
     return <div>No data found.</div>;
-  }else{
-console.log(data);
-console.log(packageName);
+  } else {
+    console.log(data);
+    console.log(packageName);
   }
 
   return (

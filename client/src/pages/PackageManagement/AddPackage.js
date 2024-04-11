@@ -124,7 +124,7 @@ const AddNewPackage = () => {
             </Grid> */}
       <Grid item md={6}>
         <TextField
-          // select
+          select
           margin="normal"
           required
           fullWidth
