@@ -147,10 +147,66 @@ export function getPackageById(req, res) {
 //             res.status(500).json({ message: "Error getting packages" });
 //           });
 //       }
+// export function getPackagesByUserId(req, res) {
+//  // if (req.logInfo.userLogged) {
+//    // if (req.logInfo.userType == "admin") {
+//      // if (req.logInfo.userObject.privileges.include("package")) {
+//         packageModel
+//           .find({ userId: req.params.id })
+//           .then((result) => {
+//             res.send(result);
+//           })
+//           .catch((err) => {
+//             res.status(500).json({ message: "Error getting packages" });
+//           });
+//       }
    // }
  // }
 //}
 // make package approved if user have finance in privileges
+// export function approvePackage(req, res) {
+//   if (req.logInfo.userLogged) {
+//     if (req.logInfo.userType == "admin") {
+//       if (req.logInfo.userObject.privileges.includes("finance")) {
+//         packageModel
+//           .updateOne(
+//             { _id: req.query.id },
+//             {
+//               $set: {
+//                 isApproved: true,
+//               },
+//             }
+//           )
+//           .then((result) => {
+//             res.send(result);
+//           })
+//           .catch((err) => {
+//             res.status(500).json({ message: "Error approving package" });
+//           });
+//       }
+//     }
+//   }
+// }
+// //get unapproved packages if user have finance in privileges
+// export function getUnapprovedPackages(req, res) {
+//   if (req.logInfo.userLogged) {
+//     if (req.logInfo.userType == "admin") {
+//       if (req.logInfo.userObject.privileges.includes("finance")) {
+//         packageModel
+//           .find({ isApproved: false })
+//           .then((result) => {
+//             console.log(result);
+//             res.send(result);
+//           })
+//           .catch((err) => {
+//             res
+//               .status(500)
+//               .json({ message: "Error getting unapproved packages" });
+//           });
+//       }
+//     }
+//   }
+// }
 // export function approvePackage(req, res) {
 //   if (req.logInfo.userLogged) {
 //     if (req.logInfo.userType == "admin") {

@@ -1,6 +1,7 @@
 import express from 'express'
 import mongoose from 'mongoose';
 const packageSchema = new mongoose.Schema({
+    _id : {type : String , required : true},
     name : {type : String , required : true},
     price : {type : Number , required : true},
     description : {type : String , required : true},
@@ -8,9 +9,9 @@ const packageSchema = new mongoose.Schema({
     homeImage : {type : String , required : true},
     modelLink : {type : String , required : true},
     cost : {type : Number , required : true},
-    planImage : {type : String , required : true},
+    // planImage : {type : String , required : true},
 
-    isApproved : {type : Boolean , required : true , default : false}
+    // isApproved : {type : Boolean , required : true , default : false}
 })
 
 export default packageSchema

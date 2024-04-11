@@ -14,6 +14,9 @@ import AddNewPackage from "../PackageManagement/AddPackage.js";
 import ViewPackage from "../PackageManagement/ViewPackage";
 import UpdatePackage from "../PackageManagement/UpdatePackage";
 
+import ViewPackage from "../PackageManagement/ViwePackage.js";
+import UpdatePackage from "../PackageManagement/UpdatePackage.js";
+
 export default function UserDashboard() {
 
     const navigate = useNavigate();

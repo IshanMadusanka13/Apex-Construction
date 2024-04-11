@@ -50,7 +50,7 @@ const AddNewPackage = () => {
         homeImage: homeImage,
         modelLink: modelLink,
         cost: mcost,
-        planImage: planImage,
+        // planImage: planImage,
       })
       .then((res) => {
         console.log(res);
@@ -69,7 +69,7 @@ const AddNewPackage = () => {
     if (file === null) {
       return;
     }
-    const storageRef = ref(storage, `/package/${file.name}`);
+    const storageRef = ref(storage, `/packages/${file.name}`);
     const uploadTask = uploadBytesResumable(storageRef, file);
 
     uploadTask.on(
@@ -124,7 +124,7 @@ const AddNewPackage = () => {
             </Grid> */}
       <Grid item md={6}>
         <TextField
-          select
+          // select
           margin="normal"
           required
           fullWidth
