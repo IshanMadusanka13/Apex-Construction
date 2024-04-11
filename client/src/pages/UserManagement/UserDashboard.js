@@ -11,10 +11,10 @@ import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
 import PaymentForm from "../FinanceManagement/ComMakePayment.js";
-import CusPaymentForm from "../FinanceManagement/CusAddCardDetails.js";
 import Review from "../FinanceManagement/PaymentReview.js";
 import MakePayment from "../FinanceManagement/MakePayment";
 import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
+import Biller from "../FinanceManagement/Biller";
 
 export default function UserDashboard() {
 
@@ -46,12 +46,11 @@ export default function UserDashboard() {
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "LogReport" && <LogReport />}
                     
+                    {selectedContent === "biller" && <Biller />}
                     {selectedContent === "makePayment" && <MakePayment />}
                     {selectedContent === "comMakePayment" && <PaymentForm />}
-                    {selectedContent === "cusAddCardDetails" && <CusPaymentForm />}
                     {selectedContent === "customerInstallment" && <CustomerInstallment />}
                     {selectedContent === "review" && <Review />}
-                    {/* {selectedContent === "checkout" && <Checkout />} */}
 
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>

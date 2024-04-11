@@ -88,18 +88,18 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="Customer Installment" />}
         </ListItem>
 
-        <ListItem button onClick={() => handleItemClick("comMakePayment")} sx={{ backgroundColor: selectedContent === "comMakePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+        <ListItem button onClick={() => handleItemClick("biller")} sx={{ backgroundColor: selectedContent === "biller" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <CreditCardIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Biller" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("makePayment")} sx={{ backgroundColor: selectedContent === "makePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <CreditCardIcon />
           </ListItemIcon>
           {isMd && <ListItemText primary="Utility Payment" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("cusAddCardDetails")} sx={{ backgroundColor: selectedContent === "cusAddCardDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="cusAddCardDetails" />}
         </ListItem>
 
         <ListItem button onClick={() => handleItemClick("review")} sx={{ backgroundColor: selectedContent === "review`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
@@ -107,13 +107,6 @@ const ProfileSidebar = (props) => {
             <Lock />
           </ListItemIcon>
           {isMd && <ListItemText primary="review" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("checkout")} sx={{ backgroundColor: selectedContent === "checkout`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="checkout" />}
         </ListItem>
 
         {setPrivileges()}

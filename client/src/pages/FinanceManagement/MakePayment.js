@@ -1,11 +1,54 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
+import { TextField, Typography, Button, Grid, MenuItem, useTheme, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import axios from "axios";
 import { GET_ALL_BANKS, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
 import { errorAlert, billers, successAlert, months } from "../../utils.js";
 
 function MakePayment() {
+
+    const theme = useTheme();
+
+    const [selectedValue, setSelectedValue] = useState();
+
+    const handleChange = (event) => {
+        setSelectedValue(event.target.value);
+    };
+
+    return (
+        <Grid container>
+            <Grid item md={12}>
+                <Grid
+                    container
+                    spacing={2}
+                    sx={theme.palette.gridBody}
+                    noValidate
+                >
+                    <Grid item xs={12}>
+                        <Typography variant="h5" gutterBottom>
+                            Make Payment
+                        </Typography>
+                    </Grid>
+                    <Grid item md={12}>
+                        <RadioGroup value={selectedValue} onChange={handleChange} row>
+                            <FormControlLabel value="utility" control={<Radio />} label="Utility Bill" />
+                            <FormControlLabel value="biller" control={<Radio />} label="Biller Payment" />
+                            <FormControlLabel value="other" control={<Radio />} label="Other Payments" />
+                        </RadioGroup>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid item md={12}>
+                {selectedValue == "utility" && <UtilityBillPayment />}
+            </Grid>
+        </Grid>
+    );
+
+}
+
+export default MakePayment;
+
+function UtilityBillPayment() {
 
     const navigate = useNavigate();
     const theme = useTheme();
@@ -67,7 +110,7 @@ function MakePayment() {
         >
             <Grid item xs={12}>
                 <Typography variant="h5" gutterBottom>
-                    Make Payment
+                    Utility Bill Payment
                 </Typography>
             </Grid>
             <Grid item md={6}>
@@ -163,4 +206,10 @@ function MakePayment() {
 
 }
 
-export default MakePayment;
+function BillerPayment() {
+
+}
+
+function OtherPayment() {
+
+}
