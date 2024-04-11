@@ -10,6 +10,8 @@ import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../u
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
+import ViewPackage from "../PackageManagement/ViewPackage";
+import UpdatePackage from "../PackageManagement/UpdatePackage";
 
 export default function UserDashboard() {
 
@@ -40,6 +42,8 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "addPackage" && <AddNewPackage />}
+                    {selectedContent === "viewPackage" && <ViewPackage />}
+                    {selectedContent === "updatePackage" && <UpdatePackage />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

@@ -42,7 +42,7 @@ const AddNewPackage = () => {
     }
 
     axios
-      .post("http://localhost:3001/package/addpackage", {
+      .post("http://localhost:3001/package/add", {
         name: packageName,
         price: price,
         description: description,
