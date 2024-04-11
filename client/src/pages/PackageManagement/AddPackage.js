@@ -124,7 +124,7 @@ const AddNewPackage = () => {
             </Grid> */}
       <Grid item md={6}>
         <TextField
-          select
+          // select
           margin="normal"
           required
           fullWidth
@@ -136,11 +136,11 @@ const AddNewPackage = () => {
           value={packageName}
           onChange={(e) => setPackageName(e.target.value)}
         >
-          {Object.values(packageTypes).map((type) => (
+          {/* {Object.values(packageTypes).map((type) => (
             <MenuItem key={type} value={type}>
               {type.toUpperCase()}
             </MenuItem>
-          ))}
+          ))} */}
         </TextField>
       </Grid>
 

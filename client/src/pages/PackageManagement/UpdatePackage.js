@@ -95,7 +95,7 @@ const UpdatePackage = (values) => {
     >
       <Grid item xs={12}>
         <Typography variant="h5" gutterBottom>
-          Add Package
+          Update Package
         </Typography>
       </Grid>
       {/* <Grid item md={6}>
