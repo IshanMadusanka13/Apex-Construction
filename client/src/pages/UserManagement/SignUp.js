@@ -50,6 +50,12 @@ export default function Signup() {
       return;
     }
 
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      errorAlert("Please enter a valid email address.");
+      return;
+    }
+
     if (password !== cpassword) {
       errorAlert("Password and password confirmation does not match");
       return;

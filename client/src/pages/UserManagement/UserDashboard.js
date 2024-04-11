@@ -6,9 +6,10 @@ import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
-import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, loadErrorPage, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
+import LogReport from "./LogReport";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
 import ViewPackage from "../PackageManagement/ViewPackage";
 import UpdatePackage from "../PackageManagement/UpdatePackage";
@@ -41,6 +42,7 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "addPackage" && <AddNewPackage />}
                     {selectedContent === "viewPackage" && <ViewPackage />}
                     {selectedContent === "updatePackage" && <UpdatePackage />}
@@ -85,7 +87,6 @@ function EmployeeProfile() {
             axios
                 .get(SEARCH_EMPLOYEE + loggedUser._id + "/userId", {})
                 .then((response) => {
-                    console.log(response);
                     const employee = response.data;
                     setEmployeeDetails({
                         employeeId: employee.employeeId,
@@ -119,6 +120,18 @@ function EmployeeProfile() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(employeeDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(employeeDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
 
         axios
             .put(UPDATE_EMPLOYEE, employeeDetails)
@@ -319,6 +332,7 @@ function CustomerProfile() {
     const theme = useTheme();
 
     const [customerDetails, setCustomerDetails] = useState({
+        customerId:"",
         firstName: "",
         lastName: "",
         dateOfBirth: "",
@@ -351,6 +365,7 @@ function CustomerProfile() {
                     console.log(response);
                     const customer = response.data;
                     setCustomerDetails({
+                        customerId: customer.customerId,
                         firstName: customer.firstName,
                         lastName: customer.lastName,
                         dateOfBirth: customer.dateOfBirth,
@@ -382,6 +397,18 @@ function CustomerProfile() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(customerDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(customerDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
+
         axios
             .post(UPDATE_CUSTOMER, customerDetails)
             .then((response) => {
@@ -406,7 +433,21 @@ function CustomerProfile() {
                     Personal Profile
                 </Typography>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={2}>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="cusId"
+                    label="Customer Id"
+                    name="cusId"
+                    autoComplete="cusId"
+                    value={customerDetails.customerId}
+                    autoFocus
+                    disabled
+                />
+            </Grid>
+            <Grid item md={5}>
                 <TextField
                     margin="normal"
                     required
@@ -420,7 +461,7 @@ function CustomerProfile() {
                     disabled
                 />
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={5}>
                 <TextField
                     margin="normal"
                     required
@@ -596,8 +637,7 @@ function ChangePassword(props) {
         axios
             .put(CHANGE_PASSWORD, userDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
-                timedSuccessAlert("Password Changed successfully");
+                successAlert(response.data.message);
                 props.setSelectedContent("profile");
             })
             .catch((error) => {

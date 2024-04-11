@@ -23,7 +23,12 @@ const CustomerController = {
 
             const newUser = await UserController.createUser(email, password, UserType.CUSTOMER);
 
+            const count = await Customer.countDocuments();
+            let cusCount = count + 1000;
+            let cusId = "C" + cusCount;
+
             const customer = new Customer({
+                customerId : cusId,
                 firstName,
                 lastName,
                 dateOfBirth,

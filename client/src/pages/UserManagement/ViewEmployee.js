@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
 import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme } from "@mui/material";
 import axios from "axios";
-import { CREATE_EMPLOYEE, DELETE_EMPLOYEE, GET_EMPLOYEE_COUNT, SEARCH_EMPLOYEE } from "../../EndPoints";
-import { errorAlert } from "../../utils.js";
+import { DELETE_EMPLOYEE, GET_EMPLOYEE_COUNT, SEARCH_EMPLOYEE } from "../../EndPoints";
+import { errorAlert, successAlert } from "../../utils.js";
 
 
 function ViewEmployee() {
@@ -59,10 +59,8 @@ function ViewEmployee() {
         axios
             .get(SEARCH_EMPLOYEE + searchData.value + "/" + searchData.searchBy, {})
             .then((response) => {
-                console.log(response);
                 setEmployeeDetails(response.data);
                 setShowDeleteButton(true);
-                console.log(employeeDetails.lastName);
             })
             .catch((error) => {
                 console.log(error);
@@ -74,8 +72,7 @@ function ViewEmployee() {
         axios
             .get(DELETE_EMPLOYEE + employeeDetails.email + "/" + loggedUser.userType, {})
             .then((response) => {
-                console.log(response);
-
+                successAlert(response.data.message);
             })
             .catch((error) => {
                 console.log(error);
