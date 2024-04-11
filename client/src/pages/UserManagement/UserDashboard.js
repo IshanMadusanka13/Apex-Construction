@@ -6,13 +6,13 @@ import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
-import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import ViewEmployee from "./ViewEmployee";
 import PaymentForm from "../FinanceManagement/ComMakePayment.js";
 import CusPaymentForm from "../FinanceManagement/CusAddCardDetails.js";
-import AddressForm from "../FinanceManagement/CusMakePayment.js";
 import Review from "../FinanceManagement/PaymentReview.js";
 import MakePayment from "../FinanceManagement/MakePayment";
+import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
 
 export default function UserDashboard() {
 
@@ -42,11 +42,11 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
-
+                    
                     {selectedContent === "makePayment" && <MakePayment />}
                     {selectedContent === "comMakePayment" && <PaymentForm />}
                     {selectedContent === "cusAddCardDetails" && <CusPaymentForm />}
-                    {selectedContent === "addressForm" && <AddressForm />}
+                    {selectedContent === "customerInstallment" && <CustomerInstallment />}
                     {selectedContent === "review" && <Review />}
                     {/* {selectedContent === "checkout" && <Checkout />} */}
 

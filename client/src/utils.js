@@ -31,6 +31,11 @@ export const billers = {
   MOBILE: "Mobile",
 };
 
+export const months = [
+  'January', 'February', 'March', 'April', 'May', 'June', 
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
 const Toast = Swal.mixin({
   toast: true,
   position: "center",

@@ -33,18 +33,23 @@ const PaymentController = {
             const {
                 payTo,
                 payFrom,
-                amount, } = req.body;
+                month,
+                amount,
+                description,
+            } = req.body;
 
-                const bank = await Bank.findOne({ bankName: payFrom });
-                if (!bank) {
-                    logger.error("Bank not found");
-                    return res.status(404).json({ message: 'Bank not found' });
-                }
+            const bank = await Bank.findOne({ bankName: payFrom });
+            if (!bank) {
+                logger.error("Bank not found");
+                return res.status(404).json({ message: 'Bank not found' });
+            }
 
             const payment = new CompanyTransaction({
                 payTo,
                 payFrom: bank._id,
+                month,
                 amount,
+                description,
             });
 
             await payment.save();

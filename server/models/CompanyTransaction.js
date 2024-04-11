@@ -13,9 +13,18 @@ const companyTransactionSchema = new mongoose.Schema({
         required: true
     },
 
+    month: {
+        type: String,
+        required: true
+    },
+
     amount: {
         type: Number,
         required: true
+    },
+
+    description: {
+        type: String,
     },
 
     date: {

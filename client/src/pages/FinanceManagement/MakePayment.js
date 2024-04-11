@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { GET_ALL_BANKS, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
-import { errorAlert, timedSuccessAlert, billers, successAlert } from "../../utils.js";
+import { errorAlert, billers, successAlert, months } from "../../utils.js";
 
 function MakePayment() {
 
@@ -13,7 +13,9 @@ function MakePayment() {
     const [paymentDetails, setPaymentDetails] = useState({
         payTo: billers.ELECTRICITY,
         payFrom: "",
+        month: "",
         amount: "0",
+        description: "",
     });
     const [banks, setBanks] = useState([]);
 
@@ -46,7 +48,7 @@ function MakePayment() {
         axios
             .post(MAKE_COMPANY_PAYMENT, paymentDetails)
             .then((response) => {
-                successAlert("Employee Created successfully");
+                successAlert(response.data.message);
             })
             .catch((error) => {
                 console.log(error);
@@ -108,6 +110,25 @@ function MakePayment() {
                     ))}
                 </TextField>
             </Grid>
+
+            <Grid item md={6}>
+                <TextField
+                    select
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="month"
+                    label="Month"
+                    name="month"
+                    autoComplete="amount"
+                    onChange={(e) => handleChange('month', e.target.value)}
+                >
+                    {months.map((month, index) => (
+                        <MenuItem key={index} value={month}>{month}</MenuItem>
+                    ))}
+                </TextField>
+            </Grid>
+
             <Grid item md={6}>
                 <TextField
                     type="number"
@@ -122,7 +143,17 @@ function MakePayment() {
                 />
             </Grid>
 
-
+            <Grid item md={12}>
+                <TextField
+                    margin="normal"
+                    fullWidth
+                    id="description"
+                    label="Description"
+                    name="description"
+                    autoComplete="description"
+                    onChange={(e) => handleChange('description', e.target.value)}
+                />
+            </Grid>
 
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
                 Make Payment

@@ -12,6 +12,7 @@ import { useSelector } from 'react-redux';
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 import VisibilityIcon from "@mui/icons-material/Visibility";
+import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { Lock } from '@mui/icons-material';
 import { userTypes } from "../utils.js";
 
@@ -73,18 +74,18 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="Profile" />}
         </ListItem>
 
-        <ListItem button onClick={() => handleItemClick("makePayment")} sx={{ backgroundColor: selectedContent === "makePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+        <ListItem button onClick={() => handleItemClick("customerInstallment")} sx={{ backgroundColor: selectedContent === "customerInstallment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
-            <Lock />
+          <CreditCardIcon />
           </ListItemIcon>
-          {isMd && <ListItemText primary="makePayment" />}
+          {isMd && <ListItemText primary="Customer Installment" />}
         </ListItem>
 
         <ListItem button onClick={() => handleItemClick("comMakePayment")} sx={{ backgroundColor: selectedContent === "comMakePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
-            <Lock />
+            <CreditCardIcon />
           </ListItemIcon>
-          {isMd && <ListItemText primary="comMakePayment" />}
+          {isMd && <ListItemText primary="Utility Payment" />}
         </ListItem>
 
         <ListItem button onClick={() => handleItemClick("cusAddCardDetails")} sx={{ backgroundColor: selectedContent === "cusAddCardDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
@@ -92,13 +93,6 @@ const ProfileSidebar = (props) => {
             <Lock />
           </ListItemIcon>
           {isMd && <ListItemText primary="cusAddCardDetails" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("addressForm")} sx={{ backgroundColor: selectedContent === "addressForm`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="addressForm" />}
         </ListItem>
 
         <ListItem button onClick={() => handleItemClick("review")} sx={{ backgroundColor: selectedContent === "review`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
