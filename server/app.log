@@ -145,3 +145,5 @@
 {"level":30,"time":1712820661332,"pid":19980,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
 {"level":30,"time":1712821239468,"pid":28532,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3000"}
 {"level":30,"time":1712821242147,"pid":28532,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1712821547606,"pid":18908,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3000"}
+{"level":30,"time":1712821550685,"pid":18908,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
