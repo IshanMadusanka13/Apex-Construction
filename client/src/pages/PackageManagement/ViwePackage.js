@@ -231,22 +231,9 @@ function ViewPackage() {
     const navigate = useNavigate();
   
     const HandleUpdate = (packageId) => {
-    
         if (packageId) {
-            // console.log(packageId);
-            navigate(`/updatePackage/${packageId}`);
-          }
-          //${packageId}
-        // axios
-        // .put(`http://localhost:3001/package/updatePackage/${packageId}`)
-        // // .then((response) => {
-        // //   console.log(response);
-        // //   setPackageDetails(packageDetails.filter((row) => row.packageId !== packageId));
-        // // })
-        // // .catch((error) => {
-        // //   console.log(error);
-        // //   errorAlert(error.response.data.message);
-        // // });
+          navigate(`/updatePackage/${packageId}`);
+        }
         }
 
   return (

@@ -23,7 +23,7 @@ const AppRoutes = () => {
         <Route path="/" element={<Home />} />
 
         {/* Package Managemenet */}
-        <Route path="/updatePackage/:id" element={<UpdatePackage />} />
+        <Route path="/updatePackage/:packageId" element={<UpdatePackage />} />
 
       </Routes>
     </Router>
