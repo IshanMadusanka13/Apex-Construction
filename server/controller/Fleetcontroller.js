@@ -1,6 +1,7 @@
 import Fleet from '../models/Fleet.js';
 import logger from '../utils/logger.js';
 
+
 const Fleetcontroller = {
 
     getFleets: async (req, res) => {
@@ -60,6 +61,18 @@ const Fleetcontroller = {
             });
 
     },
+
+    searchFleetByDriverId: async (req, res) => {
+        try {
+          const { driverId } = req.params;
+          const fleetDetails = await FleetDetail.findOne({ DriverId: driverId }, 'Vehicleid VehicleType VehicleNo DriverId TransportMaterials DriverMobileNo TransportLocation TransportRoot EstimatedTime');
+          res.status(200).json(fleetDetails);
+        } catch (error) {
+          console.error('Error searching fleet by driver ID:', error);
+          res.status(500).json({ message: 'Failed to search fleet details by driver ID' });
+        }
+      },
+    
 }
 
 export default Fleetcontroller;

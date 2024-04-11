@@ -89,6 +89,21 @@ const ProfileSidebar = (props) => {
               {isMd && <ListItemText primary="Trasport details" />}
             </ListItem>
 
+        <ListItem button onClick={() => handleItemClick("AddVehicles")} sx={{ backgroundColor: selectedContent === "AddVehicles" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="Add Vehicles" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("FleetTablePage")} sx={{ backgroundColor: selectedContent === "FleetTablePage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="FleetTablePage " />}
+        </ListItem>
+        
+
         <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />

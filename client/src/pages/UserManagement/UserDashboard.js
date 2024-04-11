@@ -11,6 +11,8 @@ import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
 import FleetDetails from "../FleetManagement/FleetDetails.js";
+import AddVehicles from "../FleetManagement/AddVehicles.js";
+import FleetTablePage from "../FleetManagement/FleetTablePage.js";
 
 export default function UserDashboard() {
 
@@ -40,6 +42,8 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "FleetDetails" && <FleetDetails/>}
+                    {selectedContent === "AddVehicles" && <AddVehicles />}
+                    {selectedContent === "FleetTablePage" && <FleetTablePage />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
