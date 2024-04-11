@@ -7,103 +7,83 @@ import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/ma
 import { useSelector } from 'react-redux';
 import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { packageTypes, successAlert } from "../../utils";
 
-const UpdatePackage = () => {
-    const location = useLocation();
-    const data = location.state ? location.state.data : null;
-    const { packageId } = useParams();
-    const [packageData, setPackageData] = useState({});
-    const [packageName, setPackageName] = useState(data ? data.name : '');
-    const [price, setPrice] = useState(data ? data.price : '');
-    const [description, setDescription] = useState(data ? data.description : '');
-    const [duration, setDuration] = useState(data ? data.duration : '');
-    const [mcost, setCost] = useState(data ? data.cost : '');
-    const [homeImage, setHomeImage] = useState(data ? data.homeImage : '');
-    const navigate = useNavigate();
-    const theme = useTheme();
-    const [percent, setPercent] = useState(0);
+const UpdatePackage = (values) => {
+  const data = values.data;
+  const [packageId, setPackageId] = useState(data ? data._id : '');
+  const [packageName, setPackageName] = useState(data ? data.name : '');
+  const [price, setPrice] = useState(data ? data.price : '');
+  const [description, setDescription] = useState(data ? data.description : '');
+  const [duration, setDuration] = useState(data ? data.duration : '');
+  const [mcost, setCost] = useState(data ? data.cost : '');
+  const [homeImage, setHomeImage] = useState(data ? data.homeImage : '');
+  const theme = useTheme();
+  const [percent, setPercent] = useState(0);
 
-    useEffect(() => {
-      const fetchPackageData = async (packageId) => {
-        try {
-          const response = await axios.get(`http://localhost:3001/packages/getPackageById/${packageId}`);
-          setPackageData(response.data);
-        } catch (error) {
-          console.log(error);
-        }
-      };
-  
-      if (packageId) {
-        fetchPackageData();
-      }
-  }, [packageId]);
-  
-  useEffect(() => {
-      console.log(packageData);
-  }, [packageData]);
 
-    const onSubmit = (e) => {
-        console.log(
-          packageId,
-          packageName,
-          price,
-          description,
-          duration,
-          mcost,
-          homeImage,
+  const onSubmit = (e) => {
+    console.log(
+      packageId,
+      packageName,
+      price,
+      description,
+      duration,
+      mcost,
+      homeImage,
+    );
+    axios.put('http://localhost:3001/package/update', {
+      id: data._id,
+      name: packageName,
+      price: price,
+      description: description,
+      duration: duration,
+      homeImage: null,
+      modelLink: null,
+      cost: mcost,
+      planImage: null,
+      isApproved: true,
+    }).then((response) => {
+      successAlert("Package Updated");
+    })
+
+  }
+
+  const onUpload = async (e) => {
+    const file = e.target.files[0];
+
+    if (file === null) {
+      return;
+    }
+    const storageRef = ref(storage, `/packages/${file.name}`);
+    const uploadTask = uploadBytesResumable(storageRef, file);
+
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+        const percent = Math.round(
+          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
         );
-        axios.put('http://localhost:3001/Packages/updatePackage',{
-          id : data._id,
-          name :packageName,
-          price : price,
-          description : description,
-          duration : duration,
-          homeImage : null,
-          modelLink : null,
-          cost : mcost,
-          planImage :null,
-          isApproved : true,
-        }).then((response)=>{
-          //goBack()
-        })
-        
-      } 
-
-      const onUpload = async (e) => {
-        const file = e.target.files[0];
-    
-        if (file === null) {
-          return;
-        }
-        const storageRef = ref(storage, `/packages/${file.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, file);
-    
-        uploadTask.on(
-          "state_changed",
-          (snapshot) => {
-            const percent = Math.round(
-              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-            );
-            setPercent(percent);
-          },
-          (err) => console.log(err),
-          () => {
-            getDownloadURL(uploadTask.snapshot.ref).then((url) => {
-              setHomeImage(url);
-              console.log(url);
-            });
-          }
-        );
-      };
-
-      if (!data) {
-        return <div>No data found.</div>;
+        setPercent(percent);
+      },
+      (err) => console.log(err),
+      () => {
+        getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+          setHomeImage(url);
+          console.log(url);
+        });
       }
+    );
+  };
 
-        
-    
+  if (!values) {
+    return <div>No data found.</div>;
+  }else{
+console.log(data);
+console.log(packageName);
+  }
 
-return (
+  return (
     <Grid
       container
       spacing={2}
@@ -145,19 +125,11 @@ return (
           value={packageName}
           onChange={(e) => setPackageName(e.target.value)}
         >
-          {/* {loggedUser.userType === userTypes.ADMIN && (
-            <MenuItem key={packageTypes.ADMIN} value={packageTypes.ADMIN}>
-              {packageTypes.ADMIN.toUpperCase()}
+          {Object.values(packageTypes).map((type) => (
+            <MenuItem key={type} value={type}>
+              {type.toUpperCase()}
             </MenuItem>
-          )}
-
-          {Object.values(packageTypes)
-            .filter(type => type !== 'admin' && type !== 'customer')
-            .map((type) => (
-              <MenuItem key={type} value={type}>
-                {type.toUpperCase()}
-              </MenuItem>
-            ))} */}
+          ))}
         </TextField>
       </Grid>
 
@@ -240,7 +212,7 @@ return (
       </Grid>
 
       <Button type="submit" variant="contained" sx={{ ml: 10, mt: 25, width: "50%", height: "10%" }}>
-        Create Package
+        Update Package
       </Button>
 
     </Grid>

@@ -62,26 +62,6 @@ const AddNewPackage = () => {
       });
   };
 
-
-
-  //   useEffect(() => {
-  //     const loadEmployeeId = async () => {
-  //         axios
-  //             .get(GET_EMPLOYEE_ID, {})
-  //             .then((response) => {
-  //                 console.log(response);
-  //                 handleChange('packageId', response.data)
-  //             })
-  //             .catch((error) => {
-  //                 console.log(error);
-  //                 errorAlert(error.response.data.message);
-  //             });
-  //     };
-
-  //     loadEmployeeId();
-  // }, [navigate]);
-
-
   // image upload to firebase storage as in previous function
   const onUpload = async (e) => {
     const file = e.target.files[0];
@@ -156,19 +136,11 @@ const AddNewPackage = () => {
           value={packageName}
           onChange={(e) => setPackageName(e.target.value)}
         >
-          {loggedUser.userType === userTypes.ADMIN && (
-            <MenuItem key={packageTypes.ADMIN} value={packageTypes.ADMIN}>
-              {packageTypes.ADMIN.toUpperCase()}
+          {Object.values(packageTypes).map((type) => (
+            <MenuItem key={type} value={type}>
+              {type.toUpperCase()}
             </MenuItem>
-          )}
-
-          {Object.values(packageTypes)
-            .filter(type => type !== 'admin' && type !== 'customer')
-            .map((type) => (
-              <MenuItem key={type} value={type}>
-                {type.toUpperCase()}
-              </MenuItem>
-            ))}
+          ))}
         </TextField>
       </Grid>
 
