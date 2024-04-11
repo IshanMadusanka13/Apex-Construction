@@ -3,6 +3,12 @@ const { Schema } = mongoose;
 
 const customerSchema = new mongoose.Schema({
 
+    customerId: {
+        type: String,
+        required: true,
+        unique: true
+    },
+
     firstName: {
         type: String,
         required: true

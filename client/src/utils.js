@@ -73,13 +73,10 @@ export function successAlert(content) {
   });
 }
 
-export function addRequestHeaders(loggedUser) {
+export function addRequestHeaders(token) {
   return (config) => {
-    const userID = loggedUser && loggedUser._id;
-    const userType = loggedUser && loggedUser.userType;
-    if (userID) {
-      config.headers['UserID'] = userID;
-      config.headers['UserType'] = userType;
+    if (token) {
+      config.headers['authorization'] = token;
     }
     return config;
   };

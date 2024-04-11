@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { errorAlert, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 
 function AddEmployee() {
@@ -39,7 +39,6 @@ function AddEmployee() {
             axios
                 .get(GET_EMPLOYEE_ID, {})
                 .then((response) => {
-                    console.log(response);
                     handleChange('employeeId', response.data)
                 })
                 .catch((error) => {
@@ -54,11 +53,29 @@ function AddEmployee() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const oldNicRegex = /^[0-9]{9}[vVxX]$/;
+        const newNicRegex = /^\d{12}$/;
+        if (!oldNicRegex.test(employeeDetails.nic) && !newNicRegex.test(employeeDetails.nic)) {
+            errorAlert("Please enter a valid NIC number.");
+            return;
+        }
+
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(employeeDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(employeeDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
+
         axios
             .post(CREATE_EMPLOYEE, employeeDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
-                timedSuccessAlert("Employee Created successfully");
+                successAlert(response.data.message);
             })
             .catch((error) => {
                 console.log(error);
@@ -107,13 +124,13 @@ function AddEmployee() {
                     autoFocus
                     value={employeeDetails.role}
                     onChange={(e) => handleChange('role', e.target.value)}
-                > 
+                >
                     {loggedUser.userType === userTypes.ADMIN && (
                         <MenuItem key={userTypes.ADMIN} value={userTypes.ADMIN}>
                             {userTypes.ADMIN.toUpperCase()}
                         </MenuItem>
                     )}
-                    
+
                     {Object.values(userTypes)
                         .filter(type => type !== 'admin' && type !== 'customer')
                         .map((type) => (
