@@ -10,6 +10,7 @@ import { errorAlert, loadErrorPage, successAlert, timedSuccessAlert, userTypes }
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
+import StockPage from "../StockManagement/Stock";
 
 export default function UserDashboard() {
 
@@ -39,6 +40,7 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "stock" && <StockPage />}
                     {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
