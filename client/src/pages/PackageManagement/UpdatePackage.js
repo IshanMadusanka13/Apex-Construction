@@ -39,7 +39,7 @@ const UpdatePackage = (values) => {
       price: price,
       description: description,
       duration: duration,
-      homeImage: null,
+      homeImage: homeImage,
       modelLink: null,
       cost: mcost,
       planImage: null,

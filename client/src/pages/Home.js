@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import {
   Avatar,
   Box,
@@ -45,6 +46,7 @@ const HomePage = () => {
 export default HomePage;
 
 function HeroSection() {
+  const navigate = useNavigate();
   const theme = useTheme();
 
   const heroBox = {
@@ -101,6 +103,7 @@ function HeroSection() {
                   borderColor: theme.palette.primary.main,
                 },
               }}
+              onClick={() => navigate("/packages")}
             >
               View Packages
             </Button>

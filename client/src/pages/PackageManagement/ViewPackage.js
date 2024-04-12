@@ -122,6 +122,7 @@ function ViewPackage() {
                 // onSubmit={handleSubmit}
             >
                 <Grid item md={12}>
+                
                     <Typography variant="h5" gutterBottom>
                         Search Package
                     </Typography>
@@ -144,10 +145,14 @@ function ViewPackage() {
                 </Button> */}
             </Grid>
             <Grid item md={12} sx={theme.palette.gridBody} textAlign="center">
-                <Typography variant="h4" gutterBottom>
+            <div style={{ display: 'flex',  alignItems: 'center' }}>
+            <Button type="submit" variant="contained" sx={{ mt: 3, marginBottom: 2 , width: "20%" }} onClick={() => navigate('/AddPackage')}>
+                Add Package
+            </Button>
+                <Typography variant="h4" ml={25}>
                     All Packages
                 </Typography>
-
+            </div>
                 <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 1000 }}>
                         <TableHead>

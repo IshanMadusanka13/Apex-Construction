@@ -12,7 +12,7 @@ import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 
 
-const AddNewPackage = () => {
+const AddAddOns = () => {
   const [packageName, setPackageName] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -232,4 +232,4 @@ const AddNewPackage = () => {
 
 }
 
-export default AddNewPackage;
+export default AddAddOns;
