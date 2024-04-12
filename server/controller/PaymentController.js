@@ -30,35 +30,85 @@ const PaymentController = {
 
     makeCompanyPayment: async (req, res) => {
         try {
+
+            logger.info(req);
+
             const {
+                paymentType,
                 payTo,
                 payFrom,
-                month,
+                regarding,
                 amount,
                 description,
+                bank,
+                branch,
+                accountNo
             } = req.body;
 
-            const bank = await Bank.findOne({ bankName: payFrom });
-            if (!bank) {
+            const compbank = await Bank.findOne({ bankName: payFrom });
+            if (!compbank) {
                 logger.error("Bank not found");
                 return res.status(404).json({ message: 'Bank not found' });
             }
 
-            const payment = new CompanyTransaction({
-                payTo,
-                payFrom: bank._id,
-                month,
-                amount,
-                description,
-            });
+            let compTransaction;
+            if (paymentType == "Utility") {
+                compTransaction = new CompanyTransaction({
+                    paymentType,
+                    payTo,
+                    payFrom: compbank._id,
+                    regarding,
+                    amount,
+                    description,
+                });
+            } else if (paymentType == "Biller") {
+                compTransaction = new CompanyTransaction({
+                    paymentType,
+                    payTo,
+                    payFrom: compbank._id,
+                    regarding,
+                    amount,
+                    description,
+                });
+            } else if (paymentType == "Other") {
+                compTransaction = new CompanyTransaction({
+                    paymentType,
+                    payTo,
+                    payFrom: compbank._id,
+                    regarding,
+                    amount,
+                    description,
+                    bank,
+                    branch,
+                    accountNo,
+                });
+            } else {
+                logger.error("Company Payment failed");
+                res.status(400).json({ message: "Invalid Payment Type" });
+            }
 
-            await payment.save();
+            await compTransaction.save();
             logger.info("Company Payment successful");
-            res.status(201).json(payment);
+            res.status(201).json(compTransaction);
 
         } catch (error) {
             logger.error("Company Payment failed");
             res.status(400).json({ message: error.message });
+        }
+    },
+
+    getPayments: async (req, res) => {
+        try {
+            let compTransaction;
+            if (!req.params.type || req.params.type == "all") {
+                compTransaction = await CompanyTransaction.find();
+            } else {
+                compTransaction = await CompanyTransaction.find({ paymentType: req.params.type });
+            }
+            res.status(200).json(compTransaction);
+        } catch (error) {
+            logger.error("Error getting Payments by Type");
+            res.status(500).json({ message: error.message });
         }
     },
 

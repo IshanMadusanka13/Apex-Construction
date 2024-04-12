@@ -3,6 +3,11 @@ const { Schema } = mongoose;
 
 const companyTransactionSchema = new mongoose.Schema({
 
+    paymentType: {
+        type: String,
+        required: true
+    },
+    
     payFrom: {
         type: Schema.Types.ObjectId,
         ref: 'Bank'
@@ -13,7 +18,7 @@ const companyTransactionSchema = new mongoose.Schema({
         required: true
     },
 
-    month: {
+    regarding: {
         type: String,
         required: true
     },
@@ -30,6 +35,18 @@ const companyTransactionSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+
+    bank: {
+        type: String,
+    },
+
+    branch: {
+        type: String,
+    },
+
+    accountNo: {
+        type: String,
     },
 
 });

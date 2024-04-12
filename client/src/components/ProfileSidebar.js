@@ -99,7 +99,7 @@ const ProfileSidebar = (props) => {
           <ListItemIcon>
             <CreditCardIcon />
           </ListItemIcon>
-          {isMd && <ListItemText primary="Utility Payment" />}
+          {isMd && <ListItemText primary="Transactions" />}
         </ListItem>
 
         <ListItem button onClick={() => handleItemClick("review")} sx={{ backgroundColor: selectedContent === "review`" ? "rgba(0, 0, 0, 0.08)" : "" }}>

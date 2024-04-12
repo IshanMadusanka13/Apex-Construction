@@ -102,6 +102,16 @@ const BillerController = {
         }
     },
 
+    getBillerByType: async (req, res) => {
+        try {
+            const biller = await Biller.find({ type: req.params.type });
+            res.status(200).json(biller);
+        } catch (error) {
+            logger.error("Error getting Biller by Type");
+            res.status(500).json({ message: error.message });
+        }
+    },
+
 };
 
 export default BillerController;
