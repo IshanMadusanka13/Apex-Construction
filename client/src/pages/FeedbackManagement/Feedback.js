@@ -1,40 +1,40 @@
 import { Box } from "@mui/material";
-import UserForm from "./UserForm";
-import UsersTable from "./UsersTable";
+import FeedbackForm from "./FeedbackForm";
+import FeedbacksTable from "./FeedbacksTable";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const Users = () => {
-  const [users, setUsers] = useState([]);
+const Feedbacks = () => {
+  const [feedbacks, setFeedbacks] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedUser, setSelectedUser] = useState({});
+  const [selectedFeedback, setSelectedFeedback] = useState({});
   const [isEdit, setIsEdit] = useState(false);
 
 
   useEffect(() => {
-    getUsers();
+    getFeedbacks();
   }, []);
 
-  const getUsers = () => {
-    Axios.get('http://localhost:3001/api/users')
+  const getFeedbacks = () => {
+    Axios.get('http://localhost:3001/api/feedbacks')
       .then(response => {
-        setUsers(response.data?.response || []);
+        setFeedbacks(response.data?.response || []);
       })
       .catch(error => {
         console.error("Axios Error :", error);
       });
   }
 
-  const addUser = (data) => {
+  const addFeedback = (data) => {
     setSubmitted(true);
     const payload = {
       id: data.id,
       feedback: data.feedback,
     }
-    Axios.post('http://localhost:3001/api/createuser', payload)
+    Axios.post('http://localhost:3001/api/createfeedback', payload)
       .then(() => {
-        getUsers();
+        getFeedbacks();
         setSubmitted(false);
         setIsEdit(false);
 
@@ -44,15 +44,15 @@ const Users = () => {
       });
   }
 
-  const updateUser = (data) => {
+  const updateFeedback = (data) => {
     setSubmitted(true);
     const payload = {
       id: data.id,
       feedback: data.feedback,
     }
-    Axios.post('http://localhost:3001/api/updateuser', payload)
+    Axios.post('http://localhost:3001/api/updatefeedback', payload)
       .then(() => {
-        getUsers();
+        getFeedbacks();
         setSubmitted(false);
         setIsEdit(false);
       })
@@ -61,10 +61,10 @@ const Users = () => {
       });
   }
 
-  const deleteUser = (data) => {
-    Axios.post('http://localhost:3001/api/deleteuser', data)
+  const deleteFeedback = (data) => {
+    Axios.post('http://localhost:3001/api/deletefeedback', data)
       .then(() => {
-        getUsers();
+        getFeedbacks();
       })
       .catch(error => {
         console.error("Axios Error :", error);
@@ -79,25 +79,25 @@ const Users = () => {
         marginTop: '100px',
       }}
     >
-      <UserForm
-        addUser={addUser}
-        updateUser={updateUser}
+      <FeedbackForm
+        addFeedback={addFeedback}
+        updateFeedback={updateFeedback}
         submitted={submitted}
-        data={selectedUser}
+        data={selectedFeedback}
         isEdit={isEdit}
       />
-      <UsersTable
-        rows={users}
-        selectedUser={data => {
-          setSelectedUser(data);
+      <FeedbacksTable
+        rows={feedbacks}
+        selectedFeedback={data => {
+          setSelectedFeedback(data);
           setIsEdit(true);
         }}
-        deleteUser={data => {
-          window.confirm("Are you sure?") && deleteUser(data);
+        deleteFeedback={data => {
+          window.confirm("Are you sure?") && deleteFeedback(data);
         }}
       />
     </Box>
   );
 }
 
-export default Users;
+export default Feedbacks;

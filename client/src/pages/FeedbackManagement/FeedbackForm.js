@@ -2,7 +2,7 @@ import { Button, Grid, Typography, TextareaAutosize } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 
-const UserForm = ({addUser, updateUser, submitted, data, isEdit}) => {
+const FeedbackForm = ({addFeedback, updateFeedback, submitted, data, isEdit}) => {
    
    const navigate = useNavigate();
    const [id, setId] = useState(0);
@@ -78,10 +78,10 @@ const UserForm = ({addUser, updateUser, submitted, data, isEdit}) => {
                   sx={{ backgroundColor: '#00c6e6', color: '#ffffff', '&:hover': { backgroundColor: '#00a6bf' }, width: '100%' }}
                   onClick={() => {
                      if (isEdit) {
-                        updateUser({ id, feedback });
+                        updateFeedback({ id, feedback });
                      } else {
-                        addUser({ id, feedback });
-                        navigate('/usersTable');
+                        addFeedback({ id, feedback });
+                        
                      }
                   }}
                >
@@ -133,4 +133,4 @@ const UserForm = ({addUser, updateUser, submitted, data, isEdit}) => {
    );
 }
 
-export default UserForm;
+export default FeedbackForm;

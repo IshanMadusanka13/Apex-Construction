@@ -46,11 +46,11 @@ const ProfileSidebar = (props) => {
               {isMd && <ListItemText primary="View/Delete Employee" />}
             </ListItem>
 
-            <ListItem button onClick={() => handleItemClick("Users")} sx={{ backgroundColor: selectedContent === "Users" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+            <ListItem button onClick={() => handleItemClick("Feedbacks")} sx={{ backgroundColor: selectedContent === "Feedbacks" ? "rgba(0, 0, 0, 0.08)" : "" }}>
               <ListItemIcon>
                 <PersonAddAlt1Icon />
               </ListItemIcon>
-              {isMd && <ListItemText primary="User Form" />}
+              {isMd && <ListItemText primary="Feedback Form" />}
             </ListItem>
 
             <ListItem button onClick={() => handleItemClick("Complaints")} sx={{ backgroundColor: selectedContent === "Complaints" ? "rgba(0, 0, 0, 0.08)" : "" }}>

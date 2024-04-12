@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from "@mui/material";
 
-const UsersTable = ({ rows, selectedUser, deleteUser }) => {
+const FeedbacksTable = ({ rows, selectedFeedback, deleteFeedback }) => {
     
   return (
     <TableContainer component={Paper}>
@@ -24,7 +24,7 @@ const UsersTable = ({ rows, selectedUser, deleteUser }) => {
                     variant="contained"
                     color="primary"
                     size="small"
-                    onClick={() => selectedUser(row)}
+                    onClick={() => selectedFeedback(row)}
                     sx={{ marginRight: '10px' }}
                   >
                     Update
@@ -33,7 +33,7 @@ const UsersTable = ({ rows, selectedUser, deleteUser }) => {
                     variant="contained"
                     color="error"
                     size="small"
-                    onClick={() => deleteUser(row)}
+                    onClick={() => deleteFeedback(row)}
                   >
                     Delete
                   </Button>
@@ -51,4 +51,4 @@ const UsersTable = ({ rows, selectedUser, deleteUser }) => {
   );
 }
 
-export default UsersTable;
+export default FeedbacksTable;

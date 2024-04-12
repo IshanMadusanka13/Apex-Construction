@@ -9,9 +9,9 @@ import AddEmployee from "./AddEmployee";
 import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
-import Users from "../FeedbackManagement/Users.js";
 import Complaints from "../FeedbackManagement/Complaint.js";
 import Auths from "../FeedbackManagement/Auth.js";
+import Feedbacks from "../FeedbackManagement/Feedback.js";
 
 
 export default function UserDashboard() {
@@ -43,7 +43,7 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
-                    {selectedContent === "Users" && <Users/>}
+                    {selectedContent === "Feedbacks" && <Feedbacks/>}
                     {selectedContent === "Complaints" && <Complaints/>}
                     {selectedContent === "Auths" && <Auths/>}
                     

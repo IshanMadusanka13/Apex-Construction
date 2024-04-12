@@ -42,10 +42,10 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
                         <Button
                             variant="contained"
                             color="primary"
-                            onClick={() => navigate('/users')}
+                            onClick={() => navigate('/feedbacks')}
                             style={{ marginRight: '10px' }}
                         >
-                            Users
+                            Feedbacks
                         </Button>
                         <Button
                             variant="contained"

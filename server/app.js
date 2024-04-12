@@ -7,6 +7,7 @@ import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
 import authRouter from "./routes/authRouter.js";
 import complaintRouter from "./routes/complaintRouter.js";
+import feedbackRouter from "./routes/feedbackRouter.js";
 
 const app = express();
 
@@ -25,5 +26,6 @@ app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
 app.use('/auth', authRouter);
 app.use('/complaint', complaintRouter);
+app.use('/feedback', feedbackRouter);
 
 export default app;

@@ -1,10 +1,8 @@
-const { response } = require('../app');
-const User = require('../models/model'); // Correct casing
+import Feedback from "../models/feedbackModel";
 
 
-
-const getUsers = (req, res, next) => {
-    User.find()
+const getFeedback = (req, res, next) => {
+    Feedback.find()
      .then(response => {
         res.json({ response })
      })
@@ -13,12 +11,12 @@ const getUsers = (req, res, next) => {
       });
 };
 
-const addUser = (req,res,next) =>{
-    const user = new User ({
+const addFeedback = (req,res,next) =>{
+    const feedback = new Feedback ({
         id: req.body.id,
         feedback: req.body.feedback,
     });
-    user.save()
+    feedback.save()
     .then(response => {
         res.json({ response })
     })
@@ -27,9 +25,9 @@ const addUser = (req,res,next) =>{
     });
 };
 
-const updateUser = (req, res, next) => {
+const updateFeedback = (req, res, next) => {
     const { id,feedback } = req.body;
-    User.updateOne({ id: id}, { $set: {feedback: feedback}})
+    Feedback.updateOne({ id: id}, { $set: {feedback: feedback}})
     .then(response => {
         res.json({ response })
     })
@@ -38,9 +36,9 @@ const updateUser = (req, res, next) => {
     });
 }
 
-const deleteUser = (req, res, next) => {
+const deleteFeedback = (req, res, next) => {
     const id = req.body.id;
-    User.deleteOne({id: id})
+    Feedback.deleteOne({id: id})
     .then(response => {
         res.json({ response })
     })
@@ -51,8 +49,4 @@ const deleteUser = (req, res, next) => {
 }
 
 
-
-exports.getUsers = getUsers;
-exports.addUser = addUser;
-exports.updateUser = updateUser;
-exports.deleteUser = deleteUser;
+export default { getFeedback, addFeedback, updateFeedback, deleteFeedback };
