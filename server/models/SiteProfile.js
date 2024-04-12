@@ -1,14 +1,14 @@
-// site.model.js
+import mongoose from 'mongoose';
 
-const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
 
-const siteSchema = new mongoose.Schema({
+const siteSchema = new Schema({
     siteId: String,
     siteName: String,
     siteLocation: String,
     siteProgress: String
 });
 
-const Site = mongoose.model('Site', siteSchema);
+const Site = model('Site', siteSchema);
 
-module.exports = Site;
+export default Site;

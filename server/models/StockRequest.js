@@ -1,8 +1,11 @@
 
+// stockRequest.model.js
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const stockRequestSchema = new mongoose.Schema({
+const { Schema, model } = mongoose;
+
+const stockRequestSchema = new Schema({
     requestItem: {
         type: String,
         required: true
@@ -13,6 +16,6 @@ const stockRequestSchema = new mongoose.Schema({
     }
 });
 
-const StockRequest = mongoose.model('StockRequest', stockRequestSchema);
+const StockRequest = model('StockRequest', stockRequestSchema);
 
-module.exports = StockRequest;
+export default StockRequest;
