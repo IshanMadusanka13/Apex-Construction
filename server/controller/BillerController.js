@@ -38,7 +38,7 @@ const BillerController = {
         try {
 
             const updatedBiller = await Biller.findOneAndUpdate(
-                { id: req.body.billerId },
+                { billerId: req.body.billerId },
                 req.body,
                 { new: true }
             );
@@ -58,9 +58,13 @@ const BillerController = {
     generateBillerId: async (req, res) => {
         try {
 
-            const count = await Biller.countDocuments();
-            let billerCount = count + 1000;
-            let billerId = billerCount;
+            const latestDocument = await Biller.findOne().sort({ _id: -1 });
+            let billerId;
+            if (!latestDocument) {
+                billerId = 1000;
+            } else {
+                billerId = latestDocument.billerId + 1;
+            }
             res.status(200).json(billerId);
 
         } catch (error) {
@@ -71,9 +75,10 @@ const BillerController = {
 
     deleteBillerById: async (req, res) => {
         try {
-
-            const biller = await Biller.findOneAndDelete({ id: req.params.billerId });
+            logger.info(req.params.id);
+            const biller = await Biller.findOneAndDelete({ billerId: req.params.id });
             if (!biller) {
+
                 logger.error("Biller " + req.params.email + " not found");
                 return res.status(404).json({ message: 'Biller not found' });
             }

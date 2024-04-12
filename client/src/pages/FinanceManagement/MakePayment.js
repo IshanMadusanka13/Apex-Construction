@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import axios from "axios";
 import { GET_ALL_BANKS, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
-import { errorAlert, billers, successAlert, months } from "../../utils.js";
+import { errorAlert, utilities, successAlert, months } from "../../utils.js";
 
 function MakePayment() {
 
@@ -54,7 +54,7 @@ function UtilityBillPayment() {
     const theme = useTheme();
 
     const [paymentDetails, setPaymentDetails] = useState({
-        payTo: billers.ELECTRICITY,
+        payTo: "",
         payFrom: "",
         month: "",
         amount: "0",
@@ -126,7 +126,7 @@ function UtilityBillPayment() {
                     autoFocus
                     onChange={(e) => handleChange('payTo', e.target.value)}
                 >
-                    {Object.values(billers).map((type) => (
+                    {Object.values(utilities).map((type) => (
                         <MenuItem key={type} value={type}>
                             {type}
                         </MenuItem>
@@ -143,7 +143,6 @@ function UtilityBillPayment() {
                     label="Pay From"
                     name="payFrom"
                     autoComplete="payFrom"
-                    autoFocus
                     onChange={(e) => handleChange('payFrom', e.target.value)}
                 >
                     {Object.values(banks).map((type) => (

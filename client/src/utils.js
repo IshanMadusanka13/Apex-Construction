@@ -18,17 +18,17 @@ export const userTypes = {
   WORKER: "worker"
 };
 
-export const packageTypes = {
-  Gold: 'gold',
-  Silver: "silver",
-  Modern: "modern",
-  Budget: "budget",
-};
-
-export const billers = {
+export const utilities = {
   WATER: 'Water',
   ELECTRICITY: "Electricity",
   MOBILE: "Mobile",
+};
+
+export const billerTypes = {
+  SUPPLIER: 'Supplier',
+  CONSULTANT: "Consultant",
+  LEGAL: "Legal",
+  INSURANCE: "Insurance",
 };
 
 export const months = [

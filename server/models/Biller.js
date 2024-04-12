@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const billerSchema = new mongoose.Schema({
 
     billerId: {
-        type: String,
+        type: Number,
         required: true,
     },
 

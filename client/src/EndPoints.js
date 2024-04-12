@@ -25,5 +25,6 @@ export const MAKE_COMPANY_PAYMENT = API_BASE_URL + "/finance/companypay";
 
 export const CREATE_BILLER = API_BASE_URL + "/biller/create";
 export const UPDATE_BILLER = API_BASE_URL + "/biller/update";
-export const DELETE_BILLER = API_BASE_URL + "/biller/delete";
+export const DELETE_BILLER = API_BASE_URL + "/biller/delete/";
 export const GET_ALL_BILLERS = API_BASE_URL + "/biller/getall";
+export const GET_BILLER_ID = API_BASE_URL + "/biller/getid";
