@@ -1,8 +1,8 @@
-const express = require('express');
-const router = express.Router();
-const siteController = require('./site.controller');
+import express from 'express';
+import {siteController} from './site.controller.js';
 
-// POST request to create a new site
+const router = express.Router();
+
 router.post('/sites', siteController.createSite);
 
-module.exports = router;
+export default router;

@@ -1,9 +1,9 @@
+import express from 'express';
+import stockRequestController from '../controllers/StockRequestController.js';
 
-const express = require('express');
 const router = express.Router();
-const stockRequestController = require('../controllers/StockRequestController');
 
-// Route for creating a new stock request
 router.post('/create', stockRequestController.createStockRequest);
 
-module.exports = router;
+export default router;
+

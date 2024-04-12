@@ -1,5 +1,3 @@
-// StockRequestController.js
-
 const StockRequest = require('../models/StockRequest');
 
 exports.createStockRequest = async (req, res) => {

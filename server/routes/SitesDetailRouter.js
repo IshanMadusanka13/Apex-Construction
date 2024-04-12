@@ -1,13 +1,9 @@
-const express = require('express');
-const router = express.Router();
-const siteDetailsController = require('./siteDetails.controller');
+import express from 'express';
+import siteDetailsController from './siteDetails.controller.js';
 
+const router = express.Router();
 
 router.post('/site-details', siteDetailsController.createSiteDetail);
-
-
 router.get('/site-details', siteDetailsController.getAllSiteDetails);
 
-
-
-module.exports = router;
+export default router;
