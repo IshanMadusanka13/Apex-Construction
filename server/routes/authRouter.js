@@ -1,11 +1,11 @@
 import express from 'express';
-import authController from '../controller/authController.js';
+import authController from '../controller/AuthController.js';
 
 const authRouter = express.Router();
 
-authRouter.get('/auths', authController.getAuth);
-authRouter.post('/createauth', authController.addAuth);
-authRouter.post('/updateauth', authController.updateAuth);
-authRouter.post('/deleteauth', authController.deleteAuth);
+authRouter.get('/get', authController.getAuth);
+authRouter.post('/create', authController.addAuth);
+authRouter.put('/update', authController.updateAuth);
+authRouter.delete('/delete/:id', authController.deleteAuth);
 
 export default authRouter;

@@ -1,4 +1,5 @@
-import Feedback from "../models/feedbackModel";
+import Feedback from "../models/feedbackModel.js";
+import logger from "../utils/logger.js";
 
 
 const getFeedback = (req, res, next) => {
@@ -37,7 +38,7 @@ const updateFeedback = (req, res, next) => {
 }
 
 const deleteFeedback = (req, res, next) => {
-    const id = req.body.id;
+    const id = req.params.id;
     Feedback.deleteOne({id: id})
     .then(response => {
         res.json({ response })

@@ -16,3 +16,19 @@ export const UPDATE_EMPLOYEE = API_BASE_URL + "/employee/update"
 export const GET_EMPLOYEE_ID = API_BASE_URL + "/employee/getid"
 export const DELETE_EMPLOYEE = API_BASE_URL + "/employee/delete"
 export const GET_EMPLOYEE_COUNT = API_BASE_URL + "/employee/getcount"
+
+//CRM Management
+export const CREATE_AUTH = API_BASE_URL + "/auth/create"
+export const UPDATE_AUTH = API_BASE_URL + "/auth/update"
+export const GET_AUTH = API_BASE_URL + "/auth/get"
+export const DELETE_AUTH = API_BASE_URL + "/auth/delete/"
+
+export const CREATE_FFEDBACK = API_BASE_URL + "/feedback/create"
+export const UPDATE_FEEDBACK = API_BASE_URL + "/feedback/update"
+export const GET_FEEDBACK = API_BASE_URL + "/feedback/get"
+export const DELETE_FEEDBACK = API_BASE_URL + "/feedback/delete/"
+
+export const CREATE_COMPLAINT = API_BASE_URL + "/complaint/create"
+export const UPDATE_COMPLAINT = API_BASE_URL + "/complaint/update"
+export const GET_COMPLAINT = API_BASE_URL + "/complaint/get"
+export const DELETE_COMPLAINT = API_BASE_URL + "/complaint/delete/"

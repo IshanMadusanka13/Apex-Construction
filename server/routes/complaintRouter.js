@@ -1,11 +1,11 @@
 import express from 'express';
-import complaintController from '../controller/complaintController.js';
+import complaintController from '../controller/ComplaintController.js';
 
 const complaintRouter = express.Router();
 
-complaintRouter.get('/complaints', complaintController.getComplaint);
-complaintRouter.post('/createcomplaint', complaintController.addComplaint);
-complaintRouter.post('/updatecomplaint', complaintController.updateComplaint);
-complaintRouter.post('/deletecomplaint', complaintController.deleteComplaint);
+complaintRouter.get('/get', complaintController.getComplaint);
+complaintRouter.post('/create', complaintController.addComplaint);
+complaintRouter.put('/update', complaintController.updateComplaint);
+complaintRouter.delete('/delete/:id', complaintController.deleteComplaint);
 
 export default complaintRouter;

@@ -5,9 +5,9 @@ import "dotenv/config";
 import customerRouter from './routes/CustomerRouter.js';
 import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
-import authRouter from "./routes/authRouter.js";
-import complaintRouter from "./routes/complaintRouter.js";
-import feedbackRouter from "./routes/feedbackRouter.js";
+import authRouter from "./routes/AuthRouter.js";
+import complaintRouter from "./routes/ComplaintRouter.js";
+import feedbackRouter from "./routes/FeedbackRouter.js";
 
 const app = express();
 
@@ -27,5 +27,6 @@ app.use('/employee', employeeRouter);
 app.use('/auth', authRouter);
 app.use('/complaint', complaintRouter);
 app.use('/feedback', feedbackRouter);
+app.use('/auth', authRouter);
 
 export default app;

@@ -1,4 +1,5 @@
 import Auth from '../models/authModel.js';
+import logger from "../utils/logger.js";
 
 const getAuth = (req, res, next) => {
     Auth.find()
@@ -40,7 +41,7 @@ const updateAuth = (req, res, next) => {
 }
 
 const deleteAuth = (req, res, next) => {
-    const id = req.body.id;
+    const id = req.params.id;
     Auth.deleteOne({id: id})
     .then(response => {
         res.json({ response })
