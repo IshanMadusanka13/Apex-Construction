@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
-import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints.js";
-import { timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
@@ -13,7 +11,6 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import StockRequest from "../../../../server/models/StockRequest.js";
 import { errorAlert, successAlert,timedSuccessAlert, userTypes } from "../../utils.js";
 
 
@@ -45,7 +42,7 @@ function StockReq() {
         event.preventDefault();
 
         axios
-            .post("http://localhost:3001/StockReques/create", StockRequest )
+            .post("http://localhost:3001/StockReques/create", '' )
             .then((response) => {
                 console.log("sucess response - " + response);
                 successAlert("Site Created successfully");

@@ -10,11 +10,10 @@ import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../u
 import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import AddSiteDetails from "../SiteManagement/AddSite.js";
-import StockReq from "../SiteManagement/StockReq.js";
-import AllsiteDetails from "../SiteManagement/AllSiteDetail.js";
+import StockReq from "../SiteManagement/StockRequest.js";
 import AllsiteDetail from "../SiteManagement/AllSiteDetail.js";
 import SiteProfile from "../SiteManagement/siteProfile.js";
-import MonthlyReport from "../SiteManagement/MonthlyReport.js"
+import MonthlyReport from "../SiteManagement/monthlyReport.js"
 
 
 export default function UserDashboard() {
