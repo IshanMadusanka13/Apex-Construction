@@ -65,7 +65,7 @@ const Fleetcontroller = {
     searchFleetByDriverId: async (req, res) => {
         try {
           const { driverId } = req.params;
-          const fleetDetails = await FleetDetail.findOne({ DriverId: driverId }, 'Vehicleid VehicleType VehicleNo DriverId TransportMaterials DriverMobileNo TransportLocation TransportRoot EstimatedTime');
+          const fleetDetails = await Fleet.findOne({ DriverId: driverId }, 'Vehicleid VehicleType VehicleNo DriverId TransportMaterials DriverMobileNo TransportLocation TransportRoot EstimatedTime');
           res.status(200).json(fleetDetails);
         } catch (error) {
           console.error('Error searching fleet by driver ID:', error);

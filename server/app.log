@@ -147,3 +147,13 @@
 {"level":30,"time":1712821242147,"pid":28532,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
 {"level":30,"time":1712821547606,"pid":18908,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3000"}
 {"level":30,"time":1712821550685,"pid":18908,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1712885915787,"pid":13920,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3000"}
+{"level":30,"time":1712885919048,"pid":13920,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1712886093037,"pid":9416,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712886096548,"pid":9416,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1712886106341,"pid":9416,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712886106933,"pid":9416,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712886602567,"pid":7712,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712886605699,"pid":7712,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1712886615284,"pid":7712,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712886615945,"pid":7712,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}

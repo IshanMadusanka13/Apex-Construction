@@ -15,7 +15,7 @@ const AddVehiclecontroller = {
     },
 
     addAddVehicle: async (req, res) => {
-        const AddVehicle = new AddVehicle({
+        const addVehicle = new AddVehicle({
             ChassisNo: req.body.ChassisNo,
             Vehicleid: req.body.Vehicleid,
             VehicleType: req.body.VehicleType,
@@ -24,7 +24,7 @@ const AddVehiclecontroller = {
             VehicleNo: req.body.VehicleNo,
            
         });
-        AddVehicle.save()
+        addVehicle.save()
             .then(response => {
                 res.status(201).json(response);
             })
