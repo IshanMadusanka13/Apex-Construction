@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme, Radio, RadioGroup, FormControlLabel, TableRow, TableHead, Table, TableContainer, TableBody, tableCellClasses, TableCell, Paper, styled, TablePagination } from "@mui/material";
 import axios from "axios";
-import { GET_ALL_BANKS, GET_ALL_PAYMENTS, GET_BILLER_BY_TYPE, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
+import { GET_ALL_BANKS, GET_BILLER_BY_TYPE, GET_PAYMENTS, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
 import { errorAlert, utilities, successAlert, months, billerTypes } from "../../utils.js";
 
 function MakePayment() {
@@ -693,7 +693,7 @@ function ViewPayments() {
 
     const loadPayments = async () => {
         axios
-            .get(GET_ALL_PAYMENTS + selectedValue, {})
+            .get(GET_PAYMENTS + selectedValue, {})
             .then((response) => {
                 setPayments(response.data)
             })
