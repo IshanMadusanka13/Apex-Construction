@@ -4,7 +4,7 @@ import siteSchema from "../models/Site.js";
 import logger from "../utils/logger.js";
 const siteModel = mongoose.model("site", siteSchema);
 
-//create site if user type is admin and have site in privileges
+
 export function createSite(req, res) {
     //destruct req and create new siteModel in database
     const { siteId, location, start, end, notes, custId } = req.body;

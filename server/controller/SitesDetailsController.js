@@ -1,7 +1,7 @@
-const SiteDetails = require('./siteDetails.model');
+import SiteDetails from './siteDetails.model.js';
 
 // Create a new site detail
-const createSiteDetail = async (req, res) => {
+export const createSiteDetail = async (req, res) => {
     try {
         const { employeeId, siteId } = req.body;
         const newSiteDetail = new SiteDetails({ employeeId, siteId });
@@ -14,7 +14,7 @@ const createSiteDetail = async (req, res) => {
 };
 
 // Get all site details
-const getAllSiteDetails = async (req, res) => {
+export const getAllSiteDetails = async (req, res) => {
     try {
         const siteDetails = await SiteDetails.find();
         res.status(200).json(siteDetails);
@@ -23,7 +23,3 @@ const getAllSiteDetails = async (req, res) => {
         res.status(500).json({ error: 'Error getting all site details' });
     }
 };
-
-
-
-module.exports = { createSiteDetail, getAllSiteDetails };

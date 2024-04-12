@@ -1,6 +1,6 @@
-const StockRequest = require('../models/StockRequest');
+import StockRequest from '../models/StockRequest.js';
 
-exports.createStockRequest = async (req, res) => {
+export const createStockRequest = async (req, res) => {
     try {
         const { requestItem, qty } = req.body;
         const stockRequest = new StockRequest({ requestItem, qty });
