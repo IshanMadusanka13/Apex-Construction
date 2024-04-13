@@ -2,10 +2,6 @@ import mongoose from "mongoose";
 const { Schema } = mongoose;
 
 const packageAddonSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true
-    },
     price: {
         type: Number,
         required: true,
@@ -15,18 +11,9 @@ const packageAddonSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    image : {
+    duration : {
         type : String,
         required : true
-    },
-    packageId : {
-        type: Schema.Types.ObjectId,
-        ref: 'packages'
-    },
-    cost : {
-        type : Number,
-        required : true,
-        default : 0
     }
 
 });

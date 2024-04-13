@@ -13,7 +13,7 @@ packageAddOnRouter.post("/add", createPackageAddon);
 packageAddOnRouter.get("/getall", getAllPackageAddons);
 packageAddOnRouter.get("/getbyid/:id", getPackageAddonById);
 packageAddOnRouter.put("/update", updatePackageAddon);
-packageAddOnRouter.delete("/delete", deletePackageAddon);
+packageAddOnRouter.delete("/delete/:id", deletePackageAddon);
 
 // packagesRouter.get("/getAllAprovedPackages", getAllApprovedPackages);
 // packagesRouter.get("/allApprovedPackages",getAllApprovedPackages);

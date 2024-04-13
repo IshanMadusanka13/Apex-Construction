@@ -13,6 +13,7 @@ import LogReport from "./LogReport";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
 import ViewPackage from "../PackageManagement/ViewPackage";
 import UpdatePackage from "../PackageManagement/UpdatePackage";
+import ViewAddOns from "../PackageManagement/ViweAddOns.js";
 
 export default function UserDashboard() {
 
@@ -46,6 +47,7 @@ export default function UserDashboard() {
                     {selectedContent === "addPackage" && <AddNewPackage />}
                     {selectedContent === "viewPackage" && <ViewPackage />}
                     {selectedContent === "updatePackage" && <UpdatePackage />}
+                    {selectedContent === "viweAddOns" && <ViewAddOns />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

@@ -5,7 +5,7 @@ import customerRouter from './routes/CustomerRouter.js';
 import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
 import packagesRouter from "./routes/PackagesRouter.js";
-import packageAddOnRouter from "./routes/PackageAddOnsRouter.js";
+import packageAddOnRouter from "./routes/packageAddOnsRouter.js";
 
 const app = express();
 

@@ -1,16 +1,15 @@
-import PackageAddon from "../models/PackageAddon.js";
+import PackageAddon from "../models/packageAddon.js";
 
 //insert new packageAddon into database if user have  package in privileges
 export function createPackageAddon(req, res) {
 
-    const { name, price, description, image, packageId, cost } = req.body;
+    const { price, description, duration } = req.body;
     const newPackageAddon = new PackageAddon({
-        name: name,
+        
         price: price,
         description: description,
-        image: image,
-        packageId: packageId,
-        cost: cost,
+        duration: duration,
+        
     });
     newPackageAddon
         .save()
@@ -25,19 +24,18 @@ export function createPackageAddon(req, res) {
 //update existing packageAddon if user have  package in privileges by id
 export function updatePackageAddon(req, res) {
 
-    const { id, name, price, description, image, packageId, cost } = req.body;
+    const { id, price, description, duration } = req.body;
     //update packageAddon by id
     PackageAddon
         .updateOne(
             { _id: id },
             {
                 $set: {
-                    name: name,
+                    
                     price: price,
                     description: description,
-                    image: image,
-                    packageId: packageId,
-                    cost: cost,
+                    duration: duration,
+                    
                 },
             }
         )

@@ -87,12 +87,12 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="addPackage" />}
         </ListItem> */}
 
-        {/* <ListItem button onClick={() => handleItemClick("updatePackage")} sx={{ backgroundColor: selectedContent === "updatePackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+        <ListItem button onClick={() => handleItemClick("viweAddOns")} sx={{ backgroundColor: selectedContent === "viweAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
-          {isMd && <ListItemText primary="updatePackage" />}
-        </ListItem> */}
+          {isMd && <ListItemText primary="viweAddOns" />}
+        </ListItem>
 
         <ListItem button onClick={() => handleItemClick("viewPackage")} sx={{ backgroundColor: selectedContent === "viewPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
