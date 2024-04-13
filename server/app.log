@@ -197,3 +197,9 @@
 {"level":30,"time":1712978217750,"pid":23256,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
 {"level":30,"time":1712978255373,"pid":23256,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1712978255991,"pid":23256,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712979494448,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712979497457,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1712981185459,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712981186023,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712981206617,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712981207177,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}

@@ -7,6 +7,7 @@ import Delete from '@mui/icons-material/Delete';
 import Edit from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import UpdatePackage from "./UpdatePackage";
+import UpdateAddOns from "./UpdateAddOns";
 
 function ViewAddOns() {
     const theme = useTheme();
@@ -204,7 +205,7 @@ function ViewAddOns() {
             </Grid>
 
             <Grid item md={12}>
-                {viewUpdateContent && <UpdatePackage data={selectedRow} />}
+                {viewUpdateContent && <UpdateAddOns data={selectedRow} />}
             </Grid>
             </Grid>
         </Grid>

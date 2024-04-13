@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { errorAlert } from '../../utils';
@@ -8,10 +8,27 @@ import Typography from '@mui/material/Typography';
 // ...
 
 const CusPackageDetails = () => {
+  const [addOnsDetails, setAddOnsDetails] = useState([]);
   const { packageId } = useParams();
   const [packageDetails, setPackageDetails] = useState([]);
   const [addOnsOpen, setAddOnsOpen] = useState(false);
   const [addOns, setAddOns] = useState([]);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const loadPackages = async () => {
+        axios
+            .get("http://localhost:3001/packageaddon/getall", {})
+            .then((response) => {
+              setAddOnsDetails(response.data);
+              console.log(addOnsDetails);
+            })
+            .catch((error) => {
+                errorAlert(error.response.data.message);
+            });
+    };
+    loadPackages();
+}, [navigate]);
 
   // Do something with packageId
   console.log(`Package ID is : ${packageId}`);
@@ -81,14 +98,14 @@ const CusPackageDetails = () => {
             </Button>
             {addOnsOpen && (
               <div>
-                {packageDetails.addOns.map((addOn) => (
-                  <FormControlLabel
-                    key={addOn._id}
-                    control={<Checkbox value={addOn._id} onChange={handleAddOnChange} />}
-                    label={addOn.name}
-                  />
-                ))}
-              </div>
+              {addOnsDetails.addOns.map((row) => (
+                <FormControlLabel
+                  key={row._id}
+                  control={<Checkbox value={row._id} onChange={handleAddOnChange} />}
+                  label={`${row.description} - ${row.duration} - ${row.price}`}
+                />
+              ))}
+            </div>
             )}
           </CardActions>
         </CardContent>
