@@ -11,7 +11,7 @@ import {
   // getUnapprovedPackages,
   // getUnapprovedPackages,
   updatePackage,
-} from "../controller/packageController.js";
+} from "../controller/PackageController.js";
 
 const packagesRouter = express.Router();
 

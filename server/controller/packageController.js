@@ -1,9 +1,7 @@
-import express from "express";
-import packageSchema from "../models/Package.js";
-import mongoose from 'mongoose';
+import packageModel from "../models/Package.js";
 import logger from '../utils/logger.js'
 
-const packageModel = mongoose.model("packages", packageSchema);
+
 
 //insert new package into database
 export function createPackage(req, res) {

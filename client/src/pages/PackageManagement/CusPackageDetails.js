@@ -22,9 +22,11 @@ const CusPackageDetails = () => {
             .get(`http://localhost:3001/package/get/${packageId}`, {})
             .then((response) => {
                 setPackageDetails(response.data);
+                console.log(response);
                 console.log(packageDetails);
             })
             .catch((error) => {
+              console.log(error);
                 errorAlert(error.response.data.message);
             });
     };
@@ -32,7 +34,8 @@ const CusPackageDetails = () => {
   }, [packageId]); // only re-run effect when packageId changes
 
   const handleAddOns = () => {
-    setAddOnsOpen(!addOnsOpen);
+    console.log("aa");
+    setAddOnsOpen(true);
   };
 
   const handleAddOnChange = (event) => {
@@ -73,7 +76,7 @@ const CusPackageDetails = () => {
             Cost: {packageDetails.cost}
           </Typography>
           <CardActions>
-            <Button variant="contained" onSubmit={handleAddOns}>
+            <Button variant="contained" onClick={handleAddOns}>
               Add Ons
             </Button>
             {addOnsOpen && (

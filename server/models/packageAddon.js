@@ -1,4 +1,6 @@
-import mongoose from "../db/conn.js";
+import mongoose from "mongoose";
+const { Schema } = mongoose;
+
 const packageAddonSchema = new mongoose.Schema({
     name: {
         type: String,
@@ -18,8 +20,8 @@ const packageAddonSchema = new mongoose.Schema({
         required : true
     },
     packageId : {
-        type : mongoose.Schema.Types.ObjectId,
-        required : true
+        type: Schema.Types.ObjectId,
+        ref: 'packages'
     },
     cost : {
         type : Number,
@@ -28,4 +30,7 @@ const packageAddonSchema = new mongoose.Schema({
     }
 
 });
-export default packageAddonSchema;
+
+export const PackageAddon = mongoose.model("PackageAddon", packageAddonSchema);
+
+export default PackageAddon;

@@ -5,23 +5,19 @@ import {
     deletePackageAddon,
     getAllPackageAddons,
     getPackageAddonById,
-} from "../controller/packageAddonController.js";
+} from "../controller/PackageAddonController.js";
 
-const packagesRouter = express.Router();
+const packageAddOnRouter = express.Router();
 
-packagesRouter.post("/addAddOns", createPackageAddon);
-
-// packagesRouter.get("/allApprovedPackages",getAllApprovedPackages);
-
-packagesRouter.get("/getAllAddOns", getAllPackageAddons);
+packageAddOnRouter.post("/add", createPackageAddon);
+packageAddOnRouter.get("/getall", getAllPackageAddons);
+packageAddOnRouter.get("/getbyid/:id", getPackageAddonById);
+packageAddOnRouter.put("/update", updatePackageAddon);
+packageAddOnRouter.delete("/delete", deletePackageAddon);
 
 // packagesRouter.get("/getAllAprovedPackages", getAllApprovedPackages);
-
-packagesRouter.get("/getAddOnsById/:id", getPackageAddonById);
-
+// packagesRouter.get("/allApprovedPackages",getAllApprovedPackages);
 // packagesRouter.put("/approvePackage", approvePackage);
 // packagesRouter.get("/getUnapprovedPackages", getUnapprovedPackages);
-packagesRouter.put("/updateAddOns", updatePackageAddon);
-packagesRouter.delete("/deleteAddOns", deletePackageAddon);
 
-export default packagesRouter;
+export default packageAddOnRouter;

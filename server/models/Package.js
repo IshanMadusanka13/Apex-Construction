@@ -1,4 +1,3 @@
-import express from 'express'
 import mongoose from 'mongoose';
 const packageSchema = new mongoose.Schema({
     name: { type: String, required: true },
@@ -13,4 +12,6 @@ const packageSchema = new mongoose.Schema({
     // isApproved : {type : Boolean , required : true , default : false}
 })
 
-export default packageSchema
+const packageModel = mongoose.model("packages", packageSchema);
+
+export default packageModel

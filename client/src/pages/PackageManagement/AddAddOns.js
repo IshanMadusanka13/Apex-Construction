@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import storage from "../../Apis/firebase.config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
-//import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
 import { errorAlert, packageTypes, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
