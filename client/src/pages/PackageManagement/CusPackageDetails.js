@@ -2,8 +2,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { errorAlert } from '../../utils';
-import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Checkbox, FormControlLabel } from '@mui/material';
-import Typography from '@mui/material/Typography';
+import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Checkbox, Paper } from '@mui/material';
+
+import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box} from "@mui/material";
 
 // ...
 
@@ -65,9 +66,13 @@ const CusPackageDetails = () => {
     }
   };
 
+  const handleBuy = async () => {
+
+  };
+
   return(
     <Grid container>
-        <Container maxWidth="md">
+        <Container maxWidth="lg" style={{ minHeight: "300px" }} >
       <Card sx={{ display: 'flex', mt: 15 }}>
         <CardMedia
           component="img"
@@ -91,21 +96,48 @@ const CusPackageDetails = () => {
           <Typography variant="body1">
             Cost: {packageDetails.cost}
           </Typography>
-          <CardActions>
-            <Button variant="contained" onClick={handleAddOns}>
-              Add Ons
-            </Button>
-            {addOnsOpen && (
-              <div>
-              {addOnsDetails.addOns.map((row) => (
-                <FormControlLabel
-                  key={row._id}
-                  control={<Checkbox value={row._id} onChange={handleAddOnChange} />}
-                  label={`${row.description} - ${row.duration} - ${row.price}`}
-                />
-              ))}
+          <CardActions sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
+            <Box sx={{ display: "flex", width: "100%", marginBottom: '1em' }}>
+              <Button variant="contained" onClick={handleAddOns} sx={{ width: "150px", marginLeft: 2}}>
+                Add Ons
+              </Button>
+              <Button variant="contained" onClick={handleBuy} sx={{ width: "150px", marginLeft: 2 }}>
+                Buy Package
+              </Button>
+            </Box>
+            <div>
+              {addOnsOpen && (
+                <TableContainer component={Paper}>
+                  <Table sx={{ minWidth: 100 }}>
+                      <TableHead>
+                          <TableRow>
+                              <TableCell>Description</TableCell>
+                              <TableCell>Duration</TableCell>
+                              <TableCell>Price</TableCell> 
+                              <TableCell>Action</TableCell> 
+                          </TableRow>
+                      </TableHead>
+                      <TableBody>
+                        {addOnsDetails.map((row) => (
+                          <TableRow key={row._id}>
+                                      
+                                      <TableCell>{row.description}</TableCell>
+                                      <TableCell>{row.duration}</TableCell>
+                                      <TableCell>{row.price}</TableCell>
+                              
+                                      <TableCell>
+                                          {<Checkbox value={row._id} onChange={handleAddOnChange} />}
+                                      </TableCell>
+                                  </TableRow>
+                        ))}
+                      </TableBody>
+                      
+                  </Table>
+                  </TableContainer>
+              )}
+
             </div>
-            )}
+            
           </CardActions>
         </CardContent>
       </Card>

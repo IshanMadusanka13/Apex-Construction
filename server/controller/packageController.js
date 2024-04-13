@@ -60,6 +60,7 @@ export function updatePackage(req, res) {
           price: price,
           description: description,
           duration: duration,
+          homeImage: homeImage,
           cost: cost
         },
       }

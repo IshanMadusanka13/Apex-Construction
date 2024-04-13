@@ -126,11 +126,11 @@ const UpdatePackage = (values) => {
           value={packageName}
           onChange={(e) => setPackageName(e.target.value)}
         >
-          {Object.values(packageTypes).map((type) => (
+          {/* {Object.values(packageTypes).map((type) => (
             <MenuItem key={type} value={type}>
               {type.toUpperCase()}
             </MenuItem>
-          ))}
+          ))} */}
         </TextField>
       </Grid>
 
