@@ -1,185 +1,236 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
-import axios from "axios";
+import Axios from "axios";
+import { TextField, Typography, Button, Grid, MenuItem, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Box, Paper } from "@mui/material";
 import { useSelector } from 'react-redux';
-import { styled } from '@mui/material/styles';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell, { tableCellClasses } from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { errorAlert, successAlert,timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, successAlert } from "../../utils.js";
 
 
-function StockReq() {
+function StockRequest() {
 
-    const navigate = useNavigate();
     const theme = useTheme();
-    const loggedUser = useSelector((state) => state.user);
 
-    const [employeeDetails, setEmployeeDetails] = useState({
-        custId: "",
-        siteId: "",
-        dateOfBirth: "",
-        siteState: "",
-        start: "",
-        PhoneNo: "",
-        email: "",
+    const [stockDetails, setStockDetails] = useState([]);
+    const [selectedStock, setSelectedStock] = useState({});
 
-    });
+    useEffect(() => {
+        getStockDetails();
+    }, []);
 
-    const handleChange = (field, value) => {
-        setEmployeeDetails((prevDetails) => ({
-            ...prevDetails,
-            [field]: value,
-        }));
+    const getStockDetails = () => {
+        Axios.get(GET_ALL_STOCK)
+            .then(response => {
+                console.log(response);
+                setStockDetails(response.data ? response.data : []);
+            })
+            .catch(error => {
+                errorAlert("Axios Error :", error);
+            });
     }
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const handleRequest = (content) => {
+        setSelectedStock(content.row);
+    }
 
-        axios
-            .post("http://localhost:3001/StockReques/create", '' )
+    const requestStock = (data) => {
+        const payload = {
+            equipmentId: data.equipmentId,
+            equipmentName: data.equipmentName,
+            qty: data.qty,
+        }
+
+        Axios.post(CREATE_STOCK, payload)
             .then((response) => {
-                console.log("sucess response - " + response);
-                successAlert("Site Created successfully");
+                console.log(response);
+                getStockDetails();
+                setSubmitted(false);
+                setIsEdit(false);
+                successAlert("Details Added Succesfully");
             })
-            .catch((error) => {
-                console.log(error);
-                errorAlert(error.response.data.message);
+            .catch(error => {
+                errorAlert("Axios Error :", error);
             });
-    };
-
-
-    function priceRow(qty, unit) {
-        return qty * unit;
-      }
-      
-      function createRow(RequestItem, qty, unit) {
-        const price = priceRow(qty, unit);
-        return { RequestItem, qty, unit, price };
-      }
-      function subtotal(items) {
-        return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-      }
-
-      
-    //table eke danata rows tika
-    const rows = [
-        createRow(1, '', ''),
-        createRow(2, '', ''),
-        createRow(3, '', ''),
-        createRow(4, '', ''),
-        createRow(5, '', ''),
-        createRow(6, '', ''),
-        createRow(7, '', ''),
-        createRow(8, '', ''),
-        createRow(9, '', ''),
-    ];
-  
+    }
 
     return (
-        <Grid
-            container
-            spacing={2}
-            component="form"
-            sx={theme.palette.gridBody}
-            noValidate
-            onSubmit={handleSubmit}
-        >
-            <Grid item xs={12}>
-                <Typography variant="h5" gutterBottom>
-                    Need Item
-                </Typography>
+        <Grid container>
+            <Grid item md={8}>
+                <ExisitngStock
+                    rows={stockDetails}
+                    selectedRow={handleRequest} />
             </Grid>
-            <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id=""
-                    label="Employee Id"
-                    name="employeeId"
-                    autoComplete="employeeId"
-                    value={employeeDetails.employeeId}
-                    autoFocus
-                    disabled
-                />
+            <Grid item md={4}>
+                <RequestForm requestStock={requestStock} data={selectedStock} />
             </Grid>
-
-            <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="custId"
-                    label="custId"
-                    name="custId"
-                    autoComplete="custId"
-                    autoFocus
-                    onChange={(e) => handleChange('custId', e.target.value)}
-                   
-                />
-            </Grid>
-
-
-            <TableContainer component={Paper}>
-                <Table sx={{ minWidth: 700 }} aria-label="spanning table">
-                    <TableHead>
-                        <TableRow>
-                            <TableCell align="center" colSpan={3}>
-                                Need Details Form
-                            </TableCell>
-                          
-                        </TableRow>
-                        <TableRow>
-                            <TableCell>RequestItem</TableCell>        
-                          <TableCell align="right">Quantity</TableCell>
-                            
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-  {rows.map((row, index) => (
-    <TableRow key={index}>
-      <TableCell>
-        <TextField
-          value={row.requestItem}
-          onChange={(e) => handleChange(`requestItem${index}`, e.target.value)}
-          label="Request Item"
-          fullWidth
-        />
-      </TableCell>
-      <TableCell align="right">
-        <TextField
-          value={row.qty}
-          onChange={(e) => handleChange(`qty${index}`, e.target.value)}
-          label="Quantity"
-          type="number"
-          fullWidth
-        />
-      </TableCell>
-     
-    </TableRow>
-  ))}
-</TableBody>
-                </Table>
-            </TableContainer>
-
-
-
-            <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
-                Cancel
-            </Button>
-
-            <Button type="submit" variant="contained" sx={{ mt: 3, width: "20%" }}>
-                Conform Site 
-            </Button>
         </Grid>
     );
 
 }
 
-export default StockReq;
+export default StockRequest;
+
+function ExisitngStock(rows, selectedRow) {
+    const theme = useTheme();
+
+    //----------------------Table Functions-----------------------------------
+    const [page, setPage] = useState(0);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
+
+    const handleChangePage = (event, newPage) => {
+        setPage(newPage);
+    };
+
+    const handleChangeRowsPerPage = (event) => {
+        setRowsPerPage(parseInt(event.target.value, 10));
+        setPage(0);
+    };
+
+    const StyledTableCell = styled(TableCell)(() => ({
+        [`&.${tableCellClasses.head}`]: {
+            backgroundColor: theme.palette.primary.main,
+            color: theme.palette.text.default,
+        },
+        [`&.${tableCellClasses.body}`]: {
+            fontSize: 14,
+        },
+    }));
+
+    const StyledTableRow = styled(TableRow)(() => ({
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.primary.mainOpacity,
+        },
+        '&:nth-of-type(even)': {
+            backgroundColor: theme.palette.primary.mainOpacity2,
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+            border: 0,
+        },
+    }));
+    //----------------------Table Functions End-----------------------------------
+
+    const handleRequest = (content) => {
+        selectedRow(content);
+    };
+
+    return (
+        <Box sx={theme.palette.gridBody}>
+            <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
+                <Table>
+                    <TableHead>
+                        <StyledTableRow>
+                            <StyledTableCell>Equipment Id</StyledTableCell>
+                            <StyledTableCell>Equipment Name</StyledTableCell>
+                            <StyledTableCell>Unit Price</StyledTableCell>
+                            <StyledTableCell>Description</StyledTableCell>
+                            <StyledTableCell>Available Qty</StyledTableCell>
+                            <StyledTableCell>Action</StyledTableCell>
+                        </StyledTableRow>
+                    </TableHead>
+                    <TableBody>
+                        {rows.length > 0 ? rows.map(row => (
+                            <StyledTableRow key={row.equipmentId}>
+                                <StyledTableCell>{row.equipmentId}</StyledTableCell>
+                                <StyledTableCell>{row.name}</StyledTableCell>
+                                <StyledTableCell>{row.value}</StyledTableCell>
+                                <StyledTableCell>{row.description}</StyledTableCell>
+                                <StyledTableCell>{row.qty}</StyledTableCell>
+
+                                <StyledTableCell>
+                                    <Button sx={{ margin: '0px 10px' }}
+                                        onClick={() => handleRequest({ row })}
+                                    >
+                                        Request
+                                    </Button>
+                                </StyledTableCell>
+                            </StyledTableRow>
+                        )) : (
+                            <StyledTableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                <StyledTableCell>No Data</StyledTableCell>
+                            </StyledTableRow>
+                        )
+                        }
+                    </TableBody>
+
+                </Table>
+                <TablePagination
+                    sx={{ backgroundColor: theme.palette.primary.main, }}
+                    rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                    count={rows.length}
+                    rowsPerPage={rowsPerPage}
+                    page={page}
+                    onPageChange={handleChangePage}
+                    onRowsPerPageChange={handleChangeRowsPerPage}
+                />
+            </TableContainer>
+        </Box>
+    );
+}
+
+
+function RequestForm(data, requestStock) {
+
+    const [equipmentId, setEquipmentId] = useState(0);
+    const [equipmentName, setEquipmentName] = useState(0);
+    const [qty, setQty] = useState(0);
+    const [existingQty, setExistingQty] = useState(0);
+
+    useEffect(() => {
+        console.log(data)
+        if (data?.equipmentId) {
+            setEquipmentId(data.equipmentId);
+            setEquipmentName(data.name);
+            setExistingQty(data.qty);
+        }
+    }, [data]);
+
+    const handleClick = () => {
+        if (qty > existingQty) {
+            errorAlert("Insufficent Stock");
+        } else {
+            requestStock({ equipmentId, equipmentName, qty });
+        }
+    }
+
+    return (
+        <Grid container>
+            <Grid item xs={12}>
+                <Typography variant="h5" gutterBottom>
+                    Request Stock
+                </Typography>
+            </Grid>
+            <Grid item md={12}>
+                <TextField
+                    required
+                    fullWidth
+                    id='equipmentName'
+                    label="Equipment Name"
+                    name="equipmentName"
+                    autoComplete="equipmentName"
+                    value={equipmentName}
+                    autoFocus
+                    onChange={e => setEquipmentName(e.target.value)}
+                />
+            </Grid>
+            <Grid item md={12}>
+                <TextField
+                    type="number"
+                    margin="normal"
+                    required
+                    fullWidth
+                    id='qty'
+                    label="Qty"
+                    name="qty"
+                    value={qty}
+                    onChange={e => setQty(e.target.value)}
+                />
+            </Grid>
+            <Button
+                variant="contained" sx={{ mt: 3, width: "50%" }}
+                onClick={() => handleClick()}
+            >
+                Request
+            </Button>
+        </Grid>
+    );
+}
