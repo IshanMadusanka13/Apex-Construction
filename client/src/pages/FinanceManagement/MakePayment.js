@@ -691,10 +691,11 @@ function ViewPayments() {
     const [selectedValue, setSelectedValue] = useState("all");
     const [payments, setPayments] = useState([]);
 
-    const loadPayments = async () => {
+    const loadPayments = async (selectedValue) => {
         axios
             .get(GET_PAYMENTS + selectedValue, {})
             .then((response) => {
+                console.log(response)
                 setPayments(response.data)
             })
             .catch((error) => {
@@ -704,12 +705,12 @@ function ViewPayments() {
     };
 
     useEffect(() => {
-        loadPayments();
+        loadPayments("all");
     }, [navigate]);
 
     const handleChange = (event) => {
         setSelectedValue(event.target.value);
-        loadPayments();
+        loadPayments(event.target.value);
     };
 
     return (
@@ -723,9 +724,9 @@ function ViewPayments() {
                 View By
                 <RadioGroup value={selectedValue} onChange={handleChange} row>
                     <FormControlLabel value="all" control={<Radio />} label="All" />
-                    <FormControlLabel value="utility" control={<Radio />} label="Utility" />
-                    <FormControlLabel value="biller" control={<Radio />} label="Biller" />
-                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                    <FormControlLabel value="Utility" control={<Radio />} label="Utility" />
+                    <FormControlLabel value="Biller" control={<Radio />} label="Biller" />
+                    <FormControlLabel value="Other" control={<Radio />} label="Other" />
                 </RadioGroup>
             </Grid>
 
@@ -746,9 +747,16 @@ function ViewPayments() {
                             </TableRow>
                         </TableHead>
                         <TableBody>
-                            {payments.map((payments) => (
+                            {Object.values(payments).map((payments) => (
                                 <StyledTableRow>
-                                    <StyledTableCell align="left">{payments.date}</StyledTableCell>
+                                    <StyledTableCell align="left">{new Date(payments.date).toLocaleString('en-US', {
+                                        year: 'numeric',
+                                        month: '2-digit',
+                                        day: '2-digit',
+                                        hour: '2-digit',
+                                        minute: '2-digit',
+                                        hour12: true
+                                    })}</StyledTableCell>
                                     <StyledTableCell align="left">{payments.paymentType}</StyledTableCell>
                                     <StyledTableCell align="left">{payments.payFrom}</StyledTableCell>
                                     <StyledTableCell align="left">{payments.payTo}</StyledTableCell>

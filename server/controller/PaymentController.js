@@ -105,6 +105,7 @@ const PaymentController = {
             } else {
                 compTransaction = await CompanyTransaction.find({ paymentType: req.params.type });
             }
+
             res.status(200).json(compTransaction);
         } catch (error) {
             logger.error("Error getting Payments by Type");
