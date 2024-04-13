@@ -18,13 +18,14 @@ const StockController = {
 
     createStock: async (req, res) => {
 
-        const { equipmentId, equipmentName, value, description, qty } = req.body;
+        const { equipmentId, equipmentName, value, description, qty, minimumQty } = req.body;
         const stock = new Stock({
             equipmentId: equipmentId,
             name: equipmentName,
             value: value,
             description: description,
             qty: qty,
+            minimumQty: minimumQty,
         });
         stock
             .save()
@@ -41,7 +42,7 @@ const StockController = {
 
     updateStock: async (req, res) => {
 
-        const { equipmentId, equipmentName, value, description, qty } = req.body;
+        const { equipmentId, equipmentName, value, description, qty, minimumQty } = req.body;
 
         Stock
             .updateOne(
@@ -52,6 +53,7 @@ const StockController = {
                         value: value,
                         description: description,
                         qty: qty,
+                        minimumQty: minimumQty,
                     },
                 }
             )
@@ -68,21 +70,12 @@ const StockController = {
 
     deleteStock: async (req, res) => {
 
-        const { equipmentId, equipmentName, value, description, qty } = req.body;
-
         Stock
-            .deleteOne(
-                { equipmentId: req.params.equipmentId },
-                {
-                    $set: {
-                        name: equipmentName,
-                        value: value,
-                        description: description,
-                        qty: qty,
-                    },
-                }
+            .findOneAndDelete(
+                { equipmentId: req.params.equipmentId }
             )
             .then((result) => {
+                logger.info(result);
                 logger.info("Stock " + req.params.equipmentId + " deleted successfully");
                 res.status(200).json({ message: 'Stock deleted' });
             })

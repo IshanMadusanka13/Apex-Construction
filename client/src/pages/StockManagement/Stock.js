@@ -1,8 +1,8 @@
-import { Box, Button, Grid, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography, useTheme } from "@mui/material";
+import { Box, Button, Grid, MenuItem, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
-import { CREATE_STOCK, DELETE_STOCK, GET_ALL_STOCK, GET_STOCK, GET_STOCK_ID, UPDATE_STOCK } from "../../EndPoints";
+import { CREATE_STOCK, DELETE_STOCK, GET_ALL_STOCK, GET_STOCK_ID, UPDATE_STOCK } from "../../EndPoints";
 
 
 const StockPage = () => {
@@ -36,6 +36,7 @@ const StockPage = () => {
       value: data.value,
       description: data.description,
       qty: data.qty,
+      minimumQty: data.minimumQty,
     }
 
     Axios.post(CREATE_STOCK, payload)
@@ -59,6 +60,7 @@ const StockPage = () => {
       value: data.value,
       description: data.description,
       qty: data.qty,
+      minimumQty: data.minimumQty
     }
     Axios.put(UPDATE_STOCK, payload)
       .then((response) => {
@@ -121,6 +123,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
   const [value, setValue] = useState('');
   const [description, setDescription] = useState('');
   const [qty, setQty] = useState('');
+  const [minimumQty, setMinimumQty] = useState('');
 
   const loadStockId = async () => {
     Axios
@@ -141,7 +144,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
       setValue('');
       setDescription('');
       setQty(0);
-
+      setMinimumQty(0);
     }
   }, [submitted]);
 
@@ -153,7 +156,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
       setValue(data.value);
       setDescription(data.description);
       setQty(data.qty);
-
+      setMinimumQty(data.minimumQty);
     }
   }, [data]);
 
@@ -231,14 +234,25 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
           onChange={e => setQty(e.target.value)}
         />
       </Grid>
-      <Grid item md={7}>
-        <Button
-          variant="contained" sx={{ mt: 3, width: "50%" }}
-          onClick={() => isEdit ? updateStock({ equipmentId, equipmentName, value, description, qty }) : addStock({ equipmentId, equipmentName, value, description, qty })}
-        >
-          {isEdit ? 'Update' : 'Add'}
-        </Button>
+      <Grid item md={6}>
+        <TextField
+          type="number"
+          margin="normal"
+          required
+          fullWidth
+          id='minqty'
+          label="Minimum Qty"
+          name="minqty"
+          value={minimumQty}
+          onChange={e => setMinimumQty(e.target.value)}
+        />
       </Grid>
+      <Button
+        variant="contained" sx={{ mt: 3, width: "50%" }}
+        onClick={() => isEdit ? updateStock({ equipmentId, equipmentName, value, description, qty, minimumQty }) : addStock({ equipmentId, equipmentName, value, description, qty, minimumQty })}
+      >
+        {isEdit ? 'Update' : 'Add'}
+      </Button>
 
     </Grid>
   );
@@ -247,6 +261,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
 const StockTable = ({ rows, selectedRow, deleteStock }) => {
 
   const theme = useTheme();
+  //--------------------------Table Functions------------------------------
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
@@ -281,69 +296,111 @@ const StockTable = ({ rows, selectedRow, deleteStock }) => {
       border: 0,
     },
   }));
+  //--------------------------Table Functions end------------------------------
+  const [eqStatus, setEqStatus] = useState("all");
+  const [filterValue, setFilterValue] = useState('');
+
+  const handleFilterChange = (event) => {
+    setFilterValue(event.target.value);
+  };
 
   const handleUpdate = (content) => {
     selectedRow(content);
   };
 
   return (
-    <Box sx={theme.palette.gridBody}>
-      <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
-        <Table>
-          <TableHead>
-            <StyledTableRow>
-              <StyledTableCell>Equipment Id</StyledTableCell>
-              <StyledTableCell>Equipment Name</StyledTableCell>
-              <StyledTableCell>Unit Price</StyledTableCell>
-              <StyledTableCell>Description</StyledTableCell>
-              <StyledTableCell>Qty</StyledTableCell>
-              <StyledTableCell>Action</StyledTableCell>
-            </StyledTableRow>
-          </TableHead>
-          <TableBody>
-            {
-              rows.length > 0 ? rows.map(row => (
-                <StyledTableRow key={row.equipmentId}>
-                  <StyledTableCell>{row.equipmentId}</StyledTableCell>
-                  <StyledTableCell>{row.name}</StyledTableCell>
-                  <StyledTableCell>{row.value}</StyledTableCell>
-                  <StyledTableCell>{row.description}</StyledTableCell>
-                  <StyledTableCell>{row.qty}</StyledTableCell>
+    <Grid container spacing={2} sx={theme.palette.gridBody}>
+      <Grid item md={12}>
+        <Typography variant="h5" gutterBottom>Search By</Typography>
+      </Grid>
+      <Grid item md={6}>
+        <TextField
+          select
+          required
+          fullWidth
+          id='eqStat'
+          label="Equipment Status"
+          name="eqStat"
+          value={eqStatus}
+          onChange={(e) => setEqStatus(e.target.value)}
+        >
+          <MenuItem value="all">All</MenuItem>
+          <MenuItem value="OK">OK</MenuItem>
+          <MenuItem value="Insufficient">Insufficient</MenuItem>
+        </TextField>
+      </Grid>
+      <Grid item md={6}>
+        <TextField
+          required
+          fullWidth
+          id='eqStat'
+          label="Equipment Name"
+          name="eqStat"
+          value={filterValue}
+          onChange={handleFilterChange}
+        />
+      </Grid>
 
-                  <StyledTableCell>
-                    <Button sx={{ margin: '0px 10px' }}
-                      onClick={() => handleUpdate({ row })}
-                    >
-                      Upadate
-
-                    </Button>
-                    <Button sx={{ margin: '0px 10px' }}
-                      onClick={() => deleteStock({ equipmentId: row.equipmentId })}
-                    >
-                      Delete
-
-                    </Button>
-                  </StyledTableCell>
-                </StyledTableRow>
-              )) : (
+      <Grid item md={12}>
+        <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
+          <Table>
+            <TableHead>
+              <StyledTableRow>
+                <StyledTableCell>Equipment Id</StyledTableCell>
+                <StyledTableCell>Equipment Name</StyledTableCell>
+                <StyledTableCell>Unit Price</StyledTableCell>
+                <StyledTableCell>Description</StyledTableCell>
+                <StyledTableCell>Qty</StyledTableCell>
+                <StyledTableCell>Status</StyledTableCell>
+                <StyledTableCell>Action</StyledTableCell>
+              </StyledTableRow>
+            </TableHead>
+            <TableBody>
+              {rows.length > 0 ? rows
+                .filter(row => row.name.toLowerCase().includes(filterValue.toLowerCase())) // Filter rows based on the equipment name
+                .filter(row => eqStatus === 'all' || (eqStatus === 'OK' && (row.qty - row.minimumQty) > 0) || (eqStatus === 'Insufficient' && (row.qty - row.minimumQty) <= 0)) // Apply eqStatus filter
+                .map(row => (
+                  <StyledTableRow key={row.equipmentId}>
+                    <StyledTableCell>{row.equipmentId}</StyledTableCell>
+                    <StyledTableCell>{row.name}</StyledTableCell>
+                    <StyledTableCell>{row.value}</StyledTableCell>
+                    <StyledTableCell>{row.description}</StyledTableCell>
+                    <StyledTableCell>{row.qty}</StyledTableCell>
+                    <StyledTableCell>
+                      <Typography variant="body1" style={{ color: ((row.qty - row.minimumQty) > 0) ? 'green' : 'red' }}>
+                        {((row.qty - row.minimumQty) > 0) ? "OK" : "Insufficient Stock"}
+                      </Typography>
+                    </StyledTableCell>
+                    <StyledTableCell>
+                      <Button sx={{ margin: '0px 10px' }} onClick={() => handleUpdate({ row })}>
+                        Update
+                      </Button>
+                      <Button sx={{ margin: '0px 10px' }} onClick={() => deleteStock({ equipmentId: row.equipmentId })}>
+                        Delete
+                      </Button>
+                    </StyledTableCell>
+                  </StyledTableRow>
+                )
+                ) : (
                 <StyledTableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                   <StyledTableCell>No Data</StyledTableCell>
                 </StyledTableRow>
-              )
-            }
-          </TableBody>
+              )}
 
-        </Table>
-        <TablePagination
-          sx={{ backgroundColor: theme.palette.primary.main, }}
-          rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-          count={rows.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </TableContainer>
-    </Box>
+            </TableBody>
+
+          </Table>
+          <TablePagination
+            sx={{ backgroundColor: theme.palette.primary.main, }}
+            rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+            count={rows.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={handleChangePage}
+            onRowsPerPageChange={handleChangeRowsPerPage}
+          />
+        </TableContainer>
+      </Grid>
+    </Grid>
   );
 }

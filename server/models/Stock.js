@@ -23,6 +23,10 @@ const stockSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
+    minimumQty: {
+        type: Number,
+        required: true,
+    },
     
 });
 
