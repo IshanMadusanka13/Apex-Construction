@@ -20,6 +20,6 @@ const stockRequestSchema = new Schema({
     }
 });
 
-const StockRequest = model('StockRequest', stockRequestSchema);
+const StockRequest = mongoose.model('StockRequest', stockRequestSchema);
 
 export default StockRequest;
