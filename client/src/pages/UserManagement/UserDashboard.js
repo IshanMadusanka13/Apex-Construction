@@ -11,6 +11,7 @@ import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
 import StockPage from "../StockManagement/Stock";
+import BuyStock from "../StockManagement/BuyStock";
 
 export default function UserDashboard() {
 
@@ -41,6 +42,7 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "stock" && <StockPage />}
+                    {selectedContent === "buyStock" && <BuyStock />}
                     {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>

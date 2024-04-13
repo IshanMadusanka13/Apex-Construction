@@ -11,8 +11,12 @@ const stockSchema = new mongoose.Schema({
         required: true,
     },
 
-    value: {
+    price: {
         type: Number,
+        required: true,
+    },
+    unit: {
+        type: String,
         required: true,
     },
     description: {

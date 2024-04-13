@@ -1,4 +1,5 @@
 import Stock from "../models/Stock.js";
+import StockPurchase from "../models/StockPurchase.js";
 import logger from '../utils/logger.js'
 
 const StockController = {
@@ -18,11 +19,12 @@ const StockController = {
 
     createStock: async (req, res) => {
 
-        const { equipmentId, equipmentName, value, description, qty, minimumQty } = req.body;
+        const { equipmentId, equipmentName, price, unit, description, qty, minimumQty } = req.body;
         const stock = new Stock({
             equipmentId: equipmentId,
             name: equipmentName,
-            value: value,
+            price: price,
+            unit: unit,
             description: description,
             qty: qty,
             minimumQty: minimumQty,
@@ -42,7 +44,7 @@ const StockController = {
 
     updateStock: async (req, res) => {
 
-        const { equipmentId, equipmentName, value, description, qty, minimumQty } = req.body;
+        const { equipmentId, equipmentName, price, unit, description, qty, minimumQty } = req.body;
 
         Stock
             .updateOne(
@@ -50,7 +52,8 @@ const StockController = {
                 {
                     $set: {
                         name: equipmentName,
-                        value: value,
+                        price: price,
+                        unit: unit,
                         description: description,
                         qty: qty,
                         minimumQty: minimumQty,
@@ -67,6 +70,24 @@ const StockController = {
                 res.status(400).json({ message: error.message });
             });
     },
+
+    updateQty: async (equipmentId, qty) => {
+        try {
+            const result = await Stock.updateOne(
+                { equipmentId: equipmentId },
+                { $set: { qty: qty } }
+            );
+            if (result.nModified === 0) {
+                logger.info("QTY not updated")
+                return false;
+            }
+            return true;
+        } catch (error) {
+
+            return false;
+        }
+    },
+
 
     deleteStock: async (req, res) => {
 
@@ -113,31 +134,53 @@ const StockController = {
             });
     },
 
-    requestStock: async (req, res) => {
-        try {
-            const { equipmentId, qty } = req.body;
+    buyStock: async (req, res) => {
 
-            const existingStock = await Stock.findOne({ equipmentId });
-            if (!existingStock) {
-                return res.status(404).json({ message: 'Stock not found' });
-            }
+        const { equipmentId, price, qty, qtyBought } = req.body;
 
-            if (qty > existingStock.qty) {
-                return res.status(400).json({ message: 'Not Enough Stock' });
-            }
+        const totalPrice = price * qtyBought;
+        const newqty = parseInt(qty) + parseInt(qtyBought);
 
-            const newQty = existingStock.qty - qty;
-            existingStock.qty = newQty;
-
-            const updatedStock = await existingStock.save();
-
-            res.status(200).json(updatedStock);
-        } catch (error) {
-            logger.error("Error processing stock request");
-            res.status(500).json({ message: error.message });
-        }
+        const stockPurchase = new StockPurchase({
+            equipmentId: equipmentId,
+            totalPrice: totalPrice,
+            qty: qtyBought,
+        });
+        stockPurchase
+            .save()
+            .then(async (result) => {
+                await StockController.updateQty(equipmentId, newqty);
+                logger.info("Stock Buying successful");
+                res.status(201).json(result);
+            })
+            .catch((error) => {
+                logger.error("Stock Buying failed");
+                logger.error(error);
+                res.status(400).json({ message: error.message });
+            });
     },
 
+
+    getBoughtStockDetailsByMonth: async (req, res) => {
+
+        logger.info(req.params.month);
+    
+        const [year, month] = req.params.month.split('-');
+    
+        const startDate = new Date(year, month - 1, 1);
+        const endDate = new Date(year, month, 0);
+    
+        StockPurchase
+            .find({ date: { $gte: startDate, $lte: endDate } })
+            .then((result) => {
+                logger.info("Stock Report generating for " + req.params.month);
+                res.send(result);
+            })
+            .catch((error) => {
+                logger.error("Error getting Stock");
+                res.status(500).json({ message: error.message });
+            });
+    },
 
 }
 

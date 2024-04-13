@@ -89,6 +89,13 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="Stock" />}
         </ListItem>
 
+        <ListItem button onClick={() => handleItemClick("buyStock")} sx={{ backgroundColor: selectedContent === "buyStock" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Stock Replenish" />}
+        </ListItem>
+
         <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />

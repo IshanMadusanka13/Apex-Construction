@@ -11,8 +11,6 @@ const StockPage = () => {
   const [selectedStock, setSelectedStock] = useState({});
   const [isEdit, setIsEdit] = useState(false);
 
-  const theme = useTheme();
-
   useEffect(() => {
     getStockDetails();
   }, []);
@@ -20,7 +18,6 @@ const StockPage = () => {
   const getStockDetails = () => {
     Axios.get(GET_ALL_STOCK)
       .then(response => {
-        console.log(response);
         setStockDetails(response.data ? response.data : []);
       })
       .catch(error => {
@@ -33,7 +30,8 @@ const StockPage = () => {
     const payload = {
       equipmentId: data.equipmentId,
       equipmentName: data.equipmentName,
-      value: data.value,
+      price: data.price,
+      unit: data.unit,
       description: data.description,
       qty: data.qty,
       minimumQty: data.minimumQty,
@@ -41,7 +39,6 @@ const StockPage = () => {
 
     Axios.post(CREATE_STOCK, payload)
       .then((response) => {
-        console.log(response);
         getStockDetails();
         setSubmitted(false);
         setIsEdit(false);
@@ -57,14 +54,14 @@ const StockPage = () => {
     const payload = {
       equipmentId: data.equipmentId,
       equipmentName: data.equipmentName,
-      value: data.value,
+      price: data.price,
+      unit: data.unit,
       description: data.description,
       qty: data.qty,
       minimumQty: data.minimumQty
     }
     Axios.put(UPDATE_STOCK, payload)
       .then((response) => {
-        console.log(response);
         getStockDetails();
         setSubmitted(false);
         setIsEdit(false);
@@ -78,7 +75,6 @@ const StockPage = () => {
   const deleteStock = (data) => {
     Axios.delete(DELETE_STOCK + data.equipmentId)
       .then((response) => {
-        console.log(response);
         getStockDetails();
         successAlert("Data Deleted Succesfully");
       })
@@ -120,7 +116,8 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
   const theme = useTheme();
   const [equipmentId, setEquipmentId] = useState(0);
   const [equipmentName, setEquipmentName] = useState(0);
-  const [value, setValue] = useState('');
+  const [price, setPrice] = useState('');
+  const [unit, setUnit] = useState('');
   const [description, setDescription] = useState('');
   const [qty, setQty] = useState('');
   const [minimumQty, setMinimumQty] = useState('');
@@ -132,7 +129,6 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
         setEquipmentId(response.data)
       })
       .catch((error) => {
-        console.log(error);
         errorAlert(error.response.data.message);
       });
   };
@@ -141,7 +137,8 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
     if (!submitted) {
       loadStockId();
       setEquipmentName('');
-      setValue('');
+      setPrice('');
+      setUnit('');
       setDescription('');
       setQty(0);
       setMinimumQty(0);
@@ -149,11 +146,11 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
   }, [submitted]);
 
   useEffect(() => {
-    console.log(data)
     if (data?.equipmentId) {
       setEquipmentId(data.equipmentId);
       setEquipmentName(data.name);
-      setValue(data.value);
+      setPrice(data.price);
+      setUnit(data.unit);
       setDescription(data.description);
       setQty(data.qty);
       setMinimumQty(data.minimumQty);
@@ -194,16 +191,29 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
         />
       </Grid>
 
-      <Grid item md={6}>
+      <Grid item md={3}>
         <TextField
           margin="normal"
           required
           fullWidth
-          id='value'
+          id='price'
           label="Unit Price"
-          name="value"
-          value={value}
-          onChange={e => setValue(e.target.value)}
+          name="price"
+          value={price}
+          onChange={e => setPrice(e.target.value)}
+        />
+      </Grid>
+
+      <Grid item md={3}>
+        <TextField
+          margin="normal"
+          required
+          fullWidth
+          id='unit'
+          label="Measuring Unit"
+          name="unit"
+          value={unit}
+          onChange={e => setUnit(e.target.value)}
         />
       </Grid>
 
@@ -249,7 +259,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
       </Grid>
       <Button
         variant="contained" sx={{ mt: 3, width: "50%" }}
-        onClick={() => isEdit ? updateStock({ equipmentId, equipmentName, value, description, qty, minimumQty }) : addStock({ equipmentId, equipmentName, value, description, qty, minimumQty })}
+        onClick={() => isEdit ? updateStock({ equipmentId, equipmentName, price, unit, description, qty, minimumQty }) : addStock({ equipmentId, equipmentName, price, unit, description, qty, minimumQty })}
       >
         {isEdit ? 'Update' : 'Add'}
       </Button>
@@ -363,9 +373,9 @@ const StockTable = ({ rows, selectedRow, deleteStock }) => {
                   <StyledTableRow key={row.equipmentId}>
                     <StyledTableCell>{row.equipmentId}</StyledTableCell>
                     <StyledTableCell>{row.name}</StyledTableCell>
-                    <StyledTableCell>{row.value}</StyledTableCell>
+                    <StyledTableCell>{row.price}</StyledTableCell>
                     <StyledTableCell>{row.description}</StyledTableCell>
-                    <StyledTableCell>{row.qty}</StyledTableCell>
+                    <StyledTableCell>{row.qty}{row.unit}</StyledTableCell>
                     <StyledTableCell>
                       <Typography variant="body1" style={{ color: ((row.qty - row.minimumQty) > 0) ? 'green' : 'red' }}>
                         {((row.qty - row.minimumQty) > 0) ? "OK" : "Insufficient Stock"}
