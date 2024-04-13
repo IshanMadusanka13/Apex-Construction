@@ -1,14 +1,21 @@
 import mongoose from 'mongoose';
-
-const { Schema, model } = mongoose;
+const { Schema } = mongoose;
 
 const stockRequestSchema = new Schema({
-    requestItem: {
-        type: String,
-        required: true
+    siteId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Site'
+    },
+    equipmentId: {
+        type: Schema.Types.ObjectId,
+        ref: 'Stock'
     },
     qty: {
         type: Number,
+        required: true
+    },
+    status: {
+        type: Boolean,
         required: true
     }
 });

@@ -1,37 +1,136 @@
-import express from "express";
-import mongoose from "mongoose";
-import siteSchema from "../models/Site.js";
+import Site from "../models/Site.js";
+import StockRequest from "../models/StockRequest.js";
 import logger from "../utils/logger.js";
-const siteModel = mongoose.model("site", siteSchema);
 
+const SiteController = {
 
-export function createSite(req, res) {
-    //destruct req and create new siteModel in database
-    const { siteId, location, start, end, notes, custId } = req.body;
-    const newSite = new siteModel({
-        custId: custId,
-        siteId: siteId,
-        location: location,
-        start: start,
-        end: end,
-        notes: notes,
-    });
-    newSite
-        .save()
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            logger.error(err);
-            res.status(500).json({ message: "Error creating site" });
+    createSite: async (req, res) => {
+        const { siteId, location, start, end, notes, customerId } = req.body;
+        const newSite = new Site({
+            customerId: customerId,
+            siteId: siteId,
+            location: location,
+            start: start,
+            end: end,
+            notes: notes,
         });
+        newSite
+            .save()
+            .then((result) => {
+                logger.info("Site Created Successfully");
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Error Creating Sites");
+                res.status(500).json({ message: "Error creating site" });
+            });
+    },
+
+    updateSite: async (req, res) => {
+        const { location, siteId, siteState } = req.body;
+        Site
+            .updateOne(
+                { _id: req.params.id },
+                {
+                    $set: {
+                        location: location,
+                        siteId: siteId,
+                        siteState: siteState,
+                    }
+                }
+            )
+            .then((result) => {
+                logger.info("Site " + req.params.id + " Updated Successfully");
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Error Updating Site " + req.params.id);
+                res.status(500).json({ message: "Error updating site" });
+            });
+    },
+
+    deleteSite: async (req, res) => {
+        Site
+            .deleteOne({ _id: req.params.id })
+            .then((result) => {
+                logger.info("Site " + req.params.id + " Deleted Successfully");
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Site " + req.params.id + " deleted Failed");
+                res.status(500).json({ message: "Error deleting site" });
+            });
+    },
+
+    getAllSites: async (req, res) => {
+        Site
+            .find()
+            .then((result) => {
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Site Fetching Failed");
+                res.status(500).json({ message: "Error getting sites" });
+            });
+    },
+
+    getAllSitesByCustId: async (req, res) => {
+        Site
+            .find({ customerId: req.params.id })
+            .then((result) => {
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Site Fetching Failed by id " + req.params.id);
+                res.status(500).json({ message: "Error getting sites" });
+            });
+    },
+
+    generateSiteId: async (req, res) => {
+        try {
+
+            const count = await Site.countDocuments();
+            let siteCount = count + 1000;
+            let siteId = "S" + siteCount;
+            res.status(200).json(siteId);
+
+        } catch (error) {
+            logger.error("Error getting EmployeeId");
+            res.status(500).json({ message: error.message });
+        }
+    },
+
+    stockRequest: async (req, res) => {
+        const { siteId, equipmentId, qty } = req.body;
+
+        const stockRequest = new StockRequest({
+            siteId: siteId,
+            equipmentId: equipmentId,
+            qty: qty,
+            status: false
+        });
+
+        stockRequest
+            .save()
+            .then((result) => {
+                logger.info("Stock Requested Successfully");
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Error Requesting Stock");
+                res.status(500).json({ message: "Error Requesting Stock" });
+            });
+    },
 }
 
+export default SiteController;
+
+/*
 //get completed days for site / all days as a percentage by siteId
 export function getCompletedDays(req, res) {
 
     //get site by id
-    siteModel
+    Site
         .findOne({ siteId: req.params.id })
         .then((result) => {
             //calculate percentage
@@ -44,86 +143,7 @@ export function getCompletedDays(req, res) {
             res.status(500).json({ message: "Error getting site" });
         });
 }
-
-//update end , note and siteState and note of a  site if user type is admin and have site in privileges
-export function updateSite(req, res) {
-    //destruct req and update siteModel in database
-    const { location, siteId, siteState } = req.body;
-    //update site by id
-    siteModel
-        .updateOne(
-            { _id: req.params.id },
-            {
-                $set: {
-                    location: location,
-                    siteId: siteId,
-                    siteState: siteState,
-                }
-            }
-        )
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            res.status(500).json({ message: "Error updating site" });
-        });
-}
-
-//delete site by id if user type is admin and have site in privileges
-export function deleteSite(req, res) {
-    //delete site by id
-    siteModel
-        .deleteOne({ _id: req.params.id })
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            res.status(500).json({ message: "Error deleting site" });
-        });
-}
-
-//get all sites if user type is admin and have site in privileges
-export function getAllSites(req, res) {
-    //get all sites
-    siteModel
-        .find()
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            res.status(500).json({ message: "Error getting sites" });
-        });
-}
-
-// looged in customer can retieve all sites which have his _id as custId
-export function getAllSitesByCustId(req, res) {
-    //get all sites
-    siteModel
-        .find({ custId: req.logInfo.userObject._id })
-        .then((result) => {
-            res.send(result);
-        })
-        .catch((err) => {
-            res.status(500).json({ message: "Error getting sites" });
-        });
-}
-
-export function createSiteFunction(data) {
-    console.log(data)
-    const { siteId, location, start, end, notes, custId } = data;
-    let newSite = new siteModel({
-        custId: custId,
-        siteId: siteId,
-        location: location,
-        start: start,
-        end: end,
-        notes: notes,
-    });
-    return newSite
-        .save()
-
-}
-
+*/
 
 
 

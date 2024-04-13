@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const siteSchema = new mongoose.Schema({
-    custId : {
+    customerId : {
         type : String,
         required : true,
     },
@@ -35,4 +35,7 @@ const siteSchema = new mongoose.Schema({
     }
 
 });
-export default siteSchema;
+
+const Site = mongoose.model("Site", siteSchema);
+
+export default Site;

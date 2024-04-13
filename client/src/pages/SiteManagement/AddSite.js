@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
+import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import axios from "axios";
-import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints.js";
-import { errorAlert, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
-import { useSelector } from 'react-redux';
+import { CREATE_SITE, GENERATE_SITE_ID } from "../../EndPoints.js";
+import { errorAlert, successAlert } from "../../utils.js";
 
 function AddSiteDetails() {
 
@@ -12,8 +11,8 @@ function AddSiteDetails() {
     const theme = useTheme();
 
     const [siteDetails, setSiteDetails] = useState({
-        custId: "",
         siteId: "",
+        customerId: "",
         location: "",
         notes: "",
         start: "",
@@ -27,11 +26,28 @@ function AddSiteDetails() {
         }));
     };
 
+    useEffect(() => {
+        const loadSiteId = async () => {
+            axios
+                .get(GENERATE_SITE_ID, {})
+                .then((response) => {
+                    console.log(response);
+                    handleChange('siteId', response.data)
+                })
+                .catch((error) => {
+                    console.log(error);
+                    errorAlert(error.response.data.message);
+                });
+        };
+
+        loadSiteId();
+    }, [navigate]);
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         axios
-            .post("http://localhost:3001/site/create", siteDetails)
+            .post(CREATE_SITE, siteDetails)
             .then((response) => {
                 console.log("sucess response - " + response);
                 successAlert("Site Created successfully");
@@ -66,6 +82,7 @@ function AddSiteDetails() {
                     name="siteId"
                     label="Site Id"
                     autoComplete="siteId"
+                    disabled
                     onChange={(e) => handleChange('siteId', e.target.value)}
                 />
             </Grid>
@@ -76,15 +93,15 @@ function AddSiteDetails() {
                     required
                     fullWidth
                     id="custId"
-                    label="custId"
+                    label="Customer Id"
                     name="custId"
                     autoComplete="custId"
                     autoFocus
-                    onChange={(e) => handleChange('custId', e.target.value)}
+                    onChange={(e) => handleChange('customerId', e.target.value)}
                 />
             </Grid>
 
-            <Grid item md={6}>
+            <Grid item md={4}>
                 <TextField
                     margin="normal"
                     required
@@ -97,7 +114,35 @@ function AddSiteDetails() {
                 />
             </Grid>
 
-            <Grid item md={6}>
+            <Grid item md={4}>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    type="date"
+                    id="start"
+                    label="Start Date"
+                    name="start"
+                    autoComplete="start"
+                    onChange={(e) => handleChange('start', e.target.value)}
+                />
+            </Grid>
+
+            <Grid item md={4}>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    type="date"
+                    id="end"
+                    label="Assumed End Date"
+                    name="end"
+                    autoComplete="end"
+                    onChange={(e) => handleChange('end', e.target.value)}
+                />
+            </Grid>
+
+            <Grid item md={12}>
                 <TextField
                     margin="normal"
                     required
@@ -110,36 +155,8 @@ function AddSiteDetails() {
                 />
             </Grid>
 
-            <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    type="date"
-                    id="start"
-                    label="Start"
-                    name="start"
-                    autoComplete="start"
-                    onChange={(e) => handleChange('start', e.target.value)}
-                />
-            </Grid>
-
-            <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    type="date"
-                    id="end"
-                    label="End"
-                    name="end"
-                    autoComplete="end" 
-                    onChange={(e) => handleChange('end', e.target.value)}
-                />
-            </Grid>
-
             <Button type="submit" variant="contained" sx={{ mt: 2, width: "20%", borderRadius: "5" }}>
-                Confirm
+                Add SIte
             </Button>
         </Grid>
     );

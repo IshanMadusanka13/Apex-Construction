@@ -1,11 +1,13 @@
 import express from 'express'
+import SiteController from '../controller/SiteController.js'
 
-import { createSite, deleteSite, getAllSites, updateSite } from '../controller/Sitecontroller.js'
+const siteRouter =  express.Router();
 
-const siteRouter =  express.Router()
-siteRouter.get("/",getAllSites)
-siteRouter.post("/create", createSite);
-siteRouter.delete("/:id",deleteSite)
-siteRouter.put("/:id",updateSite)
+siteRouter.get("/getall", SiteController.getAllSites);
+siteRouter.get("/get/:id", SiteController.getAllSitesByCustId);
+siteRouter.get("/getid", SiteController.generateSiteId);
+siteRouter.post("/create", SiteController.createSite);
+siteRouter.delete("delete/:id", SiteController.deleteSite);
+siteRouter.put("update/:id", SiteController.updateSite);
 
-export default siteRouter
+export default siteRouter;
