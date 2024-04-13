@@ -91,14 +91,14 @@ const ProfileSidebar = (props) => {
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
-          {isMd && <ListItemText primary="viweAddOns" />}
+          {isMd && <ListItemText primary="Add Ons Details" />}
         </ListItem>
 
         <ListItem button onClick={() => handleItemClick("viewPackage")} sx={{ backgroundColor: selectedContent === "viewPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
           <ListItemIcon>
             <Lock />
           </ListItemIcon>
-          {isMd && <ListItemText primary="viewPackage" />}
+          {isMd && <ListItemText primary="Package Details" />}
         </ListItem>
 
         {setPrivileges()}

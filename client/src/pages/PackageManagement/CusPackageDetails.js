@@ -15,23 +15,22 @@ const CusPackageDetails = () => {
   const [addOns, setAddOns] = useState([]);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    const loadPackages = async () => {
+    const loadAddons = async () => {
         axios
             .get("http://localhost:3001/packageaddon/getall", {})
             .then((response) => {
               setAddOnsDetails(response.data);
+              // console.log(response.data);
               console.log(addOnsDetails);
             })
             .catch((error) => {
                 errorAlert(error.response.data.message);
             });
     };
-    loadPackages();
-}, [navigate]);
+    
 
   // Do something with packageId
-  console.log(`Package ID is : ${packageId}`);
+  // console.log(`Package ID is : ${packageId}`);
 
   useEffect(() => {
     const loadPackages = async () => {
@@ -39,8 +38,8 @@ const CusPackageDetails = () => {
             .get(`http://localhost:3001/package/get/${packageId}`, {})
             .then((response) => {
                 setPackageDetails(response.data);
-                console.log(response);
-                console.log(packageDetails);
+                // console.log(response);
+                // console.log(packageDetails);
             })
             .catch((error) => {
               console.log(error);
@@ -51,7 +50,7 @@ const CusPackageDetails = () => {
   }, [packageId]); // only re-run effect when packageId changes
 
   const handleAddOns = () => {
-    console.log("aa");
+    loadAddons();
     setAddOnsOpen(true);
   };
 

@@ -16,17 +16,22 @@ function ViewAddOns() {
     const [packageDetails, setPackageDetails] = useState([]);
     const [viewUpdateContent, setViewUpdateContent] = useState(false);
     const [selectedRow, setSelectedRow] = useState('');
-    const [packageName, setPackageName] = useState('');
+    const [discription, setDiscription] = useState('');
     const [filteredPackageDetails, setFilteredPackageDetails] = useState([]);
 
     useEffect(() => {
-        if (packageName) {
-            const filteredData = packageDetails.filter(pkg => pkg.name.toLowerCase().includes(packageName.toLowerCase()));
-            setFilteredPackageDetails(filteredData);
+        if (discription) {
+          const filteredData = packageDetails.filter(pakg => {
+            if (pakg.description) {
+              return pakg.description.toLowerCase().includes(discription.toLowerCase());
+            }
+            return false;
+          });
+          setFilteredPackageDetails(filteredData);
         } else {
-            setFilteredPackageDetails(packageDetails);
+          setFilteredPackageDetails(packageDetails);
         }
-    }, [packageName, packageDetails]);
+      }, [discription, packageDetails]);
 
 
     useEffect(() => {
@@ -35,12 +40,15 @@ function ViewAddOns() {
                 .get("http://localhost:3001/packageaddon/getall", {})
                 .then((response) => {
                     setPackageDetails(response.data);
+                    // console.log(response.data);
+                    console.log(packageDetails);
                 })
                 .catch((error) => {
                     errorAlert(error.response.data.message);
                 });
         };
         loadPackages();
+        // console.log(packageDetails);
     }, [navigate]);
 
     // const handleSubmit = (event) => {
@@ -133,13 +141,13 @@ function ViewAddOns() {
                     margin="normal"
                     required
                     fullWidth
-                    id="name"
-                    label="Package Name"
-                    name="name"
-                    autoComplete="name"
+                    id="discription"
+                    label="Discription"
+                    name="discription"
+                    autoComplete="discription"
                     autoFocus
-                    value={packageName}
-                    onChange={(e) => setPackageName(e.target.value)}
+                    value={discription}
+                    onChange={(e) => setDiscription(e.target.value)}
                 ></TextField>
                 {/* <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
                     Search Package
