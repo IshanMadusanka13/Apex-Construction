@@ -125,6 +125,7 @@ const SiteController = {
     stockRequest: async (req, res) => {
         try {
             const { siteId, equipments } = req.body;
+            logger.info(req.body);
 
             const stockRequest = new StockRequest({
                 siteId: siteId,
@@ -137,6 +138,7 @@ const SiteController = {
             res.send(result);
         } catch (err) {
             logger.error("Error Requesting Stock");
+            logger.error(err);
             res.status(500).json({ message: "Error Requesting Stock" });
         }
     },

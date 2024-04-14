@@ -11,4 +11,6 @@ siteRouter.post("/create", SiteController.createSite);
 siteRouter.put("/update", SiteController.updateSite);
 siteRouter.delete("/delete/:id", SiteController.deleteSite);
 
+siteRouter.post("/request", SiteController.stockRequest);
+
 export default siteRouter;

@@ -40,3 +40,69 @@
 {"level":50,"time":1712466273606,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
 {"level":30,"time":1713078265169,"pid":6200,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
 {"level":30,"time":1713078272345,"pid":6200,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713089822070,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713089830007,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713089941140,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713089941861,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713089942497,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713089998897,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [PUT] [/employee/update] Request Received"}
+{"level":30,"time":1713089999304,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"Emoployee update successful"}
+{"level":30,"time":1713090006987,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713090007618,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713090072191,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713090073227,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713090700285,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713090701764,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091313316,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091314240,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091570066,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091571416,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091683303,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091683986,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091804279,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713091805237,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092390070,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092390765,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092463939,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092464539,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092565294,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092565976,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092834164,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092834804,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092941452,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092942097,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092993883,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713092994511,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713093136724,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713093137364,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713094389987,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713094390627,"pid":3312,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713101887633,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713101890962,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713101896136,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713101896788,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713102081429,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713102082075,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713102483533,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713102484601,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713102889229,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713102890040,"pid":2612,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713106377487,"pid":9856,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713106388296,"pid":9856,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713106503400,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713106512991,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713106539545,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713106540494,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713106831877,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713106832662,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713106868358,"pid":9012,"hostname":"DESKTOP-4OV1VV7","equipments":[{"equipmentId":1001,"equipmentName":"Brick","price":100,"qty":"50"},{"equipmentId":1002,"equipmentName":"Sand","price":15000,"qty":"2"}],"siteId":"S1000"}
+{"level":50,"time":1713106868374,"pid":9012,"hostname":"DESKTOP-4OV1VV7","msg":"Error Requesting Stock"}
+{"level":30,"time":1713107075202,"pid":3144,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713107080339,"pid":3144,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713107136688,"pid":3144,"hostname":"DESKTOP-4OV1VV7","equipments":[{"equipmentId":1001,"equipmentName":"Brick","price":100,"qty":"50"},{"equipmentId":1002,"equipmentName":"Sand","price":15000,"qty":"2"}],"siteId":"S1000"}
+{"level":50,"time":1713107136709,"pid":3144,"hostname":"DESKTOP-4OV1VV7","msg":"Error Requesting Stock"}
+{"level":50,"time":1713107136709,"pid":3144,"hostname":"DESKTOP-4OV1VV7","err":{"type":"ValidationError","message":"StockRequest validation failed: siteId: Cast to ObjectId failed for value \"S1000\" (type string) at path \"siteId\" because of \"BSONError\"","stack":"ValidationError: StockRequest validation failed: siteId: Cast to ObjectId failed for value \"S1000\" (type string) at path \"siteId\" because of \"BSONError\"\n    at Document.invalidate (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at model.$set (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1460:12)\n    at model.$set (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1115:16)\n    at model.Document (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:166:12)\n    at model.Model (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:131:12)\n    at new model (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:4700:15)\n    at stockRequest (file:///E:/Projects/Main%20Projects/Apex-Construction/server/controller/SiteController.js:130:34)\n    at Layer.handle [as handle_request] (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at Route.dispatch (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\route.js:114:3)","errors":{"siteId":{"stringValue":"\"S1000\"","valueType":"string","kind":"ObjectId","value":"S1000","path":"siteId","reason":{},"name":"CastError","message":"Cast to ObjectId failed for value \"S1000\" (type string) at path \"siteId\" because of \"BSONError\""}},"_message":"StockRequest validation failed"},"msg":"StockRequest validation failed: siteId: Cast to ObjectId failed for value \"S1000\" (type string) at path \"siteId\" because of \"BSONError\""}
+{"level":30,"time":1713107243809,"pid":3420,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713107249948,"pid":3420,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713107275120,"pid":3420,"hostname":"DESKTOP-4OV1VV7","equipments":[{"equipmentId":1001,"equipmentName":"Brick","price":100,"qty":"50"},{"equipmentId":1002,"equipmentName":"Sand","price":15000,"qty":"2"}],"siteId":"S1000"}
+{"level":30,"time":1713107276474,"pid":3420,"hostname":"DESKTOP-4OV1VV7","msg":"Stock Requested Successfully"}

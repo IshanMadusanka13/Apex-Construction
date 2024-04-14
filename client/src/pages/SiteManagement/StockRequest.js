@@ -4,50 +4,42 @@ import Axios from "axios";
 import { TextField, Typography, Button, Grid, MenuItem, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Box, Paper } from "@mui/material";
 import { useSelector } from 'react-redux';
 import { errorAlert, successAlert } from "../../utils.js";
+import { GET_ALL_STOCK, REQUEST_STOCK } from "../../EndPoints.js";
 
 
 function StockRequest() {
 
-    const theme = useTheme();
-
     const [stockDetails, setStockDetails] = useState([]);
-    const [selectedStock, setSelectedStock] = useState({});
+    const [requestedStock, setRequestedStock] = useState([]);
 
     useEffect(() => {
         getStockDetails();
     }, []);
 
     const getStockDetails = () => {
-        Axios.get("GET_ALL_STOCK")
+        Axios.get(GET_ALL_STOCK)
             .then(response => {
-                console.log(response);
                 setStockDetails(response.data ? response.data : []);
             })
             .catch(error => {
+                console.log(error);
                 errorAlert("Axios Error :", error);
             });
     }
 
-    const handleRequest = (content) => {
-        setSelectedStock(content.row);
-    }
-
     const requestStock = (data) => {
-
+        setRequestedStock(data);
     }
 
     return (
         <Grid container>
-            <Grid item md={8}>
+            <Grid item md={12}>
                 <ExisitngStock
                     rows={stockDetails}
-                    selectedRow={handleRequest} />
-            </Grid>
-            <Grid item md={4}>
-                <RequestForm requestStock={requestStock} data={selectedStock} />
+                    requestStock={requestStock} />
             </Grid>
             <Grid item md={12}>
-                <RequestedStock data={requestStock} />
+                <RequestedStock data={requestedStock} />
             </Grid>
         </Grid>
     );
@@ -56,7 +48,7 @@ function StockRequest() {
 
 export default StockRequest;
 
-function ExisitngStock(rows, selectedRow) {
+function ExisitngStock({ rows, requestStock }) {
     const theme = useTheme();
 
     //----------------------Table Functions-----------------------------------
@@ -66,6 +58,10 @@ function ExisitngStock(rows, selectedRow) {
     const handleChangePage = (event, newPage) => {
         setPage(newPage);
     };
+
+
+    useEffect(() => {
+    }, [rows]);
 
     const handleChangeRowsPerPage = (event) => {
         setRowsPerPage(parseInt(event.target.value, 10));
@@ -96,98 +92,43 @@ function ExisitngStock(rows, selectedRow) {
     }));
     //----------------------Table Functions End-----------------------------------
 
-    const handleRequest = (content) => {
-        selectedRow(content);
-    };
-
-    return (
-        <Box sx={theme.palette.gridBody}>
-            <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
-                <Table>
-                    <TableHead>
-                        <StyledTableRow>
-                            <StyledTableCell>Equipment Id</StyledTableCell>
-                            <StyledTableCell>Equipment Name</StyledTableCell>
-                            <StyledTableCell>Unit Price</StyledTableCell>
-                            <StyledTableCell>Description</StyledTableCell>
-                            <StyledTableCell>Available Qty</StyledTableCell>
-                            <StyledTableCell>Action</StyledTableCell>
-                        </StyledTableRow>
-                    </TableHead>
-                    <TableBody>
-                        {rows.length > 0 ? rows.map(row => (
-                            <StyledTableRow key={row.equipmentId}>
-                                <StyledTableCell>{row.equipmentId}</StyledTableCell>
-                                <StyledTableCell>{row.name}</StyledTableCell>
-                                <StyledTableCell>{row.price}</StyledTableCell>
-                                <StyledTableCell>{row.description}</StyledTableCell>
-                                <StyledTableCell>{row.qty}</StyledTableCell>
-
-                                <StyledTableCell>
-                                    <Button sx={{ margin: '0px 10px' }}
-                                        onClick={() => handleRequest({ row })}
-                                    >
-                                        Request
-                                    </Button>
-                                </StyledTableCell>
-                            </StyledTableRow>
-                        )) : (
-                            <StyledTableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                <StyledTableCell>No Data</StyledTableCell>
-                            </StyledTableRow>
-                        )
-                        }
-                    </TableBody>
-
-                </Table>
-                <TablePagination
-                    sx={{ backgroundColor: theme.palette.primary.main, }}
-                    rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                    count={rows.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            </TableContainer>
-        </Box>
-    );
-}
-
-function RequestForm(data, requestStock) {
-
     const [equipmentId, setEquipmentId] = useState(0);
     const [equipmentName, setEquipmentName] = useState('');
     const [price, setPrice] = useState(0);
     const [qty, setQty] = useState(0);
     const [existingQty, setExistingQty] = useState(0);
 
-    useEffect(() => {
-        console.log(data)
-        if (data?.equipmentId) {
-            setEquipmentId(data.equipmentId);
-            setEquipmentName(data.name);
-            setPrice(data.price);
-            setExistingQty(data.qty);
-        }
-    }, [data]);
+    const handleRequest = (content) => {
+        console.log(content)
+        setEquipmentId(content.equipmentId);
+        setEquipmentName(content.name);
+        setPrice(content.price);
+        setExistingQty(content.qty);
+        console.log(equipmentId)
+    };
 
     const handleClick = () => {
         if (qty > existingQty) {
             errorAlert("Insufficent Stock");
         } else {
             requestStock({ equipmentId, equipmentName, price, qty });
+            setEquipmentId('');
+            setEquipmentName('');
+            setPrice(0);
+            setQty(0);
+            setExistingQty(0);
         }
     }
 
     return (
-        <Grid container>
+        <Grid container spacing={2} sx={theme.palette.gridBody}>
+
             <Grid item xs={12}>
                 <Typography variant="h5" gutterBottom>
                     Request Stock
                 </Typography>
             </Grid>
-            <Grid item md={12}>
+            <Grid item md={4}>
                 <TextField
                     required
                     fullWidth
@@ -196,11 +137,10 @@ function RequestForm(data, requestStock) {
                     name="equipmentName"
                     autoComplete="equipmentName"
                     value={equipmentName}
-                    autoFocus
-                    onChange={e => setEquipmentName(e.target.value)}
+                    disabled
                 />
             </Grid>
-            <Grid item md={12}>
+            <Grid item md={4}>
                 <TextField
                     type="number"
                     margin="normal"
@@ -213,17 +153,69 @@ function RequestForm(data, requestStock) {
                     onChange={e => setQty(e.target.value)}
                 />
             </Grid>
-            <Button
-                variant="contained" sx={{ mt: 3, width: "50%" }}
-                onClick={() => handleClick()}
-            >
-                Request
-            </Button>
+            <Grid item md={4}>
+                <Button
+                    variant="contained" sx={{ mt: 3, width: "50%" }}
+                    onClick={() => handleClick()}
+                >
+                    Request
+                </Button>
+            </Grid>
+            <Grid item md={12}>
+                <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
+                    <Table>
+                        <TableHead>
+                            <StyledTableRow>
+                                <StyledTableCell>Equipment Id</StyledTableCell>
+                                <StyledTableCell>Equipment Name</StyledTableCell>
+                                <StyledTableCell>Unit Price</StyledTableCell>
+                                <StyledTableCell>Description</StyledTableCell>
+                                <StyledTableCell>Available Qty</StyledTableCell>
+                                <StyledTableCell>Action</StyledTableCell>
+                            </StyledTableRow>
+                        </TableHead>
+                        <TableBody>
+                            {rows.length > 0 ? rows.map(row => (
+                                <StyledTableRow key={row.equipmentId}>
+                                    <StyledTableCell>{row.equipmentId}</StyledTableCell>
+                                    <StyledTableCell>{row.name}</StyledTableCell>
+                                    <StyledTableCell>{row.price}</StyledTableCell>
+                                    <StyledTableCell>{row.description}</StyledTableCell>
+                                    <StyledTableCell>{row.qty}</StyledTableCell>
+
+                                    <StyledTableCell>
+                                        <Button sx={{ margin: '0px 10px' }}
+                                            onClick={() => handleRequest(row)}
+                                        >
+                                            Request
+                                        </Button>
+                                    </StyledTableCell>
+                                </StyledTableRow>
+                            )) : (
+                                <StyledTableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                    <StyledTableCell>No Data</StyledTableCell>
+                                </StyledTableRow>
+                            )
+                            }
+                        </TableBody>
+
+                    </Table>
+                    <TablePagination
+                        sx={{ backgroundColor: theme.palette.primary.main, }}
+                        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                        count={rows.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </TableContainer>
+            </Grid>
         </Grid>
     );
 }
 
-function RequestedStock(data) {
+function RequestedStock({ data }) {
 
     const theme = useTheme();
 
@@ -265,20 +257,22 @@ function RequestedStock(data) {
     //------------------------Table Functions End------------------------------------
 
     const [rows, setRows] = useState([]);
+    const [siteId, setsiteId] = useState([]);
+    const [totPrice, setTotPrice] = useState(0);
 
     useEffect(() => {
-        console.log(data)
         if (data?.equipmentId) {
             if (!rows.some(row => row.equipmentId === data.equipmentId)) {
                 const rowData = {
                     equipmentId: data.equipmentId,
-                    equipmentName: data.name,
-                    value: data.price,
+                    equipmentName: data.equipmentName,
+                    price: data.price,
                     qty: data.qty
                 };
                 const updatedRows = [...rows, rowData];
                 setRows(updatedRows);
             }
+            setTotPrice(totPrice + (data.price * data.qty));
         }
     }, [data]);
 
@@ -286,56 +280,110 @@ function RequestedStock(data) {
         let equipmentIdToRemove = content.equipmentId;
         const updatedRows = rows.filter(row => row.equipmentId !== equipmentIdToRemove);
         setRows(updatedRows);
+        setTotPrice(totPrice - (content.price * content.qty));
     };
 
+    const handleSubmit = () => {
+        Axios.post(REQUEST_STOCK, {
+            equipments: rows,
+            siteId: siteId
+        })
+            .then((response) => {
+                console.log(response);
+
+                successAlert("Details Updated Succesfully");
+            })
+            .catch(error => {
+                console.log(error);
+                errorAlert("Axios Error :", error);
+            });
+    }
+
     return (
-        <Box sx={theme.palette.gridBody}>
-            <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
-                <Table>
-                    <TableHead>
-                        <StyledTableRow>
-                            <StyledTableCell>Equipment Id</StyledTableCell>
-                            <StyledTableCell>Equipment Name</StyledTableCell>
-                            <StyledTableCell>Qty</StyledTableCell>
-                            <StyledTableCell>Total Price</StyledTableCell>
-                            <StyledTableCell>Action</StyledTableCell>
-                        </StyledTableRow>
-                    </TableHead>
-                    <TableBody>
-                        {
-                            rows.length > 0 ? rows.map(row => (
-                                <StyledTableRow key={row.equipmentId}>
-                                    <StyledTableCell>{row.equipmentId}</StyledTableCell>
-                                    <StyledTableCell>{row.name}</StyledTableCell>
-                                    <StyledTableCell>{row.qty}</StyledTableCell>
-                                    <StyledTableCell>{(row.price * row.qty)}</StyledTableCell>
+        <Grid container spacing={2} sx={theme.palette.gridBody}>
+            <Grid item md={12}>
+                <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
+                    <Table>
+                        <TableHead>
+                            <StyledTableRow>
+                                <StyledTableCell>Equipment Id</StyledTableCell>
+                                <StyledTableCell>Equipment Name</StyledTableCell>
+                                <StyledTableCell>Qty</StyledTableCell>
+                                <StyledTableCell>Total Price</StyledTableCell>
+                                <StyledTableCell>Action</StyledTableCell>
+                            </StyledTableRow>
+                        </TableHead>
+                        <TableBody>
+                            {
+                                rows.length > 0 ? rows.map(row => (
+                                    <StyledTableRow key={row.equipmentId}>
+                                        <StyledTableCell>{row.equipmentId}</StyledTableCell>
+                                        <StyledTableCell>{row.equipmentName}</StyledTableCell>
+                                        <StyledTableCell>{row.qty}</StyledTableCell>
+                                        <StyledTableCell>{parseInt(row.price) * parseInt(row.qty)}</StyledTableCell>
 
 
-                                    <StyledTableCell>
-                                        <Button sx={{ margin: '0px 10px' }} onClick={() => removeRow(row)}>
-                                            Remove
-                                        </Button>
-                                    </StyledTableCell>
-                                </StyledTableRow>
-                            )) : (
-                                <StyledTableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                                    <StyledTableCell>No Data</StyledTableCell>
-                                </StyledTableRow>
-                            )
-                        }
-                    </TableBody>
+                                        <StyledTableCell>
+                                            <Button sx={{ margin: '0px 10px' }} onClick={() => removeRow(row)}>
+                                                Remove
+                                            </Button>
+                                        </StyledTableCell>
+                                    </StyledTableRow>
+                                )) : (
+                                    <StyledTableRow sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                        <StyledTableCell>No Data</StyledTableCell>
+                                    </StyledTableRow>
+                                )
+                            }
+                        </TableBody>
 
-                </Table>
-                <TablePagination
-                    sx={{ backgroundColor: theme.palette.primary.main, }}
-                    rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
-                    count={rows.length}
-                    rowsPerPage={rowsPerPage}
-                    page={page}
-                    onPageChange={handleChangePage}
-                    onRowsPerPageChange={handleChangeRowsPerPage}
-                />
-            </TableContainer>
-        </Box>
+                    </Table>
+                    <TablePagination
+                        sx={{ backgroundColor: theme.palette.primary.main, }}
+                        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+                        count={rows.length}
+                        rowsPerPage={rowsPerPage}
+                        page={page}
+                        onPageChange={handleChangePage}
+                        onRowsPerPageChange={handleChangeRowsPerPage}
+                    />
+                </TableContainer>
+            </Grid>
+            <Grid item md={12}>
+                <Grid container spacing={2}>
+                    <Grid item md={4}>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="tot"
+                            name="tot"
+                            label="Total Price"
+                            autoComplete="tot"
+                            disabled
+                            value={totPrice}
+                        />
+                    </Grid>
+                    <Grid item md={4}>
+                        <TextField
+                            margin="normal"
+                            required
+                            fullWidth
+                            id="siteId"
+                            name="siteId"
+                            label="Site Id"
+                            autoComplete="siteId"
+                            value={siteId}
+                            onChange={(e) => setsiteId(e.target.value)}
+                        />
+                    </Grid>
+                    <Grid item md={4}>
+                        <Button variant="contained" sx={{ mt: 2, width: "20%", borderRadius: "5" }} onClick={handleSubmit}>
+                            Request Stock
+                        </Button>
+                    </Grid>
+                </Grid>
+            </Grid>
+        </Grid>
     );
 }

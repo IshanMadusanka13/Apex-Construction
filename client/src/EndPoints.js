@@ -38,6 +38,7 @@ export const DELETE_SITE = API_BASE_URL + "/site/delete/"
 export const GENERATE_SITE_ID = API_BASE_URL + "/site/getid"
 export const GET_ALL_SITES = API_BASE_URL + "/site/getall"
 export const CALCULATE_SITE_STATUS = API_BASE_URL + "/site/getstatus/"
+export const REQUEST_STOCK = API_BASE_URL + "/site/request"
 
 //Stock Management
 export const CREATE_STOCK = API_BASE_URL + "/stock/create"

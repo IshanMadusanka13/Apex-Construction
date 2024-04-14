@@ -3,8 +3,8 @@ const { Schema } = mongoose;
 
 const stockRequestSchema = new Schema({
     siteId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Site'
+        type: String,
+        required: true
     },
     equipments: [{
         equipmentId: {
@@ -16,6 +16,10 @@ const stockRequestSchema = new Schema({
             required: true
         }
     }],
+    date: {
+        type: Date,
+        default: Date.now,
+    },
     status: {
         type: Boolean,
         required: true
