@@ -34,19 +34,19 @@ function AddEmployee() {
         }));
     };
 
-    useEffect(() => {
-        const loadEmployeeId = async () => {
-            axios
-                .get(GET_EMPLOYEE_ID, {})
-                .then((response) => {
-                    handleChange('employeeId', response.data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                    errorAlert(error.response.data.message);
-                });
-        };
+    const loadEmployeeId = async () => {
+        axios
+            .get(GET_EMPLOYEE_ID, {})
+            .then((response) => {
+                handleChange('employeeId', response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
+    };
 
+    useEffect(() => {
         loadEmployeeId();
     }, [navigate]);
 
@@ -75,6 +75,21 @@ function AddEmployee() {
         axios
             .post(CREATE_EMPLOYEE, employeeDetails)
             .then((response) => {
+                setEmployeeDetails({
+                    employeeId: "",
+                    firstName: "",
+                    lastName: "",
+                    dateOfBirth: "",
+                    gender: "",
+                    nic: "",
+                    no: "",
+                    street: "",
+                    city: "",
+                    mobileNo: "",
+                    email: "",
+                    role: userTypes.WORKER,
+                });
+                loadEmployeeId();
                 successAlert(response.data.message);
             })
             .catch((error) => {
@@ -107,7 +122,6 @@ function AddEmployee() {
                     name="employeeId"
                     autoComplete="employeeId"
                     value={employeeDetails.employeeId}
-                    autoFocus
                     disabled
                 />
             </Grid>
@@ -149,7 +163,7 @@ function AddEmployee() {
                     label="First Name"
                     name="fname"
                     autoComplete="fname"
-                    autoFocus
+                    value={employeeDetails.firstName}
                     onChange={(e) => handleChange('firstName', e.target.value)}
                 />
             </Grid>
@@ -162,6 +176,7 @@ function AddEmployee() {
                     label="Last name"
                     name="lname"
                     autoComplete="lname"
+                    value={employeeDetails.lastName}
                     onChange={(e) => handleChange('lastName', e.target.value)}
                 />
             </Grid>
@@ -176,6 +191,7 @@ function AddEmployee() {
                     name="dob"
                     label="Date of Birth"
                     autoComplete="dob"
+                    value={employeeDetails.dateOfBirth}
                     onChange={(e) => handleChange('dateOfBirth', e.target.value)}
                 />
             </Grid>
@@ -188,11 +204,13 @@ function AddEmployee() {
                     label="NIC"
                     name="nic"
                     autoComplete="nic"
+                    value={employeeDetails.nic}
                     onChange={(e) => handleChange('nic', e.target.value)}
                 />
             </Grid>
             <Grid item md={4}>
                 <TextField
+                    select
                     margin="normal"
                     required
                     fullWidth
@@ -200,8 +218,12 @@ function AddEmployee() {
                     label="Gender"
                     name="gender"
                     autoComplete="gender"
+                    value={employeeDetails.gender}
                     onChange={(e) => handleChange('gender', e.target.value)}
-                />
+                >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                </TextField>
             </Grid>
 
             <Grid item md={3}>
@@ -213,6 +235,7 @@ function AddEmployee() {
                     label="No"
                     name="no"
                     autoComplete="no"
+                    value={employeeDetails.no}
                     onChange={(e) => handleChange('no', e.target.value)}
                 />
             </Grid>
@@ -225,6 +248,7 @@ function AddEmployee() {
                     label="Street"
                     name="street"
                     autoComplete="street"
+                    value={employeeDetails.street}
                     onChange={(e) => handleChange('street', e.target.value)}
                 />
             </Grid>
@@ -237,6 +261,7 @@ function AddEmployee() {
                     label="City"
                     name="city"
                     autoComplete="city"
+                    value={employeeDetails.city}
                     onChange={(e) => handleChange('city', e.target.value)}
                 />
             </Grid>
@@ -249,6 +274,7 @@ function AddEmployee() {
                     label="Mobile No"
                     name="mobileNo"
                     autoComplete="mobileNo"
+                    value={employeeDetails.mobileNo}
                     onChange={(e) => handleChange('mobileNo', e.target.value)}
                 />
             </Grid>
@@ -261,6 +287,7 @@ function AddEmployee() {
                     label="Email"
                     name="email"
                     autoComplete="email"
+                    value={employeeDetails.email}
                     onChange={(e) => handleChange('email', e.target.value)}
                 />
             </Grid>
