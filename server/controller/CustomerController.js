@@ -23,7 +23,14 @@ const CustomerController = {
 
             const newUser = await UserController.createUser(email, password, UserType.CUSTOMER);
 
+            const latestDocument = await Customer.findOne().sort({ _id: -1 });
+            const lastId = latestDocument.customerId;
+            const numericPart = parseInt(lastId.substring(1));
+            const nextNumericPart = numericPart + 1;
+            const cusId = "C" + nextNumericPart;
+
             const customer = new Customer({
+                customerId: cusId,
                 firstName,
                 lastName,
                 dateOfBirth,
@@ -50,17 +57,17 @@ const CustomerController = {
 
     updateCustomer: async (req, res) => {
         try {
-    
+
             const updatedCustomer = await Customer.findOneAndUpdate(
-                {email: req.body.email},
+                { email: req.body.email },
                 req.body,
                 { new: true }
             );
-    
+
             if (!updatedCustomer) {
                 return res.status(404).json({ message: "Customer not found" });
             }
-    
+
             logger.info("Customer update successful");
             res.status(200).json(updatedCustomer);
         } catch (error) {

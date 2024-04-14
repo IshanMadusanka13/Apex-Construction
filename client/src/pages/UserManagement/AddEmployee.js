@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { errorAlert, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 
 function AddEmployee() {
@@ -34,31 +34,63 @@ function AddEmployee() {
         }));
     };
 
-    useEffect(() => {
-        const loadEmployeeId = async () => {
-            axios
-                .get(GET_EMPLOYEE_ID, {})
-                .then((response) => {
-                    console.log(response);
-                    handleChange('employeeId', response.data)
-                })
-                .catch((error) => {
-                    console.log(error);
-                    errorAlert(error.response.data.message);
-                });
-        };
+    const loadEmployeeId = async () => {
+        axios
+            .get(GET_EMPLOYEE_ID, {})
+            .then((response) => {
+                handleChange('employeeId', response.data)
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
+    };
 
+    useEffect(() => {
         loadEmployeeId();
     }, [navigate]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const oldNicRegex = /^[0-9]{9}[vVxX]$/;
+        const newNicRegex = /^\d{12}$/;
+        if (!oldNicRegex.test(employeeDetails.nic) && !newNicRegex.test(employeeDetails.nic)) {
+            errorAlert("Please enter a valid NIC number.");
+            return;
+        }
+
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(employeeDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(employeeDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
+
         axios
             .post(CREATE_EMPLOYEE, employeeDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
-                timedSuccessAlert("Employee Created successfully");
+                setEmployeeDetails({
+                    employeeId: "",
+                    firstName: "",
+                    lastName: "",
+                    dateOfBirth: "",
+                    gender: "",
+                    nic: "",
+                    no: "",
+                    street: "",
+                    city: "",
+                    mobileNo: "",
+                    email: "",
+                    role: userTypes.WORKER,
+                });
+                loadEmployeeId();
+                successAlert(response.data.message);
             })
             .catch((error) => {
                 console.log(error);
@@ -90,7 +122,6 @@ function AddEmployee() {
                     name="employeeId"
                     autoComplete="employeeId"
                     value={employeeDetails.employeeId}
-                    autoFocus
                     disabled
                 />
             </Grid>
@@ -107,13 +138,13 @@ function AddEmployee() {
                     autoFocus
                     value={employeeDetails.role}
                     onChange={(e) => handleChange('role', e.target.value)}
-                > 
+                >
                     {loggedUser.userType === userTypes.ADMIN && (
                         <MenuItem key={userTypes.ADMIN} value={userTypes.ADMIN}>
                             {userTypes.ADMIN.toUpperCase()}
                         </MenuItem>
                     )}
-                    
+
                     {Object.values(userTypes)
                         .filter(type => type !== 'admin' && type !== 'customer')
                         .map((type) => (
@@ -132,7 +163,7 @@ function AddEmployee() {
                     label="First Name"
                     name="fname"
                     autoComplete="fname"
-                    autoFocus
+                    value={employeeDetails.firstName}
                     onChange={(e) => handleChange('firstName', e.target.value)}
                 />
             </Grid>
@@ -145,6 +176,7 @@ function AddEmployee() {
                     label="Last name"
                     name="lname"
                     autoComplete="lname"
+                    value={employeeDetails.lastName}
                     onChange={(e) => handleChange('lastName', e.target.value)}
                 />
             </Grid>
@@ -159,6 +191,7 @@ function AddEmployee() {
                     name="dob"
                     label="Date of Birth"
                     autoComplete="dob"
+                    value={employeeDetails.dateOfBirth}
                     onChange={(e) => handleChange('dateOfBirth', e.target.value)}
                 />
             </Grid>
@@ -171,11 +204,13 @@ function AddEmployee() {
                     label="NIC"
                     name="nic"
                     autoComplete="nic"
+                    value={employeeDetails.nic}
                     onChange={(e) => handleChange('nic', e.target.value)}
                 />
             </Grid>
             <Grid item md={4}>
                 <TextField
+                    select
                     margin="normal"
                     required
                     fullWidth
@@ -183,8 +218,12 @@ function AddEmployee() {
                     label="Gender"
                     name="gender"
                     autoComplete="gender"
+                    value={employeeDetails.gender}
                     onChange={(e) => handleChange('gender', e.target.value)}
-                />
+                >
+                    <MenuItem value="Male">Male</MenuItem>
+                    <MenuItem value="Female">Female</MenuItem>
+                </TextField>
             </Grid>
 
             <Grid item md={3}>
@@ -196,6 +235,7 @@ function AddEmployee() {
                     label="No"
                     name="no"
                     autoComplete="no"
+                    value={employeeDetails.no}
                     onChange={(e) => handleChange('no', e.target.value)}
                 />
             </Grid>
@@ -208,6 +248,7 @@ function AddEmployee() {
                     label="Street"
                     name="street"
                     autoComplete="street"
+                    value={employeeDetails.street}
                     onChange={(e) => handleChange('street', e.target.value)}
                 />
             </Grid>
@@ -220,6 +261,7 @@ function AddEmployee() {
                     label="City"
                     name="city"
                     autoComplete="city"
+                    value={employeeDetails.city}
                     onChange={(e) => handleChange('city', e.target.value)}
                 />
             </Grid>
@@ -232,6 +274,7 @@ function AddEmployee() {
                     label="Mobile No"
                     name="mobileNo"
                     autoComplete="mobileNo"
+                    value={employeeDetails.mobileNo}
                     onChange={(e) => handleChange('mobileNo', e.target.value)}
                 />
             </Grid>
@@ -244,6 +287,7 @@ function AddEmployee() {
                     label="Email"
                     name="email"
                     autoComplete="email"
+                    value={employeeDetails.email}
                     onChange={(e) => handleChange('email', e.target.value)}
                 />
             </Grid>

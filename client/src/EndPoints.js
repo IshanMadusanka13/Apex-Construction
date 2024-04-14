@@ -16,6 +16,7 @@ export const UPDATE_EMPLOYEE = API_BASE_URL + "/employee/update"
 export const GET_EMPLOYEE_ID = API_BASE_URL + "/employee/getid"
 export const DELETE_EMPLOYEE = API_BASE_URL + "/employee/delete"
 export const GET_EMPLOYEE_COUNT = API_BASE_URL + "/employee/getcount"
+export const GET_LOG_REPORT = API_BASE_URL + "/employee/getlog"
 
 //Site Management
 export const CREATE_SITE = API_BASE_URL + "/site/create"

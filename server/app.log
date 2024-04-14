@@ -1,0 +1,42 @@
+{"level":30,"time":1712460318975,"pid":1188,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712460318997,"pid":1188,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712460413823,"pid":6792,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712460413845,"pid":6792,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712460913416,"pid":1116,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712460913451,"pid":1116,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712461140957,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712461147401,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1712461160502,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712461175231,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461183631,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1712461184110,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461185240,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461187931,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712461189484,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712461193467,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461194144,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461197107,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1712461197748,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1712461207803,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/E1000/employeeId] Request Received"}
+{"level":30,"time":1712461213710,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461214411,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461262760,"pid":13296,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712461262780,"pid":13296,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712461375291,"pid":4580,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712461377314,"pid":4580,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712463960697,"pid":9016,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712463960721,"pid":9016,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712464118497,"pid":7776,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712464118538,"pid":7776,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712464338019,"pid":9112,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712464338044,"pid":9112,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712464358444,"pid":8948,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712464358465,"pid":8948,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712464475702,"pid":10700,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712464475723,"pid":10700,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712464917335,"pid":10128,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712464917357,"pid":10128,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1712466273577,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1712466273606,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1713078265169,"pid":6200,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713078272345,"pid":6200,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
