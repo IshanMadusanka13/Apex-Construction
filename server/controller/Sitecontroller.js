@@ -92,9 +92,11 @@ const SiteController = {
     generateSiteId: async (req, res) => {
         try {
 
-            const count = await Site.countDocuments();
-            let siteCount = count + 1000;
-            let siteId = "S" + siteCount;
+            const latestDocument = await Site.findOne().sort({ _id: -1 });
+            const lastId = latestDocument.siteId;
+            const numericPart = parseInt(lastId.substring(1));
+            const nextNumericPart = numericPart + 1;
+            const siteId = "S" + nextNumericPart;
             res.status(200).json(siteId);
 
         } catch (error) {
