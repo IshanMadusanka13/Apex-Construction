@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
@@ -9,6 +10,10 @@ import AddEmployee from "./AddEmployee";
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
+import StockRequest from "../SiteManagement/StockRequest.js";
+import AddSite from "../SiteManagement/AddSite.js";
+import ViewAllSites from "../SiteManagement/ViewAllSites";
+
 
 export default function UserDashboard() {
 
@@ -39,6 +44,9 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "LogReport" && <LogReport />}
+                    {selectedContent === "addSite" && <AddSite />}
+                    {selectedContent === "viewSite" && <ViewAllSites />}
+                    {selectedContent === "StockReq" && <StockRequest/>}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>
@@ -95,6 +103,7 @@ function EmployeeProfile() {
                         email: employee.email,
                         role: employee.role
                     });
+
                 })
                 .catch((error) => {
                     errorAlert(error.response.data.message);

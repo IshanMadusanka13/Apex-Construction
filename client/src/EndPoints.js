@@ -17,3 +17,11 @@ export const GET_EMPLOYEE_ID = API_BASE_URL + "/employee/getid"
 export const DELETE_EMPLOYEE = API_BASE_URL + "/employee/delete"
 export const GET_EMPLOYEE_COUNT = API_BASE_URL + "/employee/getcount"
 export const GET_LOG_REPORT = API_BASE_URL + "/employee/getlog"
+
+//Site Management
+export const CREATE_SITE = API_BASE_URL + "/site/create"
+export const UPDATE_SITE = API_BASE_URL + "/site/update"
+export const DELETE_SITE = API_BASE_URL + "/site/delete/"
+export const GENERATE_SITE_ID = API_BASE_URL + "/site/getid"
+export const GET_ALL_SITES = API_BASE_URL + "/site/getall"
+export const CALCULATE_SITE_STATUS = API_BASE_URL + "/site/getstatus/"

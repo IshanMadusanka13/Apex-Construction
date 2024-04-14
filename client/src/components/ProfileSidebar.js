@@ -80,6 +80,29 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="Profile" />}
         </ListItem>
 
+        <ListItem button onClick={() => handleItemClick("addSite")} sx={{ backgroundColor: selectedContent === "addSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <VisibilityIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Add Site" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("viewSite")} sx={{ backgroundColor: selectedContent === "viewSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <VisibilityIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="View Sites" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("StockReq")} sx={{ backgroundColor: selectedContent === "StockReq" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <VisibilityIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Stock Request" />}
+        </ListItem>
+
+
+
         {setPrivileges()}
 
         <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>
