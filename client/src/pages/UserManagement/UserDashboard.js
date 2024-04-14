@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
-import { setId } from "../../state";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
 import PaymentForm from "../FinanceManagement/ComMakePayment.js";
@@ -63,7 +62,6 @@ function EmployeeProfile() {
 
     const navigate = useNavigate();
     const theme = useTheme();
-    const dispatch = useDispatch();
 
     const [employeeDetails, setEmployeeDetails] = useState({
         employeeId: "",
@@ -109,9 +107,6 @@ function EmployeeProfile() {
                         email: employee.email,
                         role: employee.role
                     });
-
-                    const employeeId = employee.employeeId;
-                    dispatch(setId({ id: employeeId }));
                 })
                 .catch((error) => {
                     errorAlert(error.response.data.message);
@@ -339,7 +334,6 @@ function CustomerProfile() {
 
     const navigate = useNavigate();
     const theme = useTheme();
-    const dispatch = useDispatch();
 
     const [customerDetails, setCustomerDetails] = useState({
         customerId:"",
@@ -387,9 +381,6 @@ function CustomerProfile() {
                         mobileNo: customer.mobileNo,
                         email: customer.email,
                     });
-
-                    const customerId = customer.customerId;
-                    dispatch(setId({ customerId}));
                 })
                 .catch((error) => {
                     errorAlert(error.response.data.message);
