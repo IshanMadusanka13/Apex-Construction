@@ -4,7 +4,6 @@ const initialState = {
     mode: "light",
     user: null,
     token: null,
-    id: "",
 }
 
 export const globalSlice = createSlice({
@@ -19,10 +18,6 @@ export const globalSlice = createSlice({
         setCredentials: (state, action) => {
             state.user = action.payload.user;
             state.token = action.payload.token;
-        },
-
-        setId: (state, action) => {
-            state.id = action.payload.id;
         },
 
         setLogout: (state) => {
