@@ -18,6 +18,8 @@ import Review from "../FinanceManagement/PaymentReview.js";
 import MakePayment from "../FinanceManagement/MakePayment";
 import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
 import Biller from "../FinanceManagement/Biller";
+import StockPage from "../StockManagement/Stock";
+import BuyStock from "../StockManagement/BuyStock";
 
 export default function UserDashboard() {
 
@@ -47,6 +49,8 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "stock" && <StockPage />}
+                    {selectedContent === "buyStock" && <BuyStock />}
                     {selectedContent === "LogReport" && <LogReport />}
                     {selectedContent === "addSite" && <AddSite />}
                     {selectedContent === "viewSite" && <ViewAllSites />}

@@ -7,6 +7,7 @@ import employeeRouter from "./routes/EmployeeRouter.js";
 import siteRouter from "./routes/SiteRouter.js";
 import paymentRouter from "./routes/PaymentRouter.js";
 import billerRouter from "./routes/BillerRouter.js";
+import stockRouter from "./routes/StockRouter.js";
 
 const app = express();
 
@@ -20,6 +21,7 @@ app.use('/employee', employeeRouter);
 app.use('/site',siteRouter);
 app.use('/finance', paymentRouter);
 app.use('/biller', billerRouter);
+app.use('/stock', stockRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
