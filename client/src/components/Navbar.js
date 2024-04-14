@@ -64,9 +64,9 @@ function Header() {
     window.location.href = '/login'
   };
 
-  const handleLogout = () => {
-    dispatch(setLogout())
-    window.location.href = '/login'
+  const handleLogout = async () => {
+    await dispatch(setLogout());
+    window.location.href = '/login';
   };
 
   return (

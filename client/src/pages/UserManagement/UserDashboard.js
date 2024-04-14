@@ -12,7 +12,6 @@ import LogReport from "./LogReport";
 import StockRequest from "../SiteManagement/StockRequest.js";
 import AddSite from "../SiteManagement/AddSite.js";
 import ViewAllSites from "../SiteManagement/ViewAllSites";
-
 import PaymentForm from "../FinanceManagement/ComMakePayment.js";
 import Review from "../FinanceManagement/PaymentReview.js";
 import MakePayment from "../FinanceManagement/MakePayment";
@@ -49,9 +48,11 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "LogReport" && <LogReport />}
+
                     {selectedContent === "stock" && <StockPage />}
                     {selectedContent === "buyStock" && <BuyStock />}
-                    {selectedContent === "LogReport" && <LogReport />}
+                    
                     {selectedContent === "addSite" && <AddSite />}
                     {selectedContent === "viewSite" && <ViewAllSites />}
                     {selectedContent === "StockReq" && <StockRequest/>}

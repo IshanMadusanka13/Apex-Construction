@@ -275,7 +275,7 @@ const StockReplenishmentReport = () => {
         console.log(replenishDetails);
         replenishDetails.forEach((stock) => {
             const stockData = [
-                moment(stock.date).format('MMMM Do YYYY, h:mm:ss a'), // format the date here
+                moment(stock.date).format('MMMM Do YYYY, h:mm:ss a'),
                 stock.equipmentId,
                 stock.qty,
                 stock.totalPrice,

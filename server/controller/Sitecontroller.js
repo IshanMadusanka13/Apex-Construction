@@ -112,8 +112,6 @@ const SiteController = {
                 const completedDays = Math.round(
                     ((new Date() - result.start) / (result.end - result.start)) * 100
                 );
-                logger.info(req.params.id);
-                logger.info(completedDays);
                 res.status(200).json(completedDays);
             })
             .catch((err) => {

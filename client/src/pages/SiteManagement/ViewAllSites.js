@@ -4,14 +4,13 @@ import Axios from "axios";
 import { TextField, Typography, Button, Grid, MenuItem, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Box, Paper, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import { useSelector } from 'react-redux';
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
-import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, UPDATE_SITE } from "../../EndPoints.js";
+import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, SEARCH_CUSTOMER_BY_USER, UPDATE_SITE } from "../../EndPoints.js";
 import moment from "moment";
 
 function ViewAllSites() {
     const theme = useTheme();
     const navigate = useNavigate();
     const loggedUser = useSelector((state) => state.user);
-    const loggedUserId = useSelector((state) => state.id);
 
     //----------------------Table Functions-----------------------------------
     const [page, setPage] = useState(0);
@@ -55,6 +54,7 @@ function ViewAllSites() {
     const [selectedRow, setSelectedRow] = useState([]);
     const [viewUpdate, setViewUpdate] = useState(false);
     const [showView, setShowView] = useState(false);
+    const [customerId, setCustomerId] = useState(false);
     const [searchData, setsearchData] = useState({
         value: "",
         searchBy: "",
@@ -72,16 +72,56 @@ function ViewAllSites() {
             });
     };
 
+    const loadProfile = async () => {
+        Axios
+            .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
+            .then((response) => {
+                const customer = response.data;
+                setCustomerId(customer.customerId);
+            })
+            .catch((error) => {
+                errorAlert(error.response.data.message);
+            });
+    };
+
+    const FilterRows = () => {
+
+        const filteredRows = rows.filter(row => {
+            console.log(customerId);
+            console.log(searchData.searchBy);
+            if (searchData.searchBy === "siteId") {
+                if (row.siteId == searchData.value) {
+                    return row;
+                }
+            } else if (searchData.searchBy === "customerId") {
+                if (row.customerId == searchData.value) {
+                    console.log(row.customerId + " for " + searchData.value);
+                    return row;
+                }
+            }
+            return;
+        });
+        setFilteredRows(filteredRows);
+    };
+
     useEffect(() => {
         loadAllSites();
-        if (loggedUser.userType != userTypes.CUSTOMER) {
+    }, [navigate, viewUpdate]);
+    
+    useEffect(() => {
+        if (loggedUser.userType === userTypes.CUSTOMER) {
+            loadProfile();
             setsearchData({
-                value: loggedUserId,
+                value: customerId,
                 searchBy: "customerId",
             });
-            FilterRows();
         }
-    }, [viewUpdate]);
+    }, [loggedUser.userType, customerId]);
+    
+    useEffect(() => {
+        FilterRows();
+    }, [customerId, rows, searchData]);
+
 
     const handleChange = (field, value) => {
         setsearchData((prevDetails) => ({
@@ -92,16 +132,20 @@ function ViewAllSites() {
 
     const handleView = (row) => {
         setShowView(true);
+        setViewUpdate(false);
         setSelectedRow(row);
     };
 
     const handleUpdate = (row) => {
         setViewUpdate(true);
+        setShowView(false);
         setSelectedRow(row);
         setFilteredRows([]);
     };
 
     const handleDelete = (siteId) => {
+        setShowView(false);
+        setViewUpdate(false);
         Axios.delete(DELETE_SITE + siteId)
             .then((response) => {
                 loadAllSites();
@@ -110,23 +154,6 @@ function ViewAllSites() {
             .catch(error => {
                 errorAlert("Axios Error :", error);
             });
-    };
-
-    const FilterRows = () => {
-
-        const filteredRows = rows.filter(row => {
-            if (searchData.searchBy === "siteId") {
-                if (row.siteId == searchData.value) {
-                    return row;
-                }
-            } else if (searchData.searchBy === "customerId") {
-                if (row.customerId == searchData.value) {
-                    return row;
-                }
-            }
-            return;
-        });
-        setFilteredRows(filteredRows);
     };
 
     const handleFilter = (event) => {
