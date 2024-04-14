@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from 'react-redux';
-import { useSelector } from 'react-redux';
 import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
@@ -14,6 +13,11 @@ import StockRequest from "../SiteManagement/StockRequest.js";
 import AddSite from "../SiteManagement/AddSite.js";
 import ViewAllSites from "../SiteManagement/ViewAllSites";
 
+import PaymentForm from "../FinanceManagement/ComMakePayment.js";
+import Review from "../FinanceManagement/PaymentReview.js";
+import MakePayment from "../FinanceManagement/MakePayment";
+import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
+import Biller from "../FinanceManagement/Biller";
 
 export default function UserDashboard() {
 
@@ -47,6 +51,13 @@ export default function UserDashboard() {
                     {selectedContent === "addSite" && <AddSite />}
                     {selectedContent === "viewSite" && <ViewAllSites />}
                     {selectedContent === "StockReq" && <StockRequest/>}
+                    
+                    {selectedContent === "biller" && <Biller />}
+                    {selectedContent === "makePayment" && <MakePayment />}
+                    {selectedContent === "comMakePayment" && <PaymentForm />}
+                    {selectedContent === "customerInstallment" && <CustomerInstallment />}
+                    {selectedContent === "review" && <Review />}
+
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>
