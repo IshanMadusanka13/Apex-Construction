@@ -1,4 +1,4 @@
-import cusPackageBuyModel from "../models/CusPackageBuy";
+import cusPackageBuyModel from "../models/CusPackageBuy.js";
 import logger from '../utils/logger.js'
 
 export function createCusPackage(req, res) {

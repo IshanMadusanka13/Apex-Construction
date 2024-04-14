@@ -271,3 +271,9 @@
 {"level":30,"time":1713095181994,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1713097442333,"pid":22228,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
 {"level":30,"time":1713097446008,"pid":22228,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1713113249005,"pid":1296,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1713113249024,"pid":1296,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv ECONNREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1713113433788,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713113439954,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713113527750,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713113528581,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
