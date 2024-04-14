@@ -11,6 +11,7 @@ function ViewAllSites() {
     const theme = useTheme();
     const navigate = useNavigate();
     const loggedUser = useSelector((state) => state.user);
+    const loggedUserId = useSelector((state) => state.id);
 
     //----------------------Table Functions-----------------------------------
     const [page, setPage] = useState(0);
@@ -75,7 +76,7 @@ function ViewAllSites() {
         loadAllSites();
         if (loggedUser.userType != userTypes.CUSTOMER) {
             setsearchData({
-                value: loggedUser.id,
+                value: loggedUserId,
                 searchBy: "customerId",
             });
             FilterRows();
