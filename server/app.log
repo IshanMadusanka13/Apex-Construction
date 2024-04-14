@@ -38,3 +38,5 @@
 {"level":50,"time":1712464917357,"pid":10128,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
 {"level":30,"time":1712466273577,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
 {"level":50,"time":1712466273606,"pid":13936,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv EREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1713078265169,"pid":6200,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713078272345,"pid":6200,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
