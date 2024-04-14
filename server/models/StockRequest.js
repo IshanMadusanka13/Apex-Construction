@@ -6,14 +6,16 @@ const stockRequestSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'Site'
     },
-    equipmentId: {
-        type: Schema.Types.ObjectId,
-        ref: 'Stock'
-    },
-    qty: {
-        type: Number,
-        required: true
-    },
+    equipments: [{
+        equipmentId: {
+            type: Number,
+            required: true
+        },
+        qty: {
+            type: Number,
+            required: true
+        }
+    }],
     status: {
         type: Boolean,
         required: true

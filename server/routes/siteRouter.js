@@ -6,8 +6,9 @@ const siteRouter =  express.Router();
 siteRouter.get("/getall", SiteController.getAllSites);
 siteRouter.get("/get/:id", SiteController.getAllSitesByCustId);
 siteRouter.get("/getid", SiteController.generateSiteId);
+siteRouter.get("/getstatus/:id", SiteController.calculateCompleteStatus);
 siteRouter.post("/create", SiteController.createSite);
-siteRouter.delete("delete/:id", SiteController.deleteSite);
-siteRouter.put("update/:id", SiteController.updateSite);
+siteRouter.put("/update", SiteController.updateSite);
+siteRouter.delete("/delete/:id", SiteController.deleteSite);
 
 export default siteRouter;

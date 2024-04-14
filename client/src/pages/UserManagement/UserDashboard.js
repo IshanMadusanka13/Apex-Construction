@@ -7,13 +7,10 @@ import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
 import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
-import { BorderAll } from "@mui/icons-material";
 import ViewEmployee from "./ViewEmployee";
-import AddSiteDetails from "../SiteManagement/AddSite.js";
-import AllsiteDetail from "../SiteManagement/AllSiteDetail.js";
-import SiteProfile from "../SiteManagement/siteProfile.js";
-import MonthlyReport from "../SiteManagement/monthlyReport.js"
 import StockRequest from "../SiteManagement/StockRequest.js";
+import AddSite from "../SiteManagement/AddSite.js";
+import ViewAllSites from "../SiteManagement/ViewAllSites";
 
 
 export default function UserDashboard() {
@@ -44,11 +41,9 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
-                    {selectedContent === "addSiteDetails" && <AddSiteDetails />}
-                    {selectedContent === "MonthlyReport" && <MonthlyReport/>}
+                    {selectedContent === "addSite" && <AddSite />}
+                    {selectedContent === "viewSite" && <ViewAllSites />}
                     {selectedContent === "StockReq" && <StockRequest/>}
-                    {selectedContent === "SiteProfile" && <SiteProfile/>}
-                    {selectedContent === "AllSiteDetail" && <AllsiteDetail/>}
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

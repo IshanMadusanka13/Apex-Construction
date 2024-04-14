@@ -46,7 +46,7 @@ const ProfileSidebar = (props) => {
               {isMd && <ListItemText primary="View/Delete Employee" />}
             </ListItem>
 
-            
+
           </span>
         )
 
@@ -75,38 +75,28 @@ const ProfileSidebar = (props) => {
           {isMd && <ListItemText primary="Profile" />}
         </ListItem>
 
-        <ListItem button onClick={() => handleItemClick("addSiteDetails")} sx={{ backgroundColor: selectedContent === "addSiteDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="add Site Details" />}
-            </ListItem>
-            <ListItem button onClick={() => handleItemClick("MonthlyReport")} sx={{ backgroundColor: selectedContent === "MonthlyReport" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="Monthly Report" />}
-            </ListItem>
-            <ListItem button onClick={() => handleItemClick("StockReq")} sx={{ backgroundColor: selectedContent === "StockReq" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="StockReqe" />}
-            </ListItem>
-            <ListItem button onClick={() => handleItemClick("SiteProfile")} sx={{ backgroundColor: selectedContent === "SiteProfile" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="SiteProfile" />}
-            </ListItem>
-            <ListItem button onClick={() => handleItemClick("AllSiteDetail")} sx={{ backgroundColor: selectedContent === "AllSiteDetail" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="All Site Details" />}
-            </ListItem>
+        <ListItem button onClick={() => handleItemClick("addSite")} sx={{ backgroundColor: selectedContent === "addSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <VisibilityIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Add Site" />}
+        </ListItem>
 
-        
+        <ListItem button onClick={() => handleItemClick("viewSite")} sx={{ backgroundColor: selectedContent === "viewSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <VisibilityIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="View Sites" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("StockReq")} sx={{ backgroundColor: selectedContent === "StockReq" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <VisibilityIcon />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Stock Request" />}
+        </ListItem>
+
+
 
         {setPrivileges()}
 

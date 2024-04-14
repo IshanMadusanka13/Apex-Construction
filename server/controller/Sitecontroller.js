@@ -5,7 +5,7 @@ import logger from "../utils/logger.js";
 const SiteController = {
 
     createSite: async (req, res) => {
-        const { siteId, location, start, end, notes, customerId } = req.body;
+        const { siteId, location, start, end, notes, customerId, lastUpdate, completeStatus } = req.body;
         const newSite = new Site({
             customerId: customerId,
             siteId: siteId,
@@ -13,6 +13,8 @@ const SiteController = {
             start: start,
             end: end,
             notes: notes,
+            lastUpdate: lastUpdate,
+            completeStatus: completeStatus,
         });
         newSite
             .save()
@@ -27,37 +29,38 @@ const SiteController = {
     },
 
     updateSite: async (req, res) => {
-        const { location, siteId, siteState } = req.body;
+        const { siteId, location, notes, lastUpdate, completeStatus } = req.body;
         Site
             .updateOne(
-                { _id: req.params.id },
+                { siteId: siteId },
                 {
                     $set: {
                         location: location,
-                        siteId: siteId,
-                        siteState: siteState,
+                        notes: notes,
+                        lastUpdate: lastUpdate,
+                        completeStatus: completeStatus,
                     }
                 }
             )
             .then((result) => {
-                logger.info("Site " + req.params.id + " Updated Successfully");
+                logger.info("Site " + siteId + " Updated Successfully");
                 res.send(result);
             })
             .catch((err) => {
-                logger.error("Error Updating Site " + req.params.id);
+                logger.error("Error Updating Site " + siteId);
                 res.status(500).json({ message: "Error updating site" });
             });
     },
 
     deleteSite: async (req, res) => {
         Site
-            .deleteOne({ _id: req.params.id })
+            .deleteOne({ siteId: req.params.id })
             .then((result) => {
                 logger.info("Site " + req.params.id + " Deleted Successfully");
                 res.send(result);
             })
             .catch((err) => {
-                logger.error("Site " + req.params.id + " deleted Failed");
+                logger.error("Site " + req.params.id + " Deleted Failed");
                 res.status(500).json({ message: "Error deleting site" });
             });
     },
@@ -100,133 +103,42 @@ const SiteController = {
         }
     },
 
-    stockRequest: async (req, res) => {
-        const { siteId, equipmentId, qty } = req.body;
-
-        const stockRequest = new StockRequest({
-            siteId: siteId,
-            equipmentId: equipmentId,
-            qty: qty,
-            status: false
-        });
-
-        stockRequest
-            .save()
+    calculateCompleteStatus: async (req, res) => {
+        Site
+            .findOne({ siteId: req.params.id })
             .then((result) => {
-                logger.info("Stock Requested Successfully");
-                res.send(result);
+                const completedDays = Math.round(
+                    ((new Date() - result.start) / (result.end - result.start)) * 100
+                );
+                logger.info(req.params.id);
+                logger.info(completedDays);
+                res.status(200).json(completedDays);
             })
             .catch((err) => {
-                logger.error("Error Requesting Stock");
-                res.status(500).json({ message: "Error Requesting Stock" });
+                logger.error("Error Calculating Complete Status");
+                res.status(500).json({ message: "Error getting site" });
             });
     },
+
+    stockRequest: async (req, res) => {
+        try {
+            const { siteId, equipments } = req.body;
+
+            const stockRequest = new StockRequest({
+                siteId: siteId,
+                equipments: equipments,
+                status: false
+            });
+
+            const result = await stockRequest.save();
+            logger.info("Stock Requested Successfully");
+            res.send(result);
+        } catch (err) {
+            logger.error("Error Requesting Stock");
+            res.status(500).json({ message: "Error Requesting Stock" });
+        }
+    },
+
 }
 
 export default SiteController;
-
-/*
-//get completed days for site / all days as a percentage by siteId
-export function getCompletedDays(req, res) {
-
-    //get site by id
-    Site
-        .findOne({ siteId: req.params.id })
-        .then((result) => {
-            //calculate percentage
-            const completedDays = Math.round(
-                ((new Date() - result.start) / (result.end - result.start)) * 100
-            );
-            res.send({ completedDays: completedDays });
-        })
-        .catch((err) => {
-            res.status(500).json({ message: "Error getting site" });
-        });
-}
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

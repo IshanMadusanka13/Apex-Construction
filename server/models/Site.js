@@ -1,37 +1,39 @@
 import mongoose from "mongoose";
 
 const siteSchema = new mongoose.Schema({
-    customerId : {
-        type : String,
-        required : true,
+    customerId: {
+        type: String,
+        required: true,
     },
-    siteId : {
-        type : String,
-        required : true,
+    siteId: {
+        type: String,
+        required: true,
     },
-    location : {
-        type : String,
-        required : true
+    location: {
+        type: String,
+        required: true
     },
-    siteState : {
-        type : String,
-        required : true,
-        default : "pending"
+    start: {
+        type: Date,
+        required: true,
+        default: Date.now()
     },
-    start : {
-        type : Date,
-        required : true,
-        default : Date.now()
+    end: {
+        type: Date,
+        required: true,
+        default: Date.now()
     },
-    end : { 
-        type : Date,
-        required : true,
-        default : Date.now()
-
+    notes: {
+        type: String,
+        required: false
     },
-    notes : {
-        type : String,
-        required : false
+    lastUpdate: {
+        type: String,
+        required: false
+    },
+    completeStatus: {
+        type: Number,
+        required: false
     }
 
 });
