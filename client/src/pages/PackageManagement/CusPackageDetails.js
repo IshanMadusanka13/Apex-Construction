@@ -92,10 +92,12 @@ const CusPackageDetails = () => {
     packageDetails.price = newPrice;
     packageDetails.duration = newDuration + " months";
     packageDetails.cost = Math.round(newCost);
+
+    console.log(price);
   };
 
   const handleBuy = async () => {
-
+       console.log(packageDetails);
   };
 
   return (

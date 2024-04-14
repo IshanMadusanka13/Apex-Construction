@@ -253,3 +253,21 @@
 {"level":30,"time":1712992703750,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1712992737487,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1712992738075,"pid":12084,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712993825221,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712993828521,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1712993894689,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712993895330,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712993955988,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712993956556,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713013113035,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713013113924,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713013134050,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713013134574,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713013138639,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713013139316,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713095170953,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713095171581,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713095181427,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713095181994,"pid":2464,"hostname":"LAPTOP-0ECR6SIJ","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713097442333,"pid":22228,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713097446008,"pid":22228,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}

@@ -6,6 +6,7 @@ import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
 import packagesRouter from "./routes/PackagesRouter.js";
 import packageAddOnRouter from "./routes/packageAddOnsRouter.js";
+import cusPackageByeRouter from "./routes/cusPackageByeRouter.js";
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
 app.use('/package', packagesRouter);
 app.use('/packageaddon', packageAddOnRouter);
+app.use('/cuspackagebuy', cusPackageByeRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');

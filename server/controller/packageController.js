@@ -36,6 +36,8 @@ export function createPackage(req, res) {
       res.status(500).json({ message: "Error creating package" });
     });
 }
+
+
 //update existing package if user have  package in privileges by id
 export function updatePackage(req, res) {
   const {
