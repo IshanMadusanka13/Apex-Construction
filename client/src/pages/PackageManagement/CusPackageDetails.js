@@ -22,7 +22,7 @@ const CusPackageDetails = () => {
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const [mcost, setCost] = useState("");
-  const [planImage, setPlanImage] = useState("plan image");
+  const [cusId, setCusId] = useState("");
 
       const [customerDetails, setCustomerDetails] = useState({
         customerId:"",
@@ -64,36 +64,36 @@ const CusPackageDetails = () => {
     // });
 
 
-  console.log(packageName);    
-  console.log(price);
-  console.log(duration);
-  console.log(mcost);
+  // console.log(packageName);    
+  // console.log(price);
+  // console.log(duration);
+  // console.log(mcost);
   console.log(description);
-  console.log(customerDetails.customerId);
+  // console.log(customerDetails.customerId);
   
 
   const handleBuy = (e) => {
     e.preventDefault();
 
 
-    // axios
-    //   .post("http://localhost:3001/cuspackagebuy/add", {
-    //     name: packageDetails.name,
-    //     price: packageDetails.price,
-    //     description: packageDetails.description,
-    //     duration: packageDetails.duration,
-    //     // cusId: cusId,
-    //     cost: packageDetails.mcost,
-    //   })
-    //   .then((res) => {
-    //     console.log(res);
-    //     successAlert("Package Created");
-    //     navigate('/userDashboard')
-    //   })
-    //   .catch((error) => {
-    //     console.log("Error while adding a new package:", error);
-    //     errorAlert("An error occurred while adding the package. Please try again.");
-    //   });
+    axios
+      .post("http://localhost:3001/cuspackagebuy/add", {
+        name: packageName,
+        price: price,
+        description: description,
+        duration: duration,
+        cusId: '123456',
+        cost: mcost,
+      })
+      .then((res) => {
+        console.log(res);
+        successAlert("Package Created");
+        navigate('/userDashboard')
+      })
+      .catch((error) => {
+        console.log("Error while adding a new package:", error);
+        errorAlert("An error occurred while adding the package. Please try again.");
+      });
   };
 
   const loadAddons = async () => {
@@ -122,6 +122,9 @@ const CusPackageDetails = () => {
           setPackageName(response.data.name); // Set package name here
           setPrice(response.data.price);
           setDuration(response.data.duration);
+          setCost(response.data.cost);
+          setDescription('-');
+          setCusId(customerDetails.customerId);
           // console.log(packageDetails);
         })
         .catch((error) => {
@@ -144,14 +147,16 @@ const CusPackageDetails = () => {
 
     if (isChecked) {
       setAddOns([...addOns, addOnId]);
-      calculateCustomization(1, row);
+      calculateCustomization(1, row, description);
     } else {
       setAddOns(addOns.filter((id) => id !== addOnId));
       calculateCustomization(0, row);
     }
   };
 
-  const calculateCustomization = (operation, row) => {
+  
+
+  const calculateCustomization = (operation, row, desc) => {
     let price = packageDetails.price;
     let duration = parseInt(packageDetails.duration.match(/\d+/)[0]);
     let cost = packageDetails.cost;
@@ -160,27 +165,44 @@ const CusPackageDetails = () => {
     let aDuration = parseInt(row.duration.match(/\d+/)[0]);
     let description = row.description;
 
-    let newPrice, newDuration, newCost, newDescription="";
+    let newPrice, newDuration, newCost, newDescription;
+    let selectedOptions = [];
 
     if (operation == 1) {
       newPrice = price + aPrice;
       newDuration = duration + aDuration;
       newCost = cost + (aPrice / newDuration);
-      newDescription = (newDescription + "," + description)
+      // newDescription = (desc + "-" + description);
+
+      selectedOptions.push({ row, desc });
+      
+
+      
     } else if (operation == 0) {
       newPrice = price - aPrice;
       newDuration = duration - aDuration;
       newCost = cost - (aPrice / duration);
+
+      const index = selectedOptions.findIndex((option) => option.row === row);
+      if (index !== -1) {
+        selectedOptions.splice(index, 1);
+      }
+      
     }
+
+    newDescription = selectedOptions.map((option) => option.desc).join("-");
 
     packageDetails.price = newPrice;
     packageDetails.duration = newDuration + " months";
     packageDetails.cost = Math.round(newCost);
 
+    
+
     setPrice(newPrice);
     setDuration(newDuration + " months");
     setCost(Math.round(newCost));
     setDescription(newDescription);
+
   };
 
   return (
