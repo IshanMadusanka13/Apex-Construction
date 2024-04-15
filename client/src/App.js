@@ -11,7 +11,7 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import siteTheme from './theme';
 import { CssBaseline } from '@mui/material';
 import axios from 'axios';
-import { addRequestHeaders } from './utils';
+import { addRequestHeaders, handleUnauthorized } from './utils';
 
 
 function App() {
@@ -26,6 +26,11 @@ function App() {
   const token = useSelector((state) => state.token);
 
   axios.interceptors.request.use(addRequestHeaders(token));
+
+  axios.interceptors.response.use(
+    response => response,
+    handleUnauthorized()
+  );
 
   return (
     <Box>

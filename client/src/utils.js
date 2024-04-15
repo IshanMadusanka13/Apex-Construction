@@ -82,3 +82,11 @@ export function addRequestHeaders(token) {
   };
 };
 
+export function handleUnauthorized() {
+  return (error) => {
+    if (error.response && error.response.status === 403) {
+      window.location.href = '/error'
+    }
+    return Promise.reject(error);
+  };
+}

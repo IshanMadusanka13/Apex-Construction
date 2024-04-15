@@ -1136,3 +1136,7 @@
 {"level":30,"time":1713112619631,"pid":7392,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/E1006/employeeId] Request Received"}
 {"level":50,"time":1713112621186,"pid":7392,"hostname":"DESKTOP-4OV1VV7","msg":"Employee not found"}
 {"level":30,"time":1713112627446,"pid":7392,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/E1005/employeeId] Request Received"}
+{"level":30,"time":1713145172815,"pid":7880,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713145176644,"pid":7880,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713145656719,"pid":7880,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713145657331,"pid":7880,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}

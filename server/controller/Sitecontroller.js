@@ -136,7 +136,6 @@ const SiteController = {
             res.send(result);
         } catch (err) {
             logger.error("Error Requesting Stock");
-            logger.error(err);
             res.status(500).json({ message: "Error Requesting Stock" });
         }
     },

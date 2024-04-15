@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
 import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, SEARCH_CUSTOMER_BY_USER, UPDATE_SITE } from "../../EndPoints.js";
 import moment from "moment";
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 function ViewAllSites() {
     const theme = useTheme();
@@ -107,7 +109,7 @@ function ViewAllSites() {
     useEffect(() => {
         loadAllSites();
     }, [navigate, viewUpdate]);
-    
+
     useEffect(() => {
         if (loggedUser.userType === userTypes.CUSTOMER) {
             loadProfile();
@@ -117,7 +119,7 @@ function ViewAllSites() {
             });
         }
     }, [loggedUser.userType, customerId]);
-    
+
     useEffect(() => {
         FilterRows();
     }, [customerId, rows, searchData]);
@@ -495,7 +497,7 @@ function ViewSite({ values }) {
         start: "",
         end: "",
         lastUpdate: "Initiated",
-        completeStatus: 1,
+        completeStatus: 0,
         calculatedStatus: 0,
     });
 
@@ -505,7 +507,7 @@ function ViewSite({ values }) {
             .then((response) => {
                 setSiteDetails((prevDetails) => ({
                     ...prevDetails,
-                    calculatedStatus: response.data,
+                    calculatedStatus: response.data + "%",
                 }));
             })
             .catch((error) => {
@@ -523,7 +525,7 @@ function ViewSite({ values }) {
             start: moment(values.start).format('YYYY-MM-DD'),
             end: moment(values.end).format('YYYY-MM-DD'),
             lastUpdate: values.lastUpdate,
-            completeStatus: values.completeStatus,
+            completeStatus: values.completeStatus + "%",
         });
         loadCalculatedStatus();
     }, [values]);
@@ -558,7 +560,53 @@ function ViewSite({ values }) {
                     </Grid>
                 );
             })}
+
+            <Grid item md={12}>
+                <Button variant="contained" sx={{ mt: 2, width: "20%", borderRadius: "5" }} onClick={(e) => generateReport(e, siteDetails)}>
+                    Generate Report
+                </Button>
+            </Grid>
         </Grid>
     );
+
+}
+
+function generateReport(event, siteDetails) {
+    event.preventDefault();
+    const doc = new jsPDF();
+
+    //Site Details Part 1 Table
+    const tableHead = [["siteId", "customerId", "location", "notes"]];
+    const tableBody = [[
+        siteDetails.siteId,
+        siteDetails.customerId,
+        siteDetails.location,
+        siteDetails.notes,
+    ]];
+
+    //Site Details Part 2 Table
+    const tableHead2 = [["start", "end", "lastUpdate", "completeStatus", "calculatedStatus"]];
+    const tableBody2 = [
+        [siteDetails.start,
+        siteDetails.end,
+        siteDetails.lastUpdate,
+        siteDetails.completeStatus,
+        siteDetails.calculatedStatus]
+    ];
+
+    //Adding the Tables
+    doc.autoTable({
+        head: tableHead,
+        body: tableBody,
+        startY: 20,
+    });
+
+    doc.autoTable({
+        head: tableHead2,
+        body: tableBody2,
+        startY: doc.previousAutoTable.finalY + 20,
+    });
+
+    doc.save("site_report.pdf");
 
 }
