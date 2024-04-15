@@ -11,16 +11,21 @@ export function createCusPackage(req, res) {
       cusId,
       isApproved,
     } = req.body;
+
+    const formattedDescription = description.join(', ');
+    logger.info(formattedDescription);
+    logger.info(cusId);
+
     const newCusPackage = new cusPackageBuyModel({
       name: name,
       price: price,
-      description: description,
+      description: formattedDescription,
       duration: duration,
       cost: cost,
       cusId:cusId,
       isApproved:isApproved,
     });
-    newCusPackage
+/*    newCusPackage
       .save()
       .then((result) => {
         res.send(result);
@@ -28,5 +33,5 @@ export function createCusPackage(req, res) {
       .catch((err) => {
         logger.error(err);
         res.status(500).json({ message: "Error creating package" });
-      });
+      });*/
   }

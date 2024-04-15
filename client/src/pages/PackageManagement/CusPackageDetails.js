@@ -6,75 +6,77 @@ import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Che
 
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
 import { SEARCH_CUSTOMER_BY_USER } from '../../EndPoints';
+import { useSelector } from 'react-redux';
 
 // ...
 
 const CusPackageDetails = () => {
+
+  const navigate = useNavigate();
+  const loggedUser = useSelector((state) => state.user);
+
   const [addOnsDetails, setAddOnsDetails] = useState([]);
   const { packageId } = useParams();
   const [packageDetails, setPackageDetails] = useState([]);
   const [addOnsOpen, setAddOnsOpen] = useState(false);
   const [addOns, setAddOns] = useState([]);
-  const navigate = useNavigate();
 
   const [packageName, setPackageName] = useState("");
   const [price, setPrice] = useState("");
-  const [description, setDescription] = useState("");
+  const [description, setDescription] = useState([]);
   const [duration, setDuration] = useState("");
   const [mcost, setCost] = useState("");
   const [cusId, setCusId] = useState("");
 
-      const [customerDetails, setCustomerDetails] = useState({
-        customerId:"",
-        firstName: "",
-        lastName: "",
-        dateOfBirth: "",
-        nic: "",
-        no: "",
-        street: "",
-        city: "",
-        companyName: "",
-        businessType: "",
-        mobileNo: "",
-        email: "",
-    });
+  const [customerDetails, setCustomerDetails] = useState({
+    customerId: "",
+    firstName: "",
+    lastName: "",
+    dateOfBirth: "",
+    nic: "",
+    no: "",
+    street: "",
+    city: "",
+    companyName: "",
+    businessType: "",
+    mobileNo: "",
+    email: "",
+  });
 
-    // axios
-    // .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
-    // .then((response) => {
-    //     console.log(response);
-    //     const customer = response.data;
-    //     setCustomerDetails({
-    //         customerId: customer.customerId,
-    //         firstName: customer.firstName,
-    //         lastName: customer.lastName,
-    //         dateOfBirth: customer.dateOfBirth,
-    //         nic: customer.nic,
-    //         no: customer.no,
-    //         street: customer.street,
-    //         city: customer.city,
-    //         companyName: customer.companyName,
-    //         businessType: customer.businessType,
-    //         mobileNo: customer.mobileNo,
-    //         email: customer.email,
-    //     });
-    // })
-    // .catch((error) => {
-    //     errorAlert(error.response.data.message);
-    // });
+  const getCustomerDetails = () => {
+    axios
+      .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
+      .then((response) => {
+        console.log(response);
+        const customer = response.data;
+        setCustomerDetails({
+          customerId: customer.customerId,
+          firstName: customer.firstName,
+          lastName: customer.lastName,
+          dateOfBirth: customer.dateOfBirth,
+          nic: customer.nic,
+          no: customer.no,
+          street: customer.street,
+          city: customer.city,
+          companyName: customer.companyName,
+          businessType: customer.businessType,
+          mobileNo: customer.mobileNo,
+          email: customer.email,
+        });
+      })
+      .catch((error) => {
+        errorAlert(error.response.data.message);
+      });
+  }
 
+  useEffect(() => {
+    getCustomerDetails();
+  }, [navigate]);
 
-  // console.log(packageName);    
-  // console.log(price);
-  // console.log(duration);
-  // console.log(mcost);
   console.log(description);
-  // console.log(customerDetails.customerId);
-  
 
   const handleBuy = (e) => {
     e.preventDefault();
-
 
     axios
       .post("http://localhost:3001/cuspackagebuy/add", {
@@ -82,7 +84,7 @@ const CusPackageDetails = () => {
         price: price,
         description: description,
         duration: duration,
-        cusId: '123456',
+        cusId: customerDetails.customerId,
         cost: mcost,
       })
       .then((res) => {
@@ -123,7 +125,6 @@ const CusPackageDetails = () => {
           setPrice(response.data.price);
           setDuration(response.data.duration);
           setCost(response.data.cost);
-          setDescription('-');
           setCusId(customerDetails.customerId);
           // console.log(packageDetails);
         })
@@ -147,61 +148,47 @@ const CusPackageDetails = () => {
 
     if (isChecked) {
       setAddOns([...addOns, addOnId]);
-      calculateCustomization(1, row, description);
+      calculateCustomization(1, row);
     } else {
       setAddOns(addOns.filter((id) => id !== addOnId));
       calculateCustomization(0, row);
     }
   };
 
-  
 
-  const calculateCustomization = (operation, row, desc) => {
+
+  const calculateCustomization = (operation, row) => {
     let price = packageDetails.price;
     let duration = parseInt(packageDetails.duration.match(/\d+/)[0]);
     let cost = packageDetails.cost;
 
     let aPrice = row.price;
     let aDuration = parseInt(row.duration.match(/\d+/)[0]);
-    let description = row.description;
+    let rowDescription = row.description;
 
-    let newPrice, newDuration, newCost, newDescription;
-    let selectedOptions = [];
+    let newPrice, newDuration, newCost;
 
     if (operation == 1) {
       newPrice = price + aPrice;
       newDuration = duration + aDuration;
       newCost = cost + (aPrice / newDuration);
-      // newDescription = (desc + "-" + description);
+      setDescription(prevDuration => [...prevDuration, rowDescription]);
 
-      selectedOptions.push({ row, desc });
-      
-
-      
     } else if (operation == 0) {
       newPrice = price - aPrice;
       newDuration = duration - aDuration;
       newCost = cost - (aPrice / duration);
-
-      const index = selectedOptions.findIndex((option) => option.row === row);
-      if (index !== -1) {
-        selectedOptions.splice(index, 1);
-      }
-      
+      const newDescription = description.filter(item => item !== rowDescription);
+      setDescription(newDescription);
     }
-
-    newDescription = selectedOptions.map((option) => option.desc).join("-");
 
     packageDetails.price = newPrice;
     packageDetails.duration = newDuration + " months";
     packageDetails.cost = Math.round(newCost);
 
-    
-
     setPrice(newPrice);
     setDuration(newDuration + " months");
     setCost(Math.round(newCost));
-    setDescription(newDescription);
 
   };
 
