@@ -1,10 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { errorAlert } from '../../utils';
+import { errorAlert, successAlert } from '../../utils';
 import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Checkbox, Paper } from '@mui/material';
 
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
+import { SEARCH_CUSTOMER_BY_USER } from '../../EndPoints';
 
 // ...
 
@@ -15,6 +16,85 @@ const CusPackageDetails = () => {
   const [addOnsOpen, setAddOnsOpen] = useState(false);
   const [addOns, setAddOns] = useState([]);
   const navigate = useNavigate();
+
+  const [packageName, setPackageName] = useState("");
+  const [price, setPrice] = useState("");
+  const [description, setDescription] = useState("");
+  const [duration, setDuration] = useState("");
+  const [mcost, setCost] = useState("");
+  const [planImage, setPlanImage] = useState("plan image");
+
+      const [customerDetails, setCustomerDetails] = useState({
+        customerId:"",
+        firstName: "",
+        lastName: "",
+        dateOfBirth: "",
+        nic: "",
+        no: "",
+        street: "",
+        city: "",
+        companyName: "",
+        businessType: "",
+        mobileNo: "",
+        email: "",
+    });
+
+    // axios
+    // .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
+    // .then((response) => {
+    //     console.log(response);
+    //     const customer = response.data;
+    //     setCustomerDetails({
+    //         customerId: customer.customerId,
+    //         firstName: customer.firstName,
+    //         lastName: customer.lastName,
+    //         dateOfBirth: customer.dateOfBirth,
+    //         nic: customer.nic,
+    //         no: customer.no,
+    //         street: customer.street,
+    //         city: customer.city,
+    //         companyName: customer.companyName,
+    //         businessType: customer.businessType,
+    //         mobileNo: customer.mobileNo,
+    //         email: customer.email,
+    //     });
+    // })
+    // .catch((error) => {
+    //     errorAlert(error.response.data.message);
+    // });
+
+
+  console.log(packageName);    
+  console.log(price);
+  console.log(duration);
+  console.log(mcost);
+  console.log(description);
+  console.log(customerDetails.customerId);
+  
+
+  const handleBuy = (e) => {
+    e.preventDefault();
+
+
+    // axios
+    //   .post("http://localhost:3001/cuspackagebuy/add", {
+    //     name: packageDetails.name,
+    //     price: packageDetails.price,
+    //     description: packageDetails.description,
+    //     duration: packageDetails.duration,
+    //     // cusId: cusId,
+    //     cost: packageDetails.mcost,
+    //   })
+    //   .then((res) => {
+    //     console.log(res);
+    //     successAlert("Package Created");
+    //     navigate('/userDashboard')
+    //   })
+    //   .catch((error) => {
+    //     console.log("Error while adding a new package:", error);
+    //     errorAlert("An error occurred while adding the package. Please try again.");
+    //   });
+  };
 
   const loadAddons = async () => {
     axios
@@ -39,7 +119,9 @@ const CusPackageDetails = () => {
         .get(`http://localhost:3001/package/get/${packageId}`, {})
         .then((response) => {
           setPackageDetails(response.data);
-          // console.log(response);
+          setPackageName(response.data.name); // Set package name here
+          setPrice(response.data.price);
+          setDuration(response.data.duration);
           // console.log(packageDetails);
         })
         .catch((error) => {
@@ -76,13 +158,15 @@ const CusPackageDetails = () => {
 
     let aPrice = row.price;
     let aDuration = parseInt(row.duration.match(/\d+/)[0]);
+    let description = row.description;
 
-    let newPrice, newDuration, newCost;
+    let newPrice, newDuration, newCost, newDescription="";
 
     if (operation == 1) {
       newPrice = price + aPrice;
       newDuration = duration + aDuration;
       newCost = cost + (aPrice / newDuration);
+      newDescription = (newDescription + "," + description)
     } else if (operation == 0) {
       newPrice = price - aPrice;
       newDuration = duration - aDuration;
@@ -93,11 +177,10 @@ const CusPackageDetails = () => {
     packageDetails.duration = newDuration + " months";
     packageDetails.cost = Math.round(newCost);
 
-    console.log(price);
-  };
-
-  const handleBuy = async () => {
-       console.log(packageDetails);
+    setPrice(newPrice);
+    setDuration(newDuration + " months");
+    setCost(Math.round(newCost));
+    setDescription(newDescription);
   };
 
   return (

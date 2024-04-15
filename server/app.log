@@ -277,3 +277,5 @@
 {"level":30,"time":1713113439954,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
 {"level":30,"time":1713113527750,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1713113528581,"pid":7348,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713152894335,"pid":9820,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713152897317,"pid":9820,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
