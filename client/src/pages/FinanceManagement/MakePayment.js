@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme, Radio, RadioGroup, FormControlLabel, TableRow, TableHead, Table, TableContainer, TableBody, tableCellClasses, TableCell, Paper, styled, TablePagination } from "@mui/material";
 import axios from "axios";
-import { GET_ALL_BANKS, GET_BILLER_BY_TYPE, GET_PAYMENTS, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
+import { GET_ALL_BANKS, GET_BANK_BY_ID, GET_BILLER_BY_TYPE, GET_PAYMENTS, MAKE_COMPANY_PAYMENT } from "../../EndPoints";
 import { errorAlert, utilities, successAlert, months, billerTypes } from "../../utils.js";
 
 function MakePayment() {
@@ -702,6 +702,26 @@ function ViewPayments() {
                 console.log(error);
                 errorAlert(error.response.data.message);
             });
+    };
+
+    const getBankDetails = async (bankId) => {
+        let bankName, branch, accountNo;
+        axios
+            .get(GET_BANK_BY_ID + bankId, {})
+            .then((response) => {
+                bankName = response.data.bankName;
+                branch = response.data.branch;
+                accountNo = response.data.accountNo;
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
+        if (bankName) {
+            return `${bankName} ${branch} ${accountNo}`;
+        } else {
+            return bankId;
+        }
     };
 
     useEffect(() => {

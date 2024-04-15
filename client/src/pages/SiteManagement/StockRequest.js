@@ -39,7 +39,7 @@ function StockRequest() {
                     requestStock={requestStock} />
             </Grid>
             <Grid item md={12}>
-                <RequestedStock data={requestedStock} />
+                <RequestedStock data={requestedStock} submitted={getStockDetails} />
             </Grid>
         </Grid>
     );
@@ -99,19 +99,17 @@ function ExisitngStock({ rows, requestStock }) {
     const [existingQty, setExistingQty] = useState(0);
 
     const handleRequest = (content) => {
-        console.log(content)
         setEquipmentId(content.equipmentId);
         setEquipmentName(content.name);
         setPrice(content.price);
         setExistingQty(content.qty);
-        console.log(equipmentId)
     };
 
     const handleClick = () => {
         if (qty > existingQty) {
             errorAlert("Insufficent Stock");
         } else {
-            requestStock({ equipmentId, equipmentName, price, qty });
+            requestStock({ equipmentId, equipmentName, price, existingQty, qty });
             setEquipmentId('');
             setEquipmentName('');
             setPrice(0);
@@ -215,7 +213,7 @@ function ExisitngStock({ rows, requestStock }) {
     );
 }
 
-function RequestedStock({ data }) {
+function RequestedStock({ data, submitted }) {
 
     const theme = useTheme();
 
@@ -267,6 +265,7 @@ function RequestedStock({ data }) {
                     equipmentId: data.equipmentId,
                     equipmentName: data.equipmentName,
                     price: data.price,
+                    existingQty: data.existingQty,
                     qty: data.qty
                 };
                 const updatedRows = [...rows, rowData];
@@ -284,13 +283,15 @@ function RequestedStock({ data }) {
     };
 
     const handleSubmit = () => {
+        
         Axios.post(REQUEST_STOCK, {
             equipments: rows,
             siteId: siteId
         })
             .then((response) => {
-                console.log(response);
-
+                setRows([]);
+                setsiteId("");
+                submitted();
                 successAlert("Details Updated Succesfully");
             })
             .catch(error => {

@@ -1,6 +1,7 @@
 import Site from "../models/Site.js";
 import StockRequest from "../models/StockRequest.js";
 import logger from "../utils/logger.js";
+import StockController from "./StockController.js";
 
 const SiteController = {
 
@@ -124,6 +125,10 @@ const SiteController = {
         try {
             const { siteId, equipments } = req.body;
             logger.info(req.body);
+
+            equipments.forEach(equipment => {
+                StockController.updateQty(equipment.equipmentId, (equipment.existingQty - equipment.qty));
+            });
 
             const stockRequest = new StockRequest({
                 siteId: siteId,

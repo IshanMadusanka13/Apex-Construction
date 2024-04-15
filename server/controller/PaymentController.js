@@ -16,7 +16,7 @@ const PaymentController = {
 
     getBank: async (req, res) => {
         try {
-            const bank = await Bank.findOne({ bankName: req.params.name });
+            const bank = await Bank.findOne({ _id: req.params.id });
             if (!bank) {
                 logger.error("Bank not found");
                 return res.status(404).json({ message: 'Bank not found' });

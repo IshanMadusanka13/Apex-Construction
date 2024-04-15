@@ -21,6 +21,7 @@ export const GET_LOG_REPORT = API_BASE_URL + "/employee/getlog";
 
 //Finance Management
 export const GET_ALL_BANKS = API_BASE_URL + "/finance/getbanks";
+export const GET_BANK_BY_ID = API_BASE_URL + "/finance/getbank/";
 export const MAKE_COMPANY_PAYMENT = API_BASE_URL + "/finance/companypay";
 export const GET_PAYMENTS = API_BASE_URL + "/finance/get/";
 
