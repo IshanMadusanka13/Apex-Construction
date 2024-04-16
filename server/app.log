@@ -184,3 +184,38 @@
 {"level":30,"time":1712916048673,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1712916190179,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
 {"level":30,"time":1712916190815,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713247066515,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713247069429,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1713247181970,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Login Succcess"}
+{"level":30,"time":1713247182829,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247183302,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247201357,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247201697,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247232427,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247232749,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247438476,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247438750,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247802341,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713247802623,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248205112,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248205464,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248591602,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248591882,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248735058,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248735392,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248794611,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248794914,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248816979,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248817309,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248866296,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248866577,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248903907,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713248904185,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713249149821,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713249150095,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713249170456,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713249170731,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713249313938,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713249314225,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713250635028,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713250635305,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
