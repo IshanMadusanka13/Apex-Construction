@@ -1,7 +1,7 @@
 import { UserType } from "../utils/enums/UserEnums.js";
 import logger from "../utils/logger.js";
 import User from "../models/User.js";
-import jwt  from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 
 const authorizeUser = async (req, res, next) => {
 
@@ -13,7 +13,13 @@ const authorizeUser = async (req, res, next) => {
         const user = await User.findById(decoded.id)
 
         const accessRules = {
+            [UserType.ADMIN]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', 'stock'],
             [UserType.HR_MANAGER]: ['/user', '/employee'],
+            [UserType.SITE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/site', '/package', 'customer/search'],
+            [UserType.FINANCE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/finance', '/biller', 'customer/search'],
+            [UserType.STOCK_MANAGER]: ['/user', '/employee/search', '/employee/update', 'stock'],
+            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update'],
+            [UserType.CUSTOMER_RELATIONSHIP_MANAGER]: ['/user', '/employee/search', '/employee/update'],
             [UserType.CUSTOMER]: ['/user', '/customer'],
         };
 

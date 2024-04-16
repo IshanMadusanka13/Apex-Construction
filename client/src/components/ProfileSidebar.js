@@ -9,10 +9,19 @@ import {
   useTheme,
 } from "@mui/material";
 import { useSelector } from 'react-redux';
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import CreditCardIcon from '@mui/icons-material/CreditCard';
+import {
+  AccountCircle as AccountCircleIcon,
+  PersonAddAlt1 as PersonAddAlt1Icon,
+  Add as AddIcon,
+  Storage as StorageIcon,
+  Visibility as VisibilityIcon,
+  CreditCard as CreditCardIcon,
+  ShoppingCart as ShoppingCartIcon,
+  Autorenew as AutorenewIcon,
+  AccountBalance as AccountBalanceIcon,
+  Description as DescriptionIcon
+} from "@mui/icons-material";
+
 import { Lock } from '@mui/icons-material';
 import { userTypes } from "../utils.js";
 
@@ -111,7 +120,7 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("addSite")}
             selected={selectedContent === "addSite"}
             primary="Add Site"
-            icon={<VisibilityIcon />}
+            icon={<AddIcon />}
           />
 
           <SideBarListItem
@@ -125,28 +134,28 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("StockReq")}
             selected={selectedContent === "StockReq"}
             primary="Request Stock"
-            icon={<VisibilityIcon />}
+            icon={<AutorenewIcon />}
           />
 
           <SideBarListItem
             onClick={() => handleItemClick("stock")}
             selected={selectedContent === "stock"}
             primary="Stock"
-            icon={<VisibilityIcon />}
+            icon={<StorageIcon />}
           />
 
           <SideBarListItem
             onClick={() => handleItemClick("buyStock")}
             selected={selectedContent === "buyStock"}
             primary="Stock Replenish"
-            icon={<VisibilityIcon />}
+            icon={<ShoppingCartIcon />}
           />
 
           <SideBarListItem
             onClick={() => handleItemClick("biller")}
             selected={selectedContent === "biller"}
             primary="Biller"
-            icon={<VisibilityIcon />}
+            icon={<AccountBalanceIcon />}
           />
 
           <SideBarListItem
@@ -160,7 +169,7 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("LogReport")}
             selected={selectedContent === "LogReport"}
             primary="Log Report"
-            icon={<PersonAddAlt1Icon />}
+            icon={<DescriptionIcon />}
           />
         </span>
       )
@@ -194,14 +203,14 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("stock")}
             selected={selectedContent === "stock"}
             primary="Stock"
-            icon={<VisibilityIcon />}
+            icon={<StorageIcon />}
           />
 
           <SideBarListItem
             onClick={() => handleItemClick("buyStock")}
             selected={selectedContent === "buyStock"}
             primary="Stock Replenish"
-            icon={<VisibilityIcon />}
+            icon={<AutorenewIcon />}
           />
 
         </span>
@@ -215,7 +224,7 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("addSite")}
             selected={selectedContent === "addSite"}
             primary="Add Site"
-            icon={<VisibilityIcon />}
+            icon={<AddIcon />}
           />
 
           <SideBarListItem
@@ -229,7 +238,7 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("StockReq")}
             selected={selectedContent === "StockReq"}
             primary="Request Stock"
-            icon={<VisibilityIcon />}
+            icon={<AutorenewIcon />}
           />
 
         </span>
@@ -243,7 +252,7 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("biller")}
             selected={selectedContent === "biller"}
             primary="Biller"
-            icon={<VisibilityIcon />}
+            icon={<AccountBalanceIcon />}
           />
 
           <SideBarListItem
