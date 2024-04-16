@@ -1,12 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { errorAlert, successAlert } from '../../utils';
 import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Checkbox, Paper } from '@mui/material';
 
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
 import { SEARCH_CUSTOMER_BY_USER } from '../../EndPoints';
-import {useReactToPrint} from "react-to-print";
+
 import { useSelector } from 'react-redux';
 
 
@@ -27,8 +27,13 @@ const CusPackageDetails = () => {
   const [duration, setDuration] = useState("");
   const [mcost, setCost] = useState("");
   const [cusId, setCusId] = useState("");
-
-  
+  const [image, setImage] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [mobileNo, setMobileNo] = useState("");
+  const [email, setEmail] = useState("");
 
   const [customerDetails, setCustomerDetails] = useState({
     customerId: "",
@@ -51,6 +56,13 @@ const CusPackageDetails = () => {
       .then((response) => {
         console.log(response);
         const customer = response.data;
+        setCusId(customer.customerId);
+        setFirstName(customer.firstName);
+        setLastName(customer.lastName);
+        setStreet(customer.street);
+        setCity(customer.city);
+        setMobileNo(customer.mobileNo);
+        setEmail(customer.email);
         setCustomerDetails({
           customerId: customer.customerId,
           firstName: customer.firstName,
@@ -75,13 +87,14 @@ const CusPackageDetails = () => {
     getCustomerDetails();
   }, [navigate]);
 
+  // 
+
   // console.log(description);
   // console.log(customerDetails.customerId);
   // console.log(packageName);
   // console.log(price);
   // console.log(duration);
   // console.log(mcost);
-
   const handleBuy = (e) => {
     e.preventDefault();
 
@@ -97,7 +110,7 @@ const CusPackageDetails = () => {
       .then((res) => {
         console.log(res);
         successAlert("Package Created");
-        navigate('/userDashboard')
+        navigate('/userDashboard');
       })
       .catch((error) => {
         console.log("Error while adding a new package:", error);
@@ -132,7 +145,7 @@ const CusPackageDetails = () => {
           setPrice(response.data.price);
           setDuration(response.data.duration);
           setCost(response.data.cost);
-          setCusId(customerDetails.customerId);
+          setImage(response.data.homeImage);
           // console.log(packageDetails);
         })
         .catch((error) => {
@@ -199,19 +212,12 @@ const CusPackageDetails = () => {
 
   };
 
-
-  const ComponentRef = useRef();
-  const handlePrint = useReactToPrint({
-    content: () => ComponentRef.current,
-    DocumentTitle:"User Report",
-    onafterprint:()=>alert("User Report Successfully Download !"),
-  })
   
 
   return (
     <Grid container>
       <Container maxWidth="lg" style={{ minHeight: "300px" }} >
-        <Card sx={{ display: 'flex', mt: 15 }} ref={ComponentRef}>
+        <Card sx={{ display: 'flex', mt: 15 }} >
           <CardMedia
             component="img"
             sx={{ width: 500 }}
@@ -242,8 +248,8 @@ const CusPackageDetails = () => {
                 <Button variant="contained" onClick={handleBuy} sx={{ width: "150px", marginLeft: 2 }}>
                   Buy Package
                 </Button>
-                <Button variant="contained" onClick={handlePrint} sx={{ width: "150px", marginLeft: 2 }}>
-                  Download
+                <Button variant="contained" onClick={() => navigate('/report', { state: { description, cusId, packageName, price, duration, mcost, image, firstName, lastName, street, city, mobileNo, email } })} sx={{ width: "200px", marginLeft: 2 }}>
+                  Genarate Report
                 </Button>
               </Box>
               <div >

@@ -11,6 +11,7 @@ import CusPackageDetails from "../pages/PackageManagement/CusPackageDetails.js";
 import AddNewPackage from "../pages/PackageManagement/AddPackage.js";
 import ViewPackage from "../pages/PackageManagement/ViewPackage.js";
 import AddAddOns from "../pages/PackageManagement/AddAddOns.js";
+import GenarateReport from "../pages/PackageManagement/GenarateReport.js";
 
 const AppRoutes = () => {
   return (
@@ -34,6 +35,7 @@ const AppRoutes = () => {
         <Route path="/AddPackage" element={<AddNewPackage />} />
         <Route path="/viwePackage" element={<ViewPackage />} />
         <Route path="/addAddOns" element={<AddAddOns />} />
+        <Route path="/report" element={<GenarateReport />} />
       </Routes>
     </Router>
   );
