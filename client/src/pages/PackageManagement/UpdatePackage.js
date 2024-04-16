@@ -9,30 +9,20 @@ import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { packageTypes, successAlert } from "../../utils";
 
-const UpdatePackage = (values) => {
-  const data = values.data;
-  const [packageId, setPackageId] = useState(data ? data._id : '');
+const UpdatePackage = ({ data , submitted }) => {
   const [packageName, setPackageName] = useState(data ? data.name : '');
   const [price, setPrice] = useState(data ? data.price : '');
   const [description, setDescription] = useState(data ? data.description : '');
   const [duration, setDuration] = useState(data ? data.duration : '');
   const [mcost, setCost] = useState(data ? data.cost : '');
   const [homeImage, setHomeImage] = useState(data ? data.homeImage : '');
-  const theme = useTheme();
   const [percent, setPercent] = useState(0);
+  const theme = useTheme();
 
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      packageId,
-      packageName,
-      price,
-      description,
-      duration,
-      mcost,
-      homeImage,
-    );
+
     axios.put('http://localhost:3001/package/update', {
       id: data._id,
       name: packageName,
@@ -45,6 +35,11 @@ const UpdatePackage = (values) => {
       planImage: null,
       isApproved: true,
     }).then((response) => {
+      setPackageName("");
+      setPrice("");
+      setDescription("");
+      setCost("");
+      submitted(false);
       successAlert("Package Updated");
     })
 
@@ -71,17 +66,13 @@ const UpdatePackage = (values) => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setHomeImage(url);
-          console.log(url);
         });
       }
     );
   };
 
-  if (!values) {
+  if (!data) {
     return <div>No data found.</div>;
-  } else {
-    console.log(data);
-    console.log(packageName);
   }
 
   return (

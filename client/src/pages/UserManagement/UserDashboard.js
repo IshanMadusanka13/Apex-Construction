@@ -13,7 +13,10 @@ import LogReport from "./LogReport";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
 import ViewPackage from "../PackageManagement/ViewPackage";
 import UpdatePackage from "../PackageManagement/UpdatePackage";
-import ViewAddOns from "../PackageManagement/ViweAddOns.js";
+import ViewAddOns from "../PackageManagement/ViewAddOns.js";
+import AddAddOns from "../PackageManagement/AddAddOns";
+import UpdateAddOns from "../PackageManagement/UpdateAddOns";
+import PackageList from "../PackageManagement/PackageList";
 
 export default function UserDashboard() {
 
@@ -44,10 +47,15 @@ export default function UserDashboard() {
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "LogReport" && <LogReport />}
+
                     {selectedContent === "addPackage" && <AddNewPackage />}
                     {selectedContent === "viewPackage" && <ViewPackage />}
+                    {selectedContent === "packageList" && <PackageList />}
                     {selectedContent === "updatePackage" && <UpdatePackage />}
-                    {selectedContent === "viweAddOns" && <ViewAddOns />}
+                    {selectedContent === "viewAddOns" && <ViewAddOns />}
+                    {selectedContent === "addAddOns" && <AddAddOns />}
+                    {selectedContent === "updateAddOns" && <UpdateAddOns />}
+
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>
             </Grid>

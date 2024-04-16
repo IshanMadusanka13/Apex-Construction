@@ -3,20 +3,19 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { errorAlert, successAlert } from '../../utils';
 import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Checkbox, Paper } from '@mui/material';
-
+import { BUY_PACKAGE, SEARCH_PACKAGE_ADDON, SEARCH_PACKAGE_BY_ID } from "../../EndPoints";
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
 import { SEARCH_CUSTOMER_BY_USER } from '../../EndPoints';
 
 import { useSelector } from 'react-redux';
 
 
-const CusPackageDetails = () => {
+const ViewPackageDetails = ({packageId}) => {
 
   const navigate = useNavigate();
   const loggedUser = useSelector((state) => state.user);
 
   const [addOnsDetails, setAddOnsDetails] = useState([]);
-  const { packageId } = useParams();
   const [packageDetails, setPackageDetails] = useState([]);
   const [addOnsOpen, setAddOnsOpen] = useState(false);
   const [addOns, setAddOns] = useState([]);
@@ -54,7 +53,6 @@ const CusPackageDetails = () => {
     axios
       .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
       .then((response) => {
-        console.log(response);
         const customer = response.data;
         setCusId(customer.customerId);
         setFirstName(customer.firstName);
@@ -87,19 +85,11 @@ const CusPackageDetails = () => {
     getCustomerDetails();
   }, [navigate]);
 
-  // 
-
-  // console.log(description);
-  // console.log(customerDetails.customerId);
-  // console.log(packageName);
-  // console.log(price);
-  // console.log(duration);
-  // console.log(mcost);
   const handleBuy = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/cuspackagebuy/add", {
+      .post(BUY_PACKAGE, {
         name: packageName,
         price: price,
         description: description,
@@ -108,9 +98,8 @@ const CusPackageDetails = () => {
         cost: mcost,
       })
       .then((res) => {
-        console.log(res);
-        successAlert("Package Created");
-        navigate('/userDashboard');
+        successAlert("Package Buy Successfull");
+        navigate('/report', { state: { description, cusId, packageName, price, duration, mcost, image, firstName, lastName, street, city, mobileNo, email } })
       })
       .catch((error) => {
         console.log("Error while adding a new package:", error);
@@ -120,41 +109,35 @@ const CusPackageDetails = () => {
 
   const loadAddons = async () => {
     axios
-      .get("http://localhost:3001/packageaddon/getall", {})
+      .get(SEARCH_PACKAGE_ADDON, {})
       .then((response) => {
         setAddOnsDetails(response.data);
-        // console.log(response.data);
-        console.log(addOnsDetails);
       })
       .catch((error) => {
-        errorAlert(error.response.data.message);
+        errorAlert("Error Loading Package Addons");
       });
   };
-
-
-  // Do something with packageId
-  // console.log(`Package ID is : ${packageId}`);
 
   useEffect(() => {
     const loadPackages = async () => {
       axios
-        .get(`http://localhost:3001/package/get/${packageId}`, {})
+        .get(SEARCH_PACKAGE_BY_ID + packageId, {})
         .then((response) => {
+          
           setPackageDetails(response.data);
-          setPackageName(response.data.name); // Set package name here
+          setPackageName(response.data.name);
           setPrice(response.data.price);
           setDuration(response.data.duration);
           setCost(response.data.cost);
           setImage(response.data.homeImage);
-          // console.log(packageDetails);
         })
         .catch((error) => {
           console.log(error);
-          errorAlert(error.response.data.message);
+          errorAlert("Error searching packages by id");
         });
     };
     loadPackages();
-  }, [packageId]); // only re-run effect when packageId changes
+  }, [packageId]);
 
   const handleAddOns = () => {
     loadAddons();
@@ -212,15 +195,13 @@ const CusPackageDetails = () => {
 
   };
 
-  
-
   return (
     <Grid container>
-      <Container maxWidth="lg" style={{ minHeight: "300px" }} >
+      <Container style={{ minHeight: "300px" }} >
         <Card sx={{ display: 'flex', mt: 15 }} >
           <CardMedia
             component="img"
-            sx={{ width: 500 }}
+            sx={{ width: 450 }}
             image={packageDetails.homeImage}
             alt={packageDetails.name}
           />
@@ -293,4 +274,4 @@ const CusPackageDetails = () => {
   );
 };
 
-export default CusPackageDetails;
+export default ViewPackageDetails;

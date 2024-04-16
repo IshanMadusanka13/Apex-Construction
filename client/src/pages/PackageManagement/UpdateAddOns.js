@@ -1,47 +1,29 @@
-import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import React, { useState } from "react";
 import axios from "axios";
-import storage from "../../Apis/firebase.config";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
-import { useSelector } from 'react-redux';
-import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { packageTypes, successAlert } from "../../utils";
+import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
+import { successAlert } from "../../utils";
+import { UPDATE_PACKAGE_ADDON } from "../../EndPoints";
 
-const UpdateAddOns = (values) => {
-  const data = values.data;
-  const [packageId, setPackageId] = useState(data ? data._id : '');
+const UpdateAddOns = ({ data, submitted }) => {
   const [price, setPrice] = useState(data ? data.price : '');
   const [description, setDescription] = useState(data ? data.description : '');
   const [duration, setDuration] = useState(data ? data.duration : '');
-  
-  const theme = useTheme();
- 
 
+  const theme = useTheme();
 
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(
-      packageId,
-      price,
-      description,
-      duration,
-     
-    );
-    axios.put('http://localhost:3001/packageaddon/update', {
+    axios.put(UPDATE_PACKAGE_ADDON, {
       id: data._id,
-      
       price: price,
       description: description,
       duration: duration,
-      
+
     }).then((response) => {
+      submitted(false);
       successAlert("Package Updated");
     })
-
   }
-
 
   return (
     <Grid
@@ -58,8 +40,7 @@ const UpdateAddOns = (values) => {
         </Typography>
       </Grid>
 
-
-      <Grid item md={16}>
+      <Grid item md={6}>
         <TextField
           margin="normal"
           required
@@ -104,14 +85,14 @@ const UpdateAddOns = (values) => {
         />
       </Grid>
 
-      <Button type="submit" variant="contained" sx={{ ml: 10, mt: 25, width: "50%", height: "10%" }}>
-        Upadate Add Ons
-      </Button>
+      <Grid item md={7}>
+        <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
+          Upadate Add Ons
+        </Button>
+      </Grid>
 
     </Grid>
   );
-
-
 }
 
 export default UpdateAddOns;

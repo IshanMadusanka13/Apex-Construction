@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import storage from "../../Apis/firebase.config";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
-//import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { errorAlert, packageTypes, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
-import { useSelector } from 'react-redux';
+import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
+import { CREATE_PACKAGE } from "../../EndPoints";
+import { errorAlert, successAlert } from "../../utils.js";
 import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
@@ -22,16 +21,10 @@ const AddNewPackage = () => {
     "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
   );
   const [modelLink, setModelLink] = useState("model link");
-  const [planImage, setPlanImage] = useState("plan image");
   const [percent, setPercent] = useState(0);
   const [file, setFile] = useState();
 
-  const navigate = useNavigate();
-
   const theme = useTheme();
-  const loggedUser = useSelector((state) => state.user);
-
-  const [error, seterror] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -42,7 +35,7 @@ const AddNewPackage = () => {
     }
 
     axios
-      .post("http://localhost:3001/package/add", {
+      .post(CREATE_PACKAGE, {
         name: packageName,
         price: price,
         description: description,
@@ -50,12 +43,16 @@ const AddNewPackage = () => {
         homeImage: homeImage,
         modelLink: modelLink,
         cost: mcost,
-        // planImage: planImage,
       })
       .then((res) => {
-        console.log(res);
+        setPackageName("");
+        setPrice("");
+        setDescription("");
+        setHomeImage("");
+        setModelLink("");
+        setCost("");
+        setDuration("");
         successAlert("Package Created");
-        navigate('/userDashboard')
       })
       .catch((error) => {
         console.log("Error while adding a new package:", error);
@@ -85,7 +82,6 @@ const AddNewPackage = () => {
       () => {
         getDownloadURL(uploadTask.snapshot.ref).then((url) => {
           setHomeImage(url);
-          console.log(url);
         });
       }
     );
@@ -109,23 +105,9 @@ const AddNewPackage = () => {
           Add Package
         </Typography>
       </Grid>
-      {/* <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="packageId"
-                    label="Package Id"
-                    name="packageId"
-                    autoComplete="packageId"
-                    value={AddNewPackage.packageId}
-                    autoFocus
-                    disabled
-                />
-            </Grid> */}
+
       <Grid item md={6}>
         <TextField
-          // select
           margin="normal"
           required
           fullWidth
@@ -136,13 +118,7 @@ const AddNewPackage = () => {
           autoFocus
           value={packageName}
           onChange={(e) => setPackageName(e.target.value)}
-        >
-          {/* {Object.values(packageTypes).map((type) => (
-            <MenuItem key={type} value={type}>
-              {type.toUpperCase()}
-            </MenuItem>
-          ))} */}
-        </TextField>
+        />
       </Grid>
 
       <Grid item md={6}>
@@ -154,7 +130,6 @@ const AddNewPackage = () => {
           label="Package Price"
           name="price"
           autoComplete="price"
-          autoFocus
           value={price}
           onChange={(e) => setPrice(parseFloat(e.target.value))}
         />
@@ -169,7 +144,6 @@ const AddNewPackage = () => {
           label="Package Description"
           name="discription"
           autoComplete="discription"
-          autoFocus
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
@@ -208,7 +182,6 @@ const AddNewPackage = () => {
       <Grid item md={4}>
         <img
           width="300"
-          //height= {auto}
           src={homeImage}></img>
 
         <Button

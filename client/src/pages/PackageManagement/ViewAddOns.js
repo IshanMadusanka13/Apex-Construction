@@ -1,57 +1,62 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from 'react-redux';
-import { TextField, IconButton, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, tableCellClasses, TablePagination } from "@mui/material";
+import { TextField, IconButton, Typography, Grid, useTheme, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, styled, tableCellClasses, TablePagination } from "@mui/material";
 import axios from "axios";
 import { errorAlert, successAlert } from "../../utils";
 import Delete from '@mui/icons-material/Delete';
 import Edit from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
-import UpdatePackage from "./UpdatePackage";
+import UpdateAddOns from "./UpdateAddOns";
+import { DELTE_PACKAGE_ADDON, SEARCH_PACKAGE_ADDON } from "../../EndPoints";
 
-function ViewPackage() {
+function ViewAddOns() {
     const theme = useTheme();
     const navigate = useNavigate();
 
     const [packageDetails, setPackageDetails] = useState([]);
     const [viewUpdateContent, setViewUpdateContent] = useState(false);
     const [selectedRow, setSelectedRow] = useState('');
-    const [packageName, setPackageName] = useState('');
+    const [discription, setDiscription] = useState('');
     const [filteredPackageDetails, setFilteredPackageDetails] = useState([]);
 
     useEffect(() => {
-        if (packageName) {
-            const filteredData = packageDetails.filter(pkg => pkg.name.toLowerCase().includes(packageName.toLowerCase()));
+        if (discription) {
+            const filteredData = packageDetails.filter(pakg => {
+                if (pakg.description) {
+                    return pakg.description.toLowerCase().includes(discription.toLowerCase());
+                }
+                return false;
+            });
             setFilteredPackageDetails(filteredData);
         } else {
             setFilteredPackageDetails(packageDetails);
         }
-    }, [packageName, packageDetails]);
+    }, [discription, packageDetails]);
 
     const loadPackages = async () => {
         axios
-            .get("http://localhost:3001/package/getall", {})
+            .get(SEARCH_PACKAGE_ADDON, {})
             .then((response) => {
                 setPackageDetails(response.data);
             })
             .catch((error) => {
-                errorAlert(error.response.data.message);
+                errorAlert("Couldnt Load Packages");
             });
     };
 
     useEffect(() => {
         loadPackages();
-    }, [navigate, viewUpdateContent]);
+    }, [navigate]);
 
     const handleDelete = (packageId) => {
         axios
-            .delete("http://localhost:3001/package/delete/" + packageId)
+            .delete(DELTE_PACKAGE_ADDON + packageId)
             .then((response) => {
                 loadPackages();
                 successAlert("Package Deleted");
             })
             .catch((error) => {
                 console.log(error);
-                errorAlert(error.response.data.message);
+                errorAlert("Couldnt Delete");
             });
     };
 
@@ -101,15 +106,15 @@ function ViewPackage() {
     return (
         <Grid>
             <Grid
-                container md={12}
+                container
+                sx={theme.palette.gridBody}
                 spacing={2}
                 component="form"
-                sx={theme.palette.gridBody}
-                noValidate
-            >
+                noValidate>
+
                 <Grid item md={12}>
                     <Typography variant="h5" gutterBottom>
-                        Search Package
+                        Search Add Ons
                     </Typography>
                 </Grid>
                 <Grid item md={6}>
@@ -117,47 +122,35 @@ function ViewPackage() {
                         margin="normal"
                         required
                         fullWidth
-                        id="name"
-                        label="Package Name"
-                        name="name"
-                        autoComplete="name"
+                        id="discription"
+                        label="Discription"
+                        name="discription"
+                        autoComplete="discription"
                         autoFocus
-                        value={packageName}
-                        onChange={(e) => setPackageName(e.target.value)}
+                        value={discription}
+                        onChange={(e) => setDiscription(e.target.value)}
                     />
                 </Grid>
             </Grid>
 
             <Grid container sx={theme.palette.gridBody}>
                 <Grid item md={12}>
-                    <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main, }}>
+                    <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
                         <Table sx={{ minWidth: 1000 }}>
                             <TableHead>
                                 <StyledTableRow>
-                                    {/* <TableCell>Package ID</TableCell> */}
-                                    {/* <StyledTableCell>PackageId</StyledTableCell> */}
-                                    <StyledTableCell>Name</StyledTableCell>
                                     <StyledTableCell>Description</StyledTableCell>
                                     <StyledTableCell>Duration</StyledTableCell>
                                     <StyledTableCell>Price</StyledTableCell>
-                                    {/* <StyledTableCell>Home Image</StyledTableCell>
-                        <StyledTableCell>Model Link</StyledTableCell> */}
-                                    <StyledTableCell>Payment/Mo</StyledTableCell>
                                     <StyledTableCell>Action</StyledTableCell>
                                 </StyledTableRow>
                             </TableHead>
-
-
                             <TableBody>
                                 {filteredPackageDetails.map((row) => (
                                     <StyledTableRow key={row.packageId}>
-                                        <StyledTableCell component="th" scope="row">
-                                            {row.name}
-                                        </StyledTableCell>
                                         <StyledTableCell>{row.description}</StyledTableCell>
                                         <StyledTableCell>{row.duration}</StyledTableCell>
                                         <StyledTableCell>{row.price}</StyledTableCell>
-                                        <StyledTableCell>{row.cost}</StyledTableCell>
                                         <StyledTableCell>
                                             <IconButton onClick={() => handleDelete(row._id)}>
                                                 <Delete />
@@ -171,7 +164,7 @@ function ViewPackage() {
                             </TableBody>
                         </Table>
                         <TablePagination
-                            sx={{ backgroundColor: theme.palette.primary.main, }}
+                            sx={{ backgroundColor: theme.palette.primary.main }}
                             rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
                             count={packageDetails.length}
                             rowsPerPage={rowsPerPage}
@@ -182,10 +175,11 @@ function ViewPackage() {
                     </TableContainer>
                 </Grid>
             </Grid>
+
             {viewUpdateContent &&
-                <Grid container sx={theme.palette.gridBody}>
+                <Grid container>
                     <Grid item md={12}>
-                        <UpdatePackage data={selectedRow} submitted={setViewUpdateContent} />
+                        <UpdateAddOns data={selectedRow} submitted={setViewUpdateContent} />
                     </Grid>
                 </Grid>
             }
@@ -193,5 +187,4 @@ function ViewPackage() {
     );
 }
 
-
-export default ViewPackage;
+export default ViewAddOns;

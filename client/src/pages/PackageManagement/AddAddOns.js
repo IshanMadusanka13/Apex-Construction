@@ -1,42 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import storage from "../../Apis/firebase.config";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
-import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
-import { errorAlert, packageTypes, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
-import { useSelector } from 'react-redux';
-import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-
-
+import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
+import { errorAlert, successAlert } from "../../utils.js";
+import { CREATE_PACKAGE_ADDON } from "../../EndPoints";
 
 const AddAddOns = () => {
   const [description, setDescription] = useState("");
   const [price, setPrice] = useState("");
   const [duration, setDuration] = useState("");
 
-  const navigate = useNavigate();
-
   const theme = useTheme();
-  const loggedUser = useSelector((state) => state.user);
-
-  const [error, seterror] = useState(false);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post("http://localhost:3001/packageaddon/add", {
-        
+      .post(CREATE_PACKAGE_ADDON, {
         price: price,
         description: description,
         duration: duration,
       })
       .then((res) => {
-        console.log(res);
+        setDescription("");
+        setPrice("");
+        setDuration("");
         successAlert("AddOns Created");
-        navigate('/userDashboard')
       })
       .catch((error) => {
         console.log("Error while adding a new add ons:", error);
@@ -55,13 +43,10 @@ const AddAddOns = () => {
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>
-        <Typography variant="h5" gutterBottom>
-          Create Add Ons
-        </Typography>
+        <Typography variant="h5" gutterBottom>Create Add Ons</Typography>
       </Grid>
 
-
-      <Grid item md={16}>
+      <Grid item md={6}>
         <TextField
           margin="normal"
           required
@@ -85,7 +70,6 @@ const AddAddOns = () => {
           label="Add Ons Duration"
           name="duration"
           autoComplete="duration"
-          autoFocus
           value={duration}
           onChange={(e) => setDuration(e.target.value)}
         />
@@ -100,16 +84,15 @@ const AddAddOns = () => {
           label="Add Ons Price"
           name="price"
           autoComplete="price"
-          autoFocus
           value={price}
           onChange={(e) => setPrice(parseFloat(e.target.value))}
         />
       </Grid>
-
-      <Button type="submit" variant="contained" sx={{ ml: 10, mt: 25, width: "50%", height: "10%" }}>
-        Create Add Ons
-      </Button>
-
+      <Grid item md={7}>
+        <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
+          Create Add Ons
+        </Button>
+      </Grid>
     </Grid>
   );
 

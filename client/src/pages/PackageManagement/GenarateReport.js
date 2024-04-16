@@ -1,14 +1,14 @@
 import React, { useRef } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Card, CardMedia, Typography, Stack, Button, Box } from '@mui/material';
 import {useReactToPrint} from "react-to-print";
 import { successAlert } from "../../utils";
 
 const GenarateReport = (props) => {
     const location = useLocation();
-    console.log(location);
 
     const componentRef = useRef();
+    const navigate = useNavigate();
 
     const handlePrint = useReactToPrint({
         content: () => componentRef.current,
@@ -117,6 +117,13 @@ const GenarateReport = (props) => {
                         sx={{ width: "150px" }}
                     >
                         Download
+                    </Button>
+                    <Button
+                        variant="contained"
+                        onClick={() => navigate("/userDashboard")}
+                        sx={{ width: "150px" }}
+                    >
+                        Dashboard
                     </Button>
                 </Stack>
 
