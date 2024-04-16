@@ -25,7 +25,7 @@ export function createCusPackage(req, res) {
       cusId:cusId,
       isApproved:isApproved,
     });
-/*    newCusPackage
+    newCusPackage
       .save()
       .then((result) => {
         res.send(result);
@@ -33,5 +33,5 @@ export function createCusPackage(req, res) {
       .catch((err) => {
         logger.error(err);
         res.status(500).json({ message: "Error creating package" });
-      });*/
+      });
   }

@@ -28,6 +28,8 @@ const CusPackageDetails = () => {
   const [mcost, setCost] = useState("");
   const [cusId, setCusId] = useState("");
 
+  
+
   const [customerDetails, setCustomerDetails] = useState({
     customerId: "",
     firstName: "",
@@ -73,7 +75,12 @@ const CusPackageDetails = () => {
     getCustomerDetails();
   }, [navigate]);
 
-  console.log(description);
+  // console.log(description);
+  // console.log(customerDetails.customerId);
+  // console.log(packageName);
+  // console.log(price);
+  // console.log(duration);
+  // console.log(mcost);
 
   const handleBuy = (e) => {
     e.preventDefault();
