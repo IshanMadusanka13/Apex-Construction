@@ -50,9 +50,6 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType == userTypes.CUSTOMER) && <CustomerProfile />}
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
-                    {selectedContent === "FleetDetails" && <FleetDetails/>}
-                    {selectedContent === "AddVehicles" && <AddVehicles />}
-                    {selectedContent === "FleetTablePage" && <FleetTablePage />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
                     {selectedContent === "LogReport" && <LogReport />}
 
@@ -62,6 +59,10 @@ export default function UserDashboard() {
                     {selectedContent === "addSite" && <AddSite />}
                     {selectedContent === "viewSite" && <ViewAllSites />}
                     {selectedContent === "StockReq" && <StockRequest/>}
+
+                    {selectedContent === "FleetDetails" && <FleetDetails/>}
+                    {selectedContent === "AddVehicles" && <AddVehicles />}
+                    {selectedContent === "FleetTablePage" && <FleetTablePage />}
                     
                     {selectedContent === "biller" && <Biller />}
                     {selectedContent === "makePayment" && <MakePayment />}

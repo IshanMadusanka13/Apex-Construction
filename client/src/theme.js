@@ -8,6 +8,7 @@ const siteTheme = (mode) => {
           primary: {
             main: "#ff5200", //orange
             mainOpacity: "#ffae87", //dead orange
+            mainOpacity2: "#ffccaa",
           },
 
           background: {
@@ -19,8 +20,8 @@ const siteTheme = (mode) => {
           text: {
             default: "#ffffff", //white
             inverse: "#000000", //black
+            main: "#ff5200", //orange
             grey: "#797979",
-            hover: "#ff5200", //orange
           },
 
           typography: {

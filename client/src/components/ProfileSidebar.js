@@ -19,7 +19,8 @@ import {
   ShoppingCart as ShoppingCartIcon,
   Autorenew as AutorenewIcon,
   AccountBalance as AccountBalanceIcon,
-  Description as DescriptionIcon
+  Description as DescriptionIcon,
+  DirectionsCarOutlined as DirectionsCarOutlinedIcon
 } from "@mui/icons-material";
 
 import { Lock } from '@mui/icons-material';
@@ -64,28 +65,6 @@ const ProfileSidebar = (props) => {
 
         <SetSideBarLists handleItemClick={handleItemClick} />
 
-        <ListItem button onClick={() => handleItemClick("FleetDetails")} sx={{ backgroundColor: selectedContent === "FleetDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="Trasport details" />}
-            </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("AddVehicles")} sx={{ backgroundColor: selectedContent === "AddVehicles" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="Add Vehicles" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("FleetTablePage")} sx={{ backgroundColor: selectedContent === "FleetTablePage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="FleetTablePage " />}
-        </ListItem>
-        
-
         <SideBarListItem
           onClick={() => handleItemClick("changePassword")}
           selected={selectedContent === "changePassword"}
@@ -115,7 +94,6 @@ function SideBarListItem({ onClick, selected, primary, icon }) {
 
 function SetSideBarLists({ handleItemClick, selectedContent }) {
 
-  const theme = useTheme();
   const loggedUser = useSelector((state) => state.user);
 
   switch (loggedUser.userType) {
@@ -171,6 +149,27 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "buyStock"}
             primary="Stock Replenish"
             icon={<ShoppingCartIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("FleetDetails")}
+            selected={selectedContent === "FleetDetails"}
+            primary="Trasport Details"
+            icon={<DirectionsCarOutlinedIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("AddVehicles")}
+            selected={selectedContent === "AddVehicles"}
+            primary="Vehicle Details"
+            icon={<DirectionsCarOutlinedIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("FleetTablePage")}
+            selected={selectedContent === "FleetTablePage"}
+            primary="Driver Fleet Details"
+            icon={<VisibilityIcon />}
           />
 
           <SideBarListItem
@@ -282,6 +281,34 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "makePayment"}
             primary="Make Transaction"
             icon={<CreditCardIcon />}
+          />
+
+        </span>
+      )
+
+    case userTypes.FLEET_MANAGER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("FleetDetails")}
+            selected={selectedContent === "FleetDetails"}
+            primary="Trasport Details"
+            icon={<DirectionsCarOutlinedIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("AddVehicles")}
+            selected={selectedContent === "AddVehicles"}
+            primary="Vehicle Details"
+            icon={<DirectionsCarOutlinedIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("FleetTablePage")}
+            selected={selectedContent === "FleetTablePage"}
+            primary="Driver Fleet Details"
+            icon={<VisibilityIcon />}
           />
 
         </span>

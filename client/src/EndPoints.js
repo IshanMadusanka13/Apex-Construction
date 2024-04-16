@@ -18,7 +18,6 @@ export const DELETE_EMPLOYEE = API_BASE_URL + "/employee/delete"
 export const GET_EMPLOYEE_COUNT = API_BASE_URL + "/employee/getcount"
 export const GET_LOG_REPORT = API_BASE_URL + "/employee/getlog";
 
-
 //Finance Management
 export const GET_ALL_BANKS = API_BASE_URL + "/finance/getbanks";
 export const GET_BANK_BY_ID = API_BASE_URL + "/finance/getbank/";
