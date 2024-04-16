@@ -145,6 +145,18 @@ const SiteController = {
         }
     },
 
+    getStockRequests: async (req, res) => {
+        StockRequest
+            .find({ siteId: req.params.id })
+            .then((result) => {
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Stock Requests Fetching Failed");
+                res.status(500).json({ message: "Error getting Stock Requests" });
+            });
+    },
+
 }
 
 export default SiteController;

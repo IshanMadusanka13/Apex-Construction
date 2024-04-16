@@ -4,7 +4,7 @@ import Axios from "axios";
 import { TextField, Typography, Button, Grid, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Box, Paper, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import { useSelector } from 'react-redux';
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
-import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, SEARCH_CUSTOMER_BY_USER, UPDATE_SITE } from "../../EndPoints.js";
+import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, GET_STOCK_REQUESTS, SEARCH_CUSTOMER_BY_USER, UPDATE_SITE } from "../../EndPoints.js";
 import moment from "moment";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -497,6 +497,20 @@ function ViewSite({ values }) {
         completeStatus: 0,
         calculatedStatus: 0,
     });
+    const [stockRequests, setStockRequests] = useState({});
+
+    const getStockRequests = () => {
+        Axios
+            .get(GET_STOCK_REQUESTS + siteDetails.siteId)
+            .then((response) => {
+                setStockRequests(response.data);
+                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
+    }
 
     const loadCalculatedStatus = () => {
         Axios
@@ -526,6 +540,21 @@ function ViewSite({ values }) {
         });
         loadCalculatedStatus();
     }, [values]);
+
+    const handleReport = (event, siteDetails) => {
+        event.preventDefault();
+        Axios
+            .get(GET_STOCK_REQUESTS + siteDetails.siteId)
+            .then((response) => {
+                setStockRequests(response.data);
+                generateReport(siteDetails, response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
+
+    }
 
     return (
         <Grid container spacing={2}>
@@ -559,7 +588,7 @@ function ViewSite({ values }) {
             })}
 
             <Grid item md={12}>
-                <Button variant="contained" sx={{ mt: 2, width: "20%", borderRadius: "5" }} onClick={(e) => generateReport(e, siteDetails)}>
+                <Button variant="contained" sx={{ mt: 2, width: "20%", borderRadius: "5" }} onClick={(e) => handleReport(e, siteDetails)}>
                     Generate Report
                 </Button>
             </Grid>
@@ -568,12 +597,12 @@ function ViewSite({ values }) {
 
 }
 
-function generateReport(event, siteDetails) {
-    event.preventDefault();
+function generateReport(siteDetails, stockRequests) {
+
     const doc = new jsPDF();
 
     //Site Details Part 1 Table
-    const tableHead = [["siteId", "customerId", "location", "notes"]];
+    const tableHead = [["Site Id", "Customer Id", "Location", "Notes"]];
     const tableBody = [[
         siteDetails.siteId,
         siteDetails.customerId,
@@ -582,7 +611,7 @@ function generateReport(event, siteDetails) {
     ]];
 
     //Site Details Part 2 Table
-    const tableHead2 = [["start", "end", "lastUpdate", "completeStatus", "calculatedStatus"]];
+    const tableHead2 = [["Start", "End", "Last Update", "Complete Status", "Calculated Status"]];
     const tableBody2 = [
         [siteDetails.start,
         siteDetails.end,
@@ -591,7 +620,24 @@ function generateReport(event, siteDetails) {
         siteDetails.calculatedStatus]
     ];
 
-    //Adding the Tables
+
+    const tableHead3 = [["Date", "Site Id", "equipments", "qty"]];
+    const tableBody3 = [];
+    stockRequests.forEach((request) => {
+        request.equipments.forEach((equipment) => {
+            console.log(equipment)
+            console.log(equipment.qty)
+            const rowData = [
+                moment(request.date).format('YYYY-MM-DD'),
+                request.siteId,
+                equipment.equipmentId,
+                equipment.qty,
+            ];
+            tableBody3.push(rowData);
+        });
+    });
+
+    //Adding the Tables to pdf
     doc.autoTable({
         head: tableHead,
         body: tableBody,
@@ -601,6 +647,12 @@ function generateReport(event, siteDetails) {
     doc.autoTable({
         head: tableHead2,
         body: tableBody2,
+        startY: doc.previousAutoTable.finalY + 20,
+    });
+
+    doc.autoTable({
+        head: tableHead3,
+        body: tableBody3,
         startY: doc.previousAutoTable.finalY + 20,
     });
 

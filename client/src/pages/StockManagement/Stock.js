@@ -160,7 +160,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
   return (
     <Grid container spacing={2} sx={theme.palette.gridBody}>
       <Grid item md={12}>
-        <Typography variant="h5" gutterBottom>Add Stock</Typography>
+        <Typography variant="h5" gutterBottom>{isEdit ? 'Update Stock' : 'Add Stock'}</Typography>
       </Grid>
 
       <Grid item md={6}>

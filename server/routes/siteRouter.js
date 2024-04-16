@@ -12,5 +12,6 @@ siteRouter.put("/update", SiteController.updateSite);
 siteRouter.delete("/delete/:id", SiteController.deleteSite);
 
 siteRouter.post("/request", SiteController.stockRequest);
+siteRouter.get("/getrequest/:id", SiteController.getStockRequests);
 
 export default siteRouter;

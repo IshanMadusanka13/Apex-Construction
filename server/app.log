@@ -18,7 +18,8 @@
 {"level":30,"time":1712461197107,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
 {"level":30,"time":1712461197748,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
 {"level":30,"time":1712461207803,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/E1000/employeeId] Request Received"}
-{"level":30,"time":1712461213710,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}{"level":30,"time":1713241566788,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712461213710,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713241566788,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
 {"level":30,"time":1713241574293,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
 {"level":30,"time":1713241580936,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
 {"level":30,"time":1713241581777,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
@@ -35,5 +36,173 @@
 {"level":30,"time":1713241774665,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
 {"level":30,"time":1713241784514,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
 {"level":30,"time":1713241785299,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"C1000"}
-{"level":30,"time":1713241785794,"pid":7820,"hostname":"DESKTOP-4OV1VV7","0":{"_id":"661b4a0fcbe53f21afcca50d","customerId":"C1000","siteId":"S1000","location":"Kaduwela","start":"2024-04-07T00:00:00.000Z","end":"2024-05-07T00:00:00.000Z","notes":"First Site","lastUpdate":"Initiated","completeStatus":0,"__v":0},"1":{"_id":"661b59c5c0bb4b575da475a4","customerId":"C1000","siteId":"S1001","location":"Malabe","start":"2024-04-10T00:00:00.000Z","end":"2024-04-24T00:00:00.000Z","notes":"test","lastUpdate":"Initiated","completeStatus":0,"__v":0}}
 {"level":30,"time":1713241827442,"pid":11564,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713243890531,"pid":7004,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713243896449,"pid":7004,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713243916533,"pid":7004,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713243917017,"pid":7004,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713243917432,"pid":7004,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244053935,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713244059401,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713244065533,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244065533,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244065533,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244066064,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244066064,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244066064,"pid":1540,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244139951,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713244145412,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713244149211,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244149212,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244149212,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244149212,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244149726,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244149726,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244149726,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244149726,"pid":6308,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244493572,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713244502185,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713244509377,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244509377,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244509377,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244509377,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244510567,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244510567,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244510567,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244510567,"pid":14720,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244641108,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713244648251,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713244653056,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244653057,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244653057,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244653057,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"//employee/search"}
+{"level":30,"time":1713244653057,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244653526,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244653526,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244653526,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244653526,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"//employee/search"}
+{"level":30,"time":1713244653526,"pid":10060,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244680557,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713244686289,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713244692242,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244692242,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244692242,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244692242,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713244692242,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713244693007,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713244693008,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"false then false"}
+{"level":30,"time":1713244693008,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"/employee"}
+{"level":30,"time":1713244693008,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713244693008,"pid":6440,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713246945124,"pid":7636,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713246948554,"pid":7636,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713246991425,"pid":12168,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713246996847,"pid":12168,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713247006773,"pid":12168,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713247006773,"pid":12168,"hostname":"DESKTOP-4OV1VV7","msg":"false then true"}
+{"level":30,"time":1713247022224,"pid":2244,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1713247052336,"pid":2244,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv ETIMEOUT _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1713249324126,"pid":12612,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713249327615,"pid":12612,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713249335919,"pid":12612,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249335919,"pid":12612,"hostname":"DESKTOP-4OV1VV7","msg":"undefined then undefined"}
+{"level":30,"time":1713249375674,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713249378754,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713249383758,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249383758,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"undefined then undefined"}
+{"level":30,"time":1713249383758,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"employee/search"}
+{"level":30,"time":1713249383758,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713249383758,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713249384060,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249384060,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"undefined then undefined"}
+{"level":30,"time":1713249384060,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"employee/search"}
+{"level":30,"time":1713249384060,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713249384060,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713249388173,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249388173,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"undefined then undefined"}
+{"level":30,"time":1713249388173,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"employee/search"}
+{"level":30,"time":1713249388173,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713249388173,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713249388459,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249388459,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"undefined then undefined"}
+{"level":30,"time":1713249388459,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"employee/search"}
+{"level":30,"time":1713249388459,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713249388459,"pid":13824,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713249633355,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713249637029,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713249641747,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249641747,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"false then true"}
+{"level":30,"time":1713249641747,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"employee/search"}
+{"level":30,"time":1713249641747,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713249641747,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713249642474,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/661b96b17aee1481fdbd9f5d/userId then site manager"}
+{"level":30,"time":1713249642474,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"false then true"}
+{"level":30,"time":1713249642474,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"employee/search"}
+{"level":30,"time":1713249642474,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search"}
+{"level":30,"time":1713249642474,"pid":548,"hostname":"DESKTOP-4OV1VV7","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713249740876,"pid":13828,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713249744056,"pid":13828,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713249760836,"pid":13828,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713249761292,"pid":13828,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713249761949,"pid":13828,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713249924913,"pid":10640,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713249928050,"pid":10640,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713249986160,"pid":10164,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713249989453,"pid":10164,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713241785794,"pid":7820,"hostname":"DESKTOP-4OV1VV7","0":{"_id":"661b4a0fcbe53f21afcca50d","customerId":"C1000","siteId":"S1000","location":"Kaduwela","start":"2024-04-07T00:00:00.000Z","end":"2024-05-07T00:00:00.000Z","notes":"First Site","lastUpdate":"Initiated","completeStatus":0,"__v":0},"1":{"_id":"661b59c5c0bb4b575da475a4","customerId":"C1000","siteId":"S1001","location":"Malabe","start":"2024-04-10T00:00:00.000Z","end":"2024-04-24T00:00:00.000Z","notes":"test","lastUpdate":"Initiated","completeStatus":0,"__v":0}}{"level":30,"time":1713250022289,"pid":12344,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713250025616,"pid":12344,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713250284403,"pid":6840,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713250287590,"pid":6840,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713250455776,"pid":4288,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713250459079,"pid":4288,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713250461851,"pid":4288,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250462427,"pid":4288,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250638249,"pid":10184,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713250641419,"pid":10184,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713250645571,"pid":10184,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250646277,"pid":10184,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250671178,"pid":10184,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250671763,"pid":10184,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250732931,"pid":11928,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713250736081,"pid":11928,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713250753481,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713250756687,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713250761654,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250762344,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250972516,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713250973123,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":50,"time":1713251041665,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"Error getting Payments by Type"}
+{"level":50,"time":1713251042086,"pid":1560,"hostname":"DESKTOP-4OV1VV7","msg":"Error getting Payments by Type"}
+{"level":30,"time":1713251083275,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713251086602,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713251095092,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251095666,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251260033,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251260672,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251366295,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Stock update successful"}
+{"level":30,"time":1713251382801,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Stock update successful"}
+{"level":30,"time":1713251404998,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Stock update successful"}
+{"level":30,"time":1713251477303,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Stock update successful"}
+{"level":30,"time":1713251523909,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Biller update successful"}
+{"level":30,"time":1713251582596,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251583158,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251589766,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"2024-04"}
+{"level":30,"time":1713251590281,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"Stock Report generating for 2024-04"}
+{"level":30,"time":1713251960686,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713251961129,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713251961765,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713251997449,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713251997901,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713251998560,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713252214898,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713252215450,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713252341638,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713252342248,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713252360154,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713252360735,"pid":9472,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713253297980,"pid":9448,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713253301244,"pid":9448,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713253745426,"pid":13004,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713253748575,"pid":13004,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713253752098,"pid":13004,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713253752719,"pid":13004,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}

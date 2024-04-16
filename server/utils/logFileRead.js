@@ -32,25 +32,46 @@ function readLogFile(month, userId) {
     const logFilePath = path.join('app.log');
     const logs = fs.readFileSync(logFilePath, 'utf8').split('\n');
 
-    const filteredLogs = logs.filter(log => log.trim() !== '').map(log => JSON.parse(log));
+    const filteredLogs = logs.filter(log => log.trim() !== '').map(log => {
+        try {
+            return JSON.parse(log)
+        } catch (error) {
+            return null;
+        }
+    });
 
     const logsInMonth = filteredLogs.filter(log => {
-        const logDate = new Date(log.time);
-        const logYear = logDate.getFullYear();
-        const logMonth = logDate.getMonth() + 1;
-        const [inputYear, inputMonth] = month.split("-").map(Number);
-    
-        return logYear === inputYear && logMonth === inputMonth;
-    });
-    
+        try {
+            const logDate = new Date(log.time);
+            const logYear = logDate.getFullYear();
+            const logMonth = logDate.getMonth() + 1;
+            const [inputYear, inputMonth] = month.split("-").map(Number);
+            return logYear === inputYear && logMonth === inputMonth;
 
-    const logsFilteredByUser = userId === "all" ? logsInMonth : logsInMonth.filter(log => log.msg.includes(userId));
+        } catch (error) {
+            return null;
+        }
+    });
+
+
+    const logsFilteredByUser = userId === "all" ? logsInMonth : logsInMonth.filter(log => {
+        try {
+            return log.msg.includes(userId)
+        } catch (error) {
+            return null;
+        }
+    });
 
     const formattedLogs = logsFilteredByUser.map(log => {
-        const { level, time, msg } = log;
-        const formattedTime = formatTime(new Date(time));
-        const levelWord = levelToWord(level);
-        return { level: levelWord, time: formattedTime, msg };
+        try {
+            const { level, time, msg } = log;
+            const formattedTime = formatTime(new Date(time));
+            const levelWord = levelToWord(level);
+            return { level: levelWord, time: formattedTime, msg };
+
+        } catch (error) {
+            return null;
+        }
     });
 
 
