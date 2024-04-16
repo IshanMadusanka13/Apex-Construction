@@ -272,7 +272,6 @@ const StockReplenishmentReport = () => {
             ['Date', 'Equipment Id', 'qty', 'Total Price'],
         ];
         const tableBody = [];
-        console.log(replenishDetails);
         replenishDetails.forEach((stock) => {
             const stockData = [
                 moment(stock.date).format('MMMM Do YYYY, h:mm:ss a'),
@@ -289,7 +288,6 @@ const StockReplenishmentReport = () => {
             startY: 20,
             columnWidths: [50, 50, 30, 30],
         });
-        console.log(replenishDetails);
         doc.save("stock_report.pdf");
     };
 

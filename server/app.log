@@ -18,4 +18,22 @@
 {"level":30,"time":1712461197107,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
 {"level":30,"time":1712461197748,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
 {"level":30,"time":1712461207803,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/E1000/employeeId] Request Received"}
-{"level":30,"time":1712461213710,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712461213710,"pid":2200,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}{"level":30,"time":1713241566788,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713241574293,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713241580936,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241581777,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241584783,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241585633,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241727952,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241728782,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241729689,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241730766,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241731549,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241732696,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241734620,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241735883,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241774665,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241784514,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713241785299,"pid":7820,"hostname":"DESKTOP-4OV1VV7","msg":"C1000"}
+{"level":30,"time":1713241785794,"pid":7820,"hostname":"DESKTOP-4OV1VV7","0":{"_id":"661b4a0fcbe53f21afcca50d","customerId":"C1000","siteId":"S1000","location":"Kaduwela","start":"2024-04-07T00:00:00.000Z","end":"2024-05-07T00:00:00.000Z","notes":"First Site","lastUpdate":"Initiated","completeStatus":0,"__v":0},"1":{"_id":"661b59c5c0bb4b575da475a4","customerId":"C1000","siteId":"S1001","location":"Malabe","start":"2024-04-10T00:00:00.000Z","end":"2024-04-24T00:00:00.000Z","notes":"test","lastUpdate":"Initiated","completeStatus":0,"__v":0}}
+{"level":30,"time":1713241827442,"pid":11564,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}

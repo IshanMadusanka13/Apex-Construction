@@ -89,15 +89,12 @@ function ViewAllSites() {
     const FilterRows = () => {
 
         const filteredRows = rows.filter(row => {
-            console.log(customerId);
-            console.log(searchData.searchBy);
             if (searchData.searchBy === "siteId") {
                 if (row.siteId == searchData.value) {
                     return row;
                 }
             } else if (searchData.searchBy === "customerId") {
                 if (row.customerId == searchData.value) {
-                    console.log(row.customerId + " for " + searchData.value);
                     return row;
                 }
             }

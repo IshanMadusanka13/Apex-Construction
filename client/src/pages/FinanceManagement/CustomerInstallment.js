@@ -28,15 +28,15 @@ export default function CustomerInstallment() {
     }));
   };
 
-  const loadSites = async () => {
+  const loadSites = async (customerId) => {
     axios
-      .get(GET_SITE_BY_CUSTOMER_ID + paymentDetails.customerId, {})
+      .get(GET_SITE_BY_CUSTOMER_ID + customerId, {})
       .then((response) => {
         setCustomerSites(response.data);
       })
       .catch((error) => {
         console.log(error);
-        errorAlert(error.response.data.message);
+        errorAlert("An error Occured");
       });
   };
 
@@ -46,6 +46,7 @@ export default function CustomerInstallment() {
         .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
         .then((response) => {
           handleChange('customerId', response.data.customerId)
+          loadSites(response.data.customerId);
         })
         .catch((error) => {
           errorAlert(error.response.data.message);
@@ -53,7 +54,6 @@ export default function CustomerInstallment() {
     };
 
     loadProfile();
-    loadSites();
   }, [navigate]);
 
   const handleSubmit = (event) => {

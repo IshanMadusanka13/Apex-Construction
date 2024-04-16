@@ -82,7 +82,7 @@ const SiteController = {
         Site
             .find({ customerId: req.params.id })
             .then((result) => {
-                res.send(result);
+                res.status(200).json(result);
             })
             .catch((err) => {
                 logger.error("Site Fetching Failed by id " + req.params.id);

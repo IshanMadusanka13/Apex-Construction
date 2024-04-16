@@ -51,7 +51,6 @@ function AddSite() {
         axios
             .post(CREATE_SITE, siteDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
                 setSiteDetails({
                     siteId: "",
                     customerId: "",

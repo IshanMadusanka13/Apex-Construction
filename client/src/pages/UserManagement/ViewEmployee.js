@@ -37,7 +37,6 @@ function ViewEmployee() {
         axios
             .get(GET_EMPLOYEE_COUNT, {})
             .then((response) => {
-                console.log(response);
                 setEmployeeCount(response.data);
             })
             .catch((error) => {

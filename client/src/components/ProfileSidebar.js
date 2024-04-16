@@ -279,8 +279,8 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
           <SideBarListItem
             onClick={() => handleItemClick("customerInstallment")}
             selected={selectedContent === "customerInstallment"}
-            primary="Customer Installment"
-            icon={<VisibilityIcon />}
+            primary="Pay Installement"
+            icon={<CreditCardIcon />}
           />
 
         </span>

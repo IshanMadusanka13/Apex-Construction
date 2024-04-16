@@ -40,7 +40,6 @@ function LogReport() {
         axios
             .get(GET_LOG_REPORT + "/" + searchData.month + "/" + searchData.userId, {})
             .then((response) => {
-                console.log(response.data);
                 const logsArray = response.data;
                 const columns = ['Level', 'Time', 'User ID', 'Message'];
                 const rows = logsArray.map(log => ({
@@ -63,7 +62,6 @@ function LogReport() {
         const tableHead = [tableData.columns];
         const tableBody = [];
         tableData.rows.forEach((log) => {
-            console.log(log['User ID']);
             const logData = [
                 log.Level,
                 log.Time,

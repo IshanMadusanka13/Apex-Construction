@@ -11,7 +11,6 @@ function Biller() {
     const [biller, setBiller] = useState('');
 
     const handleUpdate = (billerData) => {
-        console.log(billerData);
         setBiller(billerData);
     }
 
@@ -408,11 +407,9 @@ function ViewBiller({ handleUpdate }) {
     }, [navigate]);
 
     const handleDelete = (billerId) => {
-        console.log(billerId + "  in handle");
         axios
             .delete(DELETE_BILLER + billerId)
             .then((response) => {
-                console.log(response);
                 successAlert("Biller Deleted");
                 loadBillers();
             })
