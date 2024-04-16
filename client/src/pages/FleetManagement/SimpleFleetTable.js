@@ -46,12 +46,11 @@ const SimpleFleetTable = ({ rows = [], selectedUser, handleAccept, handleFinish 
           <Table>
             <TableHead>
               <StyledTableRow>
-                <StyledTableCell>Vehicle ID</StyledTableCell>
                 <StyledTableCell>Vehicle Type</StyledTableCell>
                 <StyledTableCell>Vehicle No</StyledTableCell>
                 <StyledTableCell>Driver ID</StyledTableCell>
-                <StyledTableCell>Transport Materials</StyledTableCell>
                 <StyledTableCell>Driver Mobile No</StyledTableCell>
+                <StyledTableCell>Transport Materials</StyledTableCell>
                 <StyledTableCell>Transport Location</StyledTableCell>
                 <StyledTableCell>Transport Root</StyledTableCell>
                 <StyledTableCell>Estimated Time</StyledTableCell>
@@ -60,13 +59,12 @@ const SimpleFleetTable = ({ rows = [], selectedUser, handleAccept, handleFinish 
             </TableHead>
             <TableBody>
               {rows.map((row) => (
-                <StyledTableRow key={row.Vehicleid}>
-                  <StyledTableCell>{row.Vehicleid}</StyledTableCell>
+                <StyledTableRow key={row.VehicleNo}>
                   <StyledTableCell>{row.VehicleType}</StyledTableCell>
                   <StyledTableCell>{row.VehicleNo}</StyledTableCell>
                   <StyledTableCell>{row.DriverId}</StyledTableCell>
-                  <StyledTableCell>{row.TransportMaterials}</StyledTableCell>
                   <StyledTableCell>{row.DriverMobileNo}</StyledTableCell>
+                  <StyledTableCell>{row.TransportMaterials}</StyledTableCell>
                   <StyledTableCell>{row.TransportLocation}</StyledTableCell>
                   <StyledTableCell>{row.TransportRoot}</StyledTableCell>
                   <StyledTableCell>{row.EstimatedTime}</StyledTableCell>

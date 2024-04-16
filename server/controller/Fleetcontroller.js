@@ -17,7 +17,6 @@ const Fleetcontroller = {
 
     addFleet: async (req, res) => {
         const fleet = new Fleet({
-            Vehicleid: req.body.Vehicleid,
             VehicleType: req.body.VehicleType,
             VehicleNo: req.body.VehicleNo,
             DriverId: req.body.DriverId,
@@ -39,8 +38,8 @@ const Fleetcontroller = {
     },
 
     updateFleet: async (req, res) => {
-        const { Vehicleid, VehicleType, VehicleNo, DriverId, TransportMaterials, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime } = req.body;
-        Fleet.updateOne({ Vehicleid: Vehicleid }, { $set: { VehicleType: VehicleType, VehicleNo: VehicleNo, DriverId: DriverId, TransportMaterials: TransportMaterials, DriverMobileNo: DriverMobileNo, TransportLocation: TransportLocation, TransportRoot: TransportRoot, EstimatedTime: EstimatedTime } })
+        const { VehicleType, VehicleNo, DriverId, TransportMaterials, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime } = req.body;
+        Fleet.updateOne({ VehicleNo: VehicleNo }, { $set: { VehicleType: VehicleType, DriverId: DriverId, TransportMaterials: TransportMaterials, DriverMobileNo: DriverMobileNo, TransportLocation: TransportLocation, TransportRoot: TransportRoot, EstimatedTime: EstimatedTime } })
             .then(response => {
                 logger.info("Successfully updated Fleet Detail");
                 res.status(201).json(response);
@@ -52,10 +51,10 @@ const Fleetcontroller = {
     },
 
     deleteFleet: async (req, res) => {
-        const Vehicleid = req.params.vehicleid;
-        Fleet.deleteOne({ Vehicleid: Vehicleid })
+        const VehicleNo = req.params.VehicleNo;
+        Fleet.deleteOne({ VehicleNo: VehicleNo })
             .then(response => {
-                logger.info("Successfully deleted Fleet Detail with vehicleId " + Vehicleid);
+                logger.info("Successfully deleted Fleet Detail with VehicleNo " + VehicleNo);
                 res.status(201).json(response);
             })
             .catch(error => {

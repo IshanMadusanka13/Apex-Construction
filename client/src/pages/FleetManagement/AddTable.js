@@ -50,12 +50,11 @@ const AddTable = ({ rows, selectedUser, deleteAddVehicle }) => {
                 <Table>
                     <TableHead>
                         <StyledTableRow>
-                            <StyledTableCell>Chassis No</StyledTableCell>
-                            <StyledTableCell>Vehicle ID</StyledTableCell>
-                            <StyledTableCell>Vehicle Type</StyledTableCell>
-                            <StyledTableCell>Vehicle Manufachured Year</StyledTableCell>
-                            <StyledTableCell>Vehicle Brand</StyledTableCell>
                             <StyledTableCell>Vehicle No</StyledTableCell>
+                            <StyledTableCell>Vehicle Type</StyledTableCell>
+                            <StyledTableCell>Vehicle Brand</StyledTableCell>
+                            <StyledTableCell>Vehicle Manufachured Year</StyledTableCell>
+                            <StyledTableCell>Chassis No</StyledTableCell>
                             <StyledTableCell>Action</StyledTableCell>
                         </StyledTableRow>
                     </TableHead>
@@ -63,13 +62,11 @@ const AddTable = ({ rows, selectedUser, deleteAddVehicle }) => {
                         {
                             rows.length > 0 ? rows.map(row => (
                                 <StyledTableRow key={row.ChassisNo}>
-                                    <StyledTableCell>{row.ChassisNo}</StyledTableCell>
-                                    <StyledTableCell>{row.Vehicleid}</StyledTableCell>
-                                    <StyledTableCell>{row.VehicleType}</StyledTableCell>
-                                    <StyledTableCell>{row.VehicleManufachuredYear}</StyledTableCell>
-                                    <StyledTableCell>{row.VehicleBrand}</StyledTableCell>
                                     <StyledTableCell>{row.VehicleNo}</StyledTableCell>
-                                    
+                                    <StyledTableCell>{row.VehicleType}</StyledTableCell>
+                                    <StyledTableCell>{row.VehicleBrand}</StyledTableCell>
+                                    <StyledTableCell>{row.VehicleManufachuredYear}</StyledTableCell>
+                                    <StyledTableCell>{row.ChassisNo}</StyledTableCell>
                                     <StyledTableCell>
                                         <Button sx={{ margin: '0px 10px' }}
                                             onClick={() => handleUpdate({ row })}

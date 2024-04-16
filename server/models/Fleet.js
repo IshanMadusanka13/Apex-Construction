@@ -1,11 +1,6 @@
 import mongoose from 'mongoose';
 
 const FleetSchema = new mongoose.Schema({
-    Vehicleid: {
-        type: Number,
-        required: true,
-        unique: true
-    },
 
     VehicleType: {
         type: String,
@@ -18,6 +13,11 @@ const FleetSchema = new mongoose.Schema({
     },
 
     TransportMaterials: {
+        type: String,
+        required: true,
+    },
+
+    DriverId: {
         type: String,
         required: true,
     },

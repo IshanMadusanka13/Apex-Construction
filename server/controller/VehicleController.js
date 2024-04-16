@@ -15,10 +15,21 @@ const VehicleController = {
             });
     },
 
+    getVehiclesByType: async (req, res) => {
+        Vehicle.find({ VehicleType:req.params.type })
+            .then(response => {
+                logger.info("Successfully fetched Vehicle Details by type");
+                res.status(201).json(response);
+            })
+            .catch(error => {
+                logger.error("Error getting Fleet Detail");
+                res.status(400).json({ message: error.message });
+            });
+    },
+
     addVehicle: async (req, res) => {
         const addVehicle = new Vehicle({
             ChassisNo: req.body.ChassisNo,
-            Vehicleid: req.body.Vehicleid,
             VehicleType: req.body.VehicleType,
             VehicleManufachuredYear: req.body.VehicleManufachuredYear,
             VehicleBrand: req.body.VehicleBrand,
@@ -37,12 +48,11 @@ const VehicleController = {
     },
 
     updateAddVehicle: async (req, res) => {
-        const { ChassisNo, Vehicleid, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo } = req.body;
+        const { ChassisNo, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo } = req.body;
         Vehicle.updateOne(
             { ChassisNo: ChassisNo },
             {
                 $set: {
-                    Vehicleid: Vehicleid,
                     VehicleType: VehicleType,
                     VehicleManufachuredYear: VehicleManufachuredYear,
                     VehicleBrand: VehicleBrand,

@@ -244,3 +244,117 @@
 {"level":30,"time":1713258843724,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
 {"level":30,"time":1713264227826,"pid":10648,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
 {"level":50,"time":1713264227877,"pid":10648,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv ECONNREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
+{"level":30,"time":1713267519256,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713267522953,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713267528419,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267529535,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267631024,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Added Vehicle Detail"}
+{"level":30,"time":1713267631425,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267644187,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Updated Vehicle Detail of Chassis undefined"}
+{"level":30,"time":1713267644567,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267654692,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully deleted Vehicle Detail of Chassis 123456"}
+{"level":30,"time":1713267655731,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267681431,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Added Vehicle Detail"}
+{"level":30,"time":1713267681844,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":50,"time":1713267725478,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":50,"time":1713267803174,"pid":13768,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":30,"time":1713267898642,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713267902498,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":50,"time":1713267918235,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":30,"time":1713267918236,"pid":12856,"hostname":"DESKTOP-4OV1VV7","err":{"type":"MongoServerError","message":"E11000 duplicate key error collection: test.vehicles index: Vehicleid_1 dup key: { Vehicleid: null }","stack":"MongoServerError: E11000 duplicate key error collection: test.vehicles index: Vehicleid_1 dup key: { Vehicleid: null }\n    at InsertOneOperation.execute (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongodb\\lib\\operations\\insert.js:48:19)\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)\n    at async executeOperationAsync (E:\\Projects\\Main Projects\\Apex-Construction\\server\\node_modules\\mongodb\\lib\\operations\\execute_operation.js:106:16)","index":0,"code":11000,"keyPattern":{"Vehicleid":1},"keyValue":{"Vehicleid":null}},"msg":"E11000 duplicate key error collection: test.vehicles index: Vehicleid_1 dup key: { Vehicleid: null }"}
+{"level":30,"time":1713267959322,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713267959642,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713267962051,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267962358,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713267986639,"pid":12856,"hostname":"DESKTOP-4OV1VV7","$__":{"activePaths":{"paths":{"ChassisNo":"require","VehicleNo":"require","VehicleBrand":"require","VehicleManufachuredYear":"require","VehicleType":"require"},"states":{"require":{"ChassisNo":true,"VehicleNo":true,"VehicleBrand":true,"VehicleManufachuredYear":true,"VehicleType":true},"default":{},"modify":{}}},"op":null,"saving":null,"$versionError":null,"saveOptions":null,"validating":null,"cachedRequired":{},"backup":{"activePaths":{"modify":{"VehicleType":true,"VehicleManufachuredYear":true,"VehicleBrand":true,"VehicleNo":true,"ChassisNo":true},"default":{"_id":true}},"validationError":null},"inserting":true,"savedState":{}},"_doc":{"VehicleType":"Truck","VehicleManufachuredYear":"2015","VehicleBrand":"TATA","VehicleNo":"LM1336","ChassisNo":100001,"_id":"661e6512531faa7052e894eb","__v":0},"$isNew":false}
+{"level":30,"time":1713267986641,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Added Vehicle Detail"}
+{"level":30,"time":1713267987000,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268007156,"pid":12856,"hostname":"DESKTOP-4OV1VV7","$__":{"activePaths":{"paths":{"ChassisNo":"require","VehicleNo":"require","VehicleBrand":"require","VehicleManufachuredYear":"require","VehicleType":"require"},"states":{"require":{"ChassisNo":true,"VehicleNo":true,"VehicleBrand":true,"VehicleManufachuredYear":true,"VehicleType":true},"default":{},"modify":{}}},"op":null,"saving":null,"$versionError":null,"saveOptions":null,"validating":null,"cachedRequired":{},"backup":{"activePaths":{"modify":{"VehicleType":true,"VehicleManufachuredYear":true,"VehicleBrand":true,"VehicleNo":true,"ChassisNo":true},"default":{"_id":true}},"validationError":null},"inserting":true,"savedState":{}},"_doc":{"VehicleType":"PickupTruck","VehicleManufachuredYear":"2020","VehicleBrand":"Dimo","VehicleNo":"LM1338","ChassisNo":100002,"_id":"661e6526531faa7052e894ee","__v":0},"$isNew":false}
+{"level":30,"time":1713268007157,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Added Vehicle Detail"}
+{"level":30,"time":1713268007563,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268040368,"pid":12856,"hostname":"DESKTOP-4OV1VV7","$__":{"activePaths":{"paths":{"ChassisNo":"require","VehicleNo":"require","VehicleBrand":"require","VehicleManufachuredYear":"require","VehicleType":"require"},"states":{"require":{"ChassisNo":true,"VehicleNo":true,"VehicleBrand":true,"VehicleManufachuredYear":true,"VehicleType":true},"default":{},"modify":{}}},"op":null,"saving":null,"$versionError":null,"saveOptions":null,"validating":null,"cachedRequired":{},"backup":{"activePaths":{"modify":{"VehicleType":true,"VehicleManufachuredYear":true,"VehicleBrand":true,"VehicleNo":true,"ChassisNo":true},"default":{"_id":true}},"validationError":null},"inserting":true,"savedState":{}},"_doc":{"VehicleType":"SmallLorry","VehicleManufachuredYear":"2010","VehicleBrand":"ATCO","VehicleNo":"LM1348","ChassisNo":100003,"_id":"661e6548531faa7052e894f1","__v":0},"$isNew":false}
+{"level":30,"time":1713268040369,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Added Vehicle Detail"}
+{"level":30,"time":1713268040763,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268077807,"pid":12856,"hostname":"DESKTOP-4OV1VV7","$__":{"activePaths":{"paths":{"ChassisNo":"require","VehicleNo":"require","VehicleBrand":"require","VehicleManufachuredYear":"require","VehicleType":"require"},"states":{"require":{"ChassisNo":true,"VehicleNo":true,"VehicleBrand":true,"VehicleManufachuredYear":true,"VehicleType":true},"default":{},"modify":{}}},"op":null,"saving":null,"$versionError":null,"saveOptions":null,"validating":null,"cachedRequired":{},"backup":{"activePaths":{"modify":{"VehicleType":true,"VehicleManufachuredYear":true,"VehicleBrand":true,"VehicleNo":true,"ChassisNo":true},"default":{"_id":true}},"validationError":null},"inserting":true,"savedState":{}},"_doc":{"VehicleType":"Car","VehicleManufachuredYear":"2022","VehicleBrand":"BMW","VehicleNo":"ABX3226","ChassisNo":100004,"_id":"661e656d531faa7052e894f4","__v":0},"$isNew":false}
+{"level":30,"time":1713268077808,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully Added Vehicle Detail"}
+{"level":30,"time":1713268078169,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268082776,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268083127,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268376502,"pid":12856,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268606015,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713268610624,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713268624337,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268624670,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268626974,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268627331,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268722248,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268722599,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268724409,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268724728,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268787383,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268787724,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268790397,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268790985,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268792873,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268793246,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268836523,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268836837,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713268839973,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268840278,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268875932,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268876275,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268879918,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268880455,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713268884086,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713268998849,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713268999160,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269006449,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269006769,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269009279,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269009651,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269011249,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713269030351,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269030686,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269113387,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269113766,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269119470,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269121840,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269127228,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713269239271,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269239580,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269266316,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269266637,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269268423,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713269441618,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269441900,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269447741,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269448047,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269450159,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269450438,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269454463,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713269464617,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":50,"time":1713269495518,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":30,"time":1713269547415,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":50,"time":1713269551127,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":30,"time":1713269614489,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":50,"time":1713269626196,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":30,"time":1713269629368,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269629671,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269633300,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269633581,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269635556,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713269637591,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":50,"time":1713269650499,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Error Creating Fleet Detail"}
+{"level":30,"time":1713269685748,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269711937,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully added Fleet Detail"}
+{"level":30,"time":1713269712312,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269723010,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}
+{"level":30,"time":1713269727940,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully added Fleet Detail"}
+{"level":30,"time":1713269728284,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269735528,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269735872,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713269735901,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269736208,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269744388,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully deleted Fleet Detail with VehicleNo LM1336"}
+{"level":30,"time":1713269744988,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713269750202,"pid":13904,"hostname":"DESKTOP-4OV1VV7","msg":"Successfully fetched Vehicle Details by type"}

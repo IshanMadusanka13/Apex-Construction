@@ -30,7 +30,6 @@ const AddVehicles = () => {
     setSubmitted(true);
     const payload = {
       ChassisNo: data.ChassisNo,
-      Vehicleid: data.Vehicleid,
       VehicleType: data.VehicleType,
       VehicleManufachuredYear: data.VehicleManufachuredYear,
       VehicleBrand: data.VehicleBrand,
@@ -54,7 +53,6 @@ const AddVehicles = () => {
     setSubmitted(true);
     const payload = {
       ChassisNo: data.ChassisNo,
-      Vehicleid: data.Vehicleid,
       VehicleType: data.VehicleType,
       VehicleManufachuredYear: data.VehicleManufachuredYear,
       VehicleBrand: data.VehicleBrand,

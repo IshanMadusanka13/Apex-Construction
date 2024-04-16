@@ -1,13 +1,15 @@
 import { Button, Grid, MenuItem, OutlinedInput, TextField, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
+import Axios from "axios";
+import { SEARCH_VEHCILE_BY_TYPE } from "../../EndPoints";
 
 const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit }) => {
 
   const theme = useTheme();
 
-  const [Vehicleid, setVehicleid] = useState(0);
   const [VehicleType, setVehicleType] = useState('');
-  const [VehicleNo, setVehicleNo] = useState('');
+  const [VehicleNo, setVehicleNo] = useState([]);
+  const [selectedVehicleNo, setSelectedVehicleNo] = useState('');
   const [DriverId, setDriverId] = useState(0);
   const [TransportMaterial, setTransportMaterial] = useState('');
   const [DriverMobileNo, setDriverMobileNo] = useState('');
@@ -17,7 +19,6 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
 
   useEffect(() => {
     if (!submitted) {
-      setVehicleid(0);
       setVehicleType('');
       setVehicleNo('');
       setDriverId(0);
@@ -30,12 +31,11 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
   }, [submitted]);
 
   useEffect(() => {
-    if (data?.Vehicleid && data.Vehicleid !== 0) {
-      setVehicleid(data.Vehicleid);
+    if (data?.VehicleNo && data.VehicleNo !== '') {
       setVehicleType(data.VehicleType);
-      setVehicleNo(data.VehicleNo);
+      setSelectedVehicleNo(data.VehicleNo);
       setDriverId(data.DriverId);
-      setTransportMaterial(data.TransportMaterial);
+      setTransportMaterial(data.TransportMaterials);
       setDriverMobileNo(data.DriverMobileNo);
       setTransportLocation(data.TransportLocation);
       setTransportRoot(data.TransportRoot);
@@ -43,25 +43,25 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
     }
   }, [data]);
 
+  useEffect(() => {
+    const getAddVehicles = () => {
+      Axios.get(SEARCH_VEHCILE_BY_TYPE + VehicleType)
+        .then(response => {
+          console.log(response);
+          const vNo = response.data.map((vehicle) => vehicle.VehicleNo);
+          setVehicleNo(vNo);
+        })
+        .catch(error => {
+          console.error("Axios Error :", error);
+        });
+    }
+    getAddVehicles();
+  }, [VehicleType]);
+
   return (
     <Grid container spacing={2} sx={theme.palette.gridBody}>
       <Grid item xs={12} sm={6} md={12}>
         <Typography variant="h4" style={{ color: '#000000', marginBottom: '50px', marginLeft: '350px' }}>Transportation Details</Typography>
-      </Grid>
-
-      <Grid item xs={12} sm={6} md={6}>
-        <TextField
-          type="number"
-          required
-          fullWidth
-          id='Vehicleid'
-          label="Vehicle Id"
-          name="Vehicleid"
-          autoComplete="Vehicleid"
-          value={Vehicleid}
-          onChange={e => setVehicleid(e.target.value)}
-          autoFocus
-        />
       </Grid>
 
       <Grid item xs={12} sm={6} md={6}>
@@ -75,31 +75,37 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
           value={VehicleType}
           onChange={e => setVehicleType(e.target.value)}
         >
-          <MenuItem value="crane">Pickup Truck</MenuItem>
+          <MenuItem value="Car">Car</MenuItem>
           <MenuItem value="Truck">Truck</MenuItem>
-          <MenuItem value="Loader">Concrete Truck</MenuItem>
-          <MenuItem value="Loader">Dump Truck</MenuItem>
-          <MenuItem value="Loader">Tanker Truck</MenuItem>
-          <MenuItem value="Loader">Small Lorry</MenuItem>
+          <MenuItem value="Van">Van</MenuItem>
+          <MenuItem value="PickupTruck">Pickup Truck</MenuItem>
+          <MenuItem value="ConcreteTruck">Concrete Truck</MenuItem>
+          <MenuItem value="DumpTruck">Dump Truck</MenuItem>
+          <MenuItem value="TankerTruck">Tanker Truck</MenuItem>
+          <MenuItem value="SmallLorry">Small Lorry</MenuItem>
         </TextField>
       </Grid>
 
       <Grid item xs={12} sm={6} md={6}>
         <TextField
+          select
           margin="normal"
           required
           fullWidth
           id='VehicleNo'
           label="Vehicle No"
           name="VehicleNo"
-          value={VehicleNo}
-          onChange={e => setVehicleNo(e.target.value)}
-        />
+          value={selectedVehicleNo}
+          onChange={e => setSelectedVehicleNo(e.target.value)}
+        >
+          {Object.values(VehicleNo).map((vNo) => (
+            <MenuItem value={vNo}>{vNo}</MenuItem>
+          ))}
+        </TextField>
       </Grid>
 
       <Grid item xs={12} sm={6} md={6}>
         <TextField
-          type="number"
           margin="normal"
           required
           fullWidth
@@ -122,14 +128,14 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
           value={TransportMaterial}
           onChange={e => setTransportMaterial(e.target.value)}
         >
-          <MenuItem value="Material1">Concrete </MenuItem>
-          <MenuItem value="Material2">Cement </MenuItem>
-          <MenuItem value="Material3">Stone</MenuItem>
-          <MenuItem value="Material3">Glass</MenuItem>
-          <MenuItem value="Material3">Sand</MenuItem>
-          <MenuItem value="Material3">Wood</MenuItem>
-          <MenuItem value="Material3">Bricks</MenuItem>
-          <MenuItem value="Material3">Steel</MenuItem>
+          <MenuItem value="Concrete">Concrete </MenuItem>
+          <MenuItem value="Cement">Cement </MenuItem>
+          <MenuItem value="Stone">Stone</MenuItem>
+          <MenuItem value="Glass">Glass</MenuItem>
+          <MenuItem value="Sand">Sand</MenuItem>
+          <MenuItem value="Wood">Wood</MenuItem>
+          <MenuItem value="Bricks">Bricks</MenuItem>
+          <MenuItem value="Steel">Steel</MenuItem>
         </TextField>
       </Grid>
 
@@ -183,7 +189,7 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
 
       <Button
         variant="contained" sx={{ mt: 3, width: "50%" }}
-        onClick={() => isEdit ? updateFleetDetail({ Vehicleid, VehicleType, VehicleNo, DriverId, TransportMaterial, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime }) : addFleetDetail({ Vehicleid, VehicleType, VehicleNo, DriverId, TransportMaterial, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime })}
+        onClick={() => isEdit ? updateFleetDetail({ VehicleType, selectedVehicleNo, DriverId, TransportMaterial, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime }) : addFleetDetail({ VehicleType, selectedVehicleNo, DriverId, TransportMaterial, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime })}
       >
         {isEdit ? 'Update' : 'Add'}
       </Button>

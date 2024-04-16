@@ -30,11 +30,10 @@ const FleetDetails = () => {
   const addFleetDetail = (data) => {
     setSubmitted(true);
     const payload = {
-      Vehicleid: data.Vehicleid,
       VehicleType: data.VehicleType,
-      VehicleNo: data.VehicleNo,
+      VehicleNo: data.selectedVehicleNo,
       DriverId: data.DriverId,
-      TransportMaterials: data.TransportMaterials,
+      TransportMaterials: data.TransportMaterial,
       DriverMobileNo: data.DriverMobileNo,
       TransportLocation: data.TransportLocation,
       TransportRoot: data.TransportRoot,
@@ -57,11 +56,10 @@ const FleetDetails = () => {
   const updateFleetDetail = (data) => {
     setSubmitted(true);
     const payload = {
-      Vehicleid: data.Vehicleid,
       VehicleType: data.VehicleType,
-      VehicleNo: data.VehicleNo,
+      VehicleNo: data.selectedVehicleNo,
       DriverId: data.DriverId,
-      TransportMaterials: data.TransportMaterials,
+      TransportMaterials: data.TransportMaterial,
       DriverMobileNo: data.DriverMobileNo,
       TransportLocation: data.TransportLocation,
       TransportRoot: data.TransportRoot,
@@ -81,7 +79,7 @@ const FleetDetails = () => {
   }
 
   const deleteFleetDetail = (data) => {
-    Axios.delete(DELETE_FLEET + data.Vehicleid)
+    Axios.delete(DELETE_FLEET + data.VehicleNo)
       .then(() => {
         getFleetDetails();
         successAlert("Data Deleted Succesfully");
