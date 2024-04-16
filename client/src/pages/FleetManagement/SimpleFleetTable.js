@@ -42,7 +42,7 @@ const SimpleFleetTable = ({ rows = [], selectedUser, handleAccept, handleFinish 
   return (
     <Box>
       {rows.length > 0 ? (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
           <Table>
             <TableHead>
               <StyledTableRow>

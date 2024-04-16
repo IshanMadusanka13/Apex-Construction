@@ -1,4 +1,4 @@
-import { Box, TextField, Button } from "@mui/material";
+import { Box, TextField, Button, Grid, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert } from "../../utils";
@@ -8,6 +8,8 @@ import { SEARCH_FLEET, SEARCH_FLEET_BY_DRIVER_ID } from "../../EndPoints";
 const FleetTablePage = () => {
   const [fleetDetails, setFleetDetails] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+
+  const theme = useTheme();
 
   useEffect(() => {
     getFleetDetails();
@@ -36,26 +38,29 @@ const FleetTablePage = () => {
       });
   }
 
-
-
   return (
     <Box>
-      {/* Search functionality */}
-      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
-        <TextField
-          type="text"
-          placeholder="Search..."
-          value={searchTerm}
-          onChange={e => setSearchTerm(e.target.value)}
+      <Grid container spacing={2} sx={theme.palette.gridBody}>
+        <Grid item md={6}>
+          <TextField
+            type="text"
+            placeholder="Search..."
+            fullWidth
+            autoFocus
+            value={searchTerm}
+            onChange={e => setSearchTerm(e.target.value)}
+          />
+        </Grid>
+        <Grid item md={6}>
+          <Button variant="contained" onClick={handleSearch} sx={{ marginLeft: '10px' }}>Search</Button>
+        </Grid>
+      </Grid>
+
+      <Grid container spacing={2} sx={theme.palette.gridBody}>
+        <FleetTable
+          rows={fleetDetails}
         />
-        <Button variant="contained" onClick={handleSearch} sx={{ marginLeft: '10px' }}>Search</Button>
-      </Box>
-
-      {/* Display FleetTable */}
-      <FleetTable
-        rows={fleetDetails}
-
-      />
+      </Grid>
     </Box>
   );
 }

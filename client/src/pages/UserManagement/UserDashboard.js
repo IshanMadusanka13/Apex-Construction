@@ -68,7 +68,6 @@ export default function UserDashboard() {
                     {selectedContent === "makePayment" && <MakePayment />}
                     {selectedContent === "comMakePayment" && <PaymentForm />}
                     {selectedContent === "customerInstallment" && <CustomerInstallment />}
-                    {selectedContent === "review" && <Review />}
 
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>

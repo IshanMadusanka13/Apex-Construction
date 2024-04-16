@@ -11,8 +11,6 @@ import stockRouter from "./routes/StockRouter.js";
 import FleetRouter from "./routes/FleetRouter.js";
 import vehicleRouter from "./routes/VehicleRouter.js";
 
-
-
 const app = express();
 
 app.use(cors());
@@ -28,8 +26,6 @@ app.use('/biller', billerRouter);
 app.use('/stock', stockRouter);
 app.use('/fleet', FleetRouter);
 app.use('/vehicle', vehicleRouter);
-
-
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');

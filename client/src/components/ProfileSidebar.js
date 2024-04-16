@@ -56,13 +56,6 @@ const ProfileSidebar = (props) => {
           icon={<AccountCircleIcon />}
         />
 
-        <SideBarListItem
-          onClick={() => handleItemClick("review")}
-          selected={selectedContent === "review"}
-          primary="Review"
-          icon={<AccountCircleIcon />}
-        />
-
         <SetSideBarLists handleItemClick={handleItemClick} />
 
         <SideBarListItem
