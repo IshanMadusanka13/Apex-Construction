@@ -1,11 +1,12 @@
-import AddVehicle from '../models/AddVehicle.js';
+import Vehicle from '../models/Vehicle.js';
 import logger from '../utils/logger.js';
 
-const AddVehiclecontroller = {
+const VehicleController = {
 
-    getAddVehicles: async (req, res) => {
-        AddVehicle.find()
+    getVehicles: async (req, res) => {
+        Vehicle.find()
             .then(response => {
+                logger.info("Successfully fetched all Vehicle Details");
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -14,18 +15,19 @@ const AddVehiclecontroller = {
             });
     },
 
-    addAddVehicle: async (req, res) => {
-        const addVehicle = new AddVehicle({
+    addVehicle: async (req, res) => {
+        const addVehicle = new Vehicle({
             ChassisNo: req.body.ChassisNo,
             Vehicleid: req.body.Vehicleid,
             VehicleType: req.body.VehicleType,
             VehicleManufachuredYear: req.body.VehicleManufachuredYear,
             VehicleBrand: req.body.VehicleBrand,
             VehicleNo: req.body.VehicleNo,
-           
+
         });
         addVehicle.save()
             .then(response => {
+                logger.info("Successfully Added Vehicle Detail");
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -36,8 +38,19 @@ const AddVehiclecontroller = {
 
     updateAddVehicle: async (req, res) => {
         const { ChassisNo, Vehicleid, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo } = req.body;
-        AddVehicle.updateOne({ ChassisNo: ChassisNo }, { $set: { Vehicleid: Vehicleid, VehicleType: VehicleType, VehicleManufachuredYear: VehicleManufachuredYear, VehicleBrand: VehicleBrand, VehicleNo: VehicleNo } })
+        Vehicle.updateOne(
+            { ChassisNo: ChassisNo },
+            {
+                $set: {
+                    Vehicleid: Vehicleid,
+                    VehicleType: VehicleType,
+                    VehicleManufachuredYear: VehicleManufachuredYear,
+                    VehicleBrand: VehicleBrand,
+                    VehicleNo: VehicleNo
+                }
+            })
             .then(response => {
+                logger.info("Successfully Updated Vehicle Detail of Chassis " + req.params.ChassisNo);
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -46,19 +59,20 @@ const AddVehiclecontroller = {
             });
     },
 
-    deleteAddVehicle: async (req, res) => {
+    deleteVehicle: async (req, res) => {
         const ChassisNo = req.params.ChassisNo;
-        AddVehicle.deleteOne({ ChassisNo: ChassisNo })
+        Vehicle.deleteOne({ ChassisNo: ChassisNo })
             .then(response => {
+                logger.info("Successfully deleted Vehicle Detail of Chassis " + req.params.ChassisNo);
                 res.status(201).json(response);
             })
             .catch(error => {
-                logger.error("Error deleting Add Vehicle Detail");
+                logger.error("Error deleting Vehicle Detail");
                 res.status(400).json({ message: error.message });
             });
 
     },
 }
 
-export default AddVehiclecontroller;
+export default VehicleController;
 

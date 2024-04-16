@@ -219,3 +219,28 @@
 {"level":30,"time":1713249314225,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
 {"level":30,"time":1713250635028,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
 {"level":30,"time":1713250635305,"pid":29684,"hostname":"DESKTOP-0EJVC7L","msg":"User Access Revoked"}
+{"level":30,"time":1713258651024,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713258654315,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713258667746,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258668050,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258677517,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713258677954,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258678236,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258700544,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713258700999,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258701354,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258712867,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258713167,"pid":6872,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258733547,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713258736782,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713258745078,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258745376,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258767758,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713258768238,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258768530,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258818391,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258818680,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258843243,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713258843724,"pid":7396,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1713264227826,"pid":10648,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1713264227877,"pid":10648,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv ECONNREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}

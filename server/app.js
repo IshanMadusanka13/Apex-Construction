@@ -5,7 +5,7 @@ import customerRouter from './routes/CustomerRouter.js';
 import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
 import FleetRouter from "./routes/FleetRouter.js";
-import AddVehicleRouter from "./routes/AddVehicleRouter.js";
+import vehicleRouter from "./routes/VehicleRouter.js";
 
 
 
@@ -19,7 +19,7 @@ app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
 app.use('/fleet', FleetRouter);
-app.use('/AddVehicle', AddVehicleRouter);
+app.use('/vehicle', vehicleRouter);
 
 
 

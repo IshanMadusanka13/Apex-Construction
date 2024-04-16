@@ -4,7 +4,7 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
 import AddTable from './AddTable.js';
-
+import { CREATE_VEHCILE, DELETE_VEHCILE, SEARCH_VEHCILE, UPDATE_VEHCILE } from "../../EndPoints";
 
 const AddVehicles = () => {
   const [AddVehicles, setAddVehicles] = useState([]);
@@ -17,7 +17,7 @@ const AddVehicles = () => {
   }, []);
 
   const getAddVehicles = () => {
-    Axios.get('http://localhost:3001/AddVehicle/search')
+    Axios.get(SEARCH_VEHCILE)
       .then(response => {
         setAddVehicles(response.data ? response.data : []);
       })
@@ -29,17 +29,15 @@ const AddVehicles = () => {
   const addAddVehicle = (data) => {
     setSubmitted(true);
     const payload = {
-      ChassisNo: data.ChassisNo,  
+      ChassisNo: data.ChassisNo,
       Vehicleid: data.Vehicleid,
       VehicleType: data.VehicleType,
       VehicleManufachuredYear: data.VehicleManufachuredYear,
       VehicleBrand: data.VehicleBrand,
       VehicleNo: data.VehicleNo,
-      
-      
     }
 
-    Axios.post('http://localhost:3001/AddVehicle/create', payload)
+    Axios.post(CREATE_VEHCILE, payload)
       .then(() => {
         getAddVehicles();
         setSubmitted(false);
@@ -55,14 +53,14 @@ const AddVehicles = () => {
   const updateAddVehicle = (data) => {
     setSubmitted(true);
     const payload = {
-        ChassisNo: data.ChassisNo,  
-        Vehicleid: data.Vehicleid,
-        VehicleType: data.VehicleType,
-        VehicleManufachuredYear: data.VehicleManufachuredYear,
-        VehicleBrand: data.VehicleBrand,
-        VehicleNo: data.VehicleNo,
+      ChassisNo: data.ChassisNo,
+      Vehicleid: data.Vehicleid,
+      VehicleType: data.VehicleType,
+      VehicleManufachuredYear: data.VehicleManufachuredYear,
+      VehicleBrand: data.VehicleBrand,
+      VehicleNo: data.VehicleNo,
     }
-    Axios.put('http://localhost:3001/AddVehicle/update', payload)
+    Axios.put(UPDATE_VEHCILE, payload)
       .then(() => {
         getAddVehicles();
         setSubmitted(false);
@@ -76,7 +74,7 @@ const AddVehicles = () => {
   }
 
   const deleteAddVehicle = (data) => {
-    Axios.delete('http://localhost:3001/AddVehicle/delete/'+data.ChassisNo)
+    Axios.delete(DELETE_VEHCILE + data.ChassisNo)
       .then(() => {
         getAddVehicles();
         successAlert("Data Deleted Succesfully");

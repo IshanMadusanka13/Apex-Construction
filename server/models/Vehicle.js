@@ -1,6 +1,7 @@
 import mongoose from 'mongoose';
 
-const FleetSchema = new mongoose.Schema({
+const vehicleSchema =  new mongoose.Schema({
+    
     Vehicleid: {
         type: Number,
         required: true,
@@ -12,38 +13,29 @@ const FleetSchema = new mongoose.Schema({
         required: true,
     },
 
+    VehicleManufachuredYear: {
+        type: String,
+        required: true,
+    },
+
+    VehicleBrand: {
+        type: String,
+        required: true,
+    },
+
     VehicleNo: {
         type: String,
         required: true,
     },
 
-    TransportMaterials: {
-        type: String,
+    ChassisNo: {
+        type: Number,
         required: true,
-    },
-
-    DriverMobileNo: {
-        type: String,
-        required: true,
-    },
-
-    TransportLocation: {
-        type: String,
-        required: true,
-    },
-
-    TransportRoot: {
-        type: String,
-        required: true,
-    },
-
-    EstimatedTime: {
-        type: String,
-        required: true,
+        unique: true
     },
 
 });
 
-const Fleet = mongoose.model('Fleet', FleetSchema);
+const Vehicle = mongoose.model('Vehicle' , vehicleSchema);
 
-export default Fleet;
+export default Vehicle;

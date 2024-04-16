@@ -4,6 +4,7 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
 import FleetTable from './FleetTable.js';
+import { CREATE_FLEET, DELETE_FLEET, SEARCH_FLEET, UPDATE_FLEET } from "../../EndPoints";
 
 
 const FleetDetails = () => {
@@ -17,7 +18,7 @@ const FleetDetails = () => {
   }, []);
 
   const getFleetDetails = () => {
-    Axios.get('http://localhost:3001/fleet/search')
+    Axios.get(SEARCH_FLEET)
       .then(response => {
         setFleetDetails(response.data ? response.data : []);
       })
@@ -40,7 +41,7 @@ const FleetDetails = () => {
       EstimatedTime: data.EstimatedTime
     }
 
-    Axios.post('http://localhost:3001/fleet/create', payload)
+    Axios.post(CREATE_FLEET, payload)
       .then(() => {
         getFleetDetails();
         setSubmitted(false);
@@ -66,7 +67,7 @@ const FleetDetails = () => {
       TransportRoot: data.TransportRoot,
       EstimatedTime: data.EstimatedTime
     }
-    Axios.put('http://localhost:3001/fleet/update', payload)
+    Axios.put(UPDATE_FLEET, payload)
       .then(() => {
         getFleetDetails();
         setSubmitted(false);
@@ -80,7 +81,7 @@ const FleetDetails = () => {
   }
 
   const deleteFleetDetail = (data) => {
-    Axios.delete('http://localhost:3001/fleet/delete/'+data.Vehicleid)
+    Axios.delete(DELETE_FLEET + data.Vehicleid)
       .then(() => {
         getFleetDetails();
         successAlert("Data Deleted Succesfully");

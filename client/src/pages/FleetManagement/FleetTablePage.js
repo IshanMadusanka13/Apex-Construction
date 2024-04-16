@@ -1,8 +1,9 @@
-import { Box,TextField,Button } from "@mui/material";
+import { Box, TextField, Button } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert } from "../../utils";
 import FleetTable from './SimpleFleetTable.js';
+import { SEARCH_FLEET, SEARCH_FLEET_BY_DRIVER_ID } from "../../EndPoints";
 
 const FleetTablePage = () => {
   const [fleetDetails, setFleetDetails] = useState([]);
@@ -13,7 +14,7 @@ const FleetTablePage = () => {
   }, []);
 
   const getFleetDetails = () => {
-    Axios.get('http://localhost:3001/fleet/search')
+    Axios.get(SEARCH_FLEET)
       .then(response => {
         setFleetDetails(response.data ? response.data : []);
       })
@@ -23,7 +24,7 @@ const FleetTablePage = () => {
   }
 
   const handleSearch = () => {
-    Axios.get(`http://localhost:3001/fleet/search/${searchTerm}`)
+    Axios.get(SEARCH_FLEET_BY_DRIVER_ID + searchTerm)
       .then(response => {
         setFleetDetails(response.data ? [response.data] : []);
         console.log(response.data);
@@ -35,7 +36,7 @@ const FleetTablePage = () => {
       });
   }
 
- 
+
 
   return (
     <Box>
@@ -53,7 +54,7 @@ const FleetTablePage = () => {
       {/* Display FleetTable */}
       <FleetTable
         rows={fleetDetails}
-       
+
       />
     </Box>
   );

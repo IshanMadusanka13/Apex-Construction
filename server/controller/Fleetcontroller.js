@@ -1,12 +1,12 @@
 import Fleet from '../models/Fleet.js';
 import logger from '../utils/logger.js';
 
-
 const Fleetcontroller = {
 
     getFleets: async (req, res) => {
         Fleet.find()
             .then(response => {
+                logger.info("Successfully got Fleet Detail");
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -29,6 +29,7 @@ const Fleetcontroller = {
         });
         fleet.save()
             .then(response => {
+                logger.info("Successfully added Fleet Detail");
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -41,6 +42,7 @@ const Fleetcontroller = {
         const { Vehicleid, VehicleType, VehicleNo, DriverId, TransportMaterials, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime } = req.body;
         Fleet.updateOne({ Vehicleid: Vehicleid }, { $set: { VehicleType: VehicleType, VehicleNo: VehicleNo, DriverId: DriverId, TransportMaterials: TransportMaterials, DriverMobileNo: DriverMobileNo, TransportLocation: TransportLocation, TransportRoot: TransportRoot, EstimatedTime: EstimatedTime } })
             .then(response => {
+                logger.info("Successfully updated Fleet Detail");
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -53,6 +55,7 @@ const Fleetcontroller = {
         const Vehicleid = req.params.vehicleid;
         Fleet.deleteOne({ Vehicleid: Vehicleid })
             .then(response => {
+                logger.info("Successfully deleted Fleet Detail with vehicleId " + Vehicleid);
                 res.status(201).json(response);
             })
             .catch(error => {
@@ -65,10 +68,11 @@ const Fleetcontroller = {
     searchFleetByDriverId: async (req, res) => {
         try {
           const { driverId } = req.params;
-          const fleetDetails = await Fleet.findOne({ DriverId: driverId }, 'Vehicleid VehicleType VehicleNo DriverId TransportMaterials DriverMobileNo TransportLocation TransportRoot EstimatedTime');
+          const fleetDetails = await Fleet.findOne({ DriverId: driverId });
+          logger.info("Successfully got Fleet Detail by driver ID " + driverId);
           res.status(200).json(fleetDetails);
         } catch (error) {
-          console.error('Error searching fleet by driver ID:', error);
+            logger.error('Error searching fleet by driver ID: ' + driverId);
           res.status(500).json({ message: 'Failed to search fleet details by driver ID' });
         }
       },
