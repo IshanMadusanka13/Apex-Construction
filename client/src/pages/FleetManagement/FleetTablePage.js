@@ -26,6 +26,8 @@ const FleetTablePage = () => {
     Axios.get(`http://localhost:3001/fleet/search/${searchTerm}`)
       .then(response => {
         setFleetDetails(response.data ? [response.data] : []);
+        console.log(response.data);
+        console.log(fleetDetails);
       })
       .catch(error => {
         console.error("Axios Error :", error);
