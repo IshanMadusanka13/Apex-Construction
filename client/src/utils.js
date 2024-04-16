@@ -10,7 +10,7 @@ export const userTypes = {
   HR_MANAGER: "hr manager",
   FINANCE_MANAGER: "finance manager",
   FLEET_MANAGER: "fleet manager",
-  INVENTORY_CONTROLLER: "inventory controller",
+  STOCK_MANAGER: "stock manager",
   SITE_MANAGER: "site manager",
   PROJECT_MANAGER: "project manager",
   CUSTOMER_RELATIONSHIP_MANAGER: "customer relationship manager",

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/material";
 import axios from "axios";
 import { CREATE_EMPLOYEE, GET_EMPLOYEE_ID } from "../../EndPoints";
-import { errorAlert, successAlert, timedSuccessAlert, userTypes } from "../../utils.js";
+import { errorAlert, successAlert, userTypes } from "../../utils.js";
 import { useSelector } from 'react-redux';
 
 function AddEmployee() {

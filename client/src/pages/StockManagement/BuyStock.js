@@ -1,8 +1,8 @@
-import { Autocomplete, Button, Grid, MenuItem, TextField, Typography, useTheme } from "@mui/material";
+import { Autocomplete, Button, Grid, TextField, Typography, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
-import { BUY_STOCK, CREATE_STOCK, DELETE_STOCK, GET_ALL_STOCK, GET_BOUGHT_STOCK_DETAILS, GET_STOCK_ID, UPDATE_STOCK } from "../../EndPoints";
+import { BUY_STOCK, GET_ALL_STOCK, GET_BOUGHT_STOCK_DETAILS } from "../../EndPoints";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
 import moment from "moment";

@@ -690,38 +690,17 @@ function ViewPayments() {
     const theme = useTheme();
     const [selectedValue, setSelectedValue] = useState("all");
     const [payments, setPayments] = useState([]);
-
+    
     const loadPayments = async (selectedValue) => {
         axios
             .get(GET_PAYMENTS + selectedValue, {})
             .then((response) => {
-                console.log(response)
-                setPayments(response.data)
+                setPayments(response.data);
             })
             .catch((error) => {
                 console.log(error);
                 errorAlert(error.response.data.message);
             });
-    };
-
-    const getBankDetails = async (bankId) => {
-        let bankName, branch, accountNo;
-        axios
-            .get(GET_BANK_BY_ID + bankId, {})
-            .then((response) => {
-                bankName = response.data.bankName;
-                branch = response.data.branch;
-                accountNo = response.data.accountNo;
-            })
-            .catch((error) => {
-                console.log(error);
-                errorAlert(error.response.data.message);
-            });
-        if (bankName) {
-            return `${bankName} ${branch} ${accountNo}`;
-        } else {
-            return bankId;
-        }
     };
 
     useEffect(() => {

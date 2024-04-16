@@ -3,12 +3,16 @@ import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/ma
 import { useNavigate } from 'react-router';
 import axios from "axios";
 import { errorAlert, successAlert, months } from "../../utils.js";
+import { GET_SITE_BY_CUSTOMER_ID, SEARCH_CUSTOMER_BY_USER } from "../../EndPoints";
+import { useSelector } from "react-redux";
 
 export default function CustomerInstallment() {
 
   const navigate = useNavigate();
   const theme = useTheme();
+  const loggedUser = useSelector((state) => state.user);
 
+  const [customerSites, setCustomerSites] = useState({});
   const [paymentDetails, setPaymentDetails] = useState({
     customerId: "",
     siteId: "",
@@ -24,18 +28,46 @@ export default function CustomerInstallment() {
     }));
   };
 
+  const loadSites = async () => {
+    axios
+      .get(GET_SITE_BY_CUSTOMER_ID + paymentDetails.customerId, {})
+      .then((response) => {
+        setCustomerSites(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+        errorAlert(error.response.data.message);
+      });
+  };
+
+  useEffect(() => {
+    const loadProfile = async () => {
+      axios
+        .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
+        .then((response) => {
+          handleChange('customerId', response.data.customerId)
+        })
+        .catch((error) => {
+          errorAlert(error.response.data.message);
+        });
+    };
+
+    loadProfile();
+    loadSites();
+  }, [navigate]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-        .post('', paymentDetails)
-        .then((response) => {
-            successAlert(response.data.message);
-        })
-        .catch((error) => {
-            console.log(error);
-            errorAlert(error.response.data.message);
-        });
-};
+      .post('', paymentDetails)
+      .then((response) => {
+        successAlert(response.data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+        errorAlert(error.response.data.message);
+      });
+  };
 
   return (
     <Grid
@@ -62,12 +94,14 @@ export default function CustomerInstallment() {
           name="cusId"
           autoComplete="cusId"
           autoFocus
-          onChange={(e) => handleChange('customerId', e.target.value)}
+          disabled
+          value={paymentDetails.customerId}
         />
       </Grid>
 
       <Grid item md={6}>
         <TextField
+          select
           margin="normal"
           required
           fullWidth
@@ -75,8 +109,15 @@ export default function CustomerInstallment() {
           label="Site Id"
           name="siteId"
           autoComplete="siteId"
+          value={paymentDetails.siteId}
           onChange={(e) => handleChange('siteId', e.target.value)}
-        />
+        >
+          {Object.values(customerSites).map((site) => (
+            <MenuItem key={site.siteId} value={site.siteId}>
+              {site.siteId}
+            </MenuItem>
+          ))}
+        </TextField>
       </Grid>
 
       <Grid item md={6}>
@@ -89,6 +130,7 @@ export default function CustomerInstallment() {
           label="Month"
           name="month"
           autoComplete="amount"
+          value={paymentDetails.month}
           onChange={(e) => handleChange('month', e.target.value)}
         >
           {months.map((month, index) => (
@@ -107,6 +149,7 @@ export default function CustomerInstallment() {
           label="Amount"
           name="amount"
           autoComplete="amount"
+          value={paymentDetails.amount}
           onChange={(e) => handleChange('amount', e.target.value)}
         />
       </Grid>
@@ -119,6 +162,7 @@ export default function CustomerInstallment() {
           label="Description"
           name="description"
           autoComplete="description"
+          value={paymentDetails.description}
           onChange={(e) => handleChange('description', e.target.value)}
         />
       </Grid>

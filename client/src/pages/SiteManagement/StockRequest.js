@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { TextField, Typography, Button, Grid, MenuItem, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Box, Paper } from "@mui/material";
-import { useSelector } from 'react-redux';
+import { TextField, Typography, Button, Grid, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Paper } from "@mui/material";
 import { errorAlert, successAlert } from "../../utils.js";
 import { GET_ALL_STOCK, REQUEST_STOCK } from "../../EndPoints.js";
 

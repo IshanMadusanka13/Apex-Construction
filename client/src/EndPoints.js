@@ -36,6 +36,7 @@ export const GET_BILLER_BY_TYPE = API_BASE_URL + "/biller/get/";
 export const CREATE_SITE = API_BASE_URL + "/site/create"
 export const UPDATE_SITE = API_BASE_URL + "/site/update"
 export const DELETE_SITE = API_BASE_URL + "/site/delete/"
+export const GET_SITE_BY_CUSTOMER_ID = API_BASE_URL + "/site/get/"
 export const GENERATE_SITE_ID = API_BASE_URL + "/site/getid"
 export const GET_ALL_SITES = API_BASE_URL + "/site/getall"
 export const CALCULATE_SITE_STATUS = API_BASE_URL + "/site/getstatus/"

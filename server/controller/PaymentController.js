@@ -99,7 +99,6 @@ const PaymentController = {
 
     getPayments: async (req, res) => {
         try {
-            let compTransaction;
             if (!req.params.type || req.params.type == "all") {
                 compTransaction = await CompanyTransaction.find();
             } else {

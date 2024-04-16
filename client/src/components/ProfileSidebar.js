@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   Typography,
   List,
@@ -18,48 +18,13 @@ import { userTypes } from "../utils.js";
 
 const ProfileSidebar = (props) => {
   const theme = useTheme();
-  const isMd = useMediaQuery(theme.breakpoints.up("md"));
   const [selectedContent, setSelectedContent] = useState("profile");
-
-  const loggedUser = useSelector((state) => state.user);
 
   const handleItemClick = (content) => {
     props.onItemClick(content);
     setSelectedContent(content);
   };
 
-  const setPrivileges = () => {
-    switch (loggedUser.userType) {
-      case userTypes.HR_MANAGER:
-        return (
-          <span>
-            <ListItem button onClick={() => handleItemClick("addEmployee")} sx={{ backgroundColor: selectedContent === "addEmployee" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <PersonAddAlt1Icon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="Add Employee" />}
-            </ListItem>
-
-            <ListItem button onClick={() => handleItemClick("viewEmployee")} sx={{ backgroundColor: selectedContent === "viewEmployee" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="View/Delete Employee" />}
-            </ListItem>
-
-            <ListItem button onClick={() => handleItemClick("LogReport")} sx={{ backgroundColor: selectedContent === "LogReport" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-              <ListItemIcon>
-                <VisibilityIcon />
-              </ListItemIcon>
-              {isMd && <ListItemText primary="Log Report" />}
-            </ListItem>
-          </span>
-        )
-
-      default:
-        break;
-    }
-  }
 
   return (
     <div
@@ -74,86 +39,28 @@ const ProfileSidebar = (props) => {
       </Typography>
       <List>
 
-        <ListItem button onClick={() => handleItemClick("profile")} sx={{ backgroundColor: selectedContent === "profile" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <AccountCircleIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Profile" />}
-        </ListItem>
+        <SideBarListItem
+          onClick={() => handleItemClick("profile")}
+          selected={selectedContent === "profile"}
+          primary="Profile"
+          icon={<AccountCircleIcon />}
+        />
 
-        <ListItem button onClick={() => handleItemClick("addSite")} sx={{ backgroundColor: selectedContent === "addSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <VisibilityIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Add Site" />}
-        </ListItem>
+        <SideBarListItem
+          onClick={() => handleItemClick("review")}
+          selected={selectedContent === "review"}
+          primary="Review"
+          icon={<AccountCircleIcon />}
+        />
 
-        <ListItem button onClick={() => handleItemClick("viewSite")} sx={{ backgroundColor: selectedContent === "viewSite" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <VisibilityIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="View Sites" />}
-        </ListItem>
+        <SetSideBarLists handleItemClick={handleItemClick} />
 
-        <ListItem button onClick={() => handleItemClick("StockReq")} sx={{ backgroundColor: selectedContent === "StockReq" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <VisibilityIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Stock Request" />}
-        </ListItem>
-
-
-
-        <ListItem button onClick={() => handleItemClick("customerInstallment")} sx={{ backgroundColor: selectedContent === "customerInstallment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-          <CreditCardIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Customer Installment" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("biller")} sx={{ backgroundColor: selectedContent === "biller" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <CreditCardIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Biller" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("makePayment")} sx={{ backgroundColor: selectedContent === "makePayment" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <CreditCardIcon />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Transactions" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("review")} sx={{ backgroundColor: selectedContent === "review`" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="review" />}
-        </ListItem>
-
-        {setPrivileges()}
-
-        <ListItem button onClick={() => handleItemClick("stock")} sx={{ backgroundColor: selectedContent === "stock" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Stock" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("buyStock")} sx={{ backgroundColor: selectedContent === "buyStock" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Stock Replenish" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Change Password" />}
-        </ListItem>
+        <SideBarListItem
+          onClick={() => handleItemClick("changePassword")}
+          selected={selectedContent === "changePassword"}
+          primary="Change Password"
+          icon={<Lock />}
+        />
 
       </List>
     </div>
@@ -161,3 +68,216 @@ const ProfileSidebar = (props) => {
 };
 
 export default ProfileSidebar;
+
+function SideBarListItem({ onClick, selected, primary, icon }) {
+
+  const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.up("md"));
+
+  return (
+    <ListItem button onClick={onClick} sx={{ backgroundColor: selected ? "rgba(0, 0, 0, 0.08)" : "" }}>
+      <ListItemIcon>{icon}</ListItemIcon>
+      {isMd && <ListItemText primary={primary} />}
+    </ListItem>
+  )
+};
+
+function SetSideBarLists({ handleItemClick, selectedContent }) {
+
+  const theme = useTheme();
+  const loggedUser = useSelector((state) => state.user);
+
+  switch (loggedUser.userType) {
+
+    case userTypes.ADMIN:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addEmployee")}
+            selected={selectedContent === "addEmployee"}
+            primary="Add Employee"
+            icon={<PersonAddAlt1Icon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewEmployee")}
+            selected={selectedContent === "viewEmployee"}
+            primary="View Employee"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addSite")}
+            selected={selectedContent === "addSite"}
+            primary="Add Site"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewSite")}
+            selected={selectedContent === "viewSite"}
+            primary="View Site"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("StockReq")}
+            selected={selectedContent === "StockReq"}
+            primary="Request Stock"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("stock")}
+            selected={selectedContent === "stock"}
+            primary="Stock"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("buyStock")}
+            selected={selectedContent === "buyStock"}
+            primary="Stock Replenish"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("biller")}
+            selected={selectedContent === "biller"}
+            primary="Biller"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("makePayment")}
+            selected={selectedContent === "makePayment"}
+            primary="Make Transaction"
+            icon={<CreditCardIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("LogReport")}
+            selected={selectedContent === "LogReport"}
+            primary="Log Report"
+            icon={<PersonAddAlt1Icon />}
+          />
+        </span>
+      )
+
+    case userTypes.HR_MANAGER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addEmployee")}
+            selected={selectedContent === "addEmployee"}
+            primary="Add Employee"
+            icon={<PersonAddAlt1Icon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewEmployee")}
+            selected={selectedContent === "viewEmployee"}
+            primary="View Employee"
+            icon={<VisibilityIcon />}
+          />
+
+        </span>
+      )
+
+    case userTypes.STOCK_MANAGER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("stock")}
+            selected={selectedContent === "stock"}
+            primary="Stock"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("buyStock")}
+            selected={selectedContent === "buyStock"}
+            primary="Stock Replenish"
+            icon={<VisibilityIcon />}
+          />
+
+        </span>
+      )
+
+    case userTypes.SITE_MANAGER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addSite")}
+            selected={selectedContent === "addSite"}
+            primary="Add Site"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewSite")}
+            selected={selectedContent === "viewSite"}
+            primary="View Site"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("StockReq")}
+            selected={selectedContent === "StockReq"}
+            primary="Request Stock"
+            icon={<VisibilityIcon />}
+          />
+
+        </span>
+      )
+
+    case userTypes.FINANCE_MANAGER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("biller")}
+            selected={selectedContent === "biller"}
+            primary="Biller"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("makePayment")}
+            selected={selectedContent === "makePayment"}
+            primary="Make Transaction"
+            icon={<CreditCardIcon />}
+          />
+
+        </span>
+      )
+
+    case userTypes.CUSTOMER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewSite")}
+            selected={selectedContent === "viewSite"}
+            primary="View Site"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("customerInstallment")}
+            selected={selectedContent === "customerInstallment"}
+            primary="Customer Installment"
+            icon={<VisibilityIcon />}
+          />
+
+        </span>
+      )
+
+    default:
+      break;
+  }
+}
