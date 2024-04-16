@@ -40,7 +40,7 @@ export default function CustomizedTable({ columns, rows }) {
     }));
 
     return (
-        <TableContainer component={Paper}>
+        <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
             <Table aria-label="customized table">
                 <TableHead>
                     <TableRow>

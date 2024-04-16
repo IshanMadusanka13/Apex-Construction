@@ -52,3 +52,16 @@ export const GET_STOCK = API_BASE_URL + "/stock/get"
 export const GET_STOCK_ID = API_BASE_URL + "/stock/getid"
 export const BUY_STOCK = API_BASE_URL + "/stock/buy"
 export const GET_BOUGHT_STOCK_DETAILS = API_BASE_URL + "/stock/getbought/"
+
+//Fleet Management
+export const CREATE_VEHCILE = API_BASE_URL + "/vehicle/create"
+export const UPDATE_VEHCILE = API_BASE_URL + "/vehicle/update"
+export const DELETE_VEHCILE = API_BASE_URL + "/vehicle/delete/"
+export const SEARCH_VEHCILE = API_BASE_URL + "/vehicle/searchall"
+export const SEARCH_VEHCILE_BY_TYPE = API_BASE_URL + "/vehicle/search/"
+
+export const CREATE_FLEET = API_BASE_URL + "/fleet/create"
+export const UPDATE_FLEET = API_BASE_URL + "/fleet/update"
+export const DELETE_FLEET = API_BASE_URL + "/fleet/delete/"
+export const SEARCH_FLEET = API_BASE_URL + "/fleet/searchall"
+export const SEARCH_FLEET_BY_DRIVER_ID = API_BASE_URL + "/fleet/search/"

@@ -64,6 +64,28 @@ const ProfileSidebar = (props) => {
 
         <SetSideBarLists handleItemClick={handleItemClick} />
 
+        <ListItem button onClick={() => handleItemClick("FleetDetails")} sx={{ backgroundColor: selectedContent === "FleetDetails" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="Trasport details" />}
+            </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("AddVehicles")} sx={{ backgroundColor: selectedContent === "AddVehicles" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="Add Vehicles" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("FleetTablePage")} sx={{ backgroundColor: selectedContent === "FleetTablePage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <VisibilityIcon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="FleetTablePage " />}
+        </ListItem>
+        
+
         <SideBarListItem
           onClick={() => handleItemClick("changePassword")}
           selected={selectedContent === "changePassword"}

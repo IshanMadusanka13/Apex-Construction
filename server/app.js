@@ -8,6 +8,10 @@ import siteRouter from "./routes/SiteRouter.js";
 import paymentRouter from "./routes/PaymentRouter.js";
 import billerRouter from "./routes/BillerRouter.js";
 import stockRouter from "./routes/StockRouter.js";
+import FleetRouter from "./routes/FleetRouter.js";
+import vehicleRouter from "./routes/VehicleRouter.js";
+
+
 
 const app = express();
 
@@ -22,9 +26,13 @@ app.use('/site',siteRouter);
 app.use('/finance', paymentRouter);
 app.use('/biller', billerRouter);
 app.use('/stock', stockRouter);
+app.use('/fleet', FleetRouter);
+app.use('/vehicle', vehicleRouter);
+
+
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
-})
+});
 
 export default app;
