@@ -1,11 +1,12 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
 import { errorAlert, successAlert } from '../../utils';
 import { Grid, Container, Card, CardMedia, CardContent, CardActions, Button, Checkbox, Paper } from '@mui/material';
 
 import { Typography, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Box } from "@mui/material";
 import { SEARCH_CUSTOMER_BY_USER } from '../../EndPoints';
+import {useReactToPrint} from "react-to-print";
 
 // ...
 
@@ -205,10 +206,19 @@ const CusPackageDetails = () => {
 
   };
 
+
+  const ComponentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => ComponentRef.current,
+    DocumentTitle:"User Report",
+    onafterprint:()=>alert("User Report Successfully Download !"),
+  })
+  
+
   return (
     <Grid container>
       <Container maxWidth="lg" style={{ minHeight: "300px" }} >
-        <Card sx={{ display: 'flex', mt: 15 }}>
+        <Card sx={{ display: 'flex', mt: 15 }} ref={ComponentRef}>
           <CardMedia
             component="img"
             sx={{ width: 500 }}
@@ -239,8 +249,11 @@ const CusPackageDetails = () => {
                 <Button variant="contained" onClick={handleBuy} sx={{ width: "150px", marginLeft: 2 }}>
                   Buy Package
                 </Button>
+                <Button variant="contained" onClick={handlePrint} sx={{ width: "150px", marginLeft: 2 }}>
+                  Download
+                </Button>
               </Box>
-              <div>
+              <div >
                 {addOnsOpen && (
                   <TableContainer component={Paper}>
                     <Table sx={{ minWidth: 100 }}>
