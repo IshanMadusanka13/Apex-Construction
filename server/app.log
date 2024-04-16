@@ -147,3 +147,40 @@
 {"level":30,"time":1712821242147,"pid":28532,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
 {"level":30,"time":1712821547606,"pid":18908,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3000"}
 {"level":30,"time":1712821550685,"pid":18908,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1712841573222,"pid":25316,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712841577063,"pid":25316,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1712841633374,"pid":25316,"hostname":"DESKTOP-0EJVC7L","msg":"User Login Succcess"}
+{"level":30,"time":1712841633853,"pid":25316,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712841634365,"pid":25316,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712895491275,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712895524228,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1712895760723,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"User Login Succcess"}
+{"level":30,"time":1712895761212,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712895761810,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712896246937,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712896247432,"pid":26608,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712904280567,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1712904283813,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"Database connection success!"}
+{"level":30,"time":1712904341892,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"User Login Succcess"}
+{"level":30,"time":1712904342464,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712904343060,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712904480903,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712904481548,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712904503865,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712904504410,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712913256695,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712913257195,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712913988659,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712913989170,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712914166894,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712914167398,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712914354889,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712914355392,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712915001916,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712915002420,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712915588847,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712915589357,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1712916048147,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712916048673,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712916190179,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1712916190815,"pid":30244,"hostname":"DESKTOP-0EJVC7L","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}

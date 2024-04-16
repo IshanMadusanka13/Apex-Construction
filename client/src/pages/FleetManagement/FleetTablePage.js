@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box,TextField,Button } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert } from "../../utils";
@@ -25,7 +25,7 @@ const FleetTablePage = () => {
   const handleSearch = () => {
     Axios.get(`http://localhost:3001/fleet/search/${searchTerm}`)
       .then(response => {
-        setFleetDetails(response.data ? response.data : []);
+        setFleetDetails(response.data ? [response.data] : []);
       })
       .catch(error => {
         console.error("Axios Error :", error);
@@ -33,22 +33,25 @@ const FleetTablePage = () => {
       });
   }
 
+ 
+
   return (
     <Box>
       {/* Search functionality */}
-      <div>
-        <input
-          type="String"
+      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: '20px' }}>
+        <TextField
+          type="text"
           placeholder="Search..."
           value={searchTerm}
           onChange={e => setSearchTerm(e.target.value)}
         />
-        <button onClick={handleSearch}>Search</button>
-      </div>
+        <Button variant="contained" onClick={handleSearch} sx={{ marginLeft: '10px' }}>Search</Button>
+      </Box>
 
       {/* Display FleetTable */}
       <FleetTable
         rows={fleetDetails}
+       
       />
     </Box>
   );

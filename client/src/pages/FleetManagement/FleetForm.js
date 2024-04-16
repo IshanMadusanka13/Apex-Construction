@@ -75,9 +75,12 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
           value={VehicleType}
           onChange={e => setVehicleType(e.target.value)}
         >
-          <MenuItem value="Car">Car</MenuItem>
+          <MenuItem value="crane">Pickup Truck</MenuItem>
           <MenuItem value="Truck">Truck</MenuItem>
-          <MenuItem value="Van">Van</MenuItem>
+          <MenuItem value="Loader">Concrete Truck</MenuItem>
+          <MenuItem value="Loader">Dump Truck</MenuItem>
+          <MenuItem value="Loader">Tanker Truck</MenuItem>
+          <MenuItem value="Loader">Small Lorry</MenuItem>
         </TextField>
       </Grid>
 
@@ -119,9 +122,14 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
           value={TransportMaterial}
           onChange={e => setTransportMaterial(e.target.value)}
         >
-          <MenuItem value="Material1">Material 1</MenuItem>
-          <MenuItem value="Material2">Material 2</MenuItem>
-          <MenuItem value="Material3">Material 3</MenuItem>
+          <MenuItem value="Material1">Concrete </MenuItem>
+          <MenuItem value="Material2">Cement </MenuItem>
+          <MenuItem value="Material3">Stone</MenuItem>
+          <MenuItem value="Material3">Glass</MenuItem>
+          <MenuItem value="Material3">Sand</MenuItem>
+          <MenuItem value="Material3">Wood</MenuItem>
+          <MenuItem value="Material3">Bricks</MenuItem>
+          <MenuItem value="Material3">Steel</MenuItem>
         </TextField>
       </Grid>
 

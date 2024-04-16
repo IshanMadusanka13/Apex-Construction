@@ -38,11 +38,11 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
 
   return (
     <Grid container spacing={2} sx={theme.palette.gridBody}>
-      <Grid item xs={12} sm={6} md={12}>
-        <Typography variant="h4" style={{ color: '#000000', marginBottom: '50px', marginLeft: '350px' }}>Add Vehicles</Typography>
+      <Grid item md={12}>
+        <Typography variant="h5" gutterBottom>Add Vehicles</Typography>
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           type="number"
           required
@@ -57,7 +57,7 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           type="number"
           required
@@ -68,11 +68,10 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
           autoComplete="Vehicleid"
           value={Vehicleid}
           onChange={e => setVehicleid(e.target.value)}
-          autoFocus
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           select
           id='VehicleType'
@@ -89,7 +88,7 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
         </TextField>
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           margin="normal"
           required
@@ -102,7 +101,7 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           margin="normal"
           required
@@ -116,7 +115,7 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
       </Grid>
 
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           margin="normal"
           required
@@ -128,9 +127,6 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
           onChange={e => setVehicleNo(e.target.value)}
         />
       </Grid>
-
-     
-
       <Button
         variant="contained" sx={{ mt: 3, width: "50%" }}
         onClick={() => isEdit ? updateAddVehicle({ ChassisNo, Vehicleid, VehicleType, VehicleManufachuredYear, VehicleBrand,  VehicleNo }) : addAddVehicle({ ChassisNo, Vehicleid, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo })}

@@ -8,6 +8,7 @@ import FleetRouter from "./routes/FleetRouter.js";
 import AddVehicleRouter from "./routes/AddVehicleRouter.js";
 
 
+
 const app = express();
 
 app.use(cors());
@@ -19,6 +20,7 @@ app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
 app.use('/fleet', FleetRouter);
 app.use('/AddVehicle', AddVehicleRouter);
+
 
 
 app.get('/', (req, res) => {
