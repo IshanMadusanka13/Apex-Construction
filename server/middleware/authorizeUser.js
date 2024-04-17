@@ -28,8 +28,6 @@ const authorizeUser = async (req, res, next) => {
         const hasAccess = accessRules[user.userType]?.includes(urlPrefix);
         const hasAccess2 = accessRules[user.userType]?.includes(urlPrefix2);
 
-
-        logger.info(req.originalUrl);
         if (hasAccess || hasAccess2) {
             logger.info(`[${user._id}]: [${req.method}] [${req.originalUrl}] Request Received`);
             next();
