@@ -443,11 +443,12 @@ function CustomerProfile() {
         }
 
         axios
-            .post(UPDATE_CUSTOMER, customerDetails)
+            .put(UPDATE_CUSTOMER, customerDetails)
             .then((response) => {
+                successAlert("Details Updated Succesfully");
             })
             .catch((error) => {
-                errorAlert(error.response.data.message);
+                errorAlert("Details Update Failed");
             });
     };
 

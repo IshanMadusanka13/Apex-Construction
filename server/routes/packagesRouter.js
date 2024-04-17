@@ -11,17 +11,18 @@ import {
   getBoughtPackageById,
   getInApprovedCusPackage
 } from "../controller/CusBuyPackageController.js";
+import authorizeUser from "../middleware/authorizeUser.js";
 
 const packagesRouter = express.Router();
 
-packagesRouter.post("/add", createPackage);
-packagesRouter.get("/getall", getAllPackages);
-packagesRouter.get("/get/:id", getPackageById);
-packagesRouter.put("/update", updatePackage);
-packagesRouter.delete("/delete/:id", deletePackage);
+packagesRouter.post("/add", authorizeUser, createPackage);
+packagesRouter.get("/getall", authorizeUser, getAllPackages);
+packagesRouter.get("/get/:id", authorizeUser, getPackageById);
+packagesRouter.put("/update", authorizeUser, updatePackage);
+packagesRouter.delete("/delete/:id", authorizeUser, deletePackage);
 
-packagesRouter.post("/buy", createCusPackage);
-packagesRouter.get("/getfalse", getInApprovedCusPackage);
-packagesRouter.get("/boughts/:id", getBoughtPackageById);
+packagesRouter.post("/buy", authorizeUser, createCusPackage);
+packagesRouter.get("/getfalse", authorizeUser, getInApprovedCusPackage);
+packagesRouter.get("/boughts/:id", authorizeUser, getBoughtPackageById);
 
 export default packagesRouter;

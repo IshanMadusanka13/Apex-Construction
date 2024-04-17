@@ -13,14 +13,14 @@ const authorizeUser = async (req, res, next) => {
         const user = await User.findById(decoded.id)
 
         const accessRules = {
-            [UserType.ADMIN]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', 'stock'],
+            [UserType.ADMIN]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet', '/vehicle'],
             [UserType.HR_MANAGER]: ['/user', '/employee'],
-            [UserType.SITE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/site', '/package', 'customer/search'],
+            [UserType.SITE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/site', '/package', '/customer/search', '/packageaddon','/stock/getall'],
             [UserType.FINANCE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/finance', '/biller', 'customer/search'],
-            [UserType.STOCK_MANAGER]: ['/user', '/employee/search', '/employee/update', 'stock'],
-            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update'],
+            [UserType.STOCK_MANAGER]: ['/user', '/employee/search', '/employee/update', '/stock'],
+            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update', '/fleet', '/vehicle'],
             [UserType.CUSTOMER_RELATIONSHIP_MANAGER]: ['/user', '/employee/search', '/employee/update'],
-            [UserType.CUSTOMER]: ['/user', '/customer'],
+            [UserType.CUSTOMER]: ['/user', '/customer', '/site/getall', '/site/getrequest', '/site/getstatus', '/package/get', '/package/getall', '/package/buy', '/package/boughts', '/packageaddon/getbyid', '/packageaddon/getall', '/finance/cuspay', '/finance/getall'],
         };
 
         const urlPrefix = "/" + req.originalUrl.split('/')[1];
@@ -28,6 +28,8 @@ const authorizeUser = async (req, res, next) => {
         const hasAccess = accessRules[user.userType]?.includes(urlPrefix);
         const hasAccess2 = accessRules[user.userType]?.includes(urlPrefix2);
 
+
+        logger.info(req.originalUrl);
         if (hasAccess || hasAccess2) {
             logger.info(`[${user._id}]: [${req.method}] [${req.originalUrl}] Request Received`);
             next();

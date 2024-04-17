@@ -6,18 +6,14 @@ import {
     getAllPackageAddons,
     getPackageAddonById,
 } from "../controller/PackageAddonController.js";
+import authorizeUser from "../middleware/authorizeUser.js";
 
 const packageAddOnRouter = express.Router();
 
-packageAddOnRouter.post("/add", createPackageAddon);
-packageAddOnRouter.get("/getall", getAllPackageAddons);
-packageAddOnRouter.get("/getbyid/:id", getPackageAddonById);
-packageAddOnRouter.put("/update", updatePackageAddon);
-packageAddOnRouter.delete("/delete/:id", deletePackageAddon);
-
-// packagesRouter.get("/getAllAprovedPackages", getAllApprovedPackages);
-// packagesRouter.get("/allApprovedPackages",getAllApprovedPackages);
-// packagesRouter.put("/approvePackage", approvePackage);
-// packagesRouter.get("/getUnapprovedPackages", getUnapprovedPackages);
+packageAddOnRouter.post("/add", authorizeUser, createPackageAddon);
+packageAddOnRouter.get("/getall", authorizeUser, getAllPackageAddons);
+packageAddOnRouter.get("/getbyid/:id", authorizeUser, getPackageAddonById);
+packageAddOnRouter.put("/update", authorizeUser, updatePackageAddon);
+packageAddOnRouter.delete("/delete/:id", authorizeUser, deletePackageAddon);
 
 export default packageAddOnRouter;

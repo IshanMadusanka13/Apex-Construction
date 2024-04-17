@@ -4,7 +4,6 @@ import authorizeUser from '../middleware/authorizeUser.js';
 
 const userRouter = express.Router();
 
-//userRouter.get('/', protect, UserController.getAllUsers);
 userRouter.post('/login', UserController.loginUser);
 userRouter.put('/changepassword', authorizeUser, UserController.changePassword);
 
