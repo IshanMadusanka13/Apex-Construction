@@ -22,7 +22,9 @@ export const GET_LOG_REPORT = API_BASE_URL + "/employee/getlog";
 export const GET_ALL_BANKS = API_BASE_URL + "/finance/getbanks";
 export const GET_BANK_BY_ID = API_BASE_URL + "/finance/getbank/";
 export const MAKE_COMPANY_PAYMENT = API_BASE_URL + "/finance/companypay";
-export const GET_PAYMENTS = API_BASE_URL + "/finance/get/";
+export const GET_PAYMENTS = API_BASE_URL + "/finance/getcomp/";
+export const MAKE_CUSTOMER_PAYMENT = API_BASE_URL + "/finance/cuspay";
+export const GET_ALL_PAYMENTS_BY_MONTH = API_BASE_URL + "/finance/getall/";
 
 export const CREATE_BILLER = API_BASE_URL + "/biller/create";
 export const UPDATE_BILLER = API_BASE_URL + "/biller/update";

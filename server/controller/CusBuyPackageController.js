@@ -30,7 +30,7 @@ export function createCusPackage(req, res) {
       res.send(result);
     })
     .catch((err) => {
-      logger.error(err);
+      logger.error("Error Buying package");
       res.status(500).json({ message: "Error creating package" });
     });
 }
@@ -43,6 +43,7 @@ export function getInApprovedCusPackage(req, res) {
       res.send(result);
     })
     .catch((err) => {
+      logger.error("Error getting InApproved package");
       res.status(500).json({ message: "Error getting InApproved package" });
     });
 

@@ -209,6 +209,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
           />
 
           <SideBarListItem
+            onClick={() => handleItemClick("financialReport")}
+            selected={selectedContent === "financialReport"}
+            primary="Financial Report"
+            icon={<DescriptionIcon />}
+          />
+
+          <SideBarListItem
             onClick={() => handleItemClick("LogReport")}
             selected={selectedContent === "LogReport"}
             primary="Log Report"
@@ -331,6 +338,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "makePayment"}
             primary="Make Transaction"
             icon={<CreditCardIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("financialReport")}
+            selected={selectedContent === "financialReport"}
+            primary="Financial Report"
+            icon={<DescriptionIcon />}
           />
 
         </span>

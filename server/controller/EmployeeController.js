@@ -75,7 +75,6 @@ const EmployeeController = {
             res.status(200).json(updatedEmployee);
         } catch (error) {
             logger.error("Employee update failed");
-            logger.error(error);
             res.status(400).json({ message: error.message });
         }
     },

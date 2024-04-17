@@ -1,4 +1,4 @@
-/*import React, { useState } from "react";
+import React, { useState } from "react";
 import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
 import axios from "axios";
 import { GET_LOG_REPORT } from "../../EndPoints";
@@ -147,4 +147,4 @@ function LogReport() {
 
 }
 
-export default LogReport;*/
+export default LogReport;

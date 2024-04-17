@@ -3,7 +3,7 @@ import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/ma
 import { useNavigate } from 'react-router';
 import axios from "axios";
 import { errorAlert, successAlert, months } from "../../utils.js";
-import { GET_SITE_BY_CUSTOMER_ID, SEARCH_CUSTOMER_BY_USER } from "../../EndPoints";
+import { GET_BOUGHT_PACKAGE_BY_ID, GET_SITE_BY_CUSTOMER_ID, MAKE_CUSTOMER_PAYMENT, SEARCH_CUSTOMER_BY_USER } from "../../EndPoints";
 import { useSelector } from "react-redux";
 
 export default function CustomerInstallment() {
@@ -40,28 +40,51 @@ export default function CustomerInstallment() {
       });
   };
 
-  useEffect(() => {
-    const loadProfile = async () => {
-      axios
-        .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
-        .then((response) => {
-          handleChange('customerId', response.data.customerId)
-          loadSites(response.data.customerId);
-        })
-        .catch((error) => {
-          errorAlert(error.response.data.message);
-        });
-    };
+  const loadProfile = async () => {
+    axios
+      .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
+      .then((response) => {
+        handleChange('customerId', response.data.customerId)
+        loadSites(response.data.customerId);
+      })
+      .catch((error) => {
+        errorAlert(error.response.data.message);
+      });
+  };
 
+  useEffect(() => {
     loadProfile();
   }, [navigate]);
+
+  const handleSiteChange = (siteId) => {
+    handleChange('siteId', siteId);
+    const site = customerSites.find(site => site.siteId === siteId);
+    axios
+      .get(GET_BOUGHT_PACKAGE_BY_ID + site.packageId)
+      .then((response) => {
+        console.log(response.data);
+        handleChange('amount', response.data.cost)
+      })
+      .catch((error) => {
+        console.log(error);
+        errorAlert(error.response.data.message);
+      });
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post('', paymentDetails)
+      .post(MAKE_CUSTOMER_PAYMENT, paymentDetails)
       .then((response) => {
-        successAlert(response.data.message);
+        setPaymentDetails({
+          customerId: "",
+          siteId: "",
+          month: "",
+          amount: "0",
+          description: "",
+        });
+        loadProfile();
+        successAlert("Payment Success");
       })
       .catch((error) => {
         console.log(error);
@@ -110,7 +133,7 @@ export default function CustomerInstallment() {
           name="siteId"
           autoComplete="siteId"
           value={paymentDetails.siteId}
-          onChange={(e) => handleChange('siteId', e.target.value)}
+          onChange={(e) => handleSiteChange(e.target.value)}
         >
           {Object.values(customerSites).map((site) => (
             <MenuItem key={site.siteId} value={site.siteId}>
@@ -150,7 +173,7 @@ export default function CustomerInstallment() {
           name="amount"
           autoComplete="amount"
           value={paymentDetails.amount}
-          onChange={(e) => handleChange('amount', e.target.value)}
+          disabled
         />
       </Grid>
 
@@ -168,7 +191,7 @@ export default function CustomerInstallment() {
       </Grid>
 
       <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
-        Add Employee
+        Pay
       </Button>
     </Grid>
   );

@@ -75,7 +75,6 @@ const BillerController = {
 
     deleteBillerById: async (req, res) => {
         try {
-            logger.info(req.params.id);
             const biller = await Biller.findOneAndDelete({ billerId: req.params.id });
             if (!biller) {
 

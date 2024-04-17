@@ -76,7 +76,7 @@ function sendMail(receiver, recieverMail, subject, content) {
 
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
-            logger.error(error);
+            logger.error('Email sent failed to: ' + recieverMail);
         } else {
             logger.info('Email succesfully sent to: ' + recieverMail);
         }

@@ -1,6 +1,7 @@
 import logger from '../utils/logger.js'
 import Bank from '../models/Bank.js';
 import CompanyTransaction from '../models/CompanyTransaction.js';
+import CustomerPayment from '../models/CustomerPayment.js';
 
 const PaymentController = {
 
@@ -30,8 +31,6 @@ const PaymentController = {
 
     makeCompanyPayment: async (req, res) => {
         try {
-
-            logger.info(req);
 
             const {
                 paymentType,
@@ -97,7 +96,7 @@ const PaymentController = {
         }
     },
 
-    getPayments: async (req, res) => {
+    getCompanyPayments: async (req, res) => {
         try {
             let compTransaction;
             if (!req.params.type || req.params.type == "all") {
@@ -107,6 +106,58 @@ const PaymentController = {
             }
 
             res.status(200).json(compTransaction);
+        } catch (error) {
+            logger.error("Error getting Payments by Type");
+            res.status(500).json({ message: error.message });
+        }
+    },
+
+    makeCustomerInstallment: async (req, res) => {
+        try {
+
+            const {
+                customerId,
+                siteId,
+                month,
+                amount,
+                description,
+            } = req.body;
+
+            const customerPayment = new CustomerPayment({
+                customerId,
+                siteId,
+                month,
+                amount,
+                description,
+            });
+
+            await customerPayment.save();
+            logger.info("Customer Payment successful");
+            res.status(201).json(customerPayment);
+
+        } catch (error) {
+            logger.error("Customer Payment failed");
+            res.status(400).json({ message: error.message });
+        }
+    },
+
+    getAllPaymentsByMonth: async (req, res) => {
+        try {
+
+            const [year, month] = req.params.month.split('-');
+            const startDate = new Date(year, month - 1, 1);
+            const endDate = new Date(year, month, 0);
+
+            const compTransaction = await CompanyTransaction.find({ date: { $gte: startDate, $lte: endDate } });
+            const custTransaction = await CustomerPayment.find({ date: { $gte: startDate, $lte: endDate } });
+
+            const transactions = {
+                compTransaction: compTransaction,
+                custTransaction: custTransaction
+            };
+
+            logger.info("Succesfully Got all transactions");
+            res.status(200).json(transactions);
         } catch (error) {
             logger.error("Error getting Payments by Type");
             res.status(500).json({ message: error.message });

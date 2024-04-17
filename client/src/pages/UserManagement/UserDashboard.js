@@ -12,7 +12,6 @@ import LogReport from "./LogReport";
 import StockRequest from "../SiteManagement/StockRequest.js";
 import AddSite from "../SiteManagement/AddSite.js";
 import ViewAllSites from "../SiteManagement/ViewAllSites";
-import PaymentForm from "../FinanceManagement/ComMakePayment.js";
 import MakePayment from "../FinanceManagement/MakePayment";
 import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
 import Biller from "../FinanceManagement/Biller";
@@ -26,6 +25,7 @@ import ViewPackage from "../PackageManagement/ViewPackage";
 import ViewAddOns from "../PackageManagement/ViewAddOns.js";
 import AddAddOns from "../PackageManagement/AddAddOns";
 import PackageList from "../PackageManagement/PackageList";
+import FinancialReport from "../FinanceManagement/FinancialReport";
 
 export default function UserDashboard() {
 
@@ -45,7 +45,7 @@ export default function UserDashboard() {
     }, []);
 
     return (
-        <Grid container spacing={3} style={{ marginTop: 60 }}>
+        <Grid container spacing={3} style={{ marginTop: 60, minHeight: "100vh" }}>
             <Grid item xs={3}>
                 <ProfileSidebar onItemClick={handleSidebarItemClick} />
             </Grid>
@@ -70,8 +70,8 @@ export default function UserDashboard() {
                     
                     {selectedContent === "biller" && <Biller />}
                     {selectedContent === "makePayment" && <MakePayment />}
-                    {selectedContent === "comMakePayment" && <PaymentForm />}
                     {selectedContent === "customerInstallment" && <CustomerInstallment />}
+                    {selectedContent === "financialReport" && <FinancialReport />}
 
                     {selectedContent === "addPackage" && <AddNewPackage />}
                     {selectedContent === "viewPackage" && <ViewPackage />}

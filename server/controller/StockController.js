@@ -37,7 +37,6 @@ const StockController = {
             })
             .catch((error) => {
                 logger.error("Stock create failed");
-                logger.error(error);
                 res.status(400).json({ message: error.message });
             });
     },
@@ -66,7 +65,6 @@ const StockController = {
             })
             .catch((error) => {
                 logger.error("Stock update failed");
-                logger.error(error);
                 res.status(400).json({ message: error.message });
             });
     },
@@ -96,12 +94,10 @@ const StockController = {
                 { equipmentId: req.params.equipmentId }
             )
             .then((result) => {
-                logger.info(result);
                 logger.info("Stock " + req.params.equipmentId + " deleted successfully");
                 res.status(200).json({ message: 'Stock deleted' });
             })
             .catch((error) => {
-                logger.error(error);
                 logger.error("Stock " + req.params.equipmentId + " delete Failed");
                 res.status(400).json({ message: error.message });
             });
@@ -115,7 +111,6 @@ const StockController = {
                 res.send(result);
             })
             .catch((error) => {
-                logger.error(error);
                 logger.error("Error getting Stock");
                 res.status(500).json({ message: error.message });
             });
@@ -155,15 +150,12 @@ const StockController = {
             })
             .catch((error) => {
                 logger.error("Stock Buying failed");
-                logger.error(error);
                 res.status(400).json({ message: error.message });
             });
     },
 
 
     getBoughtStockDetailsByMonth: async (req, res) => {
-
-        logger.info(req.params.month);
     
         const [year, month] = req.params.month.split('-');
     
