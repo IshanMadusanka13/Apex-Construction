@@ -13,6 +13,9 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^1.6.5",
+<<<<<<<<< Temporary merge branch 1
+    "firebase": "^10.10.0",
+=========
     "jspdf": "^2.5.1",
     "jspdf-autotable": "^3.8.2",
     "firebase": "^10.10.0",
@@ -21,8 +24,9 @@
     "react-dom": "^18.2.0",
     "react-hash-link": "^1.0.2",
     "react-redux": "^9.1.0",
-    "react-router-dom": "^6.21.1",
+    "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "react-to-print": "^2.15.1",
     "redux-persist": "^6.0.0",
     "sweetalert2": "^11.10.6",
     "web-vitals": "^2.1.4"

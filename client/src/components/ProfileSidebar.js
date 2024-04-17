@@ -56,7 +56,41 @@ const ProfileSidebar = (props) => {
           icon={<AccountCircleIcon />}
         />
 
+        <ListItem button onClick={() => handleItemClick("viewPackage")} sx={{ backgroundColor: selectedContent === "viewPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Package Details" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("packageList")} sx={{ backgroundColor: selectedContent === "packageList" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Package List" />}
+        </ListItem>
+
         <SetSideBarLists handleItemClick={handleItemClick} />
+        <ListItem button onClick={() => handleItemClick("addPackage")} sx={{ backgroundColor: selectedContent === "addPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="add Package" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("updatePackage")} sx={{ backgroundColor: selectedContent === "updatePackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="update Package" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("addAddOns")} sx={{ backgroundColor: selectedContent === "addAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="add AddOns" />}
+        </ListItem>
 
         <SideBarListItem
           onClick={() => handleItemClick("changePassword")}
@@ -64,6 +98,27 @@ const ProfileSidebar = (props) => {
           primary="Change Password"
           icon={<Lock />}
         />
+        <ListItem button onClick={() => handleItemClick("updateAddOns")} sx={{ backgroundColor: selectedContent === "updateAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="update AddOns" />}
+        </ListItem>
+
+        <ListItem button onClick={() => handleItemClick("viewAddOns")} sx={{ backgroundColor: selectedContent === "viewAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="View Add Ons" />}
+        </ListItem>
+        {setPrivileges()}
+
+        <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+          <ListItemIcon>
+            <Lock />
+          </ListItemIcon>
+          {isMd && <ListItemText primary="Change Password" />}
+        </ListItem>
 
       </List>
     </div>

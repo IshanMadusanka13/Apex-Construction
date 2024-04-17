@@ -58,7 +58,21 @@ export const UPDATE_VEHCILE = API_BASE_URL + "/vehicle/update"
 export const DELETE_VEHCILE = API_BASE_URL + "/vehicle/delete/"
 export const SEARCH_VEHCILE = API_BASE_URL + "/vehicle/searchall"
 export const SEARCH_VEHCILE_BY_TYPE = API_BASE_URL + "/vehicle/search/"
+export const GET_LOG_REPORT = API_BASE_URL + "/employee/getlog"
 
+//Package Management
+export const CREATE_PACKAGE = API_BASE_URL + "/package/add"
+export const UPDATE_PACKAGE = API_BASE_URL + "/package/update"
+export const SEARCH_PACKAGE = API_BASE_URL + "/package/getall"
+export const SEARCH_PACKAGE_BY_ID = API_BASE_URL + "/package/get/"
+export const DELTE_PACKAGE = API_BASE_URL + "/package/delete"
+
+export const CREATE_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/add"
+export const UPDATE_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/update"
+export const SEARCH_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/getall"
+export const DELTE_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/delete/"
+
+export const BUY_PACKAGE = API_BASE_URL + "/package/buy"
 export const CREATE_FLEET = API_BASE_URL + "/fleet/create"
 export const UPDATE_FLEET = API_BASE_URL + "/fleet/update"
 export const DELETE_FLEET = API_BASE_URL + "/fleet/delete/"

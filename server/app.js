@@ -10,6 +10,8 @@ import billerRouter from "./routes/BillerRouter.js";
 import stockRouter from "./routes/StockRouter.js";
 import FleetRouter from "./routes/FleetRouter.js";
 import vehicleRouter from "./routes/VehicleRouter.js";
+import packagesRouter from "./routes/PackagesRouter.js";
+import packageAddOnRouter from "./routes/packageAddOnsRouter.js";
 
 const app = express();
 
@@ -26,6 +28,8 @@ app.use('/biller', billerRouter);
 app.use('/stock', stockRouter);
 app.use('/fleet', FleetRouter);
 app.use('/vehicle', vehicleRouter);
+app.use('/package', packagesRouter);
+app.use('/packageaddon', packageAddOnRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
