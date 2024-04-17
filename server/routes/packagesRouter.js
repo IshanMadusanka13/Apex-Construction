@@ -6,7 +6,11 @@ import {
   getPackageById,
   updatePackage,
 } from "../controller/packageController.js";
-import { createCusPackage } from "../controller/CusBuyPackageController.js";
+import {
+  createCusPackage,
+  getBoughtPackageById,
+  getInApprovedCusPackage
+} from "../controller/CusBuyPackageController.js";
 
 const packagesRouter = express.Router();
 
@@ -17,5 +21,7 @@ packagesRouter.put("/update", updatePackage);
 packagesRouter.delete("/delete/:id", deletePackage);
 
 packagesRouter.post("/buy", createCusPackage);
+packagesRouter.get("/getfalse", getInApprovedCusPackage);
+packagesRouter.get("/boughts/:id", getBoughtPackageById);
 
 export default packagesRouter;

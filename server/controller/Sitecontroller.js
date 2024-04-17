@@ -1,3 +1,4 @@
+import cusPackageBuyModel from "../models/CusPackageBuy.js";
 import Site from "../models/Site.js";
 import StockRequest from "../models/StockRequest.js";
 import logger from "../utils/logger.js";
@@ -6,7 +7,7 @@ import StockController from "./StockController.js";
 const SiteController = {
 
     createSite: async (req, res) => {
-        const { siteId, location, start, end, notes, customerId, lastUpdate, completeStatus } = req.body;
+        const { siteId, location, start, end, notes, customerId, lastUpdate, completeStatus, packageId } = req.body;
         const newSite = new Site({
             customerId: customerId,
             siteId: siteId,
@@ -16,7 +17,19 @@ const SiteController = {
             notes: notes,
             lastUpdate: lastUpdate,
             completeStatus: completeStatus,
+            packageId: packageId,
         });
+
+        const status = await cusPackageBuyModel.findOneAndUpdate(
+            { _id: packageId },
+            { $set: { isApproved: true } }
+        );
+
+        if (!status) {
+            res.status(500).json({ message: "Error Updating package status" });
+        }
+
+
         newSite
             .save()
             .then((result) => {
@@ -101,7 +114,7 @@ const SiteController = {
             res.status(200).json(siteId);
 
         } catch (error) {
-            logger.error("Error getting EmployeeId");
+            logger.error("Error getting SiteId");
             res.status(500).json({ message: error.message });
         }
     },

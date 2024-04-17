@@ -4,7 +4,7 @@ import Axios from "axios";
 import { TextField, Typography, Button, Grid, styled, TableCell, tableCellClasses, TableRow, TableContainer, Table, TableHead, TableBody, TablePagination, useTheme, Box, Paper, Radio, RadioGroup, FormControlLabel } from "@mui/material";
 import { useSelector } from 'react-redux';
 import { errorAlert, successAlert, userTypes } from "../../utils.js";
-import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, GET_STOCK_REQUESTS, SEARCH_CUSTOMER_BY_USER, UPDATE_SITE } from "../../EndPoints.js";
+import { CALCULATE_SITE_STATUS, DELETE_SITE, GET_ALL_SITES, GET_BOUGHT_PACKAGE_BY_ID, GET_STOCK_REQUESTS, SEARCH_CUSTOMER_BY_USER, UPDATE_SITE } from "../../EndPoints.js";
 import moment from "moment";
 import jsPDF from "jspdf";
 import "jspdf-autotable";
@@ -498,13 +498,25 @@ function ViewSite({ values }) {
         calculatedStatus: 0,
     });
     const [stockRequests, setStockRequests] = useState({});
+    const [packageInfo, setPackageInfo] = useState({});
 
-    const getStockRequests = () => {
+    const getStockRequests = (siteId) => {
         Axios
-            .get(GET_STOCK_REQUESTS + siteDetails.siteId)
+            .get(GET_STOCK_REQUESTS + siteId)
             .then((response) => {
                 setStockRequests(response.data);
-                console.log(response)
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
+    }
+
+    const getPackageInfo = () => {
+        Axios
+            .get(GET_BOUGHT_PACKAGE_BY_ID + values.packageId)
+            .then((response) => {
+                setPackageInfo(response.data);
             })
             .catch((error) => {
                 console.log(error);
@@ -539,21 +551,13 @@ function ViewSite({ values }) {
             completeStatus: values.completeStatus + "%",
         });
         loadCalculatedStatus();
+        getStockRequests(values.siteId);
+        getPackageInfo();
     }, [values]);
 
     const handleReport = (event, siteDetails) => {
         event.preventDefault();
-        Axios
-            .get(GET_STOCK_REQUESTS + siteDetails.siteId)
-            .then((response) => {
-                setStockRequests(response.data);
-                generateReport(siteDetails, response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-                errorAlert(error.response.data.message);
-            });
-
+        generateReport(siteDetails, stockRequests, packageInfo);
     }
 
     return (
@@ -597,7 +601,7 @@ function ViewSite({ values }) {
 
 }
 
-function generateReport(siteDetails, stockRequests) {
+function generateReport(siteDetails, stockRequests, packageInfo) {
 
     const doc = new jsPDF();
 
@@ -620,24 +624,33 @@ function generateReport(siteDetails, stockRequests) {
         siteDetails.calculatedStatus]
     ];
 
+    //Package Info Table
+    const tableHead3 = [["Package Name", "Add-Ons", "Price", "Monthly Cost", "Duration"]];
+    const tableBody3 = [
+        [packageInfo.name,
+        packageInfo.description,
+        packageInfo.price,
+        packageInfo.cost,
+        packageInfo.duration]
+    ];
 
-    const tableHead3 = [["Date", "Site Id", "equipments", "qty"]];
-    const tableBody3 = [];
+    //Stock Requested Details Table
+    const tableHead4 = [["Date", "Site Id", "equipments", "qty"]];
+    const tableBody4 = [];
     stockRequests.forEach((request) => {
         request.equipments.forEach((equipment) => {
-            console.log(equipment)
-            console.log(equipment.qty)
             const rowData = [
                 moment(request.date).format('YYYY-MM-DD'),
                 request.siteId,
                 equipment.equipmentId,
                 equipment.qty,
             ];
-            tableBody3.push(rowData);
+            tableBody4.push(rowData);
         });
     });
 
     //Adding the Tables to pdf
+    doc.text('Site Details', 10, 15);
     doc.autoTable({
         head: tableHead,
         body: tableBody,
@@ -650,9 +663,17 @@ function generateReport(siteDetails, stockRequests) {
         startY: doc.previousAutoTable.finalY + 20,
     });
 
+    doc.text('Package Details', 10, doc.previousAutoTable.finalY + 16);
     doc.autoTable({
         head: tableHead3,
         body: tableBody3,
+        startY: doc.previousAutoTable.finalY + 20,
+    });
+
+    doc.text('Requested Stock Details', 10, doc.previousAutoTable.finalY + 16);
+    doc.autoTable({
+        head: tableHead4,
+        body: tableBody4,
         startY: doc.previousAutoTable.finalY + 20,
     });
 

@@ -13,7 +13,6 @@ import StockRequest from "../SiteManagement/StockRequest.js";
 import AddSite from "../SiteManagement/AddSite.js";
 import ViewAllSites from "../SiteManagement/ViewAllSites";
 import PaymentForm from "../FinanceManagement/ComMakePayment.js";
-import Review from "../FinanceManagement/PaymentReview.js";
 import MakePayment from "../FinanceManagement/MakePayment";
 import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
 import Biller from "../FinanceManagement/Biller";
@@ -22,13 +21,10 @@ import BuyStock from "../StockManagement/BuyStock";
 import FleetDetails from "../FleetManagement/FleetDetails.js";
 import AddVehicles from "../FleetManagement/AddVehicles.js";
 import FleetTablePage from "../FleetManagement/FleetTablePage.js";
-import LogReport from "./LogReport";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
 import ViewPackage from "../PackageManagement/ViewPackage";
-import UpdatePackage from "../PackageManagement/UpdatePackage";
 import ViewAddOns from "../PackageManagement/ViewAddOns.js";
 import AddAddOns from "../PackageManagement/AddAddOns";
-import UpdateAddOns from "../PackageManagement/UpdateAddOns";
 import PackageList from "../PackageManagement/PackageList";
 
 export default function UserDashboard() {
@@ -77,15 +73,11 @@ export default function UserDashboard() {
                     {selectedContent === "comMakePayment" && <PaymentForm />}
                     {selectedContent === "customerInstallment" && <CustomerInstallment />}
 
-                    {selectedContent === "LogReport" && <LogReport />}
-
                     {selectedContent === "addPackage" && <AddNewPackage />}
                     {selectedContent === "viewPackage" && <ViewPackage />}
                     {selectedContent === "packageList" && <PackageList />}
-                    {selectedContent === "updatePackage" && <UpdatePackage />}
                     {selectedContent === "viewAddOns" && <ViewAddOns />}
                     {selectedContent === "addAddOns" && <AddAddOns />}
-                    {selectedContent === "updateAddOns" && <UpdateAddOns />}
 
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
                 </main>

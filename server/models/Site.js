@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { Schema } from "mongoose";
 
 const siteSchema = new mongoose.Schema({
     customerId: {
@@ -34,7 +34,11 @@ const siteSchema = new mongoose.Schema({
     completeStatus: {
         type: Number,
         required: false
-    }
+    },
+    packageId: {
+        type: Schema.Types.ObjectId,
+        ref: 'cuspackages',
+    },
 
 });
 

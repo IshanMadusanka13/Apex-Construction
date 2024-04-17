@@ -198,7 +198,7 @@ const ViewPackageDetails = ({packageId}) => {
   return (
     <Grid container>
       <Container style={{ minHeight: "300px" }} >
-        <Card sx={{ display: 'flex', mt: 15 }} >
+        <Card sx={{ display: 'flex', mt: 2 }} >
           <CardMedia
             component="img"
             sx={{ width: 450 }}
@@ -228,9 +228,6 @@ const ViewPackageDetails = ({packageId}) => {
                 </Button>
                 <Button variant="contained" onClick={handleBuy} sx={{ width: "150px", marginLeft: 2 }}>
                   Buy Package
-                </Button>
-                <Button variant="contained" onClick={() => navigate('/report', { state: { description, cusId, packageName, price, duration, mcost, image, firstName, lastName, street, city, mobileNo, email } })} sx={{ width: "200px", marginLeft: 2 }}>
-                  Genarate Report
                 </Button>
               </Box>
               <div >

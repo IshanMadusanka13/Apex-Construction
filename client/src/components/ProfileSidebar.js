@@ -20,7 +20,8 @@ import {
   Autorenew as AutorenewIcon,
   AccountBalance as AccountBalanceIcon,
   Description as DescriptionIcon,
-  DirectionsCarOutlined as DirectionsCarOutlinedIcon
+  DirectionsCarOutlined as DirectionsCarOutlinedIcon,
+  PhotoLibraryOutlined as PhotoLibraryOutlinedIcon
 } from "@mui/icons-material";
 
 import { Lock } from '@mui/icons-material';
@@ -56,41 +57,7 @@ const ProfileSidebar = (props) => {
           icon={<AccountCircleIcon />}
         />
 
-        <ListItem button onClick={() => handleItemClick("viewPackage")} sx={{ backgroundColor: selectedContent === "viewPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Package Details" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("packageList")} sx={{ backgroundColor: selectedContent === "packageList" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Package List" />}
-        </ListItem>
-
-        <SetSideBarLists handleItemClick={handleItemClick} />
-        <ListItem button onClick={() => handleItemClick("addPackage")} sx={{ backgroundColor: selectedContent === "addPackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="add Package" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("updatePackage")} sx={{ backgroundColor: selectedContent === "updatePackage" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="update Package" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("addAddOns")} sx={{ backgroundColor: selectedContent === "addAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="add AddOns" />}
-        </ListItem>
+        <SetSideBarLists handleItemClick={handleItemClick} selectedContent={selectedContent} />
 
         <SideBarListItem
           onClick={() => handleItemClick("changePassword")}
@@ -98,27 +65,6 @@ const ProfileSidebar = (props) => {
           primary="Change Password"
           icon={<Lock />}
         />
-        <ListItem button onClick={() => handleItemClick("updateAddOns")} sx={{ backgroundColor: selectedContent === "updateAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="update AddOns" />}
-        </ListItem>
-
-        <ListItem button onClick={() => handleItemClick("viewAddOns")} sx={{ backgroundColor: selectedContent === "viewAddOns" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="View Add Ons" />}
-        </ListItem>
-        {setPrivileges()}
-
-        <ListItem button onClick={() => handleItemClick("changePassword")} sx={{ backgroundColor: selectedContent === "changePassword" ? "rgba(0, 0, 0, 0.08)" : "" }}>
-          <ListItemIcon>
-            <Lock />
-          </ListItemIcon>
-          {isMd && <ListItemText primary="Change Password" />}
-        </ListItem>
 
       </List>
     </div>
@@ -161,6 +107,34 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("viewEmployee")}
             selected={selectedContent === "viewEmployee"}
             primary="View Employee"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewPackage")}
+            selected={selectedContent === "viewPackage"}
+            primary="Package Details"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addPackage")}
+            selected={selectedContent === "addPackage"}
+            primary="Add Package"
+            icon={<AddIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addAddOns")}
+            selected={selectedContent === "addAddOns"}
+            primary="Add Package Addons"
+            icon={<AddIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewAddOns")}
+            selected={selectedContent === "viewAddOns"}
+            primary="View Package Addons"
             icon={<VisibilityIcon />}
           />
 
@@ -290,6 +264,34 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
         <span>
 
           <SideBarListItem
+            onClick={() => handleItemClick("viewPackage")}
+            selected={selectedContent === "viewPackage"}
+            primary="Package Details"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addPackage")}
+            selected={selectedContent === "addPackage"}
+            primary="Add Package"
+            icon={<AddIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("addAddOns")}
+            selected={selectedContent === "addAddOns"}
+            primary="Add Package Addons"
+            icon={<AddIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewAddOns")}
+            selected={selectedContent === "viewAddOns"}
+            primary="View Package Addons"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
             onClick={() => handleItemClick("addSite")}
             selected={selectedContent === "addSite"}
             primary="Add Site"
@@ -371,6 +373,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "viewSite"}
             primary="View Site"
             icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("packageList")}
+            selected={selectedContent === "packageList"}
+            primary="Package List"
+            icon={<PhotoLibraryOutlinedIcon />}
           />
 
           <SideBarListItem

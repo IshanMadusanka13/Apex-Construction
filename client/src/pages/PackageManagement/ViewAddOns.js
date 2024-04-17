@@ -45,7 +45,7 @@ function ViewAddOns() {
 
     useEffect(() => {
         loadPackages();
-    }, [navigate]);
+    }, [navigate, viewUpdateContent]);
 
     const handleDelete = (packageId) => {
         axios
