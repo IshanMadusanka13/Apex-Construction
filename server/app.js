@@ -1,3 +1,4 @@
+// app.js
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -12,11 +13,20 @@ import FleetRouter from "./routes/FleetRouter.js";
 import vehicleRouter from "./routes/VehicleRouter.js";
 import packagesRouter from "./routes/PackagesRouter.js";
 import packageAddOnRouter from "./routes/packageAddOnsRouter.js";
+import authRouter from "./routes/AuthRouter.js";
+import complaintRouter from "./routes/ComplaintRouter.js";
+import feedbackRouter from "./routes/feedbackRouter.js";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+
 
 //Including Routers
 app.use('/user', userRouter);
@@ -34,5 +44,9 @@ app.use('/packageaddon', packageAddOnRouter);
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
 });
+app.use('/auth', authRouter);
+app.use('/complaint', complaintRouter);
+app.use('/feedback', feedbackRouter);
+app.use('/auth', authRouter);
 
 export default app;

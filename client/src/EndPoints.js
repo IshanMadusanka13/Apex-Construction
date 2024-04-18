@@ -82,3 +82,19 @@ export const DELTE_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/delete/"
 export const BUY_PACKAGE = API_BASE_URL + "/package/buy"
 export const GET_INAPPROVED_PACKAGES = API_BASE_URL + "/package/getfalse"
 export const GET_BOUGHT_PACKAGE_BY_ID = API_BASE_URL + "/package/boughts/"
+
+//CRM Management
+export const CREATE_AUTH = API_BASE_URL + "/auth/create"
+export const UPDATE_AUTH = API_BASE_URL + "/auth/update"
+export const GET_AUTH = API_BASE_URL + "/auth/get"
+export const DELETE_AUTH = API_BASE_URL + "/auth/delete/"
+
+export const CREATE_FFEDBACK = API_BASE_URL + "/feedback/create"
+export const UPDATE_FEEDBACK = API_BASE_URL + "/feedback/update"
+export const GET_FEEDBACK = API_BASE_URL + "/feedback/get"
+export const DELETE_FEEDBACK = API_BASE_URL + "/feedback/delete/"
+
+export const CREATE_COMPLAINT = API_BASE_URL + "/complaint/create"
+export const UPDATE_COMPLAINT = API_BASE_URL + "/complaint/update"
+export const GET_COMPLAINT = API_BASE_URL + "/complaint/get"
+export const DELETE_COMPLAINT = API_BASE_URL + "/complaint/delete/"
