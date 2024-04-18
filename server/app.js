@@ -1,4 +1,3 @@
-// app.js
 import express from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -21,18 +20,12 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(
-    express.urlencoded({
-        extended: true,
-    })
-);
-
 
 //Including Routers
 app.use('/user', userRouter);
 app.use('/customer', customerRouter);
 app.use('/employee', employeeRouter);
-app.use('/site',siteRouter);
+app.use('/site', siteRouter);
 app.use('/finance', paymentRouter);
 app.use('/biller', billerRouter);
 app.use('/stock', stockRouter);
@@ -40,13 +33,13 @@ app.use('/fleet', FleetRouter);
 app.use('/vehicle', vehicleRouter);
 app.use('/package', packagesRouter);
 app.use('/packageaddon', packageAddOnRouter);
-
-app.get('/', (req, res) => {
-    res.send('Server is Running! 🚀');
-});
 app.use('/auth', authRouter);
 app.use('/complaint', complaintRouter);
 app.use('/feedback', feedbackRouter);
 app.use('/auth', authRouter);
+
+app.get('/', (req, res) => {
+    res.send('Server is Running! 🚀');
+});
 
 export default app;

@@ -1,4 +1,4 @@
-import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextareaAutosize, Typography, useTheme, TextField } from "@mui/material";
+import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextareaAutosize, Typography, useTheme, TextField, Box } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { CREATE_FFEDBACK, DELETE_FEEDBACK, GET_FEEDBACK, UPDATE_FEEDBACK } from "../../EndPoints";
@@ -31,7 +31,7 @@ const Feedbacks = () => {
         console.error("Axios Error :", error);
       });
   }
-  
+
   const addFeedback = (data) => {
     setSubmitted(true);
     const payload = {
@@ -68,7 +68,7 @@ const Feedbacks = () => {
   }
 
   const deleteFeedback = (data) => {
-    Axios.delete(DELETE_FEEDBACK +data)
+    Axios.delete(DELETE_FEEDBACK + data)
       .then(() => {
         getFeedbacks();
       })
@@ -76,62 +76,77 @@ const Feedbacks = () => {
         console.error("Axios Error :", error);
       });
   }
-  
+
   const handleSearch = () => {
     if (searchId.trim() !== '') {
       Axios.get(GET_FEEDBACK + '/' + searchId)
         .then(response => {
           if (response.data && response.data.response) {
-            setFeedbacks([response.data.response]); 
+            setFeedbacks([response.data.response]);
           } else {
-            setFeedbacks([]); 
+            setFeedbacks([]);
           }
         })
         .catch(error => {
           console.error("Axios Error :", error);
-          setFeedbacks([]); 
+          setFeedbacks([]);
         });
     } else {
-      getFeedbacks(); 
+      getFeedbacks();
     }
   }
   return (
-    <Grid container>
-      <Grid item md={12} sx={theme.palette.gridBody}>
-        <FeedbackForm
-          addFeedback={addFeedback}
-          updateFeedback={updateFeedback}
-          submitted={submitted}
-          data={selectedFeedback}
-          isEdit={isEdit}
-        />
-         <Typography variant="h6" component="h2">
-       Total Feedback: {totalFeedbackCount}
-         </Typography>
-           <TextField
-          label="Search by ID"
-          value={searchId}
-          onChange={e => setSearchId(e.target.value)}
-          variant="outlined"
-          margin="normal"
-        />
-        <Button onClick={handleSearch} variant="contained" color="primary">
-          Search
-        </Button>
+    <Box>
+
+      <Grid container sx={theme.palette.gridBody}>
+        <Grid item md={12}>
+          <FeedbackForm
+            addFeedback={addFeedback}
+            updateFeedback={updateFeedback}
+            submitted={submitted}
+            data={selectedFeedback}
+            isEdit={isEdit}
+          />
+        </Grid>
       </Grid>
-      <Grid item md={12} sx={theme.palette.gridBody}>
-        <FeedbacksTable
-          rows={feedbacks}
-          selectedFeedback={data => {
-            setSelectedFeedback(data);
-            setIsEdit(true);
-          }}
-          deleteFeedback={data => {
-            window.confirm("Are you sure?") && deleteFeedback(data);
-          }}
-        />
+
+      <Grid container sx={theme.palette.gridBody}>
+        <Grid item md={7}>
+          <TextField
+            label="Search by ID"
+            value={searchId}
+            onChange={e => setSearchId(e.target.value)}
+            variant="outlined"
+            margin="normal"
+          />
+        </Grid>
+        <Grid item md={6}>
+          <Button onClick={handleSearch} variant="contained" color="primary">
+            Search
+          </Button>
+        </Grid>
       </Grid>
-    </Grid>
+
+      <Grid container sx={theme.palette.gridBody}>
+        <Grid item md={12}>
+          <Typography variant="h6" component="h2">
+            Total Feedback: {totalFeedbackCount}
+          </Typography>
+        </Grid>
+        <Grid item md={12}>
+          <FeedbacksTable
+            rows={feedbacks}
+            selectedFeedback={data => {
+              setSelectedFeedback(data);
+              setIsEdit(true);
+            }}
+            deleteFeedback={data => {
+              window.confirm("Are you sure?") && deleteFeedback(data);
+            }}
+          />
+        </Grid>
+      </Grid>
+    </Box>
   );
 }
 
@@ -140,7 +155,7 @@ export default Feedbacks;
 
 const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) => {
 
-  
+
   const [id, setId] = useState(0);
   const [feedback, setFeedback] = useState('');
 
@@ -167,7 +182,7 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
           Feedback Form
         </Typography>
       </Grid>
-        <Grid item xs={12}>
+      <Grid item xs={12}>
         <Typography component={'label'} htmlFor="id" sx={{ fontSize: '16px', fontWeight: 'bold', display: 'block' }}>
           ID
         </Typography>
@@ -186,18 +201,19 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
         <Typography component={'label'} htmlFor="feedback" sx={{ fontSize: '16px', fontWeight: 'bold', display: 'block' }}>
           Feedback
         </Typography>
-        <TextareaAutosize
+        <TextField
+          multiline
+          fullWidth
           id="feedback"
           name="feedback"
           value={feedback}
+          minRows={4}
           onChange={e => setFeedback(e.target.value)}
-          minRows={5}
-          style={{ width: '100%', padding: '8px', fontSize: '16px', marginTop: '10px' }}
         />
       </Grid>
 
       <Grid item xs={12}>
-        <Button  variant="contained"
+        <Button variant="contained"
           onClick={() => {
             if (isEdit) {
               updateFeedback({ id, feedback });

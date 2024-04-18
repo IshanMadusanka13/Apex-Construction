@@ -21,7 +21,9 @@ import {
   AccountBalance as AccountBalanceIcon,
   Description as DescriptionIcon,
   DirectionsCarOutlined as DirectionsCarOutlinedIcon,
-  PhotoLibraryOutlined as PhotoLibraryOutlinedIcon
+  PhotoLibraryOutlined as PhotoLibraryOutlinedIcon,
+  Feedback as FeedbackIcon,
+  Report as ReportIcon,
 } from "@mui/icons-material";
 
 import { Lock } from '@mui/icons-material';
@@ -58,6 +60,27 @@ const ProfileSidebar = (props) => {
         />
 
         <SetSideBarLists handleItemClick={handleItemClick} selectedContent={selectedContent} />
+
+        <SideBarListItem
+          onClick={() => handleItemClick("feedback")}
+          selected={selectedContent === "feedback"}
+          primary="Feedback"
+          icon={<FeedbackIcon />}
+        />
+
+        <SideBarListItem
+          onClick={() => handleItemClick("complaint")}
+          selected={selectedContent === "complaint"}
+          primary="Complaint"
+          icon={<ReportIcon />}
+        />
+
+        <SideBarListItem
+          onClick={() => handleItemClick("auth")}
+          selected={selectedContent === "auth"}
+          primary="Auhorization"
+          icon={<ReportIcon />}
+        />
 
         <SideBarListItem
           onClick={() => handleItemClick("changePassword")}

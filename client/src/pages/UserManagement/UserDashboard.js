@@ -26,10 +26,9 @@ import ViewAddOns from "../PackageManagement/ViewAddOns.js";
 import AddAddOns from "../PackageManagement/AddAddOns";
 import PackageList from "../PackageManagement/PackageList";
 import FinancialReport from "../FinanceManagement/FinancialReport";
-import Complaints from "../FeedbackManagement/Complaint.js";
-import Auths from "../FeedbackManagement/Auth.js";
-import Feedbacks from "../FeedbackManagement/Feedback.js";
-
+import Feedbacks from "../FeedbackManagement/Feedback";
+import Complaints from "../FeedbackManagement/Complaint";
+import Auths from "../FeedbackManagement/Auth";
 
 export default function UserDashboard() {
 
@@ -83,13 +82,12 @@ export default function UserDashboard() {
                     {selectedContent === "viewAddOns" && <ViewAddOns />}
                     {selectedContent === "addAddOns" && <AddAddOns />}
 
+                    {selectedContent === "feedback" && <Feedbacks />}
+                    {selectedContent === "complaint" && <Complaints />}
+                    {selectedContent === "auth" && <Auths />}
+
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
-                    {selectedContent === "Feedbacks" && <Feedbacks/>}
-                    {selectedContent === "Complaints" && <Complaints/>}
-                    {selectedContent === "Auths" && <Auths/>}
-                    
-                    
-                    
+
                 </main>
             </Grid>
         </Grid>

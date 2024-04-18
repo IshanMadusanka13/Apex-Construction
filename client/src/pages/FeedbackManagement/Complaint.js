@@ -21,7 +21,7 @@ const Complaints = () => {
     Axios.get(GET_COMPLAINT)
       .then(response => {
         setComplaints(response.data?.response || []);
-        setTotalComplaintCount(response.data?.response.length || 0); 
+        setTotalComplaintCount(response.data?.response.length || 0);
       })
       .catch(error => {
         console.error("Axios Error :", error);
@@ -84,32 +84,40 @@ const Complaints = () => {
   }
 
   return (
-    <Grid container>
-      <Grid item md={12} sx={theme.palette.gridBody}>
-        <ComplaintForm
-          addComplaint={addComplaint}
-          updateComplaint={updateComplaint}
-          submitted={submitted}
-          data={selectedComplaint}
-          isEdit={isEdit}
-        />
+    <Box>
+
+      <Grid container sx={theme.palette.gridBody}>
+        <Grid item md={12}>
+          <ComplaintForm
+            addComplaint={addComplaint}
+            updateComplaint={updateComplaint}
+            submitted={submitted}
+            data={selectedComplaint}
+            isEdit={isEdit}
+          />
+        </Grid>
       </Grid>
-      <Typography variant="h6" component="h2">
-       Total Complaint: {totalComplaintCount}
-         </Typography>
-      <Grid item md={12} sx={theme.palette.gridBody}>
-        <ComplaintsTable
-          rows={complaints}
-          selectedComplaint={data => {
-            setSelectedComplaint(data);
-            setIsEdit(true);
-          }}
-          deleteComplaint={data => {
-            window.confirm("Are you sure?") && deleteComplaint(data);
-          }}
-        />
+
+      <Grid container sx={theme.palette.gridBody}>
+        <Grid item md={12}>
+          <Typography variant="h6" component="h2">
+            Total Complaint: {totalComplaintCount}
+          </Typography>
+        </Grid>
+        <Grid item md={12}>
+          <ComplaintsTable
+            rows={complaints}
+            selectedComplaint={data => {
+              setSelectedComplaint(data);
+              setIsEdit(true);
+            }}
+            deleteComplaint={data => {
+              window.confirm("Are you sure?") && deleteComplaint(data);
+            }}
+          />
+        </Grid>
       </Grid>
-    </Grid>
+    </Box>
   );
 }
 
@@ -211,13 +219,14 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
           />
         </Grid>
         <Grid item xs={12}>
-          <TextareaAutosize
+          <TextField
+            multiline
+            fullWidth
             id="complaint"
-            rowsMin={3}
             placeholder="Enter Complaint"
+            minRows={4}
             value={complaint}
             onChange={e => setComplaint(e.target.value)}
-            style={{ width: '100%', minHeight: '100px', padding: '10px', fontSize: '16px', lineHeight: '1.5', border: '1px solid #ccc', borderRadius: '5px' }}
           />
         </Grid>
         <Grid item xs={12}>
@@ -241,7 +250,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
 }
 
 const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
-    
+
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -275,11 +284,11 @@ const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
                   >
                     Update
                   </Button>
-                  <Button  
-                     variant="contained"
-                     color="error"
-                     size="small"
-                     onClick={() => deleteComplaint(row)}>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    size="small"
+                    onClick={() => deleteComplaint(row)}>
                     Delete
                   </Button>
                 </TableCell>
@@ -293,6 +302,6 @@ const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
         </TableBody>
       </Table>
     </TableContainer>
-    
+
   );
 }
