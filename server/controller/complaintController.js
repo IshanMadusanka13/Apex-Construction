@@ -60,4 +60,14 @@ const deleteComplaint = (req, res, next) => {
      
 }
 
-export default { getComplaint, addComplaint, updateComplaint, deleteComplaint };
+const getTotalComplaintCount = (req, res, next) => {
+    Complaint.countDocuments()
+        .then(count => {
+            res.json({ count });
+        })
+        .catch(error => {
+            res.json({ error });
+        });
+};
+
+export default { getComplaint, addComplaint, updateComplaint, deleteComplaint, getTotalComplaintCount };

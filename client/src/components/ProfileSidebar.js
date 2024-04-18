@@ -67,6 +67,13 @@ const ProfileSidebar = (props) => {
               {isMd && <ListItemText primary="Auth Form" />}
             </ListItem>
 
+            <ListItem button onClick={() => handleItemClick("Contactus")} sx={{ backgroundColor: selectedContent === "Contactus" ? "rgba(0, 0, 0, 0.08)" : "" }}>
+              <ListItemIcon>
+                <PersonAddAlt1Icon />
+              </ListItemIcon>
+              {isMd && <ListItemText primary="Contact Us" />}
+            </ListItem>
+
           </span>
         )
 

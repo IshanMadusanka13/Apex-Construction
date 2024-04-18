@@ -1,7 +1,6 @@
 import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextareaAutosize, Typography, useTheme, TextField } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
 import { CREATE_FFEDBACK, DELETE_FEEDBACK, GET_FEEDBACK, UPDATE_FEEDBACK } from "../../EndPoints";
 
 
@@ -10,6 +9,9 @@ const Feedbacks = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedFeedback, setSelectedFeedback] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [searchId, setSearchId] = useState('');
+  const [totalFeedbackCount, setTotalFeedbackCount] = useState(0);
+
 
   const theme = useTheme();
 
@@ -18,16 +20,18 @@ const Feedbacks = () => {
     getFeedbacks();
   }, []);
 
+
   const getFeedbacks = () => {
     Axios.get(GET_FEEDBACK)
       .then(response => {
         setFeedbacks(response.data?.response || []);
+        setTotalFeedbackCount(response.data?.response.length || 0); // Set total feedback count
       })
       .catch(error => {
         console.error("Axios Error :", error);
       });
   }
-
+  
   const addFeedback = (data) => {
     setSubmitted(true);
     const payload = {
@@ -72,7 +76,25 @@ const Feedbacks = () => {
         console.error("Axios Error :", error);
       });
   }
-
+  
+  const handleSearch = () => {
+    if (searchId.trim() !== '') {
+      Axios.get(GET_FEEDBACK + '/' + searchId)
+        .then(response => {
+          if (response.data && response.data.response) {
+            setFeedbacks([response.data.response]); 
+          } else {
+            setFeedbacks([]); 
+          }
+        })
+        .catch(error => {
+          console.error("Axios Error :", error);
+          setFeedbacks([]); 
+        });
+    } else {
+      getFeedbacks(); 
+    }
+  }
   return (
     <Grid container>
       <Grid item md={12} sx={theme.palette.gridBody}>
@@ -83,6 +105,19 @@ const Feedbacks = () => {
           data={selectedFeedback}
           isEdit={isEdit}
         />
+         <Typography variant="h6" component="h2">
+       Total Feedback: {totalFeedbackCount}
+         </Typography>
+           <TextField
+          label="Search by ID"
+          value={searchId}
+          onChange={e => setSearchId(e.target.value)}
+          variant="outlined"
+          margin="normal"
+        />
+        <Button onClick={handleSearch} variant="contained" color="primary">
+          Search
+        </Button>
       </Grid>
       <Grid item md={12} sx={theme.palette.gridBody}>
         <FeedbacksTable
@@ -105,7 +140,7 @@ export default Feedbacks;
 
 const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) => {
 
-  const navigate = useNavigate();
+  
   const [id, setId] = useState(0);
   const [feedback, setFeedback] = useState('');
 
@@ -132,8 +167,7 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
           Feedback Form
         </Typography>
       </Grid>
-
-      <Grid item xs={12}>
+        <Grid item xs={12}>
         <Typography component={'label'} htmlFor="id" sx={{ fontSize: '16px', fontWeight: 'bold', display: 'block' }}>
           ID
         </Typography>

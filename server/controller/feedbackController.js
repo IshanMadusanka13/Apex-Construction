@@ -1,6 +1,20 @@
 import Feedback from "../models/feedbackModel.js";
 import logger from "../utils/logger.js";
 
+const getFeedbackById = (req, res, next) => {
+    const id = req.params.id;
+    Feedback.findOne({ id: id })
+        .then(response => {
+            if(response) {
+                res.json({ response });
+            } else {
+                res.json({ error: "No data found" });
+            }
+        })
+        .catch(error => {
+            res.json({ error });
+        });
+};
 
 const getFeedback = (req, res, next) => {
     Feedback.find()
@@ -49,5 +63,19 @@ const deleteFeedback = (req, res, next) => {
      
 }
 
+const getTotalFeedbackCount = (req, res, next) => {
+    Feedback.countDocuments()
+        .then(count => {
+            res.json({ count });
+        })
+        .catch(error => {
+            res.json({ error });
+        });
+};
 
-export default { getFeedback, addFeedback, updateFeedback, deleteFeedback };
+
+
+
+
+
+export default { getFeedback, addFeedback, updateFeedback, deleteFeedback, getFeedbackById, getTotalFeedbackCount };

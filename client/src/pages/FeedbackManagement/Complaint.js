@@ -9,6 +9,7 @@ const Complaints = () => {
   const [submitted, setSubmitted] = useState(false);
   const [selectedComplaint, setSelectedComplaint] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [totalComplaintCount, setTotalComplaintCount] = useState(0);
 
   const theme = useTheme();
 
@@ -20,6 +21,7 @@ const Complaints = () => {
     Axios.get(GET_COMPLAINT)
       .then(response => {
         setComplaints(response.data?.response || []);
+        setTotalComplaintCount(response.data?.response.length || 0); 
       })
       .catch(error => {
         console.error("Axios Error :", error);
@@ -92,6 +94,9 @@ const Complaints = () => {
           isEdit={isEdit}
         />
       </Grid>
+      <Typography variant="h6" component="h2">
+       Total Complaint: {totalComplaintCount}
+         </Typography>
       <Grid item md={12} sx={theme.palette.gridBody}>
         <ComplaintsTable
           rows={complaints}

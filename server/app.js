@@ -7,7 +7,7 @@ import userRouter from "./routes/UserRouter.js";
 import employeeRouter from "./routes/EmployeeRouter.js";
 import authRouter from "./routes/AuthRouter.js";
 import complaintRouter from "./routes/ComplaintRouter.js";
-import feedbackRouter from "./routes/FeedbackRouter.js";
+import feedbackRouter from "./routes/feedbackRouter.js";
 
 const app = express();
 
