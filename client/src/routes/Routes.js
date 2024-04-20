@@ -7,6 +7,7 @@ import Login from "../pages/UserManagement/Login.js";
 import Signup from "../pages/UserManagement/SignUp.js";
 import UserDashboard from "../pages/UserManagement/UserDashboard.js";
 import UpdatePackage from "../pages/PackageManagement/UpdatePackage.js";
+import PackageList from "../pages/PackageManagement/PackageList.js";
 
 const AppRoutes = () => {
   return (
@@ -20,6 +21,7 @@ const AppRoutes = () => {
 
         {/* General Routes */}
         <Route path="/report" element={<GenarateReport />} />
+        <Route path="/packages" element={<PackageList />} />
 
         {/* General Routes */}
         <Route path="/home" element={<Home />} />

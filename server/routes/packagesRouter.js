@@ -16,8 +16,8 @@ import authorizeUser from "../middleware/authorizeUser.js";
 const packagesRouter = express.Router();
 
 packagesRouter.post("/add", authorizeUser, createPackage);
-packagesRouter.get("/getall", authorizeUser, getAllPackages);
-packagesRouter.get("/get/:id", authorizeUser, getPackageById);
+packagesRouter.get("/getall", getAllPackages);
+packagesRouter.get("/get/:id", getPackageById);
 packagesRouter.put("/update", authorizeUser, updatePackage);
 packagesRouter.delete("/delete/:id", authorizeUser, deletePackage);
 

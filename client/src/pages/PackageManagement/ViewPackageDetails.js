@@ -10,7 +10,7 @@ import { SEARCH_CUSTOMER_BY_USER } from '../../EndPoints';
 import { useSelector } from 'react-redux';
 
 
-const ViewPackageDetails = ({packageId}) => {
+const ViewPackageDetails = ({ packageId }) => {
 
   const navigate = useNavigate();
   const loggedUser = useSelector((state) => state.user);
@@ -81,30 +81,31 @@ const ViewPackageDetails = ({packageId}) => {
       });
   }
 
-  useEffect(() => {
-    getCustomerDetails();
-  }, [navigate]);
-
   const handleBuy = (e) => {
     e.preventDefault();
 
-    axios
-      .post(BUY_PACKAGE, {
-        name: packageName,
-        price: price,
-        description: description,
-        duration: duration,
-        cusId: customerDetails.customerId,
-        cost: mcost,
-      })
-      .then((res) => {
-        successAlert("Package Buy Successfull");
-        navigate('/report', { state: { description, cusId, packageName, price, duration, mcost, image, firstName, lastName, street, city, mobileNo, email } })
-      })
-      .catch((error) => {
-        console.log("Error while adding a new package:", error);
-        errorAlert("An error occurred while adding the package. Please try again.");
-      });
+    if (!loggedUser) {
+      navigate("/login");
+    } else {
+      getCustomerDetails();
+      axios
+        .post(BUY_PACKAGE, {
+          name: packageName,
+          price: price,
+          description: description,
+          duration: duration,
+          cusId: customerDetails.customerId,
+          cost: mcost,
+        })
+        .then((res) => {
+          successAlert("Package Buy Successfull");
+          navigate('/report', { state: { description, cusId, packageName, price, duration, mcost, image, firstName, lastName, street, city, mobileNo, email } })
+        })
+        .catch((error) => {
+          console.log("Error while adding a new package:", error);
+          errorAlert("An error occurred while adding the package. Please try again.");
+        });
+    }
   };
 
   const loadAddons = async () => {
@@ -123,7 +124,7 @@ const ViewPackageDetails = ({packageId}) => {
       axios
         .get(SEARCH_PACKAGE_BY_ID + packageId, {})
         .then((response) => {
-          
+
           setPackageDetails(response.data);
           setPackageName(response.data.name);
           setPrice(response.data.price);
