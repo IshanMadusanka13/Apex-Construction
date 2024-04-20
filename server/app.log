@@ -1,0 +1,84 @@
+{"level":30,"time":1713607532344,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713607536250,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Database connection success!"}
+{"level":50,"time":1713607568704,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Failed"}
+{"level":50,"time":1713607574928,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Failed"}
+{"level":50,"time":1713607612006,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Failed"}
+{"level":50,"time":1713607612103,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Failed"}
+{"level":30,"time":1713607623768,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Succcess"}
+{"level":30,"time":1713607624253,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713607624937,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713607667282,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Succcess"}
+{"level":30,"time":1713607667701,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713607668406,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713607682594,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607683266,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607685027,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713607685705,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713607685788,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607687140,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607715293,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713607715990,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713607716374,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607717036,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607847977,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713607848668,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608349447,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608350047,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608352550,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608353179,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608421260,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713608421821,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713608424865,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713608425481,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713608426275,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713608426730,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608426909,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713608427396,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608469644,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Succcess"}
+{"level":30,"time":1713608469992,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/employee/search/661b96de7aee1481fdbd9f5e/userId] Request Received"}
+{"level":30,"time":1713608470508,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/employee/search/661b96de7aee1481fdbd9f5e/userId] Request Received"}
+{"level":30,"time":1713608472804,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/fleet/searchall] Request Received"}
+{"level":30,"time":1713608473064,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713608473327,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/fleet/searchall] Request Received"}
+{"level":30,"time":1713608473585,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713608477469,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/vehicle/searchall] Request Received"}
+{"level":30,"time":1713608477730,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713608477989,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/fleet/searchall] Request Received"}
+{"level":30,"time":1713608477991,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/vehicle/searchall] Request Received"}
+{"level":30,"time":1713608478243,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713608478247,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Successfully fetched all Vehicle Details"}
+{"level":30,"time":1713608478511,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/fleet/searchall] Request Received"}
+{"level":30,"time":1713608478769,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Successfully got Fleet Detail"}
+{"level":30,"time":1713608482372,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/employee/search/661b96de7aee1481fdbd9f5e/userId] Request Received"}
+{"level":30,"time":1713608482892,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96de7aee1481fdbd9f5e]: [GET] [/employee/search/661b96de7aee1481fdbd9f5e/userId] Request Received"}
+{"level":30,"time":1713608499387,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Succcess"}
+{"level":30,"time":1713608499738,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608500254,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608502567,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608502576,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608503086,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608503092,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608609077,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getall/2024-07] Request Received"}
+{"level":30,"time":1713608609711,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Succesfully Got all transactions"}
+{"level":30,"time":1713608622106,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713608622627,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/search/65e9dfe8505cbd0cf5502405/userId] Request Received"}
+{"level":30,"time":1713608787145,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608787663,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608815352,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608815870,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608824587,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608825138,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1713608961447,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713608961999,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713609033553,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [POST] [/employee/create] Request Received"}
+{"level":30,"time":1713609034775,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Employee create successful"}
+{"level":30,"time":1713609035726,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"[65e9dfe8505cbd0cf5502405]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1713609038468,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"Email succesfully sent to: anuradias@gmail.com"}
+{"level":30,"time":1713609270517,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Succcess"}
+{"level":30,"time":1713609270964,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Access Revoked"}
+{"level":30,"time":1713609271328,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Access Revoked"}
+{"level":30,"time":1713609533584,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Access Revoked"}
+{"level":30,"time":1713609533950,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Access Revoked"}
+{"level":30,"time":1713609633624,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Login Succcess"}
+{"level":30,"time":1713609634073,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Access Revoked"}
+{"level":30,"time":1713609634425,"pid":9700,"hostname":"DESKTOP-14PFAJG","msg":"User Access Revoked"}

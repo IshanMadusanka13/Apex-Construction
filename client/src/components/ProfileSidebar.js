@@ -252,6 +252,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
         <span>
 
           <SideBarListItem
+            onClick={() => handleItemClick("managerDashboard")}
+            selected={selectedContent === "managerDashboard"}
+            primary="HR Manager Dashboard"
+            icon={<VisibilityIcon />}
+           />
+
+          <SideBarListItem
             onClick={() => handleItemClick("addEmployee")}
             selected={selectedContent === "addEmployee"}
             primary="Add Employee"
@@ -262,6 +269,20 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("viewEmployee")}
             selected={selectedContent === "viewEmployee"}
             primary="View Employee"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("attendenceView")}
+            selected={selectedContent === "attendenceView"}
+            primary="Employee Attendence"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("responseLeaveApplication")}
+            selected={selectedContent === "responseLeaveApplication"}
+            primary="Employee Leave Application"
             icon={<VisibilityIcon />}
           />
 
@@ -402,6 +423,34 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
       )
 
     case userTypes.CUSTOMER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("viewSite")}
+            selected={selectedContent === "viewSite"}
+            primary="View Site"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("packageList")}
+            selected={selectedContent === "packageList"}
+            primary="Package List"
+            icon={<PhotoLibraryOutlinedIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("customerInstallment")}
+            selected={selectedContent === "customerInstallment"}
+            primary="Pay Installement"
+            icon={<CreditCardIcon />}
+          />
+
+        </span>
+      )
+
+      case userTypes.WORKER:
       return (
         <span>
 

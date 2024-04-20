@@ -21,6 +21,7 @@ const authorizeUser = async (req, res, next) => {
             [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update', '/fleet', '/vehicle'],
             [UserType.CUSTOMER_RELATIONSHIP_MANAGER]: ['/user', '/employee/search', '/employee/update'],
             [UserType.CUSTOMER]: ['/user', '/customer', '/site/getall', '/site/getrequest', '/site/getstatus', '/package/get', '/package/getall', '/package/buy', '/package/boughts', '/packageaddon/getbyid', '/packageaddon/getall', '/finance/cuspay', '/finance/getall'],
+            [UserType.WORKER]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet', '/vehicle'],
         };
 
         const urlPrefix = "/" + req.originalUrl.split('/')[1];
