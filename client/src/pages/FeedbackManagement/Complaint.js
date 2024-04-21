@@ -2,6 +2,7 @@ import { Box, Button, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { CREATE_COMPLAINT, DELETE_COMPLAINT, GET_COMPLAINT, UPDATE_COMPLAINT } from "../../EndPoints";
+import { errorAlert } from "../../utils";
 
 
 const Complaints = () => {
@@ -25,6 +26,7 @@ const Complaints = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -48,6 +50,7 @@ const Complaints = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -69,6 +72,7 @@ const Complaints = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -80,6 +84,7 @@ const Complaints = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 

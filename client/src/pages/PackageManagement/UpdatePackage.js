@@ -8,6 +8,7 @@ import { useSelector } from 'react-redux';
 import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { packageTypes, successAlert } from "../../utils";
+import { UPDATE_PACKAGE } from "../../EndPoints.js";
 
 const UpdatePackage = ({ data , submitted }) => {
   const [packageName, setPackageName] = useState(data ? data.name : '');
@@ -23,7 +24,7 @@ const UpdatePackage = ({ data , submitted }) => {
   const onSubmit = (e) => {
     e.preventDefault();
 
-    axios.put('http://localhost:3001/package/update', {
+    axios.put(UPDATE_PACKAGE, {
       id: data._id,
       name: packageName,
       price: price,
@@ -41,6 +42,10 @@ const UpdatePackage = ({ data , submitted }) => {
       setCost("");
       submitted(false);
       successAlert("Package Updated");
+    }).catch((error) => {
+      console.log(error);
+      // errorAlert("An error occurred while updating the package. Please try again.");
+      errorAlert(error.response.data.message);
     })
 
   }

@@ -51,7 +51,8 @@ function AddSite() {
             })
             .catch((error) => {
                 console.log(error);
-                errorAlert("Error getting Inapproved Packages");
+                // errorAlert("Error getting Inapproved Packages");
+                errorAlert(error.response.data.message);
             });
     };
 

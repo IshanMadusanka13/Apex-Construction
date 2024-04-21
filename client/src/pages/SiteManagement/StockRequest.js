@@ -21,7 +21,8 @@ function StockRequest() {
             })
             .catch(error => {
                 console.log(error);
-                errorAlert("Axios Error :", error);
+                // errorAlert("Axios Error :", error);
+                errorAlert(error.response.data.message);
             });
     }
 
@@ -294,7 +295,8 @@ function RequestedStock({ data, submitted }) {
             })
             .catch(error => {
                 console.log(error);
-                errorAlert("Axios Error :", error);
+                // errorAlert("Axios Error :", error);
+                errorAlert(error.response.data.message);
             });
     }
 

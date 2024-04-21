@@ -92,13 +92,13 @@ const GenarateReport = (props) => {
                             <Typography variant="h5" sx={{ mb: 2, ml: '70px' }}>
                                 Price:
                                 <Typography variant="h5" sx={{ mb: 2, display: 'inline' }}>
-                                {`Rs.  ${location.state.price}.00`}
+                                {` Rs.  ${location.state.price}.00`}
                                 </Typography>
                             </Typography>
                             <Typography variant="h5" sx={{ mb: 2, ml: '70px' }}>
                                 Payment/Mo:
                                 <Typography variant="h5" sx={{ mb: 2, display: 'inline' }}>
-                                {`Rs.  ${location.state.mcost}.00`}
+                                {` Rs.  ${location.state.mcost}.00`}
                                 </Typography>
                             </Typography>
                         </div>

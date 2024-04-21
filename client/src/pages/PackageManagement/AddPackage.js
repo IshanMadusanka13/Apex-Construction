@@ -56,7 +56,8 @@ const AddNewPackage = () => {
       })
       .catch((error) => {
         console.log("Error while adding a new package:", error);
-        errorAlert("An error occurred while adding the package. Please try again.");
+        // errorAlert("An error occurred while adding the package. Please try again.");
+        errorAlert(error.response.data.message);
       });
   };
 

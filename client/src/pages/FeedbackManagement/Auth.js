@@ -3,6 +3,7 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { CREATE_AUTH, DELETE_AUTH, GET_AUTH, UPDATE_AUTH } from "../../EndPoints";
+import { errorAlert } from "../../utils";
 
 
 const Auths = () => {
@@ -45,7 +46,8 @@ const Auths = () => {
 
       })
       .catch(error => {
-        console.error("Axios Error :", error);
+        // console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -67,6 +69,7 @@ const Auths = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -77,6 +80,7 @@ const Auths = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);s
       });
   }
 

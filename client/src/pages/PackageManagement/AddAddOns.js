@@ -28,7 +28,8 @@ const AddAddOns = () => {
       })
       .catch((error) => {
         console.log("Error while adding a new add ons:", error);
-        errorAlert("An error occurred while adding the add ons. Please try again.");
+        // errorAlert("An error occurred while adding the add ons. Please try again.");
+        errorAlert(error.response.data.message);
       });
   };
 

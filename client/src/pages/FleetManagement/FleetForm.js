@@ -2,6 +2,7 @@ import { Button, Grid, MenuItem, OutlinedInput, TextField, Typography, useTheme 
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { SEARCH_VEHCILE_BY_TYPE } from "../../EndPoints";
+import { errorAlert } from "../../utils";
 
 const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit }) => {
 
@@ -53,6 +54,7 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
         })
         .catch(error => {
           console.error("Axios Error :", error);
+          errorAlert(error.response.data.message);
         });
     }
     getAddVehicles();

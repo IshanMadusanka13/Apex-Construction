@@ -31,6 +31,7 @@ const PackageList = () => {
         })
         .catch((error) => {
           errorAlert("Error Getting Packages");
+          errorAlert(error.response.data.message);
         });
     };
     loadPackages();
@@ -59,7 +60,7 @@ const PackageList = () => {
                 />
                 <ImageListItemBar
                   title={row.name}
-                  subtitle={row.cost}
+                  subtitle={`Rs. ${row.cost}.00`}
                   actionIcon={
                     <IconButton
                       sx={{ color: 'rgba(255, 255, 255, 0.54)' }}

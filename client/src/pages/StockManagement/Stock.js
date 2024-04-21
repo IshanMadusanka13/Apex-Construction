@@ -21,7 +21,8 @@ const StockPage = () => {
         setStockDetails(response.data ? response.data : []);
       })
       .catch(error => {
-        errorAlert("Axios Error :", error);
+        // errorAlert("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -45,7 +46,8 @@ const StockPage = () => {
         successAlert("Details Added Succesfully");
       })
       .catch(error => {
-        errorAlert("Axios Error :", error);
+        // errorAlert("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -68,7 +70,8 @@ const StockPage = () => {
         successAlert("Details Updated Succesfully");
       })
       .catch(error => {
-        errorAlert("Axios Error :", error);
+        // errorAlert("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -79,7 +82,8 @@ const StockPage = () => {
         successAlert("Data Deleted Succesfully");
       })
       .catch(error => {
-        errorAlert("Axios Error :", error);
+        // errorAlert("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 

@@ -22,6 +22,10 @@ const UpdateAddOns = ({ data, submitted }) => {
     }).then((response) => {
       submitted(false);
       successAlert("Package Updated");
+    }).catch((error) => {
+      console.log(error);
+      // errorAlert("An error occurred while updating the package. Please try again.");
+      errorAlert(error.response.data.message);
     })
   }
 

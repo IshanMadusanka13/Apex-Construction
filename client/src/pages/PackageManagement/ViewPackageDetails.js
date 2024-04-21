@@ -103,7 +103,8 @@ const ViewPackageDetails = ({ packageId }) => {
         })
         .catch((error) => {
           console.log("Error while adding a new package:", error);
-          errorAlert("An error occurred while adding the package. Please try again.");
+          // errorAlert("An error occurred while adding the package. Please try again.");
+          errorAlert(error.response.data.message);
         });
     }
   };
@@ -115,7 +116,8 @@ const ViewPackageDetails = ({ packageId }) => {
         setAddOnsDetails(response.data);
       })
       .catch((error) => {
-        errorAlert("Error Loading Package Addons");
+        // errorAlert("Error Loading Package Addons");
+        errorAlert(error.response.data.message);
       });
   };
 
@@ -134,7 +136,8 @@ const ViewPackageDetails = ({ packageId }) => {
         })
         .catch((error) => {
           console.log(error);
-          errorAlert("Error searching packages by id");
+          // errorAlert("Error searching packages by id");
+          errorAlert(error.response.data.message);
         });
     };
     loadPackages();
@@ -199,7 +202,7 @@ const ViewPackageDetails = ({ packageId }) => {
   return (
     <Grid container>
       <Container style={{ minHeight: "300px" }} >
-        <Card sx={{ display: 'flex', mt: 2 }} >
+        <Card sx={{ display: 'flex', mt: 10 }} >
           <CardMedia
             component="img"
             sx={{ width: 450 }}
@@ -217,10 +220,10 @@ const ViewPackageDetails = ({ packageId }) => {
               Duration: {packageDetails.duration}
             </Typography>
             <Typography variant="body1">
-              Price: {packageDetails.price}
+              Price: {` Rs. ${packageDetails.price}.00`}
             </Typography>
             <Typography variant="body1">
-              Cost: {packageDetails.cost}
+              Cost: {` Rs. ${packageDetails.cost}.00`}
             </Typography>
             <CardActions sx={{ display: 'flex', alignItems: 'flex-start', flexDirection: 'column' }}>
               <Box sx={{ display: "flex", width: "100%", marginBottom: '1em' }}>

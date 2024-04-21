@@ -7,6 +7,7 @@ import Delete from '@mui/icons-material/Delete';
 import Edit from '@mui/icons-material/Edit';
 import { useNavigate } from "react-router-dom";
 import UpdatePackage from "./UpdatePackage";
+import { DELTE_PACKAGE, SEARCH_PACKAGE } from "../../EndPoints";
 
 function ViewPackage() {
     const theme = useTheme();
@@ -29,7 +30,7 @@ function ViewPackage() {
 
     const loadPackages = async () => {
         axios
-            .get("http://localhost:3001/package/getall", {})
+            .get(SEARCH_PACKAGE, {})
             .then((response) => {
                 setPackageDetails(response.data);
             })
@@ -44,7 +45,7 @@ function ViewPackage() {
 
     const handleDelete = (packageId) => {
         axios
-            .delete("http://localhost:3001/package/delete/" + packageId)
+            .delete(DELTE_PACKAGE + packageId)
             .then((response) => {
                 loadPackages();
                 successAlert("Package Deleted");
