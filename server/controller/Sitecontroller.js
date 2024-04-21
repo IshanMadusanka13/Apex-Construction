@@ -113,10 +113,10 @@ const SiteController = {
                 const lastId = latestDocument.siteId;
                 const numericPart = parseInt(lastId.substring(1));
                 const nextNumericPart = numericPart + 1;
-                const siteId = "S" + nextNumericPart;
+                siteId = "S" + nextNumericPart;
             } catch (error) {
                 const lastId = 1000;
-                const siteId = "S" + lastId;
+                siteId = "S" + lastId;
             }
 
             res.status(200).json(siteId);
