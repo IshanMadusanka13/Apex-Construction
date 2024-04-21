@@ -1,9 +1,10 @@
 import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Select, MenuItem, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
+
 import { CREATE_AUTH, DELETE_AUTH, GET_AUTH, UPDATE_AUTH } from "../../EndPoints";
 import { errorAlert } from "../../utils";
+import jsPDF from "jspdf";
 
 
 const Auths = () => {
@@ -12,6 +13,7 @@ const Auths = () => {
   const [selectedAuth, setSelectedAuth] = useState({});
   const [isEdit, setIsEdit] = useState(false);
   const theme = useTheme();
+  
 
 
   useEffect(() => {
@@ -84,6 +86,29 @@ const Auths = () => {
       });
   }
 
+  const generatePDFReport = (authData) => {
+    const doc = new jsPDF();
+    const tableHead = [
+      ['ID', 'Local Authority Name', 'Type', 'City', 'Place', 'No of Floors'],
+    ];
+    const tableBody = authData.map(auth => [
+      auth.id,
+      auth.localauthorityname,
+      auth.type,
+      auth.city,
+      auth.place,
+      auth.nooffloors,
+    ]);
+
+    doc.autoTable({
+      head: tableHead,
+      body: tableBody,
+      startY: 20,
+      columnWidths: [30, 60, 30, 30, 40, 30],
+    });
+    doc.save("auth_report.pdf");
+  };
+
   return (
     <Grid container>
       <Grid item md={12} sx={theme.palette.gridBody}>
@@ -105,6 +130,7 @@ const Auths = () => {
           deleteAuth={data => {
             window.confirm("Are you sure?") && deleteAuth(data);
           }}
+          generatePDFReport={generatePDFReport}
         />
       </Grid>
     </Grid>
@@ -114,7 +140,7 @@ const Auths = () => {
 export default Auths;
 
 const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
-  const navigate = useNavigate();
+ 
   const [id, setId] = useState(0);
   const [localauthorityname, setLocalauthorityname] = useState('');
   const [type, setType] = useState('');
@@ -233,10 +259,10 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
       </Grid>
     </Box>
   );
+
 }
 
-const AuthsTable = ({ rows, selectedAuth, deleteAuth }) => {
-
+const AuthsTable = ({ rows, selectedAuth, deleteAuth, generatePDFReport }) => {
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -278,7 +304,15 @@ const AuthsTable = ({ rows, selectedAuth, deleteAuth }) => {
           )}
         </TableBody>
       </Table>
+      <Grid>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={() => generatePDFReport(rows)}
+        >
+          Generate Report
+        </Button>
+      </Grid>
     </TableContainer>
-
   );
 }
