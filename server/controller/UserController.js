@@ -53,7 +53,7 @@ const UserController = {
             res.status(200).json(userLogin)
         } else {
             logger.error("User Login Failed")
-            res.status(400).json({ message: error.message });
+            res.status(400).json("Invalid Credentials");
         }
     },
 
