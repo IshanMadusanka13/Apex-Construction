@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, tableCellClasses, TablePagination, TableHead, TableRow, useTheme } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import jsPDF from "jspdf";
+import "jspdf-autotable";
 
 const FleetTable = ({ rows, selectedUser, deleteFleetDetail }) => {
 
@@ -42,6 +44,34 @@ const FleetTable = ({ rows, selectedUser, deleteFleetDetail }) => {
 
     const handleUpdate = (content) => {
         selectedUser(content);
+    };
+
+    const generatePDFReport = () => {
+        const doc = new jsPDF();
+        const tableHead = [
+            ['Vehicle Type', 'Vehicle No', 'Driver ID', 'Driver Mobile No', 'Transport Material', 'Transport Location', 'Transport Root', 'Estimated Time'],
+        ];
+        const tableBody = [];
+        rows.forEach((fleet) => {
+            const fleetData = [
+                fleet.VehicleType,
+                fleet.VehicleNo,
+                fleet.DriverId,
+                fleet.DriverMobileNo,
+                fleet.TransportMaterials,
+                fleet.TransportLocation,
+                fleet.TransportRoot,
+                fleet.EstimatedTime,
+
+            ];
+            tableBody.push(fleetData);
+        });
+        doc.autoTable({
+            head: tableHead,
+            body: tableBody,
+            startY: 20,
+        });
+        doc.save("fleetDetails.pdf");
     };
 
     return (
@@ -107,6 +137,9 @@ const FleetTable = ({ rows, selectedUser, deleteFleetDetail }) => {
                     onRowsPerPageChange={handleChangeRowsPerPage}
                 />
             </TableContainer>
+            <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }} onClick={() => generatePDFReport()}>
+                Generate Report
+            </Button>
         </Box>
     );
 }

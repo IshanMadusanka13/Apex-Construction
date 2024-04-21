@@ -79,11 +79,11 @@ const UserController = {
 
             } else {
                 logger.error("Incorrect Password")
-                res.status(400).json({ message: error.message });
+                res.status(400).json({ message: "Incorrect Password" });
             }
         } else {
             logger.error("User not Found")
-            res.status(400).json({ message: error.message });
+            res.status(400).json({ message: "Incorrect Password" });
         }
     },
 
