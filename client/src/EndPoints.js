@@ -72,7 +72,7 @@ export const CREATE_PACKAGE = API_BASE_URL + "/package/add"
 export const UPDATE_PACKAGE = API_BASE_URL + "/package/update"
 export const SEARCH_PACKAGE = API_BASE_URL + "/package/getall"
 export const SEARCH_PACKAGE_BY_ID = API_BASE_URL + "/package/get/"
-export const DELTE_PACKAGE = API_BASE_URL + "/package/delete"
+export const DELTE_PACKAGE = API_BASE_URL + "/package/delete/"
 
 export const CREATE_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/add"
 export const UPDATE_PACKAGE_ADDON = API_BASE_URL + "/packageaddon/update"

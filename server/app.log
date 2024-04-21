@@ -416,3 +416,22 @@
 {"level":30,"time":1713681326421,"pid":12148,"hostname":"DESKTOP-4OV1VV7","msg":true}
 {"level":30,"time":1713681326421,"pid":12148,"hostname":"DESKTOP-4OV1VV7","msg":false}
 {"level":30,"time":1713681326421,"pid":12148,"hostname":"DESKTOP-4OV1VV7","msg":"[6624b169b900731cb1de508a]: [GET] [/customer/search/6624b169b900731cb1de508a] Request Received"}
+{"level":30,"time":1713683540691,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713683543738,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713683553340,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/6624bb057ec3b76cfa8919e1/userId"}
+{"level":30,"time":1713683553340,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":false}
+{"level":30,"time":1713683553340,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":true}
+{"level":30,"time":1713683553340,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"[6624bb057ec3b76cfa8919e1]: [GET] [/employee/search/6624bb057ec3b76cfa8919e1/userId] Request Received"}
+{"level":30,"time":1713683553936,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/6624bb057ec3b76cfa8919e1/userId"}
+{"level":30,"time":1713683553936,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":false}
+{"level":30,"time":1713683553936,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":true}
+{"level":30,"time":1713683553936,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"[6624bb057ec3b76cfa8919e1]: [GET] [/employee/search/6624bb057ec3b76cfa8919e1/userId] Request Received"}
+{"level":30,"time":1713683639348,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713683639800,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/65efa0f8c5db8e447fa1adb0/userId"}
+{"level":30,"time":1713683639800,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":true}
+{"level":30,"time":1713683639800,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":false}
+{"level":30,"time":1713683639800,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713683640345,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/65efa0f8c5db8e447fa1adb0/userId"}
+{"level":30,"time":1713683640345,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":true}
+{"level":30,"time":1713683640345,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":false}
+{"level":30,"time":1713683640345,"pid":9656,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
