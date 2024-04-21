@@ -7,7 +7,7 @@ const VehicleController = {
         Vehicle.find()
             .then(response => {
                 logger.info("Successfully fetched all Vehicle Details");
-                res.status(201).json(response);
+                res.status(200).json(response);
             })
             .catch(error => {
                 logger.error("Error getting Fleet Detail");
@@ -19,7 +19,7 @@ const VehicleController = {
         Vehicle.find({ VehicleType:req.params.type })
             .then(response => {
                 logger.info("Successfully fetched Vehicle Details by type");
-                res.status(201).json(response);
+                res.status(200).json(response);
             })
             .catch(error => {
                 logger.error("Error getting Fleet Detail");
@@ -39,7 +39,7 @@ const VehicleController = {
         addVehicle.save()
             .then(response => {
                 logger.info("Successfully Added Vehicle Detail");
-                res.status(201).json(response);
+                res.status(200).json(response);
             })
             .catch(error => {
                 logger.error("Error Creating Fleet Detail");
@@ -61,7 +61,7 @@ const VehicleController = {
             })
             .then(response => {
                 logger.info("Successfully Updated Vehicle Detail of Chassis " + req.params.ChassisNo);
-                res.status(201).json(response);
+                res.status(200).json(response);
             })
             .catch(error => {
                 logger.error("Error updating Fleet Detail");
@@ -74,7 +74,7 @@ const VehicleController = {
         Vehicle.deleteOne({ ChassisNo: ChassisNo })
             .then(response => {
                 logger.info("Successfully deleted Vehicle Detail of Chassis " + req.params.ChassisNo);
-                res.status(201).json(response);
+                res.status(200).json(response);
             })
             .catch(error => {
                 logger.error("Error deleting Vehicle Detail");

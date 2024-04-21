@@ -24,11 +24,12 @@ export function createPackage(req, res) {
   newPackage
     .save()
     .then((result) => {
-      res.send(result);
+      logger.info("Succesfully Created package");
+      res.status(200).json(result);
     })
-    .catch((err) => {
-      logger.error(err);
-      res.status(500).json({ message: "Error creating package" });
+    .catch((error) => {
+      logger.error("Error Getting Package Details");
+      res.status(400).json({ message: error.message });
     });
 }
 
@@ -59,10 +60,12 @@ export function updatePackage(req, res) {
       }
     )
     .then((result) => {
-      res.send(result);
+      logger.info("Succesfully Updated package");
+      res.status(200).json(result);
     })
-    .catch((err) => {
-      res.status(500).json({ message: "Error updating package" });
+    .catch((error) => {
+      logger.error("Error Getting Package Details");
+      res.status(400).json({ message: error.message });
     });
 }
 
@@ -71,11 +74,12 @@ export function deletePackage(req, res) {
   packageModel
     .deleteOne({ _id: req.params.id })
     .then((result) => {
-      res.send(result);
+      logger.info("Succesfully Deleted package by Id : " + req.params.id);
+      res.status(200).json(result);
     })
-    .catch((err) => {
-      logger.info(err);
-      res.status(500).json({ message: "Error deleting package" });
+    .catch((error) => {
+      logger.error("Error Deleting package by Id : " + req.params.id);
+      res.status(400).json({ message: error.message });
     });
 }
 
@@ -83,10 +87,12 @@ export function getAllPackages(req, res) {
   packageModel
     .find()
     .then((result) => {
-      res.send(result);
+      logger.info("Succesfully Got All Packages");
+      res.status(200).json(result);
     })
-    .catch((err) => {
-      res.status(500).json({ message: "Error getting packages" });
+    .catch((error) => {
+      logger.error("Error Getting All Packages");
+      res.status(400).json({ message: error.message });
     });
 }
 
@@ -94,11 +100,12 @@ export function getAllPackages(req, res) {
 export function getPackageById(req, res) {
   packageModel
     .findOne({ _id: req.params.id })
-    // packageModel.find({_id : req.query.id})
     .then((result) => {
-      res.send(result);
+      logger.info("Succesfully Got Package by Id");
+      res.status(200).json(result);
     })
-    .catch((err) => {
-      res.status(500).json({ message: "Error getting package" });
+    .catch((error) => {
+      logger.error("Error Getting Package by Id");
+      res.status(400).json({ message: error.message });
     });
 }

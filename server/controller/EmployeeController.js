@@ -49,8 +49,8 @@ const EmployeeController = {
             });
 
             await employee.save();
-            res.status(201).json(employee);
             logger.info("Employee create successful");
+            res.status(200).json(employee);
 
         } catch (error) {
             logger.error("Employee create failed");
@@ -104,14 +104,14 @@ const EmployeeController = {
             res.status(200).json(employee);
         } catch (error) {
             logger.error("Error getting Employee");
-            res.status(500).json({ message: "Error getting Employee" });
+            res.status(400).json({ message: error.message });
         }
     },
 
     generateEmployeeId: async (req, res) => {
         try {
             const latestDocument = await Employee.findOne().sort({ _id: -1 });
-            const lastId = latestDocument.employeeId;
+            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
             const numericPart = parseInt(lastId.substring(1));
             const nextNumericPart = numericPart + 1;
             const employeeId = "E" + nextNumericPart;
@@ -119,7 +119,7 @@ const EmployeeController = {
 
         } catch (error) {
             logger.error("Error getting EmployeeId");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -152,7 +152,7 @@ const EmployeeController = {
 
         } catch (error) {
             logger.error("Error getting Employee Count");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -161,7 +161,7 @@ const EmployeeController = {
             res.json(readLogFile(req.params.month, req.params.userId));
         } catch (error) {
             console.error('Error fetching logs:', error);
-            res.status(500).json({ message: 'Error fetching logs' });
+            res.status(400).json({ message: 'Error fetching logs' });
         }
     }
 };

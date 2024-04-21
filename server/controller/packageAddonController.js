@@ -5,19 +5,21 @@ export function createPackageAddon(req, res) {
 
     const { price, description, duration } = req.body;
     const newPackageAddon = new PackageAddon({
-        
+
         price: price,
         description: description,
         duration: duration,
-        
+
     });
     newPackageAddon
         .save()
         .then((result) => {
-            res.send(result);
+            logger.info("Succesfully Created package Addon");
+            res.status(200).json(result);
         })
-        .catch((err) => {
-            res.status(500).json({ message: "Error creating packageAddon" });
+        .catch((error) => {
+            logger.error("Error Creating Package Addon");
+            res.status(400).json({ message: error.message });
         });
 }
 
@@ -31,19 +33,21 @@ export function updatePackageAddon(req, res) {
             { _id: id },
             {
                 $set: {
-                    
+
                     price: price,
                     description: description,
                     duration: duration,
-                    
+
                 },
             }
         )
         .then((result) => {
-            res.send(result);
+            logger.info("Succesfully Updated package Addon");
+            res.status(200).json(result);
         })
-        .catch((err) => {
-            res.status(500).json({ message: "Error updating packageAddon" });
+        .catch((error) => {
+            logger.error("Error Updating Package Addon");
+            res.status(400).json({ message: error.message });
         });
 }
 
@@ -53,10 +57,12 @@ export function deletePackageAddon(req, res) {
     PackageAddon
         .deleteOne({ _id: req.params.id })
         .then((result) => {
-            res.send(result);
+            logger.info("Succesfully Deleted package Addon with Id : " + req.params.id);
+            res.status(200).json(result);
         })
-        .catch((err) => {
-            res.status(500).json({ message: "Error deleting packageAddon" });
+        .catch((error) => {
+            logger.error("Error Deelting package Addon with Id : " + req.params.id);
+            res.status(400).json({ message: error.message });
         });
 }
 
@@ -67,36 +73,26 @@ export function getAllPackageAddons(req, res) {
     PackageAddon
         .find()
         .then((result) => {
-            res.send(result);
+            logger.info("Succesfully Got all package Addon Details");
+            res.status(200).json(result);
         })
-        .catch((err) => {
-            res.status(500).json({ message: "Error getting packageAddons" });
+        .catch((error) => {
+            logger.error("Error Getting all package Addon Details");
+            res.status(400).json({ message: error.message });
         });
 }
 
 //get packageAddon by id if user have  package in privileges
 export function getPackageAddonById(req, res) {
 
-    //get packageAddon by id
     PackageAddon
         .findById(req.params.id)
         .then((result) => {
-            res.send(result);
+            logger.info("Succesfully got package Addon Details by Id");
+            res.status(200).json(result);
         })
-        .catch((err) => {
-            res.status(500).json({ message: "Error getting packageAddon" });
+        .catch((error) => {
+            logger.error("Error Getting package Addon Details By id");
+            res.status(400).json({ message: error.message });
         });
 }
-
-// //get packageAddon by packageId
-// export function getPackageAddonByPackageId(req, res) {
-//     //get packageAddon by packageId
-//     PackageAddon
-//     .find({ packageId: req.params.id })
-//     .then((result) => {
-//         res.send(result);
-//     })
-//     .catch((err) => {
-//         res.status(500).json({ message: "Error getting packageAddon" });
-//     });
-// }

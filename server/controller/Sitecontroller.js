@@ -26,7 +26,7 @@ const SiteController = {
         );
 
         if (!status) {
-            res.status(500).json({ message: "Error Updating package status" });
+            res.status(404).json({ message: "Invalid Site id" });
         }
 
 
@@ -34,11 +34,11 @@ const SiteController = {
             .save()
             .then((result) => {
                 logger.info("Site Created Successfully");
-                res.send(result);
+                res.status(200).json(result);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Error Creating Sites");
-                res.status(500).json({ message: "Error creating site" });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -58,11 +58,11 @@ const SiteController = {
             )
             .then((result) => {
                 logger.info("Site " + siteId + " Updated Successfully");
-                res.send(result);
+                res.status(200).json(result);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Error Updating Site " + siteId);
-                res.status(500).json({ message: "Error updating site" });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -71,11 +71,11 @@ const SiteController = {
             .deleteOne({ siteId: req.params.id })
             .then((result) => {
                 logger.info("Site " + req.params.id + " Deleted Successfully");
-                res.send(result);
+                res.status(200).json(result);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Site " + req.params.id + " Deleted Failed");
-                res.status(500).json({ message: "Error deleting site" });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -83,11 +83,12 @@ const SiteController = {
         Site
             .find()
             .then((result) => {
-                res.send(result);
+                logger.info("Site Details Fetched Successfully");
+                res.status(200).json(result);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Site Fetching Failed");
-                res.status(500).json({ message: "Error getting sites" });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -95,11 +96,12 @@ const SiteController = {
         Site
             .find({ customerId: req.params.id })
             .then((result) => {
+                logger.info("Site Details Fetched Successfully by customer id");
                 res.status(200).json(result);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Site Fetching Failed by id " + req.params.id);
-                res.status(500).json({ message: "Error getting sites" });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -107,7 +109,7 @@ const SiteController = {
         try {
 
             const latestDocument = await Site.findOne().sort({ _id: -1 });
-            const lastId = latestDocument.siteId;
+            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
             const numericPart = parseInt(lastId.substring(1));
             const nextNumericPart = numericPart + 1;
             const siteId = "S" + nextNumericPart;
@@ -115,7 +117,7 @@ const SiteController = {
 
         } catch (error) {
             logger.error("Error getting SiteId");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -126,11 +128,12 @@ const SiteController = {
                 const completedDays = Math.round(
                     ((new Date() - result.start) / (result.end - result.start)) * 100
                 );
+                logger.info("Site Details fetched Succesfullt");
                 res.status(200).json(completedDays);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Error Calculating Complete Status");
-                res.status(500).json({ message: "Error getting site" });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -151,10 +154,10 @@ const SiteController = {
 
             const result = await stockRequest.save();
             logger.info("Stock Requested Successfully");
-            res.send(result);
-        } catch (err) {
+            res.status(200).json(result);
+        } catch (error) {
             logger.error("Error Requesting Stock");
-            res.status(500).json({ message: "Error Requesting Stock" });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -162,11 +165,12 @@ const SiteController = {
         StockRequest
             .find({ siteId: req.params.id })
             .then((result) => {
-                res.send(result);
+                logger.info("Stock Requested Successfully");
+                res.status(200).json(result);
             })
-            .catch((err) => {
+            .catch((error) => {
                 logger.error("Stock Requests Fetching Failed");
-                res.status(500).json({ message: "Error getting Stock Requests" });
+                res.status(400).json({ message: error.message });
             });
     },
 

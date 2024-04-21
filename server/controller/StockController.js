@@ -13,7 +13,7 @@ const StockController = {
 
         } catch (error) {
             logger.error("Error getting StockId");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -33,7 +33,7 @@ const StockController = {
             .save()
             .then((result) => {
                 logger.info("Stock create successful");
-                res.status(201).json(result);
+                res.status(200).json(result);
             })
             .catch((error) => {
                 logger.error("Stock create failed");
@@ -108,11 +108,11 @@ const StockController = {
         Stock
             .find()
             .then((result) => {
-                res.send(result);
+                res.status(200).json(result);
             })
             .catch((error) => {
                 logger.error("Error getting Stock");
-                res.status(500).json({ message: error.message });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -121,11 +121,11 @@ const StockController = {
         Stock
             .find({ equipmentId: req.body.equipmentId })
             .then((result) => {
-                res.send(result);
+                res.status(200).json(result);
             })
             .catch((error) => {
                 logger.error("Error getting Stock");
-                res.status(500).json({ message: error.message });
+                res.status(400).json({ message: error.message });
             });
     },
 
@@ -146,7 +146,7 @@ const StockController = {
             .then(async (result) => {
                 await StockController.updateQty(equipmentId, newqty);
                 logger.info("Stock Buying successful");
-                res.status(201).json(result);
+                res.status(200).json(result);
             })
             .catch((error) => {
                 logger.error("Stock Buying failed");
@@ -156,21 +156,21 @@ const StockController = {
 
 
     getBoughtStockDetailsByMonth: async (req, res) => {
-    
+
         const [year, month] = req.params.month.split('-');
-    
+
         const startDate = new Date(year, month - 1, 1);
         const endDate = new Date(year, month, 0);
-    
+
         StockPurchase
             .find({ date: { $gte: startDate, $lte: endDate } })
             .then((result) => {
                 logger.info("Stock Report generating for " + req.params.month);
-                res.send(result);
+                res.status(200).json(result);
             })
             .catch((error) => {
                 logger.error("Error getting Stock");
-                res.status(500).json({ message: error.message });
+                res.status(400).json({ message: error.message });
             });
     },
 

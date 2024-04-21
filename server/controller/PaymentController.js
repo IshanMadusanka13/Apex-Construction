@@ -8,10 +8,11 @@ const PaymentController = {
     getAllBanks: async (req, res) => {
         try {
             const banks = await Bank.find();
+            logger.info("Succesfully got all Bank Details");
             res.status(200).json(banks);
         } catch (error) {
             logger.error("Error getting Bank Details");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -25,7 +26,7 @@ const PaymentController = {
             res.status(200).json(bank);
         } catch (error) {
             logger.error("Error getting Bank");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -88,7 +89,7 @@ const PaymentController = {
 
             await compTransaction.save();
             logger.info("Company Payment successful");
-            res.status(201).json(compTransaction);
+            res.status(200).json(compTransaction);
 
         } catch (error) {
             logger.error("Company Payment failed");
@@ -104,11 +105,11 @@ const PaymentController = {
             } else {
                 compTransaction = await CompanyTransaction.find({ paymentType: req.params.type });
             }
-
+            logger.info("Succesfullt Got all company Payments");
             res.status(200).json(compTransaction);
         } catch (error) {
             logger.error("Error getting Payments by Type");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
@@ -133,7 +134,7 @@ const PaymentController = {
 
             await customerPayment.save();
             logger.info("Customer Payment successful");
-            res.status(201).json(customerPayment);
+            res.status(200).json(customerPayment);
 
         } catch (error) {
             logger.error("Customer Payment failed");
@@ -156,11 +157,11 @@ const PaymentController = {
                 custTransaction: custTransaction
             };
 
-            logger.info("Succesfully Got all transactions");
+            logger.info("Succesfully Got all transactions By Month");
             res.status(200).json(transactions);
         } catch (error) {
-            logger.error("Error getting Payments by Type");
-            res.status(500).json({ message: error.message });
+            logger.error("Error getting Payments by Month");
+            res.status(400).json({ message: error.message });
         }
     },
 

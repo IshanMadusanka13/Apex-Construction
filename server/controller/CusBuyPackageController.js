@@ -27,11 +27,11 @@ export function createCusPackage(req, res) {
     .save()
     .then((result) => {
       logger.info("Package Bought by " + cusId);
-      res.send(result);
+      res.status(200).json(result);
     })
-    .catch((err) => {
+    .catch((error) => {
       logger.error("Error Buying package");
-      res.status(500).json({ message: "Error creating package" });
+      res.status(400).json({ message: error.message });
     });
 }
 
@@ -40,11 +40,11 @@ export function getInApprovedCusPackage(req, res) {
   cusPackageBuyModel
     .find({ isApproved: false })
     .then((result) => {
-      res.send(result);
+      res.status(200).json(result);
     })
-    .catch((err) => {
+    .catch((error) => {
       logger.error("Error getting InApproved package");
-      res.status(500).json({ message: "Error getting InApproved package" });
+      res.status(400).json({ message: error.message});
     });
 
 }
@@ -53,10 +53,10 @@ export function getBoughtPackageById(req, res) {
 
   cusPackageBuyModel.findOne({ _id: req.params.id })
     .then((result) => {
-      res.send(result);
+      res.status(200).json(result);
     })
-    .catch((err) => {
-      res.status(500).json({ message: "Error getting InApproved package" });
+    .catch((error) => {
+      res.status(400).json({ message: error.message });
     });
 
 }

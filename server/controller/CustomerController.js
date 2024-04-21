@@ -24,7 +24,7 @@ const CustomerController = {
             const newUser = await UserController.createUser(email, password, UserType.CUSTOMER);
 
             const latestDocument = await Customer.findOne().sort({ _id: -1 });
-            const lastId = latestDocument.customerId;
+            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
             const numericPart = parseInt(lastId.substring(1));
             const nextNumericPart = numericPart + 1;
             const cusId = "C" + nextNumericPart;
@@ -47,7 +47,7 @@ const CustomerController = {
 
             await customer.save();
             logger.info("Customer create successful");
-            res.status(201).json(customer);
+            res.status(200).json(customer);
 
         } catch (error) {
             logger.error("Customer create failed");
@@ -86,7 +86,7 @@ const CustomerController = {
             res.status(200).json(customer);
         } catch (error) {
             logger.error("Error getting Customer");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 

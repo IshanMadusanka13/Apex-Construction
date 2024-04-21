@@ -30,6 +30,7 @@ const companyTransactionSchema = new mongoose.Schema({
 
     description: {
         type: String,
+        required: false
     },
 
     date: {
@@ -39,14 +40,17 @@ const companyTransactionSchema = new mongoose.Schema({
 
     bank: {
         type: String,
+        required: false
     },
 
     branch: {
         type: String,
+        required: false
     },
 
     accountNo: {
-        type: String,
+        type: Number,
+        required: false
     },
 
 });

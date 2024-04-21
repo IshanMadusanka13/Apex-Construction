@@ -13,7 +13,7 @@ const bankSchema = new mongoose.Schema({
     },
 
     accountNo: {
-        type: String,
+        type: Number,
         required: true
     },
 

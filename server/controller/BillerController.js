@@ -25,9 +25,8 @@ const BillerController = {
             });
 
             await biller.save();
-            res.status(201).json(biller);
             logger.info("Biller create successful");
-
+            res.status(200).json(biller);
         } catch (error) {
             logger.error("Biller create failed");
             res.status(400).json({ message: error.message });
@@ -59,31 +58,26 @@ const BillerController = {
         try {
 
             const latestDocument = await Biller.findOne().sort({ _id: -1 });
-            let billerId;
-            if (!latestDocument) {
-                billerId = 1000;
-            } else {
-                billerId = latestDocument.billerId + 1;
-            }
+            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
             res.status(200).json(billerId);
 
         } catch (error) {
-            logger.error("Error getting Biller Id");
-            res.status(500).json({ message: error.message });
+            logger.error("Error Generating Biller Id");
+            res.status(400).json({ message: error.message });
         }
     },
 
     deleteBillerById: async (req, res) => {
         try {
             const biller = await Biller.findOneAndDelete({ billerId: req.params.id });
-            if (!biller) {
 
+            if (!biller) {
                 logger.error("Biller " + req.params.email + " not found");
                 return res.status(404).json({ message: 'Biller not found' });
             }
+
             logger.info("Biller " + req.params.email + " deleted successfully");
             res.status(200).json({ message: 'Biller deleted' });
-
 
         } catch (error) {
             logger.error("Biller " + req.params.email + " delete Failed");
@@ -94,20 +88,22 @@ const BillerController = {
     getAllBillers: async (req, res) => {
         try {
             const biller = await Biller.find();
+            logger.info("All Biller Fetched");
             res.status(200).json(biller);
         } catch (error) {
             logger.error("Error getting Biller Details");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
     getBillerByType: async (req, res) => {
         try {
             const biller = await Biller.find({ type: req.params.type });
+            logger.info("Billers Fetched by Type");
             res.status(200).json(biller);
         } catch (error) {
             logger.error("Error getting Biller by Type");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 
