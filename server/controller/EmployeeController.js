@@ -110,11 +110,19 @@ const EmployeeController = {
 
     generateEmployeeId: async (req, res) => {
         try {
-            const latestDocument = await Employee.findOne().sort({ _id: -1 });
-            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
-            const numericPart = parseInt(lastId.substring(1));
-            const nextNumericPart = numericPart + 1;
-            const employeeId = "E" + nextNumericPart;
+
+            let employeeId;
+            try {
+                const latestDocument = await Employee.findOne().sort({ _id: -1 });
+                const lastId = latestDocument.employeeId;
+                const numericPart = parseInt(lastId.substring(1));
+                const nextNumericPart = numericPart + 1;
+                employeeId = "E" + nextNumericPart;
+            } catch (error) {
+                const lastId = 1000;
+                employeeId = "E" + lastId;
+            }
+            
             res.status(200).json(employeeId);
 
         } catch (error) {

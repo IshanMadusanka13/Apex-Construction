@@ -107,12 +107,18 @@ const SiteController = {
 
     generateSiteId: async (req, res) => {
         try {
+            let siteId;
+            try {
+                const latestDocument = await Site.findOne().sort({ _id: -1 });
+                const lastId = latestDocument.siteId;
+                const numericPart = parseInt(lastId.substring(1));
+                const nextNumericPart = numericPart + 1;
+                const siteId = "S" + nextNumericPart;
+            } catch (error) {
+                const lastId = 1000;
+                const siteId = "S" + lastId;
+            }
 
-            const latestDocument = await Site.findOne().sort({ _id: -1 });
-            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
-            const numericPart = parseInt(lastId.substring(1));
-            const nextNumericPart = numericPart + 1;
-            const siteId = "S" + nextNumericPart;
             res.status(200).json(siteId);
 
         } catch (error) {

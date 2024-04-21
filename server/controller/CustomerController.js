@@ -23,11 +23,18 @@ const CustomerController = {
 
             const newUser = await UserController.createUser(email, password, UserType.CUSTOMER);
 
-            const latestDocument = await Customer.findOne().sort({ _id: -1 });
-            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
-            const numericPart = parseInt(lastId.substring(1));
-            const nextNumericPart = numericPart + 1;
-            const cusId = "C" + nextNumericPart;
+
+            let cusId;
+            try {
+                const latestDocument = await Customer.findOne().sort({ _id: -1 });
+                const lastId = latestDocument.customerId;
+                const numericPart = parseInt(lastId.substring(1));
+                const nextNumericPart = numericPart + 1;
+                cusId = "C" + nextNumericPart;
+            } catch (error) {
+                const lastId = 1000;
+                cusId = "C" + lastId;
+            }
 
             const customer = new Customer({
                 customerId: cusId,

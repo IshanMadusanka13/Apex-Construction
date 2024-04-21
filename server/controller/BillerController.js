@@ -58,8 +58,14 @@ const BillerController = {
     generateBillerId: async (req, res) => {
         try {
 
-            const latestDocument = await Biller.findOne().sort({ _id: -1 });
-            const lastId = latestDocument ? latestDocument.equipmentId : 1000;
+            let billerId;
+            try {
+                const latestDocument = await Biller.findOne().sort({ _id: -1 });
+                const lastId = latestDocument.billerId;
+                billerId = lastId + 1;
+            } catch (error) {
+                billerId = 1000;
+            }
             res.status(200).json(billerId);
 
         } catch (error) {

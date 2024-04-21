@@ -75,6 +75,9 @@ const ViewPackageDetails = ({ packageId }) => {
           mobileNo: customer.mobileNo,
           email: customer.email,
         });
+        console.log(loggedUser._id);
+        console.log(response.data);
+        console.log(customerDetails);
       })
       .catch((error) => {
         errorAlert(error.response.data.message);

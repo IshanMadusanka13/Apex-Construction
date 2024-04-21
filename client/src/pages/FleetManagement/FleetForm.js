@@ -46,16 +46,18 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
 
   useEffect(() => {
     const getAddVehicles = () => {
-      Axios.get(SEARCH_VEHCILE_BY_TYPE + VehicleType)
-        .then(response => {
-          console.log(response);
-          const vNo = response.data.map((vehicle) => vehicle.VehicleNo);
-          setVehicleNo(vNo);
-        })
-        .catch(error => {
-          console.error("Axios Error :", error);
-          errorAlert(error.response.data.message);
-        });
+      if (VehicleType) {
+        Axios.get(SEARCH_VEHCILE_BY_TYPE + VehicleType)
+          .then(response => {
+            console.log(response);
+            const vNo = response.data.map((vehicle) => vehicle.VehicleNo);
+            setVehicleNo(vNo);
+          })
+          .catch(error => {
+            console.error("Axios Error :", error);
+            errorAlert(error.response.data.message);
+          });
+      }
     }
     getAddVehicles();
   }, [VehicleType]);

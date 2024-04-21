@@ -1,4 +1,5 @@
 import PackageAddon from "../models/packageAddon.js";
+import logger from "../utils/logger.js"
 
 //insert new packageAddon into database if user have  package in privileges
 export function createPackageAddon(req, res) {

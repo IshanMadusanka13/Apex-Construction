@@ -284,3 +284,43 @@
 {"level":30,"time":1713614726732,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
 {"level":50,"time":1713614726735,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
 {"level":50,"time":1713614726735,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: branch: Path `branch` is required.","stack":"ValidationError: Biller validation failed: branch: Path `branch` is required.\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:2994:17\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\schemaType.js:1370:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)","errors":{"branch":{"name":"ValidatorError","message":"Path `branch` is required.","properties":{"message":"Path `branch` is required.","type":"required","path":"branch","value":""},"kind":"required","path":"branch","value":""}},"_message":"Biller validation failed"},"msg":"Biller validation failed: branch: Path `branch` is required."}
+{"level":30,"time":1713677277740,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713677283576,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713677602055,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713677603759,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713677604571,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713678026459,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713678026887,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713678027426,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713678029093,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got All Packages"}
+{"level":30,"time":1713678029385,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got All Packages"}
+{"level":30,"time":1713678032752,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got Package by Id"}
+{"level":30,"time":1713678033018,"pid":1728,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got Package by Id"}
+{"level":30,"time":1713678138845,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713678142037,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1713678146035,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713678146572,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713678147310,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got All Packages"}
+{"level":30,"time":1713678147576,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got All Packages"}
+{"level":30,"time":1713678150197,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got Package by Id"}
+{"level":30,"time":1713678150474,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got Package by Id"}
+{"level":30,"time":1713678152629,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got all package Addon Details"}
+{"level":30,"time":1713678160949,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713678160980,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Error Buying package"}
+{"level":30,"time":1713678160983,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713678330874,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got Package by Id"}
+{"level":30,"time":1713678348422,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got Package by Id"}
+{"level":30,"time":1713678361279,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713678361283,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":30,"time":1713678361621,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Package Bought by C1000"}
+{"level":30,"time":1713678501212,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1713678501679,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713678502219,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1713678504106,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/package/getfalse] Request Received"}
+{"level":30,"time":1713678504116,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/site/getid] Request Received"}
+{"level":50,"time":1713678504391,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Error getting SiteId"}
+{"level":30,"time":1713678504673,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/package/getfalse] Request Received"}
+{"level":30,"time":1713678504702,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/site/getid] Request Received"}
+{"level":50,"time":1713678505112,"pid":788,"hostname":"DESKTOP-4OV1VV7","msg":"Error getting SiteId"}
+{"level":30,"time":1713678777922,"pid":5760,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":50,"time":1713678777944,"pid":5760,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection unsuccessful!querySrv ECONNREFUSED _mongodb._tcp.cluster0.xxfzdsj.mongodb.net"}
