@@ -36,7 +36,8 @@ export default function CustomerInstallment() {
       })
       .catch((error) => {
         console.log(error);
-        errorAlert("An error Occured");
+        // errorAlert("An error Occured");
+        errorAlert(error.response.data.message);
       });
   };
 

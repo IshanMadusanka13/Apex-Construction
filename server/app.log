@@ -1,0 +1,286 @@
+{"level":30,"time":1713592685222,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713592691505,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1713592869198,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713592870005,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713592894352,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"User Login Succcess"}
+{"level":30,"time":1713592894890,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713592895612,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713592906286,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/packageaddon/getall] Request Received"}
+{"level":30,"time":1713592907006,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/packageaddon/getall] Request Received"}
+{"level":30,"time":1713592909451,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/site/getid] Request Received"}
+{"level":30,"time":1713592909458,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/package/getfalse] Request Received"}
+{"level":30,"time":1713592910208,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/site/getid] Request Received"}
+{"level":30,"time":1713592910218,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/package/getfalse] Request Received"}
+{"level":30,"time":1713592934676,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713592935546,"pid":12324,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596229840,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713596234624,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1713596302222,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713596302247,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Error Buying package"}
+{"level":30,"time":1713596302260,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/customer/search/661b96b17aee1481fdbd9f5d] Request Received"}
+{"level":50,"time":1713596302545,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Customer not found"}
+{"level":30,"time":1713596306690,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/customer/search/661b96b17aee1481fdbd9f5d] Request Received"}
+{"level":30,"time":1713596306694,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713596306698,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Error Buying package"}
+{"level":50,"time":1713596306970,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Customer not found"}
+{"level":30,"time":1713596314540,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596315059,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596322047,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596322659,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596445182,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/customer/search/661b96b17aee1481fdbd9f5d] Request Received"}
+{"level":30,"time":1713596445198,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713596445202,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Error Buying package"}
+{"level":50,"time":1713596445438,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Customer not found"}
+{"level":30,"time":1713596451486,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596452033,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596453332,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596454040,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96b17aee1481fdbd9f5d]: [GET] [/employee/search/661b96b17aee1481fdbd9f5d/userId] Request Received"}
+{"level":30,"time":1713596470716,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"User Login Succcess"}
+{"level":30,"time":1713596471213,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713596471795,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713596496616,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713596496647,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713596496650,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Error Buying package"}
+{"level":30,"time":1713596505648,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":30,"time":1713596505667,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713596505968,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Package Bought by C1000"}
+{"level":30,"time":1713596561678,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713596562433,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713597138116,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713597138119,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Error Buying package"}
+{"level":30,"time":1713597138132,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713597143609,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":30,"time":1713597143615,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713597144009,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Package Bought by C1000"}
+{"level":30,"time":1713597173703,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713597173706,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":50,"time":1713597173708,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Error Buying package"}
+{"level":30,"time":1713597176778,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [POST] [/package/buy] Request Received"}
+{"level":30,"time":1713597176787,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b97b57aee1481fdbd9f62]: [GET] [/customer/search/661b97b57aee1481fdbd9f62] Request Received"}
+{"level":30,"time":1713597177080,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Package Bought by C1000"}
+{"level":50,"time":1713597693138,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"User Login Failed"}
+{"level":30,"time":1713597699831,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"User Login Succcess"}
+{"level":30,"time":1713597700352,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/employee/search/661b970b7aee1481fdbd9f60/userId] Request Received"}
+{"level":30,"time":1713597700926,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/employee/search/661b970b7aee1481fdbd9f60/userId] Request Received"}
+{"level":30,"time":1713597705547,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597705553,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597706261,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597706264,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597711055,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597711721,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597733784,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597733798,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597734306,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597734340,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597779195,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597779779,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597793596,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597794157,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597813187,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597813190,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597813731,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597813748,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597814249,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597814769,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597815238,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597815289,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597815804,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597815816,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597816466,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597817085,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597827093,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getbought/2024-01] Request Received"}
+{"level":30,"time":1713597827357,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Stock Report generating for 2024-01"}
+{"level":30,"time":1713597849441,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597849444,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597850055,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597850057,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597885453,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597886095,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597896333,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getbought/2024-04] Request Received"}
+{"level":30,"time":1713597896595,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Stock Report generating for 2024-04"}
+{"level":30,"time":1713597941290,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597942109,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597947289,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597947292,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713597948051,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713597948054,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1713603404826,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713603405348,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1713608674009,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/employee/search/661b970b7aee1481fdbd9f60/userId] Request Received"}
+{"level":30,"time":1713608674538,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b970b7aee1481fdbd9f60]: [GET] [/employee/search/661b970b7aee1481fdbd9f60/userId] Request Received"}
+{"level":30,"time":1713608698462,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"User Login Succcess"}
+{"level":30,"time":1713608698859,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608699419,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608718153,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608718678,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608719443,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608719949,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608742317,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608742837,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608759713,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608759720,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608760217,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608760230,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608776173,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713608776177,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":30,"time":1713608847897,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713608848162,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713608870882,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608871398,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608874763,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608874766,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608875277,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608875284,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608900429,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [PUT] [/biller/update] Request Received"}
+{"level":30,"time":1713608900735,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller update successful"}
+{"level":30,"time":1713608909690,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608910301,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713608913987,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608913989,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608914563,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608914567,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608920647,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [DELETE] [/biller/delete/1003] Request Received"}
+{"level":30,"time":1713608920929,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller undefined deleted successfully"}
+{"level":30,"time":1713608921293,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608935716,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713608936314,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713608973235,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608973238,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608973804,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713608973821,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713608988641,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713608989769,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713608997422,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713608998022,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713609005607,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/get/Supplier] Request Received"}
+{"level":30,"time":1713609067534,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/finance/companypay] Request Received"}
+{"level":30,"time":1713609068257,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Company Payment successful"}
+{"level":30,"time":1713609078078,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getcomp/all] Request Received"}
+{"level":30,"time":1713609079364,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getcomp/all] Request Received"}
+{"level":30,"time":1713609101222,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getall/2024-04] Request Received"}
+{"level":30,"time":1713609101952,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Succesfully Got all transactions"}
+{"level":30,"time":1713609141723,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713609143594,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713609167093,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"User Login Succcess"}
+{"level":30,"time":1713609167571,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713609168276,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713612998849,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713612999539,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613000209,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613000825,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613017588,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713613017936,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713613039326,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613040572,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613041937,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613041940,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613042626,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613042629,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613098047,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [DELETE] [/biller/delete/1003] Request Received"}
+{"level":30,"time":1713613098395,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller undefined deleted successfully"}
+{"level":30,"time":1713613098789,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613116000,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713613116358,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713613124140,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613125360,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613126088,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613126091,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613126696,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613126700,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613139881,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713613140262,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713613145090,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613145710,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613149520,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613149522,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613150150,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613150152,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613154224,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [DELETE] [/biller/delete/1004] Request Received"}
+{"level":30,"time":1713613154592,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller undefined deleted successfully"}
+{"level":30,"time":1713613154933,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613159046,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [DELETE] [/biller/delete/1005] Request Received"}
+{"level":30,"time":1713613159345,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller undefined deleted successfully"}
+{"level":30,"time":1713613159694,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613216828,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613217512,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613219156,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613219162,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613219848,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613219864,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613231847,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713613232171,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713613237997,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613238673,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613242199,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613242202,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613242967,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613242970,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613246206,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [DELETE] [/biller/delete/1003] Request Received"}
+{"level":30,"time":1713613246506,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller undefined deleted successfully"}
+{"level":30,"time":1713613246856,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613777210,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713613777520,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713613855943,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613856581,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713613870533,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613870537,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613871064,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713613871083,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713613883596,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713613883891,"pid":15904,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713613968451,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713613971541,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1713614017718,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713614018263,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713614019730,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614019733,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614020314,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614020325,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614031082,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614031126,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":30,"time":1713614081927,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":30,"time":1713614082214,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create successful"}
+{"level":30,"time":1713614147537,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614147540,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":30,"time":1713614201326,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614201330,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":30,"time":1713614224463,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713614225085,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/employee/search/661b96f57aee1481fdbd9f5f/userId] Request Received"}
+{"level":30,"time":1713614226886,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614226889,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614227515,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614227521,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614240670,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614240677,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614241183,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614241194,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614331128,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713614331642,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713614333146,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713614333660,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713614338645,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713614339154,"pid":3508,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1713614605359,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1713614608194,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Database connection success!"}
+{"level":30,"time":1713614614420,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614614425,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614614937,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1713614614956,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1713614626947,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614626990,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":50,"time":1713614626990,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: accountNo: Cast to Number failed for value \"a\" (type string) at path \"accountNo\"","stack":"ValidationError: Biller validation failed: accountNo: Cast to Number failed for value \"a\" (type string) at path \"accountNo\"\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at model.$set (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1460:12)\n    at model.$set (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1115:16)\n    at model.Document (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:166:12)\n    at model.Model (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:131:12)\n    at new model (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:4700:15)\n    at createBiller (file:///C:/Users/Hiran%20Oshadha/Documents/GitHub/Apex-Construction/server/controller/BillerController.js:18:28)\n    at Layer.handle [as handle_request] (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at authorizeUser (file:///C:/Users/Hiran%20Oshadha/Documents/GitHub/Apex-Construction/server/middleware/authorizeUser.js:33:13)","errors":{"accountNo":{"stringValue":"\"a\"","valueType":"string","kind":"Number","value":"a","path":"accountNo","reason":{"generatedMessage":true,"code":"ERR_ASSERTION","actual":false,"expected":true,"operator":"=="},"name":"CastError","message":"Cast to Number failed for value \"a\" (type string) at path \"accountNo\""}},"_message":"Biller validation failed"},"msg":"Biller validation failed: accountNo: Cast to Number failed for value \"a\" (type string) at path \"accountNo\""}
+{"level":30,"time":1713614689101,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614689105,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":50,"time":1713614689105,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: accountNo: Cast to Number failed for value \"a\" (type string) at path \"accountNo\"","stack":"ValidationError: Biller validation failed: accountNo: Cast to Number failed for value \"a\" (type string) at path \"accountNo\"\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at model.$set (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1460:12)\n    at model.$set (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1115:16)\n    at model.Document (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:166:12)\n    at model.Model (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:131:12)\n    at new model (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:4700:15)\n    at createBiller (file:///C:/Users/Hiran%20Oshadha/Documents/GitHub/Apex-Construction/server/controller/BillerController.js:18:28)\n    at Layer.handle [as handle_request] (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at authorizeUser (file:///C:/Users/Hiran%20Oshadha/Documents/GitHub/Apex-Construction/server/middleware/authorizeUser.js:33:13)","errors":{"accountNo":{"stringValue":"\"a\"","valueType":"string","kind":"Number","value":"a","path":"accountNo","reason":{"generatedMessage":true,"code":"ERR_ASSERTION","actual":false,"expected":true,"operator":"=="},"name":"CastError","message":"Cast to Number failed for value \"a\" (type string) at path \"accountNo\""}},"_message":"Biller validation failed"},"msg":"Biller validation failed: accountNo: Cast to Number failed for value \"a\" (type string) at path \"accountNo\""}
+{"level":30,"time":1713614706467,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614706470,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":50,"time":1713614706470,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: accountNo: Path `accountNo` is required.","stack":"ValidationError: Biller validation failed: accountNo: Path `accountNo` is required.\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:2994:17\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\schemaType.js:1370:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)","errors":{"accountNo":{"name":"ValidatorError","message":"Path `accountNo` is required.","properties":{"message":"Path `accountNo` is required.","type":"required","path":"accountNo","value":null},"kind":"required","path":"accountNo","value":null}},"_message":"Biller validation failed"},"msg":"Biller validation failed: accountNo: Path `accountNo` is required."}
+{"level":30,"time":1713614710351,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614710353,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":50,"time":1713614710354,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: accountNo: Path `accountNo` is required.","stack":"ValidationError: Biller validation failed: accountNo: Path `accountNo` is required.\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:2994:17\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\schemaType.js:1370:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)","errors":{"accountNo":{"name":"ValidatorError","message":"Path `accountNo` is required.","properties":{"message":"Path `accountNo` is required.","type":"required","path":"accountNo","value":null},"kind":"required","path":"accountNo","value":null}},"_message":"Biller validation failed"},"msg":"Biller validation failed: accountNo: Path `accountNo` is required."}
+{"level":30,"time":1713614718957,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614718962,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":50,"time":1713614718962,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: accountNo: Cast to Number failed for value \"aa\" (type string) at path \"accountNo\", branch: Path `branch` is required.","stack":"ValidationError: Biller validation failed: accountNo: Cast to Number failed for value \"aa\" (type string) at path \"accountNo\", branch: Path `branch` is required.\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at model.$set (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1460:12)\n    at model.$set (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:1115:16)\n    at model.Document (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:166:12)\n    at model.Model (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:131:12)\n    at new model (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\model.js:4700:15)\n    at createBiller (file:///C:/Users/Hiran%20Oshadha/Documents/GitHub/Apex-Construction/server/controller/BillerController.js:18:28)\n    at Layer.handle [as handle_request] (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\express\\lib\\router\\route.js:144:13)\n    at authorizeUser (file:///C:/Users/Hiran%20Oshadha/Documents/GitHub/Apex-Construction/server/middleware/authorizeUser.js:33:13)","errors":{"accountNo":{"stringValue":"\"aa\"","valueType":"string","kind":"Number","value":"aa","path":"accountNo","reason":{"generatedMessage":true,"code":"ERR_ASSERTION","actual":false,"expected":true,"operator":"=="},"name":"CastError","message":"Cast to Number failed for value \"aa\" (type string) at path \"accountNo\""},"branch":{"name":"ValidatorError","message":"Path `branch` is required.","properties":{"message":"Path `branch` is required.","type":"required","path":"branch","value":""},"kind":"required","path":"branch","value":""}},"_message":"Biller validation failed"},"msg":"Biller validation failed: accountNo: Cast to Number failed for value \"aa\" (type string) at path \"accountNo\", branch: Path `branch` is required."}
+{"level":30,"time":1713614726732,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
+{"level":50,"time":1713614726735,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
+{"level":50,"time":1713614726735,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: branch: Path `branch` is required.","stack":"ValidationError: Biller validation failed: branch: Path `branch` is required.\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:2994:17\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\schemaType.js:1370:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)","errors":{"branch":{"name":"ValidatorError","message":"Path `branch` is required.","properties":{"message":"Path `branch` is required.","type":"required","path":"branch","value":""},"kind":"required","path":"branch","value":""}},"_message":"Biller validation failed"},"msg":"Biller validation failed: branch: Path `branch` is required."}

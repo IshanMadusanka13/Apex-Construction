@@ -24,6 +24,7 @@ const FleetDetails = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 

@@ -2,6 +2,7 @@ import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, Table
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { CREATE_FFEDBACK, DELETE_FEEDBACK, GET_FEEDBACK, UPDATE_FEEDBACK } from "../../EndPoints";
+import { errorAlert } from "../../utils";
 
 
 const Feedbacks = () => {
@@ -29,6 +30,7 @@ const Feedbacks = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -47,6 +49,7 @@ const Feedbacks = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -64,6 +67,7 @@ const Feedbacks = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -74,6 +78,7 @@ const Feedbacks = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -89,6 +94,7 @@ const Feedbacks = () => {
         })
         .catch(error => {
           console.error("Axios Error :", error);
+          errorAlert(error.response.data.message);
           setFeedbacks([]);
         });
     } else {

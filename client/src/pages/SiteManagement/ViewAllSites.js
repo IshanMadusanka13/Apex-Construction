@@ -151,7 +151,8 @@ function ViewAllSites() {
                 successAlert("Site Deleted Succesfully");
             })
             .catch(error => {
-                errorAlert("Axios Error :", error);
+                // errorAlert("Axios Error :", error);
+                errorAlert(error.response.data.message);
             });
     };
 

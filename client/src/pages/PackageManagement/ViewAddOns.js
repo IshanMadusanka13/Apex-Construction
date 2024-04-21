@@ -56,7 +56,8 @@ function ViewAddOns() {
             })
             .catch((error) => {
                 console.log(error);
-                errorAlert("Couldnt Delete");
+                // errorAlert("Couldnt Delete");
+                errorAlert(error.response.data.message);
             });
     };
 

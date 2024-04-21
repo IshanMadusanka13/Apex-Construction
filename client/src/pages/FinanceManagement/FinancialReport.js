@@ -26,7 +26,8 @@ function FinancialReport() {
             })
             .catch((error) => {
                 console.log(error)
-                errorAlert("Error getting Paymnts");
+                // errorAlert("Error getting Paymnts");
+                errorAlert(error.response.data.message);
             });
     };
 

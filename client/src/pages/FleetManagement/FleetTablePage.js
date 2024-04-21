@@ -22,6 +22,7 @@ const FleetTablePage = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
       });
   }
 
@@ -32,7 +33,8 @@ const FleetTablePage = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
-        errorAlert("Failed to search for fleet details.");
+        // errorAlert("Failed to search for fleet details.");
+        errorAlert(error.response.data.message);
       });
   }
 

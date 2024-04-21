@@ -30,6 +30,7 @@ const BillerController = {
 
         } catch (error) {
             logger.error("Biller create failed");
+            logger.error(error);
             res.status(400).json({ message: error.message });
         }
     },

@@ -47,7 +47,8 @@ const BuyStockSearch = ({ filterValue }) => {
                 setStockDetails(response.data ? response.data : []);
             })
             .catch(error => {
-                errorAlert("Axios Error :", error);
+                // errorAlert("Axios Error :", error);
+                errorAlert(error.response.data.message);
             });
     }
 
