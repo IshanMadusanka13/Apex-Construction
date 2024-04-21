@@ -80,7 +80,7 @@ const Auths = () => {
       })
       .catch(error => {
         console.error("Axios Error :", error);
-        errorAlert(error.response.data.message);s
+        errorAlert(error.response.data.message);
       });
   }
 

@@ -7,10 +7,10 @@ import { TextField, Typography, Button, Grid, MenuItem, useTheme } from "@mui/ma
 import { useSelector } from 'react-redux';
 import VisuallyHiddenInput from '../../components/VisuallyHiddenInput.js';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
-import { packageTypes, successAlert } from "../../utils";
+import { errorAlert, packageTypes, successAlert } from "../../utils";
 import { UPDATE_PACKAGE } from "../../EndPoints.js";
 
-const UpdatePackage = ({ data , submitted }) => {
+const UpdatePackage = ({ data, submitted }) => {
   const [packageName, setPackageName] = useState(data ? data.name : '');
   const [price, setPrice] = useState(data ? data.price : '');
   const [description, setDescription] = useState(data ? data.description : '');
@@ -44,7 +44,6 @@ const UpdatePackage = ({ data , submitted }) => {
       successAlert("Package Updated");
     }).catch((error) => {
       console.log(error);
-      // errorAlert("An error occurred while updating the package. Please try again.");
       errorAlert(error.response.data.message);
     })
 

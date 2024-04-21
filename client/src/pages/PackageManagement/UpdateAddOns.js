@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { TextField, Typography, Button, Grid, useTheme } from "@mui/material";
-import { successAlert } from "../../utils";
+import { errorAlert, successAlert } from "../../utils";
 import { UPDATE_PACKAGE_ADDON } from "../../EndPoints";
 
 const UpdateAddOns = ({ data, submitted }) => {
@@ -24,7 +24,6 @@ const UpdateAddOns = ({ data, submitted }) => {
       successAlert("Package Updated");
     }).catch((error) => {
       console.log(error);
-      // errorAlert("An error occurred while updating the package. Please try again.");
       errorAlert(error.response.data.message);
     })
   }
