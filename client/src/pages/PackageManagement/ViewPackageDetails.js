@@ -49,8 +49,8 @@ const ViewPackageDetails = ({ packageId }) => {
     email: "",
   });
 
-  const getCustomerDetails = () => {
-    axios
+  const getCustomerDetails = async () => {
+    await axios
       .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
       .then((response) => {
         const customer = response.data;
@@ -75,29 +75,30 @@ const ViewPackageDetails = ({ packageId }) => {
           mobileNo: customer.mobileNo,
           email: customer.email,
         });
-        console.log(loggedUser._id);
-        console.log(response.data);
-        console.log(customerDetails);
       })
       .catch((error) => {
         errorAlert(error.response.data.message);
       });
   }
 
-  const handleBuy = (e) => {
+  useEffect(() => {
+    getCustomerDetails();
+  }, [navigate]);
+
+  const handleBuy = async (e) => {
     e.preventDefault();
 
     if (!loggedUser) {
       navigate("/login");
     } else {
       getCustomerDetails();
-      axios
+      await axios
         .post(BUY_PACKAGE, {
           name: packageName,
           price: price,
           description: description,
           duration: duration,
-          cusId: customerDetails.customerId,
+          cusId: cusId,
           cost: mcost,
         })
         .then((res) => {
