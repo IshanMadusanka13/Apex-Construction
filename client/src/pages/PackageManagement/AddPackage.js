@@ -17,9 +17,7 @@ const AddNewPackage = () => {
   const [description, setDescription] = useState("");
   const [duration, setDuration] = useState("");
   const [mcost, setCost] = useState("");
-  const [homeImage, setHomeImage] = useState(
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
-  );
+  const [homeImage, setHomeImage] = useState("");
   const [modelLink, setModelLink] = useState("model link");
   const [percent, setPercent] = useState(0);
   const [file, setFile] = useState();
@@ -118,7 +116,20 @@ const AddNewPackage = () => {
           autoComplete="name"
           autoFocus
           value={packageName}
-          onChange={(e) => setPackageName(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+
+            if (value === '') {
+              setPackageName('');
+              return;
+            }
+        
+            if (!/^[A-Za-z]+$/.test(value)) {
+              return; 
+            }
+        
+            setPackageName(value);
+          }}
         />
       </Grid>
 
@@ -129,11 +140,27 @@ const AddNewPackage = () => {
           fullWidth
           id="price"
           label="Package Price"
-          name="price"
+          name="price" 
           autoComplete="price"
           value={price}
-          onChange={(e) => setPrice(parseFloat(e.target.value))}
+
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === '') {
+              setPrice('');
+              return;
+            }
+
+            if (isNaN(value)) {
+              return; 
+            }
+
+            if (value >= 0) {
+              setPrice(parseFloat(value));
+            }
+          }}
         />
+
       </Grid>
 
       <Grid item md={16}>
@@ -159,7 +186,9 @@ const AddNewPackage = () => {
           name="duration"
           autoComplete="duration"
           value={duration}
-          onChange={(e) => setDuration(e.target.value)}
+          onChange={(e) => 
+            setDuration(e.target.value)
+          }
         />
       </Grid>
 
@@ -175,7 +204,21 @@ const AddNewPackage = () => {
           name="mcost"
           autoComplete="mcost"
           value={mcost}
-          onChange={(e) => setCost(parseFloat(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === '') {
+              setCost('');
+              return;
+            }
+
+            if (isNaN(value)) {
+              return; 
+            }
+
+            if (value >= 0) {
+              setCost(parseFloat(value));
+            }
+          }}
         />
 
       </Grid>

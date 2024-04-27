@@ -149,6 +149,7 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
           required
           fullWidth
           label='Driver Mobile No'
+          type="Number"
           name="DriverMobileNo"
           value={DriverMobileNo}
           onChange={e => setDriverMobileNo(e.target.value)}

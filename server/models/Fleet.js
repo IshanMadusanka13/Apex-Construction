@@ -23,7 +23,7 @@ const FleetSchema = new mongoose.Schema({
     },
 
     DriverMobileNo: {
-        type: String,
+        type: Number,
         required: true,
     },
 

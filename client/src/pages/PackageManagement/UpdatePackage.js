@@ -93,20 +93,6 @@ const UpdatePackage = ({ data, submitted }) => {
           Update Package
         </Typography>
       </Grid>
-      {/* <Grid item md={6}>
-                <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    id="packageId"
-                    label="Package Id"
-                    name="packageId"
-                    autoComplete="packageId"
-                    value={AddNewPackage.packageId}
-                    autoFocus
-                    disabled
-                />
-            </Grid> */}
       <Grid item md={6}>
         <TextField
           // select
@@ -119,13 +105,21 @@ const UpdatePackage = ({ data, submitted }) => {
           autoComplete="name"
           autoFocus
           value={packageName}
-          onChange={(e) => setPackageName(e.target.value)}
+          onChange={(e) => {
+            const value = e.target.value;
+
+            if (value === '') {
+              setPackageName('');
+              return;
+            }
+        
+            if (!/^[A-Za-z]+$/.test(value)) {
+              return; 
+            }
+        
+            setPackageName(value);
+          }}
         >
-          {/* {Object.values(packageTypes).map((type) => (
-            <MenuItem key={type} value={type}>
-              {type.toUpperCase()}
-            </MenuItem>
-          ))} */}
         </TextField>
       </Grid>
 
@@ -140,7 +134,21 @@ const UpdatePackage = ({ data, submitted }) => {
           autoComplete="price"
           autoFocus
           value={price}
-          onChange={(e) => setPrice(parseFloat(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === '') {
+              setPrice('');
+              return;
+            }
+
+            if (isNaN(value)) {
+              return; 
+            }
+
+            if (value >= 0) {
+              setPrice(parseFloat(value));
+            }
+          }}
         />
       </Grid>
 
@@ -184,7 +192,21 @@ const UpdatePackage = ({ data, submitted }) => {
           name="mcost"
           autoComplete="mcost"
           value={mcost}
-          onChange={(e) => setCost(parseFloat(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === '') {
+              setCost('');
+              return;
+            }
+
+            if (isNaN(value)) {
+              return; 
+            }
+
+            if (value >= 0) {
+              setCost(parseFloat(value));
+            }
+          }}
         />
 
       </Grid>

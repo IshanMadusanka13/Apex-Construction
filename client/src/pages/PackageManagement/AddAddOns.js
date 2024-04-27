@@ -86,7 +86,21 @@ const AddAddOns = () => {
           name="price"
           autoComplete="price"
           value={price}
-          onChange={(e) => setPrice(parseFloat(e.target.value))}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === '') {
+              setPrice('');
+              return;
+            }
+
+            if (isNaN(value)) {
+              return; 
+            }
+
+            if (value >= 0) {
+              setPrice(parseFloat(value));
+            }
+          }}
         />
       </Grid>
       <Grid item md={7}>
