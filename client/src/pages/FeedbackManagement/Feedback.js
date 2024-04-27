@@ -193,6 +193,7 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
           ID
         </Typography>
         <TextField
+         required
           type="number"
           id="id"
           name="id"
@@ -208,6 +209,7 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
           Feedback
         </Typography>
         <TextField
+        required
           multiline
           fullWidth
           id="feedback"

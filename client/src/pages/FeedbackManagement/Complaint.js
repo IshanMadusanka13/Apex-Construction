@@ -165,6 +165,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
+          required
             id="name"
             label="Name"
             variant="outlined"
@@ -176,6 +177,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+           required
             id="email"
             label="Email"
             variant="outlined"
@@ -187,6 +189,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
+           required
             id="phone"
             label="Phone"
             variant="outlined"
@@ -214,6 +217,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12}>
           <TextField
+           required
             id="subject"
             label="Subject"
             variant="outlined"
@@ -225,6 +229,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12}>
           <TextField
+           required
             multiline
             fullWidth
             id="complaint"
