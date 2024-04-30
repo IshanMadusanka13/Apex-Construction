@@ -26,6 +26,10 @@ const authSchema = new Schema({
      type: Number,
      required: true
     },
+    distancecity:{
+        type: Number,
+        
+    },
 
 });
 
