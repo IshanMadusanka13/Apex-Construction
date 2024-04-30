@@ -6,7 +6,7 @@ import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
-import { errorAlert, successAlert, userTypes } from "../../utils.js";
+import { errorAlert, scrollPage, successAlert, userTypes } from "../../utils.js";
 import ViewEmployee from "./ViewEmployee";
 import LogReport from "./LogReport";
 import StockRequest from "../SiteManagement/StockRequest.js";
@@ -39,6 +39,7 @@ export default function UserDashboard() {
 
     const handleSidebarItemClick = (content) => {
         setSelectedContent(content);
+        scrollPage(0);
     };
 
     useEffect(() => {

@@ -32,9 +32,16 @@ export const billerTypes = {
 };
 
 export const months = [
-  'January', 'February', 'March', 'April', 'May', 'June', 
+  'January', 'February', 'March', 'April', 'May', 'June',
   'July', 'August', 'September', 'October', 'November', 'December'
 ];
+
+export const scrollPage = (position) => {
+  window.scrollTo({
+    top: position,
+    behavior: 'smooth'
+  });
+};
 
 const Toast = Swal.mixin({
   toast: true,

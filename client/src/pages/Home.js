@@ -25,14 +25,16 @@ import {
 } from '@mui/icons-material';
 
 const HomePage = () => {
+  const theme = useTheme();
   return (
     <div style={{
+      backgroundColor: theme.palette.background.default,
       backgroundImage: "url(/img/bg-img.jpg)",
       backgroundSize: "cover",
       backgroundAttachment: "fixed",
       backgroundPosition: "center",
     }}>
-      <Box sx={{ backgroundColor: "rgba(237, 242, 247, 0.98)" }}>
+      <Box sx={{ backgroundColor: theme.palette.background.transparent }}>
         <HeroSection />
         <AboutSection />
         <TestimonialSection />
@@ -119,74 +121,73 @@ const AboutSection = () => {
   const theme = useTheme();
 
   return (
-    <Box
-      id="about-us-section"
-      sx={{
-        height: '75vh',
-        margin: 10,
-        marginBottom: 2,
-        '& h3': {
-          fontSize: 25,
-          margin: '0 0 20px',
-        },
-        '& h2': {
-          position: 'relative',
-          marginBottom: '15px',
-          paddingBottom: '15px',
-          '&::after': {
-            position: 'absolute',
-            content: '""',
-            background: 'linear-gradient(to right, #ff5200 0%, #ff5200 100%)',
-            height: '4px',
-            width: '60px',
-            bottom: '0',
-            left: '0',
+    <Box>
+      <Box
+        id="about-us-section"
+        sx={{
+          height: '75vh',
+          ml: 10,
+          mr: 10,
+          paddingBottom: 2,
+          paddingTop: 10,
+          '& h3': {
+            fontSize: 25,
+            margin: '0 0 20px',
           },
-        },
-        '& .about-text li': {
-          marginBottom: '6px',
-          marginLeft: '6px',
-          listStyle: 'none',
-          padding: '0',
-          '&:before': {
-            content: '"\f00c"',
-            fontFamily: theme.palette.typography.poppins,
-            color: '#5ca9fb',
-            fontSize: '11px',
-            fontWeight: '300',
-            paddingRight: '8px',
+          '& h2': {
+            position: 'relative',
+            marginBottom: '15px',
+            paddingBottom: '15px',
+            '&::after': {
+              position: 'absolute',
+              background: 'linear-gradient(to right, #ff5200 0%, #ff5200 100%)',
+              height: '4px',
+              width: '60px',
+              bottom: '0',
+              left: '0',
+            },
           },
-        },
-        '& img': {
-          width: '40vw',
-          marginTop: '10px',
-          background: '#fff',
-          borderRight: '0',
-          boxShadow: '0 0 50px rgba(0, 0, 0, 0.06)',
-        },
-        '& p': {
-          lineHeight: '24px',
-          margin: '30px 0',
-        },
-      }}
-    >
-      <Grid container spacing={3}>
-        <Grid item xs={12} md={6}>
-          <img src="img/sideimg.png" alt="" sx={{ width: '100%' }} />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <Box sx={{ padding: '0 20px' }}>
-            <Typography variant="h2" gutterBottom>
-              About Us
-            </Typography>
-            <Typography variant="body1" gutterBottom sx={{ fontFamily: theme.palette.typography.poppins, fontSize: 18 }}>
-              We are a passionate team of construction enthusiasts dedicated to revolutionizing the way projects are managed and executed.
+          '& .about-text li': {
+            marginBottom: '6px',
+            marginLeft: '6px',
+            listStyle: 'none',
+            padding: '0',
+            '&:before': {
+              fontFamily: theme.palette.typography.poppins,
+              fontSize: '11px',
+              fontWeight: '300',
+              paddingRight: '8px',
+            },
+          },
+          '& img': {
+            width: '40vw',
+            marginTop: '10px',
+            borderRight: '0',
+          },
+          '& p': {
+            lineHeight: '24px',
+            margin: '30px 0',
+          },
+        }}
+      >
+        <Grid container spacing={3}>
+          <Grid item xs={12} md={6}>
+            <img src="img/sideimg.png" alt="" sx={{ width: '100%' }} />
+          </Grid>
+          <Grid item xs={12} md={6}>
+            <Box sx={{ padding: '0 20px' }}>
+              <Typography variant="h2" gutterBottom>
+                About Us
+              </Typography>
+              <Typography variant="body1" gutterBottom sx={{ fontFamily: theme.palette.typography.poppins, fontSize: 18 }}>
+                We are a passionate team of construction enthusiasts dedicated to revolutionizing the way projects are managed and executed.
 
-              Our mission is to empower construction professionals with innovative tools and technologies that streamline processes, enhance collaboration, and drive project success
-            </Typography>
-          </Box>
+                Our mission is to empower construction professionals with innovative tools and technologies that streamline processes, enhance collaboration, and drive project success
+              </Typography>
+            </Box>
+          </Grid>
         </Grid>
-      </Grid>
+      </Box>
     </Box>
   );
 };
@@ -228,7 +229,7 @@ const TestimonialSection = () => {
   ];
 
   return (
-    <Box id="testimonials" sx={{ marginBottom: 20 }}>
+    <Box id="testimonials" sx={{ paddingBottom: 20 }}>
       <Container>
         <Typography variant="h2" align="center" gutterBottom sx={{ fontFamily: theme.palette.typography.poppins }}>
           What our clients say
@@ -286,7 +287,7 @@ const AchievementSection = () => {
   ];
 
   return (
-    <Container sx={{ marginBottom: 20 }}>
+    <Box sx={{ paddingBottom: 20 }}>
       <Typography variant="h4" component="h2" align="center" gutterBottom>
         Our Achievements
       </Typography>
@@ -318,7 +319,7 @@ const AchievementSection = () => {
           </Grid>
         ))}
       </Grid>
-    </Container>
+    </Box>
   );
 }
 
@@ -348,7 +349,7 @@ const TeamSection = () => {
   ];
 
   return (
-    <Box id="team" sx={{ height: 'auto', marginBottom: 20 }} style={{ background: theme.palette.background.default }}>
+    <Box id="team" sx={{ height: 'auto', paddingBottom: 20 }}>
       <Typography
         variant="h2"
         align="center"

@@ -7,7 +7,7 @@ const siteTheme = (mode) => {
         ? {
           primary: {
             main: "#ff5200", //orange
-            mainOpacity: "#ffae87", //dead orange
+            mainOpacity: "#ff5200", //dead orange
             mainOpacity2: "#ffccaa",
           },
 
@@ -15,6 +15,7 @@ const siteTheme = (mode) => {
             default: "#100d08", //blue black
             inverse: "#edf2f7", //grey white
             white: "#ffffff", //white
+            transparent: "rgba(0, 0, 0, 0.98)"
           },
 
           text: {
@@ -49,6 +50,7 @@ const siteTheme = (mode) => {
             default: "#edf2f7", //grey white
             inverse: "#100d08", //blue black
             white: "#ffffff", //white
+            transparent: "rgba(237, 242, 247, 0.98)",
           },
 
           text: {

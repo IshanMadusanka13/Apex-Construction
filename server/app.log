@@ -284,3 +284,102 @@
 {"level":30,"time":1713614726732,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"[661b96f57aee1481fdbd9f5f]: [POST] [/biller/create] Request Received"}
 {"level":50,"time":1713614726735,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","msg":"Biller create failed"}
 {"level":50,"time":1713614726735,"pid":5424,"hostname":"LAPTOP-0ECR6SIJ","err":{"type":"ValidationError","message":"Biller validation failed: branch: Path `branch` is required.","stack":"ValidationError: Biller validation failed: branch: Path `branch` is required.\n    at Document.invalidate (C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:3201:32)\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\document.js:2994:17\n    at C:\\Users\\Hiran Oshadha\\Documents\\GitHub\\Apex-Construction\\server\\node_modules\\mongoose\\lib\\schemaType.js:1370:9\n    at process.processTicksAndRejections (node:internal/process/task_queues:77:11)","errors":{"branch":{"name":"ValidatorError","message":"Path `branch` is required.","properties":{"message":"Path `branch` is required.","type":"required","path":"branch","value":""},"kind":"required","path":"branch","value":""}},"_message":"Biller validation failed"},"msg":"Biller validation failed: branch: Path `branch` is required."}
+{"level":30,"time":1714207627222,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1714207639878,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1714207674032,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1714207674052,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1714207675425,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1714207675429,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"User Access Revoked"}
+{"level":30,"time":1714207690388,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1714207690972,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/65efa0f8c5db8e447fa1adb0/userId"}
+{"level":30,"time":1714207690972,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":true}
+{"level":30,"time":1714207690972,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":false}
+{"level":30,"time":1714207690972,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714207692134,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"/employee/search/65efa0f8c5db8e447fa1adb0/userId"}
+{"level":30,"time":1714207692134,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":true}
+{"level":30,"time":1714207692134,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":false}
+{"level":30,"time":1714207692134,"pid":888,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714483408273,"pid":8548,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1714483411943,"pid":8548,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1714483657404,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1714483661875,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Database connection success!"}
+{"level":30,"time":1714483823396,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"User Login Succcess"}
+{"level":30,"time":1714483823895,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714483824638,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714484256220,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714484258857,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714484284464,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1714484289458,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1714484292857,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714484292864,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714484293384,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714484293747,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714484293782,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714484294171,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714484790831,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1714484791140,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully got all Bank Details"}
+{"level":30,"time":1714484791457,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/finance/getbanks] Request Received"}
+{"level":30,"time":1714484791781,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully got all Bank Details"}
+{"level":30,"time":1714484792647,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/finance/getcomp/all] Request Received"}
+{"level":30,"time":1714484792968,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfullt Got all company Payments"}
+{"level":30,"time":1714484793328,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/finance/getcomp/all] Request Received"}
+{"level":30,"time":1714484793622,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfullt Got all company Payments"}
+{"level":30,"time":1714484799638,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714484799643,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714484799961,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714484800282,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714484800286,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714484800601,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714484830249,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484830254,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714484830879,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484830884,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714484883794,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714484883800,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484901166,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484901182,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714484913563,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484913566,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714484923691,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484923697,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714484971907,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714484971929,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485041839,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714485041867,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485098250,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714485098265,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485131072,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714485131101,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485142009,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714485142025,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485154548,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714485155225,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714485222804,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714485222818,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714485223118,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714485223421,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714485223439,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714485223748,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714485250943,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714485251739,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714485253144,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1714485253823,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getid] Request Received"}
+{"level":30,"time":1714485254673,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1714485255301,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/getcount] Request Received"}
+{"level":30,"time":1714485257500,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got All Packages"}
+{"level":30,"time":1714485257824,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"Succesfully Got All Packages"}
+{"level":30,"time":1714485262342,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714485262345,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485262988,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getid] Request Received"}
+{"level":30,"time":1714485263004,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/stock/getall] Request Received"}
+{"level":30,"time":1714485398794,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714485399456,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/employee/search/65efa0f8c5db8e447fa1adb0/userId] Request Received"}
+{"level":30,"time":1714485409057,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714485409061,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714485409391,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714485409736,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714485409741,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714485410068,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}
+{"level":30,"time":1714485417957,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getid] Request Received"}
+{"level":30,"time":1714485417959,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"[65efa0f8c5db8e447fa1adb0]: [GET] [/biller/getall] Request Received"}
+{"level":30,"time":1714485418480,"pid":15084,"hostname":"DESKTOP-4OV1VV7","msg":"All Biller Fetched"}

@@ -1,7 +1,7 @@
 import { Box, Button, Grid, MenuItem, Paper, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
-import { errorAlert, successAlert } from "../../utils";
+import { errorAlert, scrollPage, successAlert } from "../../utils";
 import { CREATE_STOCK, DELETE_STOCK, GET_ALL_STOCK, GET_STOCK_ID, UPDATE_STOCK } from "../../EndPoints";
 
 
@@ -319,6 +319,7 @@ const StockTable = ({ rows, selectedRow, deleteStock }) => {
   };
 
   const handleUpdate = (content) => {
+    scrollPage(0);
     selectedRow(content);
   };
 

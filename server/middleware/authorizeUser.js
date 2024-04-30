@@ -30,10 +30,6 @@ const authorizeUser = async (req, res, next) => {
         const hasAccess = accessRules[user.userType]?.includes(urlPrefix);
         const hasAccess2 = accessRules[user.userType]?.includes(urlPrefix2);
 
-        logger.info(req.originalUrl);
-        logger.info(hasAccess);
-        logger.info(hasAccess2);
-
         if (hasAccess || hasAccess2) {
             logger.info(`[${user._id}]: [${req.method}] [${req.originalUrl}] Request Received`);
             next();
@@ -43,9 +39,16 @@ const authorizeUser = async (req, res, next) => {
         }
     } else {
 
+        const accessRules = {
+            ["non-logined"]: ['/user/login', '/package', '/customer']
+        };
+
         const urlPrefix = "/" + req.originalUrl.split('/')[1];
         const urlPrefix2 = urlPrefix + "/" + req.originalUrl.split('/')[2];
-        if (urlPrefix == "/customer") {
+        const hasAccess = accessRules["non-logined"]?.includes(urlPrefix);
+        const hasAccess2 = accessRules["non-logined"]?.includes(urlPrefix2);
+
+        if (hasAccess || hasAccess2) {
             next();
         } else {
             logger.info("User Access Revoked");

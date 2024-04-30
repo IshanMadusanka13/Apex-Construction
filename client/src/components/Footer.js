@@ -14,7 +14,7 @@ const Footer = () => {
         backgroundPosition: "center",
       }}
     >
-      <Box sx={{ backgroundColor: "rgba(237, 242, 247, 0.98)", padding: "2em 0 0 0", }}>
+      <Box sx={{ backgroundColor: theme.palette.background.transparent, padding: "2em 0 0 0", }}>
         <img
           alt="logo"
           src="/img/logo.png"
