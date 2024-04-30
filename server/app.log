@@ -675,3 +675,44 @@
 {"level":30,"time":1714479968212,"pid":9620,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
 {"level":30,"time":1714479968621,"pid":9620,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
 {"level":30,"time":1714481259553,"pid":9620,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714481387625,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Server has started and running on PORT 3001"}
+{"level":30,"time":1714481391378,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Database connection success!"}
+{"level":30,"time":1714481431017,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"User Login Succcess"}
+{"level":30,"time":1714481431450,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714481432122,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714481434172,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714481434495,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":50,"time":1714481475352,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Error Adding Auth Details"}
+{"level":30,"time":1714481496799,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Added Auth Details"}
+{"level":30,"time":1714481497153,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714481508061,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Updating Auth Details"}
+{"level":30,"time":1714481508514,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714481574679,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714481580880,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714481581490,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714481582753,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714481583060,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483000789,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483005378,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714483006298,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714483006978,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483007343,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483020142,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Deleted Auth Details"}
+{"level":30,"time":1714483020557,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483024238,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Deleted Auth Details"}
+{"level":30,"time":1714483024589,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483074618,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Added Auth Details"}
+{"level":30,"time":1714483075317,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483118857,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483440539,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483779600,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483783674,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714483784295,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"[661b97347aee1481fdbd9f61]: [GET] [/employee/search/661b97347aee1481fdbd9f61/userId] Request Received"}
+{"level":30,"time":1714483785855,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483786163,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483818352,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Added Auth Details"}
+{"level":30,"time":1714483818661,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483869987,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Added Auth Details"}
+{"level":30,"time":1714483870326,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
+{"level":30,"time":1714483885431,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully Deleted Auth Details"}
+{"level":30,"time":1714483885741,"pid":6784,"hostname":"DESKTOP-5URT510","msg":"Succesfully fetched Auth Details"}
