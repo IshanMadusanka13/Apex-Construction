@@ -1,9 +1,8 @@
-import { Box, Button, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextareaAutosize, TextField, Typography, useTheme } from "@mui/material";
+import { Box, Button, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { CREATE_COMPLAINT, DELETE_COMPLAINT, GET_COMPLAINT, UPDATE_COMPLAINT } from "../../EndPoints";
 import { errorAlert } from "../../utils";
-
 
 const Complaints = () => {
   const [complaints, setComplaints] = useState([]);
@@ -90,7 +89,6 @@ const Complaints = () => {
 
   return (
     <Box>
-
       <Grid container sx={theme.palette.gridBody}>
         <Grid item md={12}>
           <ComplaintForm
@@ -102,7 +100,6 @@ const Complaints = () => {
           />
         </Grid>
       </Grid>
-
       <Grid container sx={theme.palette.gridBody}>
         <Grid item md={12}>
           <Typography variant="h6" component="h2">
@@ -128,7 +125,6 @@ const Complaints = () => {
 
 export default Complaints;
 
-
 const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -136,15 +132,12 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
   const [type, setType] = useState('');
   const [subject, setSubject] = useState('');
   const [complaint, setComplaint] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [phoneError, setPhoneError] = useState('');
 
   useEffect(() => {
     if (!submitted) {
-      setName('');
-      setEmail('');
-      setPhone('');
-      setType('');
-      setSubject('');
-      setComplaint('');
+      clearFields();
     }
   }, [submitted]);
 
@@ -159,13 +152,52 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
     }
   }, [data]);
 
+  const clearFields = () => {
+    setName('');
+    setEmail('');
+    setPhone('');
+    setType('');
+    setSubject('');
+    setComplaint('');
+    setEmailError('');
+    setPhoneError('');
+  }
+
+  const validateEmail = (email) => {
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return regex.test(email);
+  }
+
+  const validatePhone = (phone) => {
+    const regex = /^\d{10}$/;
+    return regex.test(phone);
+  }
+
+  const handleEmailChange = (value) => {
+    setEmail(value);
+    if (value && !validateEmail(value)) {
+      setEmailError('Invalid email address');
+    } else {
+      setEmailError('');
+    }
+  }
+
+  const handlePhoneChange = (value) => {
+    setPhone(value);
+    if (value && !validatePhone(value)) {
+      setPhoneError('Phone number must be 10 digits');
+    } else {
+      setPhoneError('');
+    }
+  }
+
   return (
     <Box>
       <Typography variant="h4" gutterBottom>Complaint Form</Typography>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <TextField
-          required
+            required
             id="name"
             label="Name"
             variant="outlined"
@@ -177,25 +209,29 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-           required
+            required
             id="email"
             label="Email"
             variant="outlined"
             fullWidth
             value={email}
-            onChange={e => setEmail(e.target.value)}
+            onChange={e => handleEmailChange(e.target.value)}
+            error={!!emailError}
+            helperText={emailError}
             placeholder="Enter Email"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-           required
+            required
             id="phone"
             label="Phone"
             variant="outlined"
             fullWidth
             value={phone}
-            onChange={e => setPhone(e.target.value)}
+            onChange={e => handlePhoneChange(e.target.value)}
+            error={!!phoneError}
+            helperText={phoneError}
             placeholder="Enter Phone"
           />
         </Grid>
@@ -217,7 +253,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12}>
           <TextField
-           required
+            required
             id="subject"
             label="Subject"
             variant="outlined"
@@ -229,7 +265,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
         </Grid>
         <Grid item xs={12}>
           <TextField
-           required
+            required
             multiline
             fullWidth
             id="complaint"
@@ -250,6 +286,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
                 addComplaint({ name, email, phone, type, subject, complaint });
               }
             }}
+            disabled={!!emailError || !!phoneError}
           >
             {isEdit ? 'Update' : 'Submit'}
           </Button>
@@ -267,7 +304,7 @@ const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
         <TableHead>
           <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell>email</TableCell>
+            <TableCell>Email</TableCell>
             <TableCell>Phone</TableCell>
             <TableCell>Type</TableCell>
             <TableCell>Subject</TableCell>
@@ -312,6 +349,5 @@ const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
         </TableBody>
       </Table>
     </TableContainer>
-
   );
 }

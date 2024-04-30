@@ -21,6 +21,7 @@ const addAuth = (req, res, next) => {
         city: req.body.city,
         place: req.body.place,
         nooffloors: req.body.nooffloors,
+        distancecity: req.body.distancecity,
     });
     auth.save()
         .then(response => {
@@ -34,8 +35,8 @@ const addAuth = (req, res, next) => {
 };
 
 const updateAuth = (req, res, next) => {
-    const { id, localauthorityname, type, city, place, nooffloors } = req.body;
-    Auth.updateOne({ id: id }, { $set: { localauthorityname: localauthorityname, type: type, city: city, place: place, nooffloors: nooffloors } })
+    const { id, localauthorityname, type, city, place, nooffloors, distancecity } = req.body;
+    Auth.updateOne({ id: id }, { $set: { localauthorityname: localauthorityname, type: type, city: city, place: place, nooffloors: nooffloors, distancecity: distancecity } })
         .then(response => {
             logger.info("Succesfully Updating Auth Details");
             res.status(200).json({ response });

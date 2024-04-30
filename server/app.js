@@ -12,7 +12,7 @@ import FleetRouter from "./routes/FleetRouter.js";
 import vehicleRouter from "./routes/VehicleRouter.js";
 import packagesRouter from "./routes/PackagesRouter.js";
 import packageAddOnRouter from "./routes/packageAddOnsRouter.js";
-import authRouter from "./routes/AuthRouter.js";
+import authRouter from "./routes/authRouter.js";
 import complaintRouter from "./routes/ComplaintRouter.js";
 import feedbackRouter from "./routes/feedbackRouter.js";
 

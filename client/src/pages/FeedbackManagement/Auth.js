@@ -1,11 +1,9 @@
 import { Box, Button, Grid, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, Select, MenuItem, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
-
 import { CREATE_AUTH, DELETE_AUTH, GET_AUTH, UPDATE_AUTH } from "../../EndPoints";
 import { errorAlert } from "../../utils";
 import jsPDF from "jspdf";
-
 
 const Auths = () => {
   const [auths, setAuths] = useState([]);
@@ -13,8 +11,6 @@ const Auths = () => {
   const [selectedAuth, setSelectedAuth] = useState({});
   const [isEdit, setIsEdit] = useState(false);
   const theme = useTheme();
-  
-
 
   useEffect(() => {
     getAuths();
@@ -39,16 +35,15 @@ const Auths = () => {
       city: data.city,
       place: data.place,
       nooffloors: data.nooffloors,
+      distancecity: data.distancecity,
     }
     Axios.post(CREATE_AUTH, payload)
       .then(() => {
         getAuths();
         setSubmitted(false);
         setIsEdit(false);
-
       })
       .catch(error => {
-        // console.error("Axios Error :", error);
         errorAlert(error.response.data.message);
       });
   }
@@ -62,6 +57,7 @@ const Auths = () => {
       city: data.city,
       place: data.place,
       nooffloors: data.nooffloors,
+      distancecity: data.distancecity,
     }
     Axios.put(UPDATE_AUTH, payload)
       .then(() => {
@@ -89,22 +85,33 @@ const Auths = () => {
   const generatePDFReport = (authData) => {
     const doc = new jsPDF();
     const tableHead = [
-      ['ID', 'Local Authority Name', 'Type', 'City', 'Place', 'No of Floors'],
+      ['ID', 'Local Authority Name', 'Type', 'City', 'Place', 'No of Floors','distance from city', 'Construction Status'],
     ];
-    const tableBody = authData.map(auth => [
-      auth.id,
-      auth.localauthorityname,
-      auth.type,
-      auth.city,
-      auth.place,
-      auth.nooffloors,
-    ]);
+    const tableBody = authData.map(auth => {
+      let constructionStatus;
+      if ((auth.type === 'House' && parseInt(auth.nooffloors) > 3 && parseInt(auth.distancecity) < 3) ||
+          (auth.type === 'Building' && parseInt(auth.nooffloors) > 5 && parseInt(auth.distancecity) < 2)) {
+        constructionStatus = 'Fail Construction';
+      } else {
+        constructionStatus = 'Pass Construction, you can continue';
+      }
+      return [
+        auth.id,
+        auth.localauthorityname,
+        auth.type,
+        auth.city,
+        auth.place,
+        auth.nooffloors,
+        auth.distancecity,
+        constructionStatus
+      ];
+    });
 
     doc.autoTable({
       head: tableHead,
       body: tableBody,
       startY: 20,
-      columnWidths: [30, 60, 30, 30, 40, 30],
+      columnWidths: [30, 60, 30, 30, 40, 30, 30, 50],
     });
     doc.save("auth_report.pdf");
   };
@@ -137,8 +144,6 @@ const Auths = () => {
   );
 }
 
-export default Auths;
-
 const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
  
   const [id, setId] = useState(0);
@@ -147,6 +152,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
   const [city, setCity] = useState('');
   const [place, setPlace] = useState('');
   const [nooffloors, setNooffloors] = useState('');
+  const [distancecity, setDistancecity] = useState('');
 
   useEffect(() => {
     if (!submitted) {
@@ -156,6 +162,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
       setCity('');
       setPlace('');
       setNooffloors('');
+      setDistancecity('');
     }
   }, [submitted]);
 
@@ -167,6 +174,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
       setCity(data.city);
       setPlace(data.place);
       setNooffloors(data.nooffloors);
+      setDistancecity(data.distancecity);
     }
   }, [data]);
 
@@ -203,7 +211,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             displayEmpty
           >
             <MenuItem value="" disabled>Type</MenuItem>
-            <MenuItem value="building">Building</MenuItem>
+            <MenuItem value="Building">Building</MenuItem>
             <MenuItem value="Apartment">Apartment</MenuItem>
             <MenuItem value="House">House</MenuItem>
           </Select>
@@ -241,15 +249,26 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             placeholder="Enter No of Floors"
           />
         </Grid>
+        <Grid item xs={12} sm={6}>
+          <TextField
+            id="distancecity"
+            label="Distance from city"
+            variant="outlined"
+            fullWidth
+            value={distancecity}
+            onChange={e => setDistancecity(e.target.value)}
+            placeholder="Enter Distance from city (km)"
+          />
+        </Grid>
         <Grid item xs={12}>
           <Button
             variant="contained"
             color="primary"
             onClick={() => {
               if (isEdit) {
-                updateAuth({ id, localauthorityname, type, city, place, nooffloors });
+                updateAuth({ id, localauthorityname, type, city, place, nooffloors, distancecity });
               } else {
-                addAuth({ id, localauthorityname, type, city, place, nooffloors });
+                addAuth({ id, localauthorityname, type, city, place, nooffloors, distancecity });
               }
             }}
           >
@@ -274,6 +293,7 @@ const AuthsTable = ({ rows, selectedAuth, deleteAuth, generatePDFReport }) => {
             <TableCell>City</TableCell>
             <TableCell>Place</TableCell>
             <TableCell>No of floors</TableCell>
+            <TableCell>Distance from city</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
@@ -287,6 +307,7 @@ const AuthsTable = ({ rows, selectedAuth, deleteAuth, generatePDFReport }) => {
                 <TableCell>{row.city}</TableCell>
                 <TableCell>{row.place}</TableCell>
                 <TableCell>{row.nooffloors}</TableCell>
+                <TableCell>{row.distancecity}</TableCell>
                 <TableCell>
                   <Button sx={{ margin: '0px 10px' }} onClick={() => selectedAuth(row)}>
                     Update
@@ -316,3 +337,5 @@ const AuthsTable = ({ rows, selectedAuth, deleteAuth, generatePDFReport }) => {
     </TableContainer>
   );
 }
+
+export default Auths;
