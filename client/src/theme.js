@@ -8,19 +8,22 @@ const siteTheme = (mode) => {
           primary: {
             main: "#ff5200", //orange
             mainOpacity: "#ffae87", //dead orange
+            mainOpacity2: "#ffccaa",
+            side: "#ff5200",
           },
 
           background: {
             default: "#100d08", //blue black
             inverse: "#edf2f7", //grey white
             white: "#ffffff", //white
+            transparent: "rgba(0, 0, 0, 0.98)"
           },
 
           text: {
             default: "#ffffff", //white
             inverse: "#000000", //black
+            main: "#ff5200", //orange
             grey: "#797979",
-            hover: "#ff5200", //orange
           },
 
           typography: {
@@ -41,12 +44,15 @@ const siteTheme = (mode) => {
           primary: {
             main: "#ff5200", //orange
             mainOpacity: "#ffae87", //dead orange
+            mainOpacity2: "#ffccaa",
+            side: "#ffae87",
           },
 
           background: {
             default: "#edf2f7", //grey white
             inverse: "#100d08", //blue black
             white: "#ffffff", //white
+            transparent: "rgba(237, 242, 247, 0.98)",
           },
 
           text: {

@@ -14,9 +14,10 @@ import {
   Box,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import Brightness4Icon from "@mui/icons-material/Brightness4";
 import { useSelector, useDispatch } from 'react-redux';
 import { userTypes } from "../utils.js";
-import { setLogout } from '../state.js';
+import { setLogout, setMode } from '../state.js';
 
 function Header() {
 
@@ -60,13 +61,13 @@ function Header() {
     }
   };
 
-  const handleLoginBtn = ()=> {
+  const handleLoginBtn = () => {
     window.location.href = '/login'
   };
 
-  const handleLogout = () => {
-    dispatch(setLogout())
-    window.location.href = '/login'
+  const handleLogout = async () => {
+    await dispatch(setLogout());
+    window.location.href = '/login';
   };
 
   return (
@@ -223,6 +224,9 @@ function Header() {
                   </Button>
                 )}
               </Box>
+              <IconButton onClick={() => dispatch(setMode())}>
+                <Brightness4Icon />
+              </IconButton>
             </Box>
           )}
         </Toolbar>

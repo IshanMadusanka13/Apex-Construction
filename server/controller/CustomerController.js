@@ -23,7 +23,21 @@ const CustomerController = {
 
             const newUser = await UserController.createUser(email, password, UserType.CUSTOMER);
 
+
+            let cusId;
+            try {
+                const latestDocument = await Customer.findOne().sort({ _id: -1 });
+                const lastId = latestDocument.customerId;
+                const numericPart = parseInt(lastId.substring(1));
+                const nextNumericPart = numericPart + 1;
+                cusId = "C" + nextNumericPart;
+            } catch (error) {
+                const lastId = 1000;
+                cusId = "C" + lastId;
+            }
+
             const customer = new Customer({
+                customerId: cusId,
                 firstName,
                 lastName,
                 dateOfBirth,
@@ -40,7 +54,7 @@ const CustomerController = {
 
             await customer.save();
             logger.info("Customer create successful");
-            res.status(201).json(customer);
+            res.status(200).json(customer);
 
         } catch (error) {
             logger.error("Customer create failed");
@@ -50,17 +64,17 @@ const CustomerController = {
 
     updateCustomer: async (req, res) => {
         try {
-    
+
             const updatedCustomer = await Customer.findOneAndUpdate(
-                {email: req.body.email},
+                { email: req.body.email },
                 req.body,
                 { new: true }
             );
-    
+
             if (!updatedCustomer) {
                 return res.status(404).json({ message: "Customer not found" });
             }
-    
+
             logger.info("Customer update successful");
             res.status(200).json(updatedCustomer);
         } catch (error) {
@@ -79,7 +93,7 @@ const CustomerController = {
             res.status(200).json(customer);
         } catch (error) {
             logger.error("Error getting Customer");
-            res.status(500).json({ message: error.message });
+            res.status(400).json({ message: error.message });
         }
     },
 

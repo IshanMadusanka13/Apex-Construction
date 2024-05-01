@@ -10,12 +10,37 @@ export const userTypes = {
   HR_MANAGER: "hr manager",
   FINANCE_MANAGER: "finance manager",
   FLEET_MANAGER: "fleet manager",
-  INVENTORY_CONTROLLER: "inventory controller",
+  STOCK_MANAGER: "stock manager",
   SITE_MANAGER: "site manager",
   PROJECT_MANAGER: "project manager",
   CUSTOMER_RELATIONSHIP_MANAGER: "customer relationship manager",
   DRIVER: "driver",
   WORKER: "worker"
+};
+
+export const utilities = {
+  WATER: 'Water',
+  ELECTRICITY: "Electricity",
+  MOBILE: "Mobile",
+};
+
+export const billerTypes = {
+  SUPPLIER: 'Supplier',
+  CONSULTANT: "Consultant",
+  LEGAL: "Legal",
+  INSURANCE: "Insurance",
+};
+
+export const months = [
+  'January', 'February', 'March', 'April', 'May', 'June',
+  'July', 'August', 'September', 'October', 'November', 'December'
+];
+
+export const scrollPage = (position) => {
+  window.scrollTo({
+    top: position,
+    behavior: 'smooth'
+  });
 };
 
 const Toast = Swal.mixin({
@@ -55,15 +80,20 @@ export function successAlert(content) {
   });
 }
 
-export function addRequestHeaders(loggedUser) {
+export function addRequestHeaders(token) {
   return (config) => {
-    const userID = loggedUser && loggedUser._id;
-    const userType = loggedUser && loggedUser.userType;
-    if (userID) {
-      config.headers['UserID'] = userID;
-      config.headers['UserType'] = userType;
+    if (token) {
+      config.headers['authorization'] = token;
     }
     return config;
   };
 };
 
+export function handleUnauthorized() {
+  return (error) => {
+    if (error.response && error.response.status === 403) {
+      window.location.href = '/error'
+    }
+    return Promise.reject(error);
+  };
+}

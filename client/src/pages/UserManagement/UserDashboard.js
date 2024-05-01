@@ -6,9 +6,29 @@ import axios from "axios";
 import ProfileSidebar from "../../components/ProfileSidebar";
 import { CHANGE_PASSWORD, SEARCH_EMPLOYEE, UPDATE_EMPLOYEE, SEARCH_CUSTOMER_BY_USER, UPDATE_CUSTOMER } from "../../EndPoints";
 import AddEmployee from "./AddEmployee";
-import { errorAlert, loadErrorPage, timedSuccessAlert, userTypes } from "../../utils.js";
-import { BorderAll } from "@mui/icons-material";
+import { errorAlert, scrollPage, successAlert, userTypes } from "../../utils.js";
 import ViewEmployee from "./ViewEmployee";
+import LogReport from "./LogReport";
+import StockRequest from "../SiteManagement/StockRequest.js";
+import AddSite from "../SiteManagement/AddSite.js";
+import ViewAllSites from "../SiteManagement/ViewAllSites";
+import MakePayment from "../FinanceManagement/MakePayment";
+import CustomerInstallment from "../FinanceManagement/CustomerInstallment.js";
+import Biller from "../FinanceManagement/Biller";
+import StockPage from "../StockManagement/Stock";
+import BuyStock from "../StockManagement/BuyStock";
+import FleetDetails from "../FleetManagement/FleetDetails.js";
+import FleetTablePage from "../FleetManagement/FleetTablePage.js";
+import AddNewPackage from "../PackageManagement/AddPackage.js";
+import ViewPackage from "../PackageManagement/ViewPackage";
+import ViewAddOns from "../PackageManagement/ViewAddOns.js";
+import AddAddOns from "../PackageManagement/AddAddOns";
+import PackageList from "../PackageManagement/PackageList";
+import FinancialReport from "../FinanceManagement/FinancialReport";
+import Feedbacks from "../FeedbackManagement/Feedback";
+import Complaints from "../FeedbackManagement/Complaint";
+import Auths from "../FeedbackManagement/Auth";
+import Vehicles from "../FleetManagement/Vehcile";
 
 export default function UserDashboard() {
 
@@ -19,6 +39,7 @@ export default function UserDashboard() {
 
     const handleSidebarItemClick = (content) => {
         setSelectedContent(content);
+        scrollPage(0);
     };
 
     useEffect(() => {
@@ -28,7 +49,7 @@ export default function UserDashboard() {
     }, []);
 
     return (
-        <Grid container spacing={3} style={{ marginTop: 60 }}>
+        <Grid container spacing={3} style={{ marginTop: 60, minHeight: "100vh" }}>
             <Grid item xs={3}>
                 <ProfileSidebar onItemClick={handleSidebarItemClick} />
             </Grid>
@@ -38,7 +59,36 @@ export default function UserDashboard() {
                     {(selectedContent === "profile" && loggedUser.userType != userTypes.CUSTOMER) && <EmployeeProfile />}
                     {selectedContent === "addEmployee" && <AddEmployee />}
                     {selectedContent === "viewEmployee" && <ViewEmployee />}
+                    {selectedContent === "LogReport" && <LogReport />}
+
+                    {selectedContent === "stock" && <StockPage />}
+                    {selectedContent === "buyStock" && <BuyStock />}
+
+                    {selectedContent === "addSite" && <AddSite />}
+                    {selectedContent === "viewSite" && <ViewAllSites />}
+                    {selectedContent === "StockReq" && <StockRequest />}
+
+                    {selectedContent === "FleetDetails" && <FleetDetails />}
+                    {selectedContent === "AddVehicles" && <Vehicles />}
+                    {selectedContent === "FleetTablePage" && <FleetTablePage />}
+
+                    {selectedContent === "biller" && <Biller />}
+                    {selectedContent === "makePayment" && <MakePayment />}
+                    {selectedContent === "customerInstallment" && <CustomerInstallment />}
+                    {selectedContent === "financialReport" && <FinancialReport />}
+
+                    {selectedContent === "addPackage" && <AddNewPackage />}
+                    {selectedContent === "viewPackage" && <ViewPackage />}
+                    {selectedContent === "packageList" && <PackageList />}
+                    {selectedContent === "viewAddOns" && <ViewAddOns />}
+                    {selectedContent === "addAddOns" && <AddAddOns />}
+
+                    {selectedContent === "feedback" && <Feedbacks />}
+                    {selectedContent === "complaint" && <Complaints />}
+                    {selectedContent === "auth" && <Auths />}
+
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
+
                 </main>
             </Grid>
         </Grid>
@@ -79,7 +129,6 @@ function EmployeeProfile() {
             axios
                 .get(SEARCH_EMPLOYEE + loggedUser._id + "/userId", {})
                 .then((response) => {
-                    console.log(response);
                     const employee = response.data;
                     setEmployeeDetails({
                         employeeId: employee.employeeId,
@@ -95,6 +144,7 @@ function EmployeeProfile() {
                         email: employee.email,
                         role: employee.role
                     });
+
                 })
                 .catch((error) => {
                     errorAlert(error.response.data.message);
@@ -114,10 +164,22 @@ function EmployeeProfile() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(employeeDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(employeeDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
+
         axios
             .put(UPDATE_EMPLOYEE, employeeDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
+                successAlert("Details Updated Succesfully");
             })
             .catch((error) => {
                 errorAlert(error.response.data.message);
@@ -313,6 +375,7 @@ function CustomerProfile() {
     const theme = useTheme();
 
     const [customerDetails, setCustomerDetails] = useState({
+        customerId: "",
         firstName: "",
         lastName: "",
         dateOfBirth: "",
@@ -342,9 +405,9 @@ function CustomerProfile() {
             axios
                 .get(SEARCH_CUSTOMER_BY_USER + loggedUser._id, {})
                 .then((response) => {
-                    console.log(response);
                     const customer = response.data;
                     setCustomerDetails({
+                        customerId: customer.customerId,
                         firstName: customer.firstName,
                         lastName: customer.lastName,
                         dateOfBirth: customer.dateOfBirth,
@@ -376,13 +439,25 @@ function CustomerProfile() {
     const handleSubmit = (event) => {
         event.preventDefault();
 
+        const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+        if (!phoneRegex.test(customerDetails.mobileNo)) {
+            errorAlert("Please enter a valid mobile number.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(customerDetails.email)) {
+            errorAlert("Please enter a valid email address.");
+            return;
+        }
+
         axios
-            .post(UPDATE_CUSTOMER, customerDetails)
+            .put(UPDATE_CUSTOMER, customerDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
+                successAlert("Details Updated Succesfully");
             })
             .catch((error) => {
-                errorAlert(error.response.data.message);
+                errorAlert("Details Update Failed");
             });
     };
 
@@ -400,7 +475,21 @@ function CustomerProfile() {
                     Personal Profile
                 </Typography>
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={2}>
+                <TextField
+                    margin="normal"
+                    required
+                    fullWidth
+                    id="cusId"
+                    label="Customer Id"
+                    name="cusId"
+                    autoComplete="cusId"
+                    value={customerDetails.customerId}
+                    autoFocus
+                    disabled
+                />
+            </Grid>
+            <Grid item md={5}>
                 <TextField
                     margin="normal"
                     required
@@ -414,7 +503,7 @@ function CustomerProfile() {
                     disabled
                 />
             </Grid>
-            <Grid item md={6}>
+            <Grid item md={5}>
                 <TextField
                     margin="normal"
                     required
@@ -590,8 +679,7 @@ function ChangePassword(props) {
         axios
             .put(CHANGE_PASSWORD, userDetails)
             .then((response) => {
-                console.log("sucess response - " + response);
-                timedSuccessAlert("Password Changed successfully");
+                successAlert(response.data.message);
                 props.setSelectedContent("profile");
             })
             .catch((error) => {

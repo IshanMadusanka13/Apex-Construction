@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Grid, Link, Typography, useTheme } from "@mui/material";
+import { Box, Container, Grid, Link, Typography, useTheme } from "@mui/material";
 
 const Footer = () => {
   const theme = useTheme();
@@ -8,14 +8,18 @@ const Footer = () => {
     <footer
       style={{
         backgroundColor: theme.palette.background.default,
-        padding: "2em 0 0 0",
+        backgroundImage: "url(/img/bg-img.jpg)",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        backgroundPosition: "center",
       }}
     >
-      <img
-              alt="logo"
-              src="/img/logo.png"
-              style={{ height: 80, width: 200 }}
-            />
+      <Box sx={{ backgroundColor: theme.palette.background.transparent, padding: "2em 0 0 0", }}>
+        <img
+          alt="logo"
+          src="/img/logo.png"
+          style={{ height: 80, width: 200 }}
+        />
         <Grid container spacing={3} style={{ margin: "2em 0 2em 2em" }}>
           <Grid item xs={12} md={6}>
             <Typography
@@ -108,76 +112,76 @@ const Footer = () => {
             </ul>
           </Grid>
           <Grid item xs={12} md={2}>
-          <Typography
-            variant="h6"
-            component="h4"
-            style={{
-              marginBottom: "2em",
-              color: theme.palette.text.default,
-              fontSize: "20px",
-              fontWeight: "500",
-              fontFamily: "Heebo, sans-serif",
-            }}
-          >
-            New to Apex?
-          </Typography>
-          <ul style={{ listStyle: "none", padding: 0 }}>
-            <li style={{ marginBottom: "1em" }}>
-              <Link
-                href="#"
-                style={{
-                  textDecoration: "none",
-                  backgroundColor: "transparent",
-                  WebkitTextDecorationSkip: "objects",
-                  color: theme.palette.text.grey,
-                  fontSize: "16px",
-                  fontWeight: "normal",
-                  transition: "all 300ms linear 0s",
-                  cursor: "pointer",
-                }}
-              >
-                Privacy Policy
-              </Link>
-            </li>
-            <li style={{ marginBottom: "1em" }}>
-              <Link
-                href="#"
-                style={{
-                  textDecoration: "none",
-                  backgroundColor: "transparent",
-                  WebkitTextDecorationSkip: "objects",
-                  color: theme.palette.text.grey,
-                  fontSize: "16px",
-                  fontWeight: "normal",
-                  transition: "all 300ms linear 0s",
-                  cursor: "pointer",
-                }}
-              >
-                Terms & Conditions
-              </Link>
-            </li>
-            <li style={{ marginBottom: "1em" }}>
-              <Link
-                href="#"
-                style={{
-                  textDecoration: "none",
-                  backgroundColor: "transparent",
-                  WebkitTextDecorationSkip: "objects",
-                  color: theme.palette.text.grey,
-                  fontSize: "16px",
-                  fontWeight: "normal",
-                  transition: "all 300ms linear 0s",
-                  cursor: "pointer",
-                }}
-              >
-                FeedBack
-              </Link>
-            </li>
-          </ul>
-        </Grid>
+            <Typography
+              variant="h6"
+              component="h4"
+              style={{
+                marginBottom: "2em",
+                color: theme.palette.text.default,
+                fontSize: "20px",
+                fontWeight: "500",
+                fontFamily: "Heebo, sans-serif",
+              }}
+            >
+              New to Apex?
+            </Typography>
+            <ul style={{ listStyle: "none", padding: 0 }}>
+              <li style={{ marginBottom: "1em" }}>
+                <Link
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    backgroundColor: "transparent",
+                    WebkitTextDecorationSkip: "objects",
+                    color: theme.palette.text.grey,
+                    fontSize: "16px",
+                    fontWeight: "normal",
+                    transition: "all 300ms linear 0s",
+                    cursor: "pointer",
+                  }}
+                >
+                  Privacy Policy
+                </Link>
+              </li>
+              <li style={{ marginBottom: "1em" }}>
+                <Link
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    backgroundColor: "transparent",
+                    WebkitTextDecorationSkip: "objects",
+                    color: theme.palette.text.grey,
+                    fontSize: "16px",
+                    fontWeight: "normal",
+                    transition: "all 300ms linear 0s",
+                    cursor: "pointer",
+                  }}
+                >
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li style={{ marginBottom: "1em" }}>
+                <Link
+                  href="#"
+                  style={{
+                    textDecoration: "none",
+                    backgroundColor: "transparent",
+                    WebkitTextDecorationSkip: "objects",
+                    color: theme.palette.text.grey,
+                    fontSize: "16px",
+                    fontWeight: "normal",
+                    transition: "all 300ms linear 0s",
+                    cursor: "pointer",
+                  }}
+                >
+                  FeedBack
+                </Link>
+              </li>
+            </ul>
+          </Grid>
         </Grid>
 
-       
+
 
         <Grid container sx={{ marginLeft: "5em" }}>
           <Grid item xs={12}>
@@ -190,6 +194,7 @@ const Footer = () => {
             </Typography>
           </Grid>
         </Grid>
+      </Box>
     </footer>
   );
 };

@@ -32,7 +32,7 @@ const UserController = {
                 logger.error(`Error creating user: Email '${email}' already exists`);
                 throw new Error('Email already exists');
             } else {
-                logger.error('Error creating user:', error);
+                logger.error({ message: error.message });
                 throw error;
             }
         }
@@ -53,7 +53,7 @@ const UserController = {
             res.status(200).json(userLogin)
         } else {
             logger.error("User Login Failed")
-            res.status(400).json('Invalid Credenials');
+            res.status(400).json("Invalid Credentials");
         }
     },
 
@@ -79,11 +79,11 @@ const UserController = {
 
             } else {
                 logger.error("Incorrect Password")
-                res.status(400).json('Incorrect Password');
+                res.status(400).json({ message: "Incorrect Password" });
             }
         } else {
             logger.error("User not Found")
-            res.status(400).json('User not Found');
+            res.status(400).json({ message: "Incorrect Password" });
         }
     },
 
@@ -95,11 +95,10 @@ const UserController = {
                 logger.error("User " + email + " not found");
                 return res.status(404).json({ message: 'User not found' });
             }
-            res.status(200).json({ message: 'User deleted' });
             logger.info("User " + email + " deleted successfully");
             return true;
         } catch (error) {
-            logger.error('Error Deleting user:', error);
+            logger.error('Error Deleting user:');
             return false;
         }
     }
