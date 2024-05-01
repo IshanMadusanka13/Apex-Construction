@@ -1,7 +1,7 @@
 import { Button, Grid, MenuItem, OutlinedInput, TextField, Typography, useTheme } from "@mui/material";
 import { useEffect, useState } from "react";
 
-const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) => {
+const VehicleForm = ({ addVehicle, updateVehicle, submitted, data, isEdit }) => {
 
   const theme = useTheme();
   const [ChassisNo, setChassisNo] = useState(0);
@@ -118,7 +118,7 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
       <Grid item md={7}>
         <Button
           variant="contained" sx={{ mt: 3, width: "50%" }}
-          onClick={() => isEdit ? updateAddVehicle({ ChassisNo, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo }) : addAddVehicle({ ChassisNo, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo })}
+          onClick={() => isEdit ? updateVehicle({ ChassisNo, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo }) : addVehicle({ ChassisNo, VehicleType, VehicleManufachuredYear, VehicleBrand, VehicleNo })}
         >
           {isEdit ? 'Update' : 'Add'}
         </Button>
@@ -127,5 +127,5 @@ const AddForm = ({ addAddVehicle, updateAddVehicle, submitted, data, isEdit }) =
   );
 }
 
-export default AddForm;
+export default VehicleForm;
 

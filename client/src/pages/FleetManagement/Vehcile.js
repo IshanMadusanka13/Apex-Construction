@@ -1,25 +1,25 @@
 import { Box } from "@mui/material";
-import AddForm from "./AddForm.js";
+import VehicleForm from "./VehcileForm.js";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
-import AddTable from './AddTable.js';
+import VehicleTable from './VehicleTable.js';
 import { CREATE_VEHCILE, DELETE_VEHCILE, SEARCH_VEHCILE, UPDATE_VEHCILE } from "../../EndPoints";
 
-const AddVehicles = () => {
-  const [AddVehicles, setAddVehicles] = useState([]);
+const Vehicles = () => {
+  const [Vehicles, setVehicles] = useState([]);
   const [submitted, setSubmitted] = useState(false);
-  const [selectedAddVehicle, setSelectedAddVehicle] = useState({});
+  const [selectedVehicle, setSelectedVehicle] = useState({});
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
-    getAddVehicles();
+    getVehicles();
   }, []);
 
-  const getAddVehicles = () => {
+  const getVehicles = () => {
     Axios.get(SEARCH_VEHCILE)
       .then(response => {
-        setAddVehicles(response.data ? response.data : []);
+        setVehicles(response.data ? response.data : []);
       })
       .catch(error => {
         console.error("Axios Error :", error);
@@ -27,7 +27,7 @@ const AddVehicles = () => {
       });
   }
 
-  const addAddVehicle = (data) => {
+  const addVehicle = (data) => {
     setSubmitted(true);
     const payload = {
       ChassisNo: data.ChassisNo,
@@ -39,7 +39,7 @@ const AddVehicles = () => {
 
     Axios.post(CREATE_VEHCILE, payload)
       .then(() => {
-        getAddVehicles();
+        getVehicles();
         setSubmitted(false);
         setIsEdit(false);
         successAlert("Details Added Succesfully");
@@ -50,7 +50,7 @@ const AddVehicles = () => {
       });
   }
 
-  const updateAddVehicle = (data) => {
+  const updateVehicle = (data) => {
     setSubmitted(true);
     const payload = {
       ChassisNo: data.ChassisNo,
@@ -61,7 +61,7 @@ const AddVehicles = () => {
     }
     Axios.put(UPDATE_VEHCILE, payload)
       .then(() => {
-        getAddVehicles();
+        getVehicles();
         setSubmitted(false);
         setIsEdit(false);
         successAlert("Details Updated Succesfully");
@@ -72,10 +72,10 @@ const AddVehicles = () => {
       });
   }
 
-  const deleteAddVehicle = (data) => {
+  const deleteVehicle = (data) => {
     Axios.delete(DELETE_VEHCILE + data.ChassisNo)
       .then(() => {
-        getAddVehicles();
+        getVehicles();
         successAlert("Data Deleted Succesfully");
       })
       .catch(error => {
@@ -85,28 +85,28 @@ const AddVehicles = () => {
   }
 
   const handleUpdate = (content) => {
-    setSelectedAddVehicle(content.row);
+    setSelectedVehicle(content.row);
     setIsEdit(true);
   }
 
   return (
     <Box>
-      <AddForm
-        addAddVehicle={addAddVehicle}
-        updateAddVehicle={updateAddVehicle}
+      <VehicleForm
+        addVehicle={addVehicle}
+        updateVehicle={updateVehicle}
         submitted={submitted}
-        data={selectedAddVehicle}
+        data={selectedVehicle}
         isEdit={isEdit}
       />
-      <AddTable
-        rows={AddVehicles}
+      <VehicleTable
+        rows={Vehicles}
         selectedUser={handleUpdate}
-        deleteAddVehicle={data => {
-          window.confirm("Are you sure?") && deleteAddVehicle(data);
+        deleteVehicle={data => {
+          window.confirm("Are you sure?") && deleteVehicle(data);
         }}
       />
     </Box>
   );
 }
 
-export default AddVehicles;
+export default Vehicles;

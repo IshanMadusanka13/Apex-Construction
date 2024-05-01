@@ -20,11 +20,12 @@ const Fleetcontroller = {
             VehicleType: req.body.VehicleType,
             VehicleNo: req.body.VehicleNo,
             DriverId: req.body.DriverId,
-            TransportMaterials: req.body.TransportMaterials,
+            Purpose: req.body.Purpose,
             DriverMobileNo: req.body.DriverMobileNo,
             TransportLocation: req.body.TransportLocation,
             TransportRoot: req.body.TransportRoot,
-            EstimatedTime: req.body.EstimatedTime,
+            Start: req.body.Start,
+            EstimatedEnd: req.body.EstimatedEnd,
         });
         fleet.save()
             .then(response => {
@@ -38,8 +39,8 @@ const Fleetcontroller = {
     },
 
     updateFleet: async (req, res) => {
-        const { VehicleType, VehicleNo, DriverId, TransportMaterials, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime } = req.body;
-        Fleet.updateOne({ VehicleNo: VehicleNo }, { $set: { VehicleType: VehicleType, DriverId: DriverId, TransportMaterials: TransportMaterials, DriverMobileNo: DriverMobileNo, TransportLocation: TransportLocation, TransportRoot: TransportRoot, EstimatedTime: EstimatedTime } })
+        const { VehicleType, VehicleNo, DriverId, Purpose, DriverMobileNo, TransportLocation, TransportRoot, Start } = req.body;
+        Fleet.updateOne({ VehicleNo: VehicleNo }, { $set: { VehicleType: VehicleType, DriverId: DriverId, Purpose: Purpose, DriverMobileNo: DriverMobileNo, TransportLocation: TransportLocation, TransportRoot: TransportRoot, Start: Start, EstimatedEnd: req.body.EstimatedEnd } })
             .then(response => {
                 logger.info("Successfully updated Fleet Detail");
                 res.status(200).json(response);

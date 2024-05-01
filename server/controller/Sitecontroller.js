@@ -146,7 +146,6 @@ const SiteController = {
     stockRequest: async (req, res) => {
         try {
             const { siteId, equipments } = req.body;
-            logger.info(req.body);
 
             equipments.forEach(equipment => {
                 StockController.updateQty(equipment.equipmentId, (equipment.existingQty - equipment.qty));
@@ -167,11 +166,47 @@ const SiteController = {
         }
     },
 
+    updateStockRequestStatus: async (req, res) => {
+        const { id, status } = req.body;
+        logger.info(req.body);
+
+        StockRequest
+            .updateOne(
+                { _id: id },
+                {
+                    $set: {
+                        status: status,
+                    }
+                }
+            )
+            .then((result) => {
+                logger.info("Stock Request Status Updated Successfully");
+                res.status(200).json(result);
+            })
+            .catch((error) => {
+                logger.error("Error Updating Stock Request Status");
+                res.status(400).json({ message: error.message });
+            });
+    },
+
     getStockRequests: async (req, res) => {
         StockRequest
             .find({ siteId: req.params.id })
             .then((result) => {
-                logger.info("Stock Requested Successfully");
+                logger.info("Got Stock Requests Successfully");
+                res.status(200).json(result);
+            })
+            .catch((error) => {
+                logger.error("Stock Requests Fetching Failed");
+                res.status(400).json({ message: error.message });
+            });
+    },
+
+    getStockRequestsByStatus: async (req, res) => {
+        StockRequest
+            .find({ status: req.params.status })
+            .then((result) => {
+                logger.info("Got Stock Requests Successfully");
                 res.status(200).json(result);
             })
             .catch((error) => {

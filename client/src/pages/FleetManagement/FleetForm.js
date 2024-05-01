@@ -3,8 +3,9 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { SEARCH_VEHCILE_BY_TYPE } from "../../EndPoints";
 import { errorAlert } from "../../utils";
+import moment from "moment";
 
-const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit }) => {
+const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit, transport }) => {
 
   const theme = useTheme();
 
@@ -12,22 +13,24 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
   const [VehicleNo, setVehicleNo] = useState([]);
   const [selectedVehicleNo, setSelectedVehicleNo] = useState('');
   const [DriverId, setDriverId] = useState(0);
-  const [TransportMaterial, setTransportMaterial] = useState('');
+  const [Purpose, setPurpose] = useState('');
   const [DriverMobileNo, setDriverMobileNo] = useState('');
   const [TransportLocation, setTransportLocation] = useState('');
   const [TransportRoot, setTransportRoot] = useState('');
-  const [EstimatedTime, setEstimatedTime] = useState('');
+  const [Start, setStart] = useState('');
+  const [EstimatedEnd, setEnd] = useState('');
 
   useEffect(() => {
     if (!submitted) {
       setVehicleType('');
       setVehicleNo('');
       setDriverId(0);
-      setTransportMaterial('');
+      setPurpose('');
       setDriverMobileNo('');
       setTransportLocation('');
       setTransportRoot('');
-      setEstimatedTime('');
+      setStart('');
+      setEnd('');
     }
   }, [submitted]);
 
@@ -36,13 +39,22 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
       setVehicleType(data.VehicleType);
       setSelectedVehicleNo(data.VehicleNo);
       setDriverId(data.DriverId);
-      setTransportMaterial(data.TransportMaterials);
+      setPurpose(data.Purpose);
       setDriverMobileNo(data.DriverMobileNo);
       setTransportLocation(data.TransportLocation);
       setTransportRoot(data.TransportRoot);
-      setEstimatedTime(data.EstimatedTime);
+      setStart(moment(data.Start).format('YYYY-MM-DDTHH:mm'));
+      setEnd(moment(data.EstimatedEnd).format('YYYY-MM-DDTHH:mm'));
     }
   }, [data]);
+
+  useEffect(() => {
+    if (transport.siteId) {
+      setPurpose("Transporting Equipments");
+      setTransportLocation("From Storage");
+      setTransportRoot("To Site " + transport.siteId);
+    }
+  }, [transport]);
 
   useEffect(() => {
     const getAddVehicles = () => {
@@ -64,18 +76,18 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
 
   return (
     <Grid container spacing={2} sx={theme.palette.gridBody}>
-      <Grid item xs={12} sm={6} md={12}>
-        <Typography variant="h4" style={{ color: '#000000', marginBottom: '50px', marginLeft: '350px' }}>Transportation Details</Typography>
+      <Grid item md={12}>
+        <Typography variant="h4">Transportation Details</Typography>
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           select
-          id='VehicleType'
+          id="VehicleType"
           required
           fullWidth
           name="VehicleType"
-          label='VehicleType'
+          label="VehicleType"
           value={VehicleType}
           onChange={e => setVehicleType(e.target.value)}
         >
@@ -90,13 +102,13 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
         </TextField>
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           select
           margin="normal"
           required
           fullWidth
-          id='VehicleNo'
+          id="VehicleNo"
           label="Vehicle No"
           name="VehicleNo"
           value={selectedVehicleNo}
@@ -108,47 +120,25 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
         </TextField>
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
           margin="normal"
           required
           fullWidth
-          id='DriverId'
-          label='Driver Id'
+          id="DriverId"
+          label="Driver Id"
           name="DriverId"
           value={DriverId}
           onChange={e => setDriverId(e.target.value)}
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={6}>
         <TextField
-          select
-          id='TransportMaterial'
+          id="DriverMobileNo"
           required
           fullWidth
-          name="TransportMaterial"
-          label='Transport Material'
-          value={TransportMaterial}
-          onChange={e => setTransportMaterial(e.target.value)}
-        >
-          <MenuItem value="Concrete">Concrete </MenuItem>
-          <MenuItem value="Cement">Cement </MenuItem>
-          <MenuItem value="Stone">Stone</MenuItem>
-          <MenuItem value="Glass">Glass</MenuItem>
-          <MenuItem value="Sand">Sand</MenuItem>
-          <MenuItem value="Wood">Wood</MenuItem>
-          <MenuItem value="Bricks">Bricks</MenuItem>
-          <MenuItem value="Steel">Steel</MenuItem>
-        </TextField>
-      </Grid>
-
-      <Grid item xs={12} sm={6} md={6}>
-        <TextField
-          id='DriverMobileNo'
-          required
-          fullWidth
-          label='Driver Mobile No'
+          label="Driver Mobile No"
           type="Number"
           name="DriverMobileNo"
           value={DriverMobileNo}
@@ -156,47 +146,79 @@ const FleetForm = ({ addFleetDetail, updateFleetDetail, submitted, data, isEdit 
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} md={6}>
+      <Grid item md={12}>
         <TextField
-          id='TransportLocation'
+          id="Purpose"
+          required
+          fullWidth
+          name="Purpose"
+          label="Purpose"
+          value={Purpose}
+          onChange={e => setPurpose(e.target.value)}
+        />
+      </Grid>
+
+      <Grid item md={6}>
+        <TextField
+          id="TransportLocation"
           required
           fullWidth
           name="TransportLocation"
-          label='Transport Location'
+          label="Transport Location"
           value={TransportLocation}
           onChange={e => setTransportLocation(e.target.value)}
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} >
+      <Grid item md={6}>
         <TextField
-          id='TransportRoot'
+          id="TransportRoot"
           required
           fullWidth
-          label='Transport Root'
+          label="Transport Root"
           name="TransportRoot"
           value={TransportRoot}
           onChange={e => setTransportRoot(e.target.value)}
         />
       </Grid>
 
-      <Grid item xs={12} sm={6} >
+      <Grid item md={6}>
         <TextField
-          id='EstimatedTime'
+          type="datetime-local"
+          id="Start"
           required
           fullWidth
-          name="EstimatedTime"
-          label='Estimated Time'
-          value={EstimatedTime}
-          onChange={e => setEstimatedTime(e.target.value)}
+          name="Start"
+          label="Start"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={Start}
+          onChange={e => setStart(e.target.value)}
+        />
+      </Grid>
+
+      <Grid item md={6}>
+        <TextField
+          type="datetime-local"
+          id="End"
+          required
+          fullWidth
+          name="End"
+          label="Estimated End"
+          InputLabelProps={{
+            shrink: true,
+          }}
+          value={EstimatedEnd}
+          onChange={e => setEnd(e.target.value)}
         />
       </Grid>
 
       <Button
         variant="contained" sx={{ mt: 3, width: "50%" }}
-        onClick={() => isEdit ? updateFleetDetail({ VehicleType, selectedVehicleNo, DriverId, TransportMaterial, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime }) : addFleetDetail({ VehicleType, selectedVehicleNo, DriverId, TransportMaterial, DriverMobileNo, TransportLocation, TransportRoot, EstimatedTime })}
+        onClick={() => isEdit ? updateFleetDetail({ VehicleType, selectedVehicleNo, DriverId, Purpose, DriverMobileNo, TransportLocation, TransportRoot, Start, EstimatedEnd }) : addFleetDetail({ VehicleType, selectedVehicleNo, DriverId, Purpose, DriverMobileNo, TransportLocation, TransportRoot, Start, EstimatedEnd })}
       >
-        {isEdit ? 'Update' : 'Add'}
+        {isEdit ? "Update" : "Add"}
       </Button>
     </Grid>
   );

@@ -18,7 +18,6 @@ import Biller from "../FinanceManagement/Biller";
 import StockPage from "../StockManagement/Stock";
 import BuyStock from "../StockManagement/BuyStock";
 import FleetDetails from "../FleetManagement/FleetDetails.js";
-import AddVehicles from "../FleetManagement/AddVehicles.js";
 import FleetTablePage from "../FleetManagement/FleetTablePage.js";
 import AddNewPackage from "../PackageManagement/AddPackage.js";
 import ViewPackage from "../PackageManagement/ViewPackage";
@@ -29,6 +28,7 @@ import FinancialReport from "../FinanceManagement/FinancialReport";
 import Feedbacks from "../FeedbackManagement/Feedback";
 import Complaints from "../FeedbackManagement/Complaint";
 import Auths from "../FeedbackManagement/Auth";
+import Vehicles from "../FleetManagement/Vehcile";
 
 export default function UserDashboard() {
 
@@ -63,15 +63,15 @@ export default function UserDashboard() {
 
                     {selectedContent === "stock" && <StockPage />}
                     {selectedContent === "buyStock" && <BuyStock />}
-                    
+
                     {selectedContent === "addSite" && <AddSite />}
                     {selectedContent === "viewSite" && <ViewAllSites />}
-                    {selectedContent === "StockReq" && <StockRequest/>}
+                    {selectedContent === "StockReq" && <StockRequest />}
 
-                    {selectedContent === "FleetDetails" && <FleetDetails/>}
-                    {selectedContent === "AddVehicles" && <AddVehicles />}
+                    {selectedContent === "FleetDetails" && <FleetDetails />}
+                    {selectedContent === "AddVehicles" && <Vehicles />}
                     {selectedContent === "FleetTablePage" && <FleetTablePage />}
-                    
+
                     {selectedContent === "biller" && <Biller />}
                     {selectedContent === "makePayment" && <MakePayment />}
                     {selectedContent === "customerInstallment" && <CustomerInstallment />}
@@ -375,7 +375,7 @@ function CustomerProfile() {
     const theme = useTheme();
 
     const [customerDetails, setCustomerDetails] = useState({
-        customerId:"",
+        customerId: "",
         firstName: "",
         lastName: "",
         dateOfBirth: "",

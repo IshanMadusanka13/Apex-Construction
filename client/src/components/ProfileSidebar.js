@@ -42,7 +42,7 @@ const ProfileSidebar = (props) => {
   return (
     <div
       style={{
-        backgroundColor: theme.palette.primary.mainOpacity,
+        backgroundColor: theme.palette.primary.side,
         height: '100%',
         padding: "20px",
       }}

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Box, Button, Paper, Table, TableBody, TableCell, TableContainer, tableCellClasses, TablePagination, TableHead, TableRow, useTheme } from "@mui/material";
 import { styled } from '@mui/material/styles';
+import { scrollPage } from '../../utils';
 
-const AddTable = ({ rows, selectedUser, deleteAddVehicle }) => {
+const VehicleTable = ({ rows, selectedUser, deleteVehicle }) => {
 
     const theme = useTheme();
     const [page, setPage] = useState(0);
@@ -42,6 +43,7 @@ const AddTable = ({ rows, selectedUser, deleteAddVehicle }) => {
 
     const handleUpdate = (content) => {
         selectedUser(content);
+        scrollPage(0);
     };
 
     return (
@@ -75,7 +77,7 @@ const AddTable = ({ rows, selectedUser, deleteAddVehicle }) => {
 
                                         </Button>
                                         <Button sx={{ margin: '0px 10px' }}
-                                            onClick={() => deleteAddVehicle({ ChassisNo: row.ChassisNo })}
+                                            onClick={() => deleteVehicle({ ChassisNo: row.ChassisNo })}
                                         >
                                             Delete
 
@@ -105,4 +107,4 @@ const AddTable = ({ rows, selectedUser, deleteAddVehicle }) => {
     );
 }
 
-export default AddTable;
+export default VehicleTable;

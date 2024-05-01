@@ -190,6 +190,9 @@ function AddEmployee() {
                     id="dob"
                     name="dob"
                     label="Date of Birth"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
                     autoComplete="dob"
                     value={employeeDetails.dateOfBirth}
                     onChange={(e) => handleChange('dateOfBirth', e.target.value)}

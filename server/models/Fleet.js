@@ -12,7 +12,7 @@ const FleetSchema = new mongoose.Schema({
         required: true,
     },
 
-    TransportMaterials: {
+    Purpose: {
         type: String,
         required: true,
     },
@@ -37,8 +37,13 @@ const FleetSchema = new mongoose.Schema({
         required: true,
     },
 
-    EstimatedTime: {
-        type: String,
+    Start: {
+        type: Date,
+        required: true,
+    },
+
+    EstimatedEnd: {
+        type: Date,
         required: true,
     },
 

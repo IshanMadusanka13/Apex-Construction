@@ -4,17 +4,20 @@ import Axios from "axios";
 import { useEffect, useState } from "react";
 import { errorAlert, successAlert } from "../../utils";
 import FleetTable from './FleetTable.js';
-import { CREATE_FLEET, DELETE_FLEET, SEARCH_FLEET, UPDATE_FLEET } from "../../EndPoints";
+import { CREATE_FLEET, DELETE_FLEET, GET_STOCK_REQUESTS_BY_STATUS, SEARCH_FLEET, UPDATE_FLEET, UPDATE_STOCK_REQUEST_STATUS } from "../../EndPoints";
 
 
 const FleetDetails = () => {
   const [FleetDetails, setFleetDetails] = useState([]);
+  const [pendingStockRequsts, setPendingStockRequsts] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [selectedFleetDetail, setSelectedFleetDetail] = useState({});
+  const [selectedTransport, setSelectedTransport] = useState({});
   const [isEdit, setIsEdit] = useState(false);
 
   useEffect(() => {
     getFleetDetails();
+    getPendingStockRequsts();
   }, []);
 
   const getFleetDetails = () => {
@@ -28,17 +31,29 @@ const FleetDetails = () => {
       });
   }
 
+  const getPendingStockRequsts = () => {
+    Axios.get(GET_STOCK_REQUESTS_BY_STATUS + "false")
+      .then(response => {
+        setPendingStockRequsts(response.data ? response.data : []);
+      })
+      .catch(error => {
+        console.error("Axios Error :", error);
+        errorAlert(error.response.data.message);
+      });
+  }
+
   const addFleetDetail = (data) => {
     setSubmitted(true);
     const payload = {
       VehicleType: data.VehicleType,
       VehicleNo: data.selectedVehicleNo,
       DriverId: data.DriverId,
-      TransportMaterials: data.TransportMaterial,
+      Purpose: data.Purpose,
       DriverMobileNo: data.DriverMobileNo,
       TransportLocation: data.TransportLocation,
       TransportRoot: data.TransportRoot,
-      EstimatedTime: data.EstimatedTime
+      Start: data.Start,
+      EstimatedEnd: data.EstimatedEnd,
     }
 
     Axios.post(CREATE_FLEET, payload)
@@ -60,11 +75,12 @@ const FleetDetails = () => {
       VehicleType: data.VehicleType,
       VehicleNo: data.selectedVehicleNo,
       DriverId: data.DriverId,
-      TransportMaterials: data.TransportMaterial,
+      Purpose: data.Purpose,
       DriverMobileNo: data.DriverMobileNo,
       TransportLocation: data.TransportLocation,
       TransportRoot: data.TransportRoot,
-      EstimatedTime: data.EstimatedTime
+      Start: data.Start,
+      EstimatedEnd: data.EstimatedEnd,
     }
     Axios.put(UPDATE_FLEET, payload)
       .then(() => {
@@ -96,6 +112,22 @@ const FleetDetails = () => {
     setIsEdit(true);
   }
 
+  const handleSelectedTransport = (content) => {
+    setSelectedTransport(content.row);
+
+    Axios.put(UPDATE_STOCK_REQUEST_STATUS, { id: content.row._id, status: true })
+      .then(() => {
+        getFleetDetails();
+        setSubmitted(false);
+        setIsEdit(false);
+        successAlert("Details Updated Succesfully");
+      })
+      .catch(error => {
+        errorAlert(error.response.data.message);
+        console.error("Axios Error :", error);
+      });
+  }
+
   return (
     <Box>
       <FleetForm
@@ -103,11 +135,14 @@ const FleetDetails = () => {
         updateFleetDetail={updateFleetDetail}
         submitted={submitted}
         data={selectedFleetDetail}
+        transport={selectedTransport}
         isEdit={isEdit}
       />
       <FleetTable
-        rows={FleetDetails}
+        fleetDetails={FleetDetails}
+        pendingRequests={pendingStockRequsts}
         selectedUser={handleUpdate}
+        selectedTransport={handleSelectedTransport}
         deleteFleetDetail={data => {
           window.confirm("Are you sure?") && deleteFleetDetail(data);
         }}
