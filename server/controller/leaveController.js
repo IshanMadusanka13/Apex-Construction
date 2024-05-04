@@ -1,44 +1,95 @@
-const Leave = require('../models/leaveModel');
+import Leave from "../models/Leave.js"
+import logger from "../utils/logger.js";
 
-class LeaveController {
-    async getLeaveRequests(req, res) {
+const LeaveController = {
+
+    getLeaveRequests: async (req, res) => {
         try {
+
             const leaveRequests = await Leave.find();
-            res.json(leaveRequests);
-        } catch (error) {
-            res.status(500).json({ message: error.message });
-        }
-    }
 
-    async acceptLeaveRequest(req, res) {
-        const { id } = req.params;
+            logger.info("Getting leave requests succesfull");
+            res.status(200).json(leaveRequests);
+
+        } catch (error) {
+            logger.error("Getting leave requests failed");
+            res.status(400).json({ message: error.message });
+        }
+    },
+
+    getLeaveRequestsByEmployeeId: async (req, res) => {
         try {
-            const leaveRequest = await Leave.findById(id);
+
+            const leaveRequests = await Leave.find({ employeeId: req.params.id });
+
+            logger.info("Getting leave requests by empId succesfull");
+            res.status(200).json(leaveRequests);
+
+        } catch (error) {
+            logger.error("Getting leave requests by empId failed");
+            res.status(400).json({ message: error.message });
+        }
+    },
+
+    createLeaveRequest: async (req, res) => {
+        const { employeeId, reason, date } = req.body;
+        try {
+
+            const leave = new Leave({
+                employeeId: employeeId,
+                reason: reason,
+                date: date,
+            });
+
+            await leave.save();
+
+            logger.info("Leave request Created succesfull");
+            res.status(200).json(leave);
+
+        } catch (error) {
+            logger.error("Leave request Creation failed");
+            res.status(400).json({ message: error.message });
+        }
+    },
+
+    updateLeaveRequest: async (req, res) => {
+        const { id, status } = req.body;
+        try {
+
+            const leaveRequest = await Leave.updateOne(
+                { _id: id },
+                {
+                    $set: {
+                        status: status,
+                    }
+                },
+                { new: true }
+            );
             if (!leaveRequest) {
                 return res.status(404).json({ message: 'Leave request not found' });
             }
-            leaveRequest.status = 'accepted';
-            await leaveRequest.save();
-            res.json({ message: 'Leave request accepted' });
-        } catch (error) {
-            res.status(500).json({ message: error.message });
-        }
-    }
 
-    async declineLeaveRequest(req, res) {
-        const { id } = req.params;
-        try {
-            const leaveRequest = await Leave.findById(id);
-            if (!leaveRequest) {
-                return res.status(404).json({ message: 'Leave request not found' });
-            }
-            leaveRequest.status = 'declined';
-            await leaveRequest.save();
-            res.json({ message: 'Leave request declined' });
+            logger.info("Leave request Update succesfull");
+            res.status(200).json(leaveRequest);
+
         } catch (error) {
-            res.status(500).json({ message: error.message });
+            logger.error("Leave request Update failed");
+            res.status(400).json({ message: error.message });
         }
-    }
+    },
+
+    deleteLeave: async (req, res) => {
+        Leave
+            .deleteOne({ _id: req.params.id })
+            .then((result) => {
+                logger.info("Leave Deleted Successfully");
+                res.send(result);
+            })
+            .catch((err) => {
+                logger.error("Leave Deleted Failed");
+                res.status(500).json({ message: "Error deleting Leave" });
+            });
+    },
 }
 
-module.exports = new LeaveController();
+export default LeaveController;

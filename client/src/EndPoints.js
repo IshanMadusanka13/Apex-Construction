@@ -100,8 +100,12 @@ export const GET_COMPLAINT = API_BASE_URL + "/complaint/get"
 export const DELETE_COMPLAINT = API_BASE_URL + "/complaint/delete/"
 
 //HR Management
-export const Assign_CUSTOMER = API_BASE_URL + "/customer/Assign"
-export const MARK_ATTENDANCE = "/api/mark-attendance/:employeeId";
-export const ATTENDANCE_RECORDS = "/api/attendance-records/:employeeId";
-export const EMPLOYEE_DETAILS = (id) => "/api/employee-details/:employeeId";
-export const ATTENDANCE_COUNT = (id) => "/api/attendance-count/:employeeId";
+export const GET_ATTENDANCE_BY_ID = API_BASE_URL + "/attendance/getid/"
+export const GET_ATTENDANCE_BY_MONTH = API_BASE_URL + "/attendance/getmonth/"
+export const MARK_ATTENDANCE = API_BASE_URL + "/attendance/mark"
+
+export const CREATE_LEAVE = API_BASE_URL + "/leave/create"
+export const GET_LEAVES = API_BASE_URL + "/leave/getall"
+export const GET_LEAVES_BY_EMPLOYEE_ID = API_BASE_URL + "/leave/get/"
+export const UPDATE_LEAVE = API_BASE_URL + "/leave/update"
+export const DELETE_LEAVE = API_BASE_URL + "/leave/delete/"

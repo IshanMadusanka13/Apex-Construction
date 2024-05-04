@@ -29,11 +29,10 @@ import FinancialReport from "../FinanceManagement/FinancialReport";
 import Feedbacks from "../FeedbackManagement/Feedback";
 import Complaints from "../FeedbackManagement/Complaint";
 import Auths from "../FeedbackManagement/Auth";
-import AttendanceView from "../HRM/attendanceView.js";
-import AttendanceMark from "../HRM/employeeAttendenceMark.js";
-import LeaveRequest from "../HRM/leaveRequest.js";
-import ResponseLeaveApplication from "../HRM/responseLeaveApplication.js";
-import EmployeeSalary from "../HRM/employeeSalary.js";
+import ViewAttendance from "../HRManagement/ViewAttendance.js";
+import AttendanceMark from "../HRManagement/MarkAttendance.js";
+import LeaveRequest from "../HRManagement/RequestLeave.js";
+import ResponseLeaveApplication from "../HRManagement/LeaveResponse.js";
 
 export default function UserDashboard() {
 
@@ -68,10 +67,8 @@ export default function UserDashboard() {
                     {selectedContent === "stock" && <StockPage />}
                     {selectedContent === "buyStock" && <BuyStock />}
 
-                    {selectedContent === "attView" && <AttendanceView/>}
+                    {selectedContent === "attView" && <ViewAttendance/>}
                     {selectedContent === "resLeaveApplication" && <ResponseLeaveApplication />}
-                    {selectedContent === "employeeSalary" && <EmployeeSalary />}
-
                     {selectedContent === "attMark" && <AttendanceMark/>}
                     {selectedContent === "leaveReq" && <LeaveRequest />}
                     

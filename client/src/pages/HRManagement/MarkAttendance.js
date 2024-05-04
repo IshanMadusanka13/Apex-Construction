@@ -2,36 +2,38 @@ import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid, Button, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-import { MARK_ATTENDANCE, ATTENDANCE_RECORDS } from "../../EndPoints";
+import { MARK_ATTENDANCE, ATTENDANCE_RECORDS, SEARCH_EMPLOYEE } from "../../EndPoints";
+import { errorAlert, successAlert } from "../../utils";
 
 function Attendance() {
     const [attendanceRecords, setAttendanceRecords] = useState([]);
     const loggedUser = useSelector((state) => state.user);
 
-    useEffect(() => {
-        fetchAttendanceRecords();
-    }, []);
-
-    const fetchAttendanceRecords = async () => {
-        try {
-            const response = await axios.get(ATTENDANCE_RECORDS.replace(':employeeId', loggedUser.employeeId)); // Replace :employeeId with actual employeeId
-            setAttendanceRecords(response.data);
-        } catch (error) {
-            console.error('Error fetching attendance records:', error);
-        }
-    };
-
-    const handleMarkAttendance = async () => {
-        try {
-            const response = await axios.post(MARK_ATTENDANCE.replace(':employeeId', loggedUser.employeeId), {
-                date: new Date().toISOString().split('T')[0], 
-                status: true 
+    const handleSubmit = () => {
+        axios
+            .get(SEARCH_EMPLOYEE + loggedUser._id + "/userId", {})
+            .then((response) => {
+                handleMarkAttendance(response.data.employeeId);
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
             });
-            console.log('Attendance marked successfully:', response.data);
-            fetchAttendanceRecords();
-        } catch (error) {
-            console.error('Error marking attendance:', error);
-        }
+    }
+
+    const handleMarkAttendance = (employeeId) => {
+        console.log(loggedUser._id);
+        console.log(employeeId);
+        axios
+            .post(MARK_ATTENDANCE, { employeeId: employeeId })
+            .then((response) => {
+                successAlert("Attendance marked successfully");
+                console.log(response.data);
+            })
+            .catch((error) => {
+                console.log(error);
+                errorAlert(error.response.data.message);
+            });
     };
 
     return (
@@ -49,7 +51,7 @@ function Attendance() {
                 <Grid item xs={12} md={6}>
                     <Button
                         variant="contained"
-                        onClick={handleMarkAttendance}
+                        onClick={handleSubmit}
                         sx={{
                             width: "100%",
                         }}

@@ -62,6 +62,20 @@ const ProfileSidebar = (props) => {
         <SetSideBarLists handleItemClick={handleItemClick} selectedContent={selectedContent} />
 
         <SideBarListItem
+          onClick={() => handleItemClick("attMark")}
+          selected={selectedContent === "attMark"}
+          primary="Mark Attendance"
+          icon={<DescriptionIcon />}
+        />
+
+        <SideBarListItem
+          onClick={() => handleItemClick("leaveReq")}
+          selected={selectedContent === "leaveReq"}
+          primary="Request Leave"
+          icon={<DescriptionIcon />}
+        />
+
+        <SideBarListItem
           onClick={() => handleItemClick("feedback")}
           selected={selectedContent === "feedback"}
           primary="Feedback"
@@ -131,6 +145,20 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "viewEmployee"}
             primary="View Employee"
             icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("attView")}
+            selected={selectedContent === "attView"}
+            primary="View Employee Attendence"
+            icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("resLeaveApplication")}
+            selected={selectedContent === "resLeaveApplication"}
+            primary="Respond To Leaves"
+            icon={<DescriptionIcon />}
           />
 
           <SideBarListItem
@@ -268,15 +296,15 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
           <SideBarListItem
             onClick={() => handleItemClick("attView")}
             selected={selectedContent === "attView"}
-            primary="Employee Attendence"
+            primary="View Employee Attendence"
             icon={<VisibilityIcon />}
           />
 
           <SideBarListItem
             onClick={() => handleItemClick("resLeaveApplication")}
             selected={selectedContent === "resLeaveApplication"}
-            primary="Employee Leave Application"
-            icon={<VisibilityIcon />}
+            primary="Respond To Leaves"
+            icon={<DescriptionIcon />}
           />
 
           <SideBarListItem
@@ -445,27 +473,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "customerInstallment"}
             primary="Pay Installement"
             icon={<CreditCardIcon />}
-          />
-
-        </span>
-      )
-
-      case userTypes.WORKER:
-      return (
-        <span>
-
-          <SideBarListItem
-            onClick={() => handleItemClick("attMark")}
-            selected={selectedContent === "attMark"}
-            primary="Mark Attendance"
-            icon={<VisibilityIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("leaveReq")}
-            selected={selectedContent === "leaveReq"}
-            primary="Leave Request"
-            icon={<VisibilityIcon />}
           />
 
         </span>

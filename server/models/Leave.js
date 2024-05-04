@@ -1,16 +1,16 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
 const leaveSchema = new mongoose.Schema({
-    name: {
+    employeeId: {
         type: String,
         required: true
     },
-    email: {
+    reason: {
         type: String,
         required: true
     },
-    message: {
-        type: String,
+    date: {
+        type: Date,
         required: true
     },
     status: {
@@ -18,9 +18,8 @@ const leaveSchema = new mongoose.Schema({
         enum: ['pending', 'accepted', 'declined'],
         default: 'pending'
     }
-}, { timestamps: true });
+});
 
-// Define the Leave model
 const Leave = mongoose.model('Leave', leaveSchema);
 
-module.exports = Leave;
+export default Leave;

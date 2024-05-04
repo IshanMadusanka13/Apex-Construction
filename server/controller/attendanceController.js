@@ -1,61 +1,31 @@
-import { Attendance } from '../models/attendanceModel.js';
-import Employee from '../models/Employee.js';
+import Attendance from '../models/Attendance.js';
+import logger from '../utils/logger.js';
 
 export const getAllAttendanceRecords = async (req, res) => {
     try {
-        var employee;
-            switch (req.params.searchBy) {
-                case "userId":
-                    employee = await Employee.findOne({ user: req.params.value });
-                    break;
-                case "employeeId":
-                    employee = await Employee.findOne({ employeeId: req.params.value });
-                    break;
-                case "email":
-                    employee = await Employee.findOne({ email: req.params.value });
-                    break;
-                default:
-                    return res.status(400).json({ message: "Invalid Criteria" });
-            }
-        const attendanceRecords = await Attendance.find();
-        res.json(attendanceRecords);
+
+        const attendanceRecords = await Attendance.find({ employeeId: req.params.id });
+        logger.info("Got Attendance by Employee Id");
+        res.status(200).json(attendanceRecords);
 
     } catch (error) {
-        console.error('Error fetching attendance records:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        logger.error("Getting Attendance by Employee Id failed");
+        res.status(400).json({ message: error.message });
     }
 };
 
-// Controller to mark attendance
 export const markAttendance = async (req, res) => {
     try {
-        const { date, employeeId, status } = req.body;
+        const { employeeId } = req.body;
 
-        // Assuming the employeeId is passed from frontend
-        // You may need to handle authentication and get the employeeId from the logged-in user
+        const attendance = new Attendance({ employeeId });
+        await attendance.save();
 
-        // Create a new attendance record
-        const newAttendance = new Attendance({
-            date,
-            employeeId,
-            status
-        });
+        logger.info("Marked Attendance");
+        res.status(200).json(attendance);
 
-        await newAttendance.save();
-        res.status(201).json({ message: 'Attendance marked successfully' });
     } catch (error) {
-        console.error('Error marking attendance:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-};
-
-export const getAttendanceCountThisMonth = async (req, res) => {
-    try {
-        const { employeeId } = req.params;
-        const count = await Attendance.attendanceCountThisMonth(employeeId);
-        res.json({ count });
-    } catch (error) {
-        console.error('Error fetching attendance count:', error);
-        res.status(500).json({ error: 'Internal server error' });
+        logger.error("Marking Attendance Failed");
+        res.status(400).json({ message: error.message });
     }
 };
