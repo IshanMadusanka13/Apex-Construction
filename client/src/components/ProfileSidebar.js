@@ -252,13 +252,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
         <span>
 
           <SideBarListItem
-            onClick={() => handleItemClick("managerDashboard")}
-            selected={selectedContent === "managerDashboard"}
-            primary="HR Manager Dashboard"
-            icon={<VisibilityIcon />}
-           />
-
-          <SideBarListItem
             onClick={() => handleItemClick("addEmployee")}
             selected={selectedContent === "addEmployee"}
             primary="Add Employee"
@@ -273,15 +266,15 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
           />
 
           <SideBarListItem
-            onClick={() => handleItemClick("attendenceView")}
-            selected={selectedContent === "attendenceView"}
+            onClick={() => handleItemClick("attView")}
+            selected={selectedContent === "attView"}
             primary="Employee Attendence"
             icon={<VisibilityIcon />}
           />
 
           <SideBarListItem
-            onClick={() => handleItemClick("responseLeaveApplication")}
-            selected={selectedContent === "responseLeaveApplication"}
+            onClick={() => handleItemClick("resLeaveApplication")}
+            selected={selectedContent === "resLeaveApplication"}
             primary="Employee Leave Application"
             icon={<VisibilityIcon />}
           />
@@ -455,24 +448,17 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
         <span>
 
           <SideBarListItem
-            onClick={() => handleItemClick("viewSite")}
-            selected={selectedContent === "viewSite"}
-            primary="View Site"
+            onClick={() => handleItemClick("attMark")}
+            selected={selectedContent === "attMark"}
+            primary="Mark Attendance"
             icon={<VisibilityIcon />}
           />
 
           <SideBarListItem
-            onClick={() => handleItemClick("packageList")}
-            selected={selectedContent === "packageList"}
-            primary="Package List"
-            icon={<PhotoLibraryOutlinedIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("customerInstallment")}
-            selected={selectedContent === "customerInstallment"}
-            primary="Pay Installement"
-            icon={<CreditCardIcon />}
+            onClick={() => handleItemClick("leaveReq")}
+            selected={selectedContent === "leaveReq"}
+            primary="Leave Request"
+            icon={<VisibilityIcon />}
           />
 
         </span>

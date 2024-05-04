@@ -98,3 +98,6 @@ export const CREATE_COMPLAINT = API_BASE_URL + "/complaint/create"
 export const UPDATE_COMPLAINT = API_BASE_URL + "/complaint/update"
 export const GET_COMPLAINT = API_BASE_URL + "/complaint/get"
 export const DELETE_COMPLAINT = API_BASE_URL + "/complaint/delete/"
+
+//HR Management
+export const Assign_CUSTOMER = API_BASE_URL + "/customer/Assign"
