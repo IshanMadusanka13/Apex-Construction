@@ -122,7 +122,7 @@ const EmployeeController = {
                 const lastId = 1000;
                 employeeId = "E" + lastId;
             }
-            
+
             res.status(200).json(employeeId);
 
         } catch (error) {
@@ -154,24 +154,27 @@ const EmployeeController = {
 
     getEmployeeCount: async (req, res) => {
         try {
+            const sepCount = await Employee.aggregate([
+                { $group: { _id: "$role", count: { $sum: 1 } } }
+             ]);
 
-            const count = await Employee.countDocuments();
-            res.status(200).json(count);
+             const totCount = await Employee.countDocuments();
 
+            res.status(200).json({ totalCount: totCount, seperateCount: sepCount });
         } catch (error) {
             logger.error("Error getting Employee Count");
-            res.status(400).json({ message: error.message });
+            res.status(400).json({error});
         }
     },
 
-    getLogData: async (req, res) => {
-        try {
-            res.json(readLogFile(req.params.month, req.params.userId));
-        } catch (error) {
-            console.error('Error fetching logs:', error);
-            res.status(400).json({ message: 'Error fetching logs' });
+        getLogData: async (req, res) => {
+            try {
+                res.json(readLogFile(req.params.month, req.params.userId));
+            } catch (error) {
+                console.error('Error fetching logs:', error);
+                res.status(400).json({ message: 'Error fetching logs' });
+            }
         }
-    }
-};
+    };
 
-export default EmployeeController;
+    export default EmployeeController;

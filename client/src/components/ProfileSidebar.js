@@ -90,13 +90,6 @@ const ProfileSidebar = (props) => {
         />
 
         <SideBarListItem
-          onClick={() => handleItemClick("auth")}
-          selected={selectedContent === "auth"}
-          primary="Auhorization"
-          icon={<ReportIcon />}
-        />
-
-        <SideBarListItem
           onClick={() => handleItemClick("changePassword")}
           selected={selectedContent === "changePassword"}
           primary="Change Password"
@@ -271,6 +264,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "LogReport"}
             primary="Log Report"
             icon={<DescriptionIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("auth")}
+            selected={selectedContent === "auth"}
+            primary="Auhorization"
+            icon={<ReportIcon />}
           />
         </span>
       )
@@ -473,6 +473,27 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "customerInstallment"}
             primary="Pay Installement"
             icon={<CreditCardIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("auth")}
+            selected={selectedContent === "auth"}
+            primary="Auhorization"
+            icon={<ReportIcon />}
+          />
+
+        </span>
+      )
+
+    case userTypes.CUSTOMER_RELATIONSHIP_MANAGER:
+      return (
+        <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("auth")}
+            selected={selectedContent === "auth"}
+            primary="Auhorization"
+            icon={<ReportIcon />}
           />
 
         </span>

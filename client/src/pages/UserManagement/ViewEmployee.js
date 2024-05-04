@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
-import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme } from "@mui/material";
+import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme, Divider, Box } from "@mui/material";
 import axios from "axios";
 import { DELETE_EMPLOYEE, GET_EMPLOYEE_COUNT, SEARCH_EMPLOYEE } from "../../EndPoints";
 import { errorAlert, successAlert } from "../../utils.js";
-
+import moment from "moment";
+import { useNavigate } from "react-router";
 
 function ViewEmployee() {
 
     const theme = useTheme();
+    const navigate = useNavigate();
 
     const loggedUser = useSelector((state) => state.user);
-    const [employeeCount, setEmployeeCount] = useState("");
+    const [totalEmployeeCount, setTotalEmployeeCount] = useState("");
+    const [seperateEmployeeCount, setSeperateEmployeeCount] = useState("");
     const [showDeleteButton, setShowDeleteButton] = useState(false);
     const [searchData, setsearchData] = useState({
         value: "",
@@ -34,16 +37,21 @@ function ViewEmployee() {
     });
 
     useEffect(() => {
+        getCount();
+    }, [navigate]);
+
+    const getCount = () => {
         axios
             .get(GET_EMPLOYEE_COUNT, {})
             .then((response) => {
-                setEmployeeCount(response.data);
+                setTotalEmployeeCount(response.data.totalCount);
+                setSeperateEmployeeCount(response.data.seperateCount);
             })
             .catch((error) => {
                 console.log(error);
                 errorAlert(error.response.data.message);
             });
-    }, []);
+    }
 
     const handleChange = (field, value) => {
         setsearchData((prevDetails) => ({
@@ -69,8 +77,23 @@ function ViewEmployee() {
 
     const handleDelete = () => {
         axios
-            .get(DELETE_EMPLOYEE + employeeDetails.email + "/" + loggedUser.userType, {})
+            .delete(DELETE_EMPLOYEE + employeeDetails.email + "/" + loggedUser.userType, {})
             .then((response) => {
+                setEmployeeDetails({
+                    employeeId: "",
+                    role: "",
+                    firstName: "",
+                    lastName: "",
+                    dateOfBirth: "",
+                    gender: "",
+                    nic: "",
+                    no: "",
+                    street: "",
+                    city: "",
+                    mobileNo: "",
+                    email: "",
+                })
+                getCount();
                 successAlert(response.data.message);
             })
             .catch((error) => {
@@ -132,22 +155,41 @@ function ViewEmployee() {
                                 return null;
                             }
 
-                            return (
-                                <Grid item md={6} key={key}>
-                                    {key.toUpperCase()}
-                                    <TextField
-                                        margin="normal"
-                                        required
-                                        disabled
-                                        fullWidth
-                                        id={key}
-                                        label={key.charAt(0).toUpperCase() + key.slice(1)}
-                                        name={key}
-                                        autoComplete={key}
-                                        value={employeeDetails[key]}
-                                    />
-                                </Grid>
-                            );
+                            if (key == "dateOfBirth") {
+                                return (
+                                    <Grid item md={6} key={key}>
+                                        {key.toUpperCase()}
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            disabled
+                                            fullWidth
+                                            id={key}
+                                            label={key.charAt(0).toUpperCase() + key.slice(1)}
+                                            name={key}
+                                            autoComplete={key}
+                                            value={moment(employeeDetails[key]).format('YYYY-MM-DD')}
+                                        />
+                                    </Grid>
+                                );
+                            } else {
+                                return (
+                                    <Grid item md={6} key={key}>
+                                        {key.toUpperCase()}
+                                        <TextField
+                                            margin="normal"
+                                            required
+                                            disabled
+                                            fullWidth
+                                            id={key}
+                                            label={key.charAt(0).toUpperCase() + key.slice(1)}
+                                            name={key}
+                                            autoComplete={key}
+                                            value={employeeDetails[key]}
+                                        />
+                                    </Grid>
+                                );
+                            }
                         })}
 
                     </Grid>
@@ -158,8 +200,23 @@ function ViewEmployee() {
                     Total Employees
                 </Typography>
                 <Typography variant="h5" gutterBottom>
-                {employeeCount}
-                </Typography> 
+                    {totalEmployeeCount}
+                </Typography>
+
+                {seperateEmployeeCount.map(count => (
+                    <Box>
+                        <Divider /><Divider />
+
+                        <Typography variant="h5" gutterBottom>
+                            {count._id.toUpperCase()}
+                        </Typography>
+                        <Typography variant="h6" gutterBottom>
+                            {count.count}
+                        </Typography>
+
+                    </Box>
+                ))}
+
             </Grid>
         </Grid>
     );
