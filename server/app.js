@@ -15,6 +15,8 @@ import packageAddOnRouter from "./routes/packageAddOnsRouter.js";
 import authRouter from "./routes/authRouter.js";
 import complaintRouter from "./routes/ComplaintRouter.js";
 import feedbackRouter from "./routes/feedbackRouter.js";
+import attendanceRouter from "./routes/AttendanceRouter.js";
+import leaveRouter from "./routes/LeaveRouter.js";
 
 const app = express();
 
@@ -37,6 +39,8 @@ app.use('/auth', authRouter);
 app.use('/complaint', complaintRouter);
 app.use('/feedback', feedbackRouter);
 app.use('/auth', authRouter);
+app.use('/attendance', attendanceRouter);
+app.use('/leave', leaveRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
