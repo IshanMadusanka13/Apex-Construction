@@ -101,3 +101,7 @@ export const DELETE_COMPLAINT = API_BASE_URL + "/complaint/delete/"
 
 //HR Management
 export const Assign_CUSTOMER = API_BASE_URL + "/customer/Assign"
+export const MARK_ATTENDANCE = "/api/mark-attendance/:employeeId";
+export const ATTENDANCE_RECORDS = "/api/attendance-records/:employeeId";
+export const EMPLOYEE_DETAILS = (id) => "/api/employee-details/:employeeId";
+export const ATTENDANCE_COUNT = (id) => "/api/attendance-count/:employeeId";

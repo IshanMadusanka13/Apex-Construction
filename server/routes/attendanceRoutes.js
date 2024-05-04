@@ -1,26 +1,12 @@
-// routes/attendanceRoutes.js
-const express = require('express');
+import express from 'express';
+import { getAllAttendanceRecords, markAttendance, getAttendanceCountThisMonth } from '../controller/attendanceController.js';
 const router = express.Router();
-const authMiddleware = require('../middleware/authMiddleware');
-const Attendance = require('../models/Attendance');
 
-// POST /api/attendance/mark
-router.post('/mark', authMiddleware, async (req, res) => {
-    try {
-        const { status } = req.body;
 
-        // Create new attendance record
-        const attendance = new Attendance({
-            employee: req.employee.id,
-            status
-        });
-        await attendance.save();
+router.get('/api/attendance-records/:employeeId', getAllAttendanceRecords);
 
-        res.json({ message: 'Attendance marked successfully.' });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ message: 'Server error.' });
-    }
-});
+router.post('/api/mark-attendance/:employeeId', markAttendance);
 
-module.exports = router;
+router.get('/api/attendance-count/:employeeId', getAttendanceCountThisMonth);
+
+export default router;

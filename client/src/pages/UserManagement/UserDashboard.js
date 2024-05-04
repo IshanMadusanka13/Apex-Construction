@@ -33,6 +33,7 @@ import AttendanceView from "../HRM/attendanceView.js";
 import AttendanceMark from "../HRM/employeeAttendenceMark.js";
 import LeaveRequest from "../HRM/leaveRequest.js";
 import ResponseLeaveApplication from "../HRM/responseLeaveApplication.js";
+import EmployeeSalary from "../HRM/employeeSalary.js";
 
 export default function UserDashboard() {
 
@@ -69,6 +70,7 @@ export default function UserDashboard() {
 
                     {selectedContent === "attView" && <AttendanceView/>}
                     {selectedContent === "resLeaveApplication" && <ResponseLeaveApplication />}
+                    {selectedContent === "employeeSalary" && <EmployeeSalary />}
 
                     {selectedContent === "attMark" && <AttendanceMark/>}
                     {selectedContent === "leaveReq" && <LeaveRequest />}

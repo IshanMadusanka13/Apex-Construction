@@ -1,77 +1,80 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from 'react-redux';
-import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme,TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
+import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGroup, useTheme, TableContainer, Table, TableHead, TableBody, TableRow, TableCell, Checkbox } from "@mui/material";
 import axios from "axios";
-import { GET_EMPLOYEE_COUNT, SEARCH_EMPLOYEE } from "../../EndPoints";
-import { errorAlert, successAlert } from "../../utils.js";
+import { SEARCH_EMPLOYEE } from "../../EndPoints";
+import { errorAlert } from "../../utils.js";
 
-export default function AttendanceView(){
-
+export default function AttendanceView() {
     const theme = useTheme();
-
-    const todayAttendedEmployees = [
-        { id: 1, name: 'John Doe', role: 'Developer' },
-        { id: 2, name: 'Jane Smith', role: 'Manager' },
-        // Add more data as needed
-    ];
-
     const loggedUser = useSelector((state) => state.user);
-    const [employeeCount, setEmployeeCount] = useState("");
 
-    const [searchData, setsearchData] = useState({
+    const [employeeDetails, setEmployeeDetails] = useState({
+        employeeId: "",
+        firstName: "",
+        lastName: "",
+        email: "",
+        attendance: [],
+    });
+
+    const [attendanceCount, setAttendanceCount] = useState(0);
+
+    const [searchData, setSearchData] = useState({
         value: "",
         searchBy: "",
     });
 
-    const [employeeDetails, setEmployeeDetails] = useState({
-        employeeId: "",
-        role: "",
-        firstName: "",
-        lastName: "",
-        email: "",
-    });
+    const fetchEmployeeDetails = async () => {
+        try {
+            const response = await axios.get(SEARCH_EMPLOYEE + searchData.value + "/" + searchData.searchBy, {});
+            setEmployeeDetails(response.data);
+            fetchAttendanceCount(response.data.employeeId);
+        } catch (error) {
+            console.error('Error fetching employee details:', error);
+            // Handle error
+        }
+    };
+
+    const fetchAttendanceCount = async (employeeId) => {
+        try {
+            const response = await axios.get(`/api/attendance-count/:employeeId`);
+            setAttendanceCount(response.data.count);
+        } catch (error) {
+            console.error('Error fetching attendance count:', error);
+            // Handle error
+        }
+    };
+
+    useEffect(() => {
+        // Fetch employee details and attendance count when searchData changes
+        if (searchData.value && searchData.searchBy) {
+            fetchEmployeeDetails();
+        }
+    }, [searchData]);
 
     const handleChange = (field, value) => {
-        setsearchData((prevDetails) => ({
-            ...prevDetails,
+        setSearchData(prevData => ({
+            ...prevData,
             [field]: value,
         }));
     };
 
     const handleSubmit = (event) => {
         event.preventDefault();
-
-        axios
-            .get(SEARCH_EMPLOYEE + searchData.value + "/" + searchData.searchBy, {})
-            .then((response) => {
-                setEmployeeDetails(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-                errorAlert(error.response.data.message);
-            });
+        fetchEmployeeDetails();
     };
 
-
-
-
-    return(
-        <Grid container>
-        <Grid item md={8}>
-            <Grid
-                item md={5}
-                spacing={2}
-                component="form"
-                sx={theme.palette.gridBody}
-                noValidate
-                onSubmit={handleSubmit}
-            >
-                <Grid item md={12}>
-                    <Typography variant="h5" gutterBottom>
-                        View Employee
-                    </Typography>
-                </Grid>
-                <Grid item md={6}>
+    return (
+        <Grid container spacing={3}>
+            {/* Employee Details */}
+            <Grid item xs={12}>
+                <Typography variant="h5" gutterBottom>
+                    Employee Details
+                </Typography>
+            </Grid>
+            {/* Search Form */}
+            <Grid item xs={12}>
+                <form onSubmit={handleSubmit}>
                     <TextField
                         margin="normal"
                         required
@@ -83,78 +86,102 @@ export default function AttendanceView(){
                         autoFocus
                         onChange={(e) => handleChange('value', e.target.value)}
                     />
-                </Grid>
-                <Grid item xs={6}>
                     <RadioGroup aria-label="searchBy" name="searchBy" onChange={(e) => handleChange('searchBy', e.target.value)}>
                         <FormControlLabel value="employeeId" control={<Radio />} label="Employee ID" />
                         <FormControlLabel value="email" control={<Radio />} label="Email" />
                     </RadioGroup>
-                </Grid>
-
-                <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>
-                    Search Employee
-                </Button>
-
+                    <Button type="submit" variant="contained" fullWidth>
+                        Search Employee
+                    </Button>
+                </form>
             </Grid>
-            <Grid item md={12} sx={theme.palette.gridBody}>
-                <Grid container columnSpacing={4} rowSpacing={1}>
-                    {Object.keys(employeeDetails).map((key) => {
-
-                        if (!["employeeId", "role", "firstName", "lastName","email"].includes(key)) {
-                            return null;
-                        }
-
-                        return (
-                            <Grid item md={6} key={key}>
-                                {key.toUpperCase()}
-                                <TextField
-                                    margin="normal"
-                                    required
-                                    disabled
-                                    fullWidth
-                                    id={key}
-                                    label={key.charAt(0).toUpperCase() + key.slice(1)}
-                                    name={key}
-                                    autoComplete={key}
-                                    value={employeeDetails[key]}
-                                />
-                            </Grid>
-                        );
-                    })}
-
+            {/* Display Employee Details */}
+            <Grid item xs={12}>
+                <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                        <TextField
+                            margin="normal"
+                            required
+                            disabled
+                            fullWidth
+                            id="employeeId"
+                            label="Employee ID"
+                            name="employeeId"
+                            autoComplete="employeeId"
+                            value={employeeDetails.employeeId}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            margin="normal"
+                            required
+                            disabled
+                            fullWidth
+                            id="firstName"
+                            label="First Name"
+                            name="firstName"
+                            autoComplete="firstName"
+                            value={employeeDetails.firstName}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            margin="normal"
+                            required
+                            disabled
+                            fullWidth
+                            id="lastName"
+                            label="Last Name"
+                            name="lastName"
+                            autoComplete="lastName"
+                            value={employeeDetails.lastName}
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <TextField
+                            margin="normal"
+                            required
+                            disabled
+                            fullWidth
+                            id="email"
+                            label="Email"
+                            name="email"
+                            autoComplete="email"
+                            value={employeeDetails.email}
+                        />
+                    </Grid>
                 </Grid>
             </Grid>
-        
-        <Grid container spacing={3}>
-        <Grid item md={8} sx={theme.palette.gridBody} textAlign="center">
-        <Typography variant="h5" gutterBottom>
-            Today's Attended Employees
-        </Typography>
-        <TableContainer>
-            <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>ID</TableCell>
-                        <TableCell>Name</TableCell>
-                        <TableCell>Role</TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {/* Map through your attended employee data and display each row */}
-                    {todayAttendedEmployees.map(employee => (
-                        <TableRow key={employee.id}>S
-                            <TableCell>{employee.id}</TableCell>
-                            <TableCell>{employee.name}</TableCell>
-                            <TableCell>{employee.role}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
-        </TableContainer>
-    </Grid>
-</Grid>
-
-    </Grid>
-    </Grid>
+            {/* Display Attendance Records */}
+            <Grid item xs={12}>
+                <Typography variant="h6" gutterBottom>
+                    Attendance Records
+                </Typography>
+                <TableContainer>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Date</TableCell>
+                                <TableCell>Status</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {employeeDetails.attendance && employeeDetails.attendance.map((record, index) => (
+                                <TableRow key={index}>
+                                    <TableCell>{record.date}</TableCell>
+                                    <TableCell>{record.status}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Grid>
+            {/* Attendance Count */}
+            <Grid item xs={12}>
+                <Typography variant="h6" gutterBottom>
+                    Attendance Count This Month: {attendanceCount}
+                </Typography>
+            </Grid>
+        </Grid>
     );
 }

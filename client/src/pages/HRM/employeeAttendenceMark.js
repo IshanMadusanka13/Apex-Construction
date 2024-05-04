@@ -1,183 +1,87 @@
-import React, { useEffect, useState } from 'react';
-import { markEmployeeAttendance, viewEmployeeAttendance } from '../../index';
+import React, { useState, useEffect } from "react";
+import { Box, Typography, Grid, Button, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
+import axios from 'axios';
 import { useSelector } from 'react-redux';
+import { MARK_ATTENDANCE, ATTENDANCE_RECORDS } from "../../EndPoints";
 
-const AttendanceMark = () => {
-  const { Worker } = useSelector(state => state.authSlice);
-  const [isAttendanceMarked, setIsAttendanceMarked] = useState(false);
-  const [selectedYear, setSelectedYear] = useState('');
-  const [selectedMonth, setSelectedMonth] = useState('');
-  const [selectedDay, setSelectedDay] = useState('');
-  const [attendance, setAttendance] = useState(null);
+function Attendance() {
+    const [attendanceRecords, setAttendanceRecords] = useState([]);
+    const loggedUser = useSelector((state) => state.user);
 
-  const years = [2020, 2021, 2022, 2023, 2024]; // Customize this as needed
-  const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
-  ];
-  const monthDays = {
-    "January": 31,
-    "February": 28,
-    "March": 31,
-    "April": 30,
-    "May": 31,
-    "June": 30,
-    "July": 31,
-    "August": 31,
-    "September": 30,
-    "October": 31,
-    "November": 30,
-    "December": 31,
-  };
+    useEffect(() => {
+        fetchAttendanceRecords();
+    }, []);
 
-  const numOfDays = monthDays[selectedMonth];
-  const days = Array.from({ length: numOfDays }, (_, index) => index + 1);
-
-  useEffect(() => {
-    const storedData = localStorage.getItem(Worker.id);
-    if (storedData) {
-      const data = JSON.parse(storedData);
-      const dt = data.date + "/" + data.month + "/" + data.year;
-      if (dt === new Date().toLocaleDateString()) {
-        setIsAttendanceMarked(true);
-      } else {
-        localStorage.clear();
-      }
-    }
-  }, [Worker.id]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const dt = new Date();
-      const obj = {
-        "employeeID": Worker.id,
-        "year": dt.getFullYear(),
-        "month": dt.getMonth() + 1
-      };
-      const res = await viewEmployeeAttendance(obj);
-      const { data } = res;
-      setAttendance(data);
+    const fetchAttendanceRecords = async () => {
+        try {
+            const response = await axios.get(ATTENDANCE_RECORDS.replace(':employeeId', loggedUser.employeeId)); // Replace :employeeId with actual employeeId
+            setAttendanceRecords(response.data);
+        } catch (error) {
+            console.error('Error fetching attendance records:', error);
+        }
     };
-    fetchData();
-  }, [Worker.id]);
 
-  const markAttendance = async () => {
-    const res = await markEmployeeAttendance({ "employeeID": Worker.id });
-    const { success, message, newAttendance } = res;
-    if (success) {
-      alert(message);
-      const attendanceData = JSON.stringify(newAttendance);
-      localStorage.setItem(Worker.id, attendanceData);
-      setIsAttendanceMarked(true);
-    }
-  };
-
-  const searchAttendance = async () => {
-    const obj = {
-      "employeeID": Worker.id
+    const handleMarkAttendance = async () => {
+        try {
+            const response = await axios.post(MARK_ATTENDANCE.replace(':employeeId', loggedUser.employeeId), {
+                date: new Date().toISOString().split('T')[0], 
+                status: true 
+            });
+            console.log('Attendance marked successfully:', response.data);
+            fetchAttendanceRecords();
+        } catch (error) {
+            console.error('Error marking attendance:', error);
+        }
     };
-    if (selectedYear) {
-      obj["year"] = selectedYear;
-    }
-    if (selectedMonth) {
-      obj["month"] = months.findIndex(month => month === selectedMonth) + 1;
-    }
-    if (selectedDay) {
-      obj["date"] = selectedDay;
-    }
 
-    const res = await viewEmployeeAttendance(obj);
-    const { data } = res;
-    setAttendance(data);
-  };
+    return (
+        <Box
+            sx={{
+                maxWidth: "100%",
+                height: "auto",
+                padding: "2em",
+            }}
+        >
+            <Typography variant="h2" align="center" gutterBottom>
+                Attendance
+            </Typography>
+            <Grid container spacing={2} justifyContent="center" sx={{ marginTop: 5 }}>
+                <Grid item xs={12} md={6}>
+                    <Button
+                        variant="contained"
+                        onClick={handleMarkAttendance}
+                        sx={{
+                            width: "100%",
+                        }}
+                    >
+                        Mark Today’s Attendance
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid container spacing={2} justifyContent="center" sx={{ marginTop: 5 }}>
+                <Grid item xs={12} md={8}>
+                    <TableContainer>
+                        <Table>
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Date</TableCell>
+                                    <TableCell>Status</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {attendanceRecords.map((record) => (
+                                    <TableRow key={record.id}>
+                                        <TableCell>{record.date}</TableCell>
+                                        <TableCell>{record.status ? "true" : "false"}</TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                </Grid>
+            </Grid>
+        </Box>
+    );
+}
 
-  return (
-    <>
-      {attendance ?
-        <div className="main-content">
-          <section className="section">
-            <div className="card">
-              <div className="card-header d-flex justify-content-between">
-                <h4>Attendance</h4>
-                <button className={`btn btn-lg ${isAttendanceMarked ? "btn-secondary" : "btn-primary"} btn-icon-split`} onClick={markAttendance}>{isAttendanceMarked ? "Attendance Marked" : "Mark Attendance"}</button>
-              </div>
-            </div>
-
-            <div className="d-flex justify-content-center w-100">
-              <div className="col">
-                <select
-                  className='form-control select2'
-                  value={selectedYear}
-                  onChange={(e) => setSelectedYear(e.target.value)}
-                >
-                  <option value="">Year</option>
-                  {years.map((year) => (
-                    <option key={year} value={year}>
-                      {year}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div className="col">
-                <select
-                  className='form-control select2'
-                  value={selectedMonth}
-                  onChange={(e) => setSelectedMonth(e.target.value)}
-                >
-                  <option value="">Month</option>
-                  {months.map((month) => (
-                    <option key={month} value={month}>
-                      {month}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <div className="col">
-                <select
-                  className='form-control select2'
-                  value={selectedDay}
-                  onChange={(e) => setSelectedDay(e.target.value)}
-                >
-                  <option value="">Day</option>
-                  {days.map((day) => (
-                    <option key={day} value={day}>
-                      {day}
-                    </option>
-                  ))}
-                </select>
-              </div>
-              <button onClick={searchAttendance} className="btn btn-lg btn-primary col">Search</button>
-            </div>
-          </section>
-          <div className="table-responsive">
-            <table className="table table-striped table-md center-text">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Date</th>
-                  <th>Day</th>
-                  <th>Status</th>
-                </tr>
-              </thead>
-              <tbody>
-                {attendance.map((attendance, idx) =>
-                  <tr key={idx}>
-                    <td>{idx + 1}</td>
-                    <td>{attendance.date + "/" + attendance.month + "/" + attendance.year}</td>
-                    <td>{attendance.day}</td>
-                    <td>{attendance.present ? "Present" : ""}</td>
-                  </tr>
-                )}
-              </tbody>
-            </table>
-          </div>
-        </div>
-        :
-        <div>Loading...</div>
-      }
-    </>
-  );
-};
-
-export default AttendanceMark;
+export default Attendance;

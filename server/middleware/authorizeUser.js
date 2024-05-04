@@ -13,15 +13,15 @@ const authorizeUser = async (req, res, next) => {
         const user = await User.findById(decoded.id)
 
         const accessRules = {
-            [UserType.ADMIN]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet', '/vehicle'],
-            [UserType.HR_MANAGER]: ['/user', '/employee'],
-            [UserType.SITE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/site', '/package', '/customer/search', '/packageaddon','/stock/getall'],
-            [UserType.FINANCE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/finance', '/biller', 'customer/search'],
-            [UserType.STOCK_MANAGER]: ['/user', '/employee/search', '/employee/update', '/stock'],
-            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update', '/fleet', '/vehicle'],
-            [UserType.CUSTOMER_RELATIONSHIP_MANAGER]: ['/user', '/employee/search', '/employee/update'],
+            [UserType.ADMIN]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet', '/vehicle','/api/mark-attendance','/api/attendance-records','/api/attendance-count/:employeeId'],
+            [UserType.HR_MANAGER]: ['/user', '/employee','/api/mark-attendance','/api/attendance-records','/api/attendance-count/:employeeId'],
+            [UserType.SITE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/site', '/package', '/customer/search', '/packageaddon','/stock/getall','/api/mark-attendance','/api/attendance-count/:employeeId'],
+            [UserType.FINANCE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/finance', '/biller', 'customer/search','/api/mark-attendance','/api/attendance-count/:employeeId'],
+            [UserType.STOCK_MANAGER]: ['/user', '/employee/search', '/employee/update', '/stock','/api/mark-attendance','/api/attendance-count/:employeeId'],
+            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update', '/fleet', '/vehicle','/api/mark-attendance','/api/attendance-count/:employeeId'],
+            [UserType.CUSTOMER_RELATIONSHIP_MANAGER]: ['/user', '/employee/search', '/employee/update','/api/mark-attendance','/api/attendance-count/:employeeId'],
             [UserType.CUSTOMER]: ['/user', '/customer', '/site/getall', '/site/getrequest', '/site/getstatus', '/package/get', '/package/getall', '/package/buy', '/package/boughts', '/packageaddon/getbyid', '/packageaddon/getall', '/finance/cuspay', '/finance/getall'],
-            [UserType.WORKER]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet', '/vehicle'],
+            [UserType.WORKER]: ['/user', '/employee', '/customer', '/site', '/package', '/finance', '/biller', '/stock', '/packageaddon', '/fleet','/api/mark-attendance', '/vehicle','/api/attendance-count/:employeeId'],
         };
 
         const urlPrefix = "/" + req.originalUrl.split('/')[1];

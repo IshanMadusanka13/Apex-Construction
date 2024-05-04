@@ -279,6 +279,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             icon={<VisibilityIcon />}
           />
 
+          <SideBarListItem
+            onClick={() => handleItemClick("employeeSalary")}
+            selected={selectedContent === "employeeSalary"}
+            primary="Employee Salary"
+            icon={<VisibilityIcon />}
+          />
+
         </span>
       )
 
