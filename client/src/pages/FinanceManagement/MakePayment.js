@@ -409,7 +409,7 @@ function BillerPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,''))}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,'').slice(0, 15))}
                 />
             </Grid>
 

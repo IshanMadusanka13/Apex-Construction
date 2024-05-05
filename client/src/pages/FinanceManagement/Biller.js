@@ -184,7 +184,7 @@ function AddBiller() {
                     name="accountNo"
                     autoComplete="accountNo"
                     value={billerDetails.accountNo}
-                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g,''))}
+                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g,'').slice(0, 15))}
                 />
 
 

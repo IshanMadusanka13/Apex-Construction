@@ -132,7 +132,7 @@ export default function Signup() {
               name="fname"
               autoComplete="fname"
               autoFocus
-              onChange={(event) => setFirstName(e.target.value.replace(/[^a-zA-Z]/g,''))}
+              onChange={(event) => setFirstName(event.target.value.replace(/[^a-zA-Z]/g,''))}
             />
           </Grid>
           <Grid item md={6}>
@@ -144,7 +144,7 @@ export default function Signup() {
               label="Last name"
               name="lname"
               autoComplete="lname"
-              onChange={(event) => setLastName(e.target.value.replace(/[^a-zA-Z]/g,''))}
+              onChange={(event) => setLastName(event.target.value.replace(/[^a-zA-Z]/g,''))}
             />
           </Grid>
 
