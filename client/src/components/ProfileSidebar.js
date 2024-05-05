@@ -308,8 +308,8 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
           />
 
           <SideBarListItem
-            onClick={() => handleItemClick("employeeSalary")}
-            selected={selectedContent === "employeeSalary"}
+            onClick={() => handleItemClick("empSalary")}
+            selected={selectedContent === "empSalary"}
             primary="Employee Salary"
             icon={<VisibilityIcon />}
           />
