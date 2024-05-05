@@ -198,7 +198,7 @@ function UtilityBillPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,''))}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g, ''))}
                 />
             </Grid>
 
@@ -409,7 +409,7 @@ function BillerPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,'').slice(0, 15))}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g, '').slice(0, 15))}
                 />
             </Grid>
 
@@ -525,7 +525,7 @@ function OtherPayment() {
                     autoComplete="payTo"
                     autoFocus
                     value={paymentDetails.payTo}
-                    onChange={(e) => handleChange('payTo', e.target.value.replace(/[^a-zA-Z]/g,''))}
+                    onChange={(e) => handleChange('payTo', e.target.value.replace(/[^a-zA-Z]/g, ''))}
                 />
             </Grid>
 
@@ -539,7 +539,7 @@ function OtherPayment() {
                     name="bank"
                     autoComplete="bank"
                     value={paymentDetails.bank}
-                    onChange={(e) => handleChange('bank', e.target.value.replace(/[^a-zA-Z]/g,''))}
+                    onChange={(e) => handleChange('bank', e.target.value.replace(/[^a-zA-Z]/g, ''))}
                 />
             </Grid>
             <Grid item md={4}>
@@ -552,7 +552,7 @@ function OtherPayment() {
                     name="branch"
                     autoComplete="branch"
                     value={paymentDetails.branch}
-                    onChange={(e) => handleChange('branch', e.target.value.replace(/[^a-zA-Z]/g,''))}
+                    onChange={(e) => handleChange('branch', e.target.value.replace(/[^a-zA-Z]/g, ''))}
                 />
             </Grid>
             <Grid item md={4}>
@@ -565,13 +565,12 @@ function OtherPayment() {
                     name="accountNo"
                     autoComplete="accountNo"
                     value={paymentDetails.accountNo}
-                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g,''))}
+                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g, '').slice(0, 15))}
                 />
             </Grid>
 
             <Grid item md={4}>
                 <TextField
-                    type="number"
                     margin="normal"
                     required
                     fullWidth
@@ -580,7 +579,7 @@ function OtherPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,''))}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g, ''))}
                 />
             </Grid>
 
@@ -684,7 +683,7 @@ function ViewPayments() {
     const theme = useTheme();
     const [selectedValue, setSelectedValue] = useState("all");
     const [payments, setPayments] = useState([]);
-    
+
     const loadPayments = async (selectedValue) => {
         axios
             .get(GET_PAYMENTS + selectedValue, {})

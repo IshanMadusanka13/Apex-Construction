@@ -302,7 +302,7 @@ function UpdateBiller(billerData) {
                     name="name"
                     autoComplete="name"
                     value={billerDetails.name}
-                    onChange={(e) => handleChange('name', e.target.value)}
+                    onChange={(e) => handleChange('name', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -315,7 +315,7 @@ function UpdateBiller(billerData) {
                     name="bank"
                     autoComplete="bank"
                     value={billerDetails.bank}
-                    onChange={(e) => handleChange('bank', e.target.value)}
+                    onChange={(e) => handleChange('bank', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -328,7 +328,7 @@ function UpdateBiller(billerData) {
                     name="branch"
                     autoComplete="branch"
                     value={billerDetails.branch}
-                    onChange={(e) => handleChange('branch', e.target.value)}
+                    onChange={(e) => handleChange('branch', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -341,7 +341,7 @@ function UpdateBiller(billerData) {
                     name="accountNo"
                     autoComplete="accountNo"
                     value={billerDetails.accountNo}
-                    onChange={(e) => handleChange('accountNo', e.target.value)}
+                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g,'').slice(0, 15))}
                 />
             </Grid>
 
