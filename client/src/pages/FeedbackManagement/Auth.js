@@ -189,7 +189,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             variant="outlined"
             fullWidth
             value={id}
-            onChange={e => setId(e.target.value)}
+            onChange={e => setId(e.target.value.replace(/\D/, ''))}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -199,7 +199,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             variant="outlined"
             fullWidth
             value={localauthorityname}
-            onChange={e => setLocalauthorityname(e.target.value)}
+            onChange={e => setLocalauthorityname(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
             placeholder="Enter Local Authority Name"
           />
         </Grid>
@@ -223,7 +223,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             variant="outlined"
             fullWidth
             value={city}
-            onChange={e => setCity(e.target.value)}
+            onChange={e => setCity(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
             placeholder="Enter City"
           />
         </Grid>
@@ -234,8 +234,8 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             variant="outlined"
             fullWidth
             value={place}
-            onChange={e => setPlace(e.target.value)}
-            placeholder="Enter Place"
+            onChange={e => setPlace(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
+            placeholder="Enter address"
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -245,7 +245,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             variant="outlined"
             fullWidth
             value={nooffloors}
-            onChange={e => setNooffloors(e.target.value)}
+            onChange={e => setNooffloors(e.target.value.replace(/\D/, ''))}
             placeholder="Enter No of Floors"
           />
         </Grid>
@@ -256,7 +256,7 @@ const AuthForm = ({ addAuth, updateAuth, submitted, data, isEdit }) => {
             variant="outlined"
             fullWidth
             value={distancecity}
-            onChange={e => setDistancecity(e.target.value)}
+            onChange={e => setDistancecity(e.target.value.replace(/\D/, ''))}
             placeholder="Enter Distance from city (km)"
           />
         </Grid>

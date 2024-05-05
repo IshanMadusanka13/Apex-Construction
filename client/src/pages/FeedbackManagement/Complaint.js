@@ -203,7 +203,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
             variant="outlined"
             fullWidth
             value={name}
-            onChange={e => setName(e.target.value)}
+            onChange={e => setName(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
             placeholder="Enter Name"
           />
         </Grid>
@@ -259,7 +259,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
             variant="outlined"
             fullWidth
             value={subject}
-            onChange={e => setSubject(e.target.value)}
+            onChange={e => setSubject(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
             placeholder="Enter Subject"
           />
         </Grid>
@@ -272,7 +272,7 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
             placeholder="Enter Complaint"
             minRows={4}
             value={complaint}
-            onChange={e => setComplaint(e.target.value)}
+            onChange={e => setComplaint(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
           />
         </Grid>
         <Grid item xs={12}>

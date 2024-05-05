@@ -1,9 +1,8 @@
-import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextareaAutosize, Typography, useTheme, TextField, Box } from "@mui/material";
+import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, TextField, Box } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { CREATE_FFEDBACK, DELETE_FEEDBACK, GET_FEEDBACK, UPDATE_FEEDBACK } from "../../EndPoints";
 import { errorAlert } from "../../utils";
-
 
 const Feedbacks = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -13,20 +12,15 @@ const Feedbacks = () => {
   const [searchId, setSearchId] = useState('');
   const [totalFeedbackCount, setTotalFeedbackCount] = useState(0);
 
-
-  const theme = useTheme();
-
-
   useEffect(() => {
     getFeedbacks();
   }, []);
-
 
   const getFeedbacks = () => {
     Axios.get(GET_FEEDBACK)
       .then(response => {
         setFeedbacks(response.data?.response || []);
-        setTotalFeedbackCount(response.data?.response.length || 0); // Set total feedback count
+        setTotalFeedbackCount(response.data?.response.length || 0);
       })
       .catch(error => {
         console.error("Axios Error :", error);
@@ -101,10 +95,10 @@ const Feedbacks = () => {
       getFeedbacks();
     }
   }
+
   return (
     <Box>
-
-      <Grid container sx={theme.palette.gridBody}>
+      <Grid container>
         <Grid item md={12}>
           <FeedbackForm
             addFeedback={addFeedback}
@@ -116,7 +110,7 @@ const Feedbacks = () => {
         </Grid>
       </Grid>
 
-      <Grid container sx={theme.palette.gridBody}>
+      <Grid container>
         <Grid item md={7}>
           <TextField
             label="Search by ID"
@@ -133,7 +127,7 @@ const Feedbacks = () => {
         </Grid>
       </Grid>
 
-      <Grid container sx={theme.palette.gridBody}>
+      <Grid container>
         <Grid item md={12}>
           <Typography variant="h6" component="h2">
             Total Feedback: {totalFeedbackCount}
@@ -158,68 +152,58 @@ const Feedbacks = () => {
 
 export default Feedbacks;
 
-
 const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) => {
-
-
-  const [id, setId] = useState(0);
+  const [id, setId] = useState('');
   const [feedback, setFeedback] = useState('');
 
   useEffect(() => {
     if (!submitted) {
-      setId(0);
+      setId('');
       setFeedback('');
     }
   }, [submitted]);
 
   useEffect(() => {
-    if (data?.id && data.id !== 0) {
+    if (data?.id && data.id !== '') {
       setId(data.id);
       setFeedback(data.feedback);
     }
   }, [data]);
 
   return (
-    <Grid
-      container
-      spacing={2}>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h4" component="h1">
           Feedback Form
         </Typography>
       </Grid>
       <Grid item xs={12}>
-        <Typography component={'label'} htmlFor="id" sx={{ fontSize: '16px', fontWeight: 'bold', display: 'block' }}>
+        <Typography component={'label'} htmlFor="id">
           ID
         </Typography>
         <TextField
-         required
-          type="number"
+          type="text"
           id="id"
           name="id"
           value={id}
-          onChange={e => setId(e.target.value)}
+          onChange={e => setId(e.target.value.replace(/\D/, ''))}
           fullWidth
-          sx={{ marginBottom: '10px' }}
         />
       </Grid>
-
       <Grid item xs={12}>
-        <Typography component={'label'} htmlFor="feedback" sx={{ fontSize: '16px', fontWeight: 'bold', display: 'block' }}>
+        <Typography component={'label'} htmlFor="feedback">
           Feedback
         </Typography>
         <TextField
-        required
           multiline
           fullWidth
           id="feedback"
           name="feedback"
           value={feedback}
+          onChange={e => setFeedback(e.target.value.replace(/[^a-zA-Z\s]/g, ''))}
           minRows={4}
-          onChange={e => setFeedback(e.target.value)}
         />
       </Grid>
-
       <Grid item xs={12}>
         <Button variant="contained"
           onClick={() => {
@@ -227,7 +211,6 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
               updateFeedback({ id, feedback });
             } else {
               addFeedback({ id, feedback });
-
             }
           }}
         >
@@ -239,7 +222,6 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
 }
 
 const FeedbacksTable = ({ rows, selectedFeedback, deleteFeedback }) => {
-
   return (
     <TableContainer component={Paper}>
       <Table>
@@ -253,8 +235,8 @@ const FeedbacksTable = ({ rows, selectedFeedback, deleteFeedback }) => {
         <TableBody>
           {rows && rows.length > 0 ? (
             rows.map(row => (
-              <TableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component='th' scope="row">{row.id}</TableCell>
+              <TableRow key={row.id}>
+                <TableCell>{row.id}</TableCell>
                 <TableCell>{row.feedback}</TableCell>
                 <TableCell>
                   <Button
