@@ -203,7 +203,7 @@ function ViewEmployee() {
                     {totalEmployeeCount}
                 </Typography>
 
-                {seperateEmployeeCount.map(count => (
+                {seperateEmployeeCount.length > 0 ? seperateEmployeeCount.map(count => (
                     <Box>
                         <Divider /><Divider />
 
@@ -215,7 +215,9 @@ function ViewEmployee() {
                         </Typography>
 
                     </Box>
-                ))}
+                )) : (
+                    <Box></Box>
+                )}
 
             </Grid>
         </Grid>
