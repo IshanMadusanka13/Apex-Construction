@@ -144,7 +144,8 @@ function AddBiller() {
                     label="Name"
                     name="name"
                     autoComplete="name"
-                    onChange={(e) => handleChange('name', e.target.value)}
+                    value={billerDetails.name}
+                    onChange={(e) => handleChange('name', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -156,7 +157,8 @@ function AddBiller() {
                     label="Bank"
                     name="bank"
                     autoComplete="bank"
-                    onChange={(e) => handleChange('bank', e.target.value)}
+                    value={billerDetails.bank}
+                    onChange={(e) => handleChange('bank', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -168,7 +170,8 @@ function AddBiller() {
                     label="Branch"
                     name="branch"
                     autoComplete="branch"
-                    onChange={(e) => handleChange('branch', e.target.value)}
+                    value={billerDetails.branch}
+                    onChange={(e) => handleChange('branch', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -180,8 +183,13 @@ function AddBiller() {
                     label="Account Number"
                     name="accountNo"
                     autoComplete="accountNo"
-                    onChange={(e) => handleChange('accountNo', e.target.value)}
+                    value={billerDetails.accountNo}
+                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g,''))}
                 />
+
+
+
+
             </Grid>
 
             <Button type="submit" variant="contained" sx={{ mt: 3, width: "50%" }}>

@@ -29,6 +29,25 @@ const Vehicles = () => {
 
   const addVehicle = (data) => {
     setSubmitted(true);
+
+    const ChassisNo = /^[0-9]{17}$/;
+    if (!ChassisNo.test(data.ChassisNo)) {
+      errorAlert("Please enter a valid Chassis Number.");
+      return;
+    }
+
+    const VehicleNo = /^[a-zA-Z]{2,3}\d{4}$/;
+    if (!VehicleNo.test(data.VehicleNo)) {
+      errorAlert("Please enter a valid vechicle number.");
+      return;
+    }
+
+    const year = /^(19|20)\d{2}$/;
+    if (!year.test(data.VehicleManufachuredYear)) {
+      errorAlert("Please enter a valid VehicleManufachuredYear.");
+      return;
+    }
+
     const payload = {
       ChassisNo: data.ChassisNo,
       VehicleType: data.VehicleType,

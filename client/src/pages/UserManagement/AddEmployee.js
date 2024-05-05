@@ -164,7 +164,7 @@ function AddEmployee() {
                     name="fname"
                     autoComplete="fname"
                     value={employeeDetails.firstName}
-                    onChange={(e) => handleChange('firstName', e.target.value)}
+                    onChange={(e) => handleChange('firstName', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={6}>
@@ -177,7 +177,7 @@ function AddEmployee() {
                     name="lname"
                     autoComplete="lname"
                     value={employeeDetails.lastName}
-                    onChange={(e) => handleChange('lastName', e.target.value)}
+                    onChange={(e) => handleChange('lastName', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
 

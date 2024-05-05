@@ -168,6 +168,7 @@ const BuyStockForm = (values) => {
                     name="price"
                     value={price}
                     disabled
+                    
                 />
             </Grid>
 
@@ -228,7 +229,7 @@ const BuyStockForm = (values) => {
 
             <Grid item md={4}>
                 <TextField
-                    type="number"
+                    type="text"
                     margin="normal"
                     required
                     fullWidth
@@ -236,7 +237,20 @@ const BuyStockForm = (values) => {
                     label="Qty Bought"
                     name="qty"
                     value={qtyBought}
-                    onChange={e => setQtyBought(e.target.value)}
+                    
+                    onChange={(e) => {
+                        const inputValue = e.target.value;
+                        if (inputValue === '') {
+                            setQtyBought('');
+                          return;
+                        }
+                        const numbersOnlyRegex = /^[0-9]+$/; // Regex to match only digits
+                        if (numbersOnlyRegex.test(inputValue)) {
+                            setQtyBought(inputValue);
+                        } else {
+                          // Handle invalid input, e.g., show an error message or reset the input
+                        }
+                      }}
                 />
             </Grid>
 

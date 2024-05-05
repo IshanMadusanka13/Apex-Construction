@@ -204,7 +204,23 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
           label="Unit Price"
           name="price"
           value={price}
-          onChange={e => setPrice(e.target.value)}
+        
+            onChange={(e) => {
+              const value = e.target.value;
+              if (value === '') {
+                setPrice('');
+                return;
+              }
+  
+              if (isNaN(value)) {
+                return; 
+              }
+  
+              if (value >= 0) {
+                setPrice(parseFloat(value));
+              }
+            }}
+          
         />
       </Grid>
 
@@ -217,7 +233,18 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
           label="Measuring Unit"
           name="unit"
           value={unit}
-          onChange={e => setUnit(e.target.value)}
+          onChange={(e) => {
+            const inputValue = e.target.value;
+            if (inputValue === '') {
+              setUnit('');
+              return;
+            }
+
+            const lettersOnlyRegex = /^[a-zA-Z]+$/;
+            if (lettersOnlyRegex.test(inputValue)) {
+              setUnit(inputValue);
+            }
+          }}
         />
       </Grid>
 
@@ -237,7 +264,7 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
 
       <Grid item md={6}>
         <TextField
-          type="number"
+          type="text"
           margin="normal"
           required
           fullWidth
@@ -245,12 +272,24 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
           label="Qty"
           name="qty"
           value={qty}
-          onChange={e => setQty(e.target.value)}
+          onChange={(e) => {
+            const inputValue = e.target.value;
+            if (inputValue === '') {
+              setQty('');
+              return;
+            }
+            const numbersOnlyRegex = /^[0-9]+$/; // Regex to match only digits
+            if (numbersOnlyRegex.test(inputValue)) {
+              setQty(inputValue);
+            } else {
+              // Handle invalid input, e.g., show an error message or reset the input
+            }
+          }}
         />
       </Grid>
       <Grid item md={6}>
         <TextField
-          type="number"
+          type="text"
           margin="normal"
           required
           fullWidth
@@ -258,7 +297,21 @@ const StockForm = ({ addStock, updateStock, submitted, data, isEdit }) => {
           label="Minimum Qty"
           name="minqty"
           value={minimumQty}
-          onChange={e => setMinimumQty(e.target.value)}
+          
+            onChange={(e) => {
+              const inputValue = e.target.value;
+              if (inputValue === '') {
+                setMinimumQty('');
+                return;
+              }
+              const numbersOnlyRegex = /^[0-9]+$/; // Regex to match only digits
+              if (numbersOnlyRegex.test(inputValue)) {
+                setMinimumQty(inputValue);
+              } else {
+                // Handle invalid input, e.g., show an error message or reset the input
+              }
+            }}
+          
         />
       </Grid>
       <Button

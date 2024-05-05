@@ -198,7 +198,7 @@ function UtilityBillPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value)}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,''))}
                 />
             </Grid>
 
@@ -360,12 +360,6 @@ function BillerPayment() {
                         </MenuItem>
                     ))}
 
-                    {/*billers.map((biller) => (
-                        <MenuItem key={biller.id} value={biller.id}>
-                            {biller.name}
-                        </MenuItem>
-                    ))*/}
-
                 </TextField>
             </Grid>
 
@@ -415,7 +409,7 @@ function BillerPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value)}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,''))}
                 />
             </Grid>
 
@@ -531,7 +525,7 @@ function OtherPayment() {
                     autoComplete="payTo"
                     autoFocus
                     value={paymentDetails.payTo}
-                    onChange={(e) => handleChange('payTo', e.target.value)}
+                    onChange={(e) => handleChange('payTo', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
 
@@ -545,7 +539,7 @@ function OtherPayment() {
                     name="bank"
                     autoComplete="bank"
                     value={paymentDetails.bank}
-                    onChange={(e) => handleChange('bank', e.target.value)}
+                    onChange={(e) => handleChange('bank', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={4}>
@@ -558,7 +552,7 @@ function OtherPayment() {
                     name="branch"
                     autoComplete="branch"
                     value={paymentDetails.branch}
-                    onChange={(e) => handleChange('branch', e.target.value)}
+                    onChange={(e) => handleChange('branch', e.target.value.replace(/[^a-zA-Z]/g,''))}
                 />
             </Grid>
             <Grid item md={4}>
@@ -571,7 +565,7 @@ function OtherPayment() {
                     name="accountNo"
                     autoComplete="accountNo"
                     value={paymentDetails.accountNo}
-                    onChange={(e) => handleChange('accountNo', e.target.value)}
+                    onChange={(e) => handleChange('accountNo', e.target.value.replace(/\D/g,''))}
                 />
             </Grid>
 
@@ -586,7 +580,7 @@ function OtherPayment() {
                     name="amount"
                     autoComplete="amount"
                     value={paymentDetails.amount}
-                    onChange={(e) => handleChange('amount', e.target.value)}
+                    onChange={(e) => handleChange('amount', e.target.value.replace(/\D/g,''))}
                 />
             </Grid>
 

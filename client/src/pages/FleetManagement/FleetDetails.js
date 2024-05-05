@@ -44,6 +44,19 @@ const FleetDetails = () => {
 
   const addFleetDetail = (data) => {
     setSubmitted(true);
+
+    const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+    if (!phoneRegex.test(data.DriverMobileNo)) {
+      errorAlert("Please enter a valid mobile number.");
+      return;
+    }
+
+    const did = /^E\d+$/;
+    if (!did.test(data.DriverId)) {
+      errorAlert("Please enter a valid Driver Id.");
+      return;
+    }
+
     const payload = {
       VehicleType: data.VehicleType,
       VehicleNo: data.selectedVehicleNo,
@@ -71,6 +84,19 @@ const FleetDetails = () => {
 
   const updateFleetDetail = (data) => {
     setSubmitted(true);
+
+    const phoneRegex = /^(0|\+94)?[1-9][0-9]{8}$/;
+    if (!phoneRegex.test(data.DriverMobileNo)) {
+      errorAlert("Please enter a valid mobile number.");
+      return;
+    }
+
+    const did = /^E\d+$/;
+    if (!did.test(data.DriverId)) {
+      errorAlert("Please enter a valid Driver Id.");
+      return;
+    }
+
     const payload = {
       VehicleType: data.VehicleType,
       VehicleNo: data.selectedVehicleNo,
