@@ -1,4 +1,4 @@
-import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, TextField, Box, styled, tableCellClasses, TablePagination } from "@mui/material";
+import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, TextField, Box, styled, tableCellClasses, TablePagination, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -108,7 +108,7 @@ const Feedbacks = () => {
 
   return (
     <Box>
-      <Grid container>
+      <Grid container sx={theme.palette.gridBody}>
         <Grid item md={12}>
           <FeedbackForm
             addFeedback={addFeedback}
@@ -120,7 +120,7 @@ const Feedbacks = () => {
         </Grid>
       </Grid>
 
-      <Grid container>
+      <Grid container sx={theme.palette.gridBody}>
         <Grid item md={7}>
           <TextField
             label="Search by ID"
