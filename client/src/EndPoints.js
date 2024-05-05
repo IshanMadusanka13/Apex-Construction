@@ -110,4 +110,4 @@ export const GET_LEAVES_BY_EMPLOYEE_ID = API_BASE_URL + "/leave/get/"
 export const UPDATE_LEAVE = API_BASE_URL + "/leave/update"
 export const DELETE_LEAVE = API_BASE_URL + "/leave/delete/"
 
-export const ASSIGN_SALARY = API_BASE_URL +"assign-salary/getid/";
+export const ASSIGN_SALARY = API_BASE_URL +"/salary/assign-salary/";

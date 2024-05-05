@@ -4,7 +4,9 @@ import { TextField, Typography, Button, Grid, FormControlLabel, Radio, RadioGrou
 import axios from "axios";
 import { DELETE_EMPLOYEE, SEARCH_EMPLOYEE, ASSIGN_SALARY } from "../../EndPoints.js";
 import { errorAlert, successAlert } from "../../utils.js";
-
+import jsPDF from "jspdf";
+import "jspdf-autotable";
+import moment from "moment";
 
 function EmployeeSalary() {
 
@@ -26,18 +28,19 @@ function EmployeeSalary() {
     });
 
     const [salaryDetails, setSalaryDetails] = useState({
+        employeeId: "",
         basicSalary: "",
         allowance: "",
         performanceBasedSalary: ""
     });
-    
+
     const handleSalaryChange = (field, value) => {
         // Validate for positive numbers
         if (isNaN(value) || value < 0) {
             errorAlert("Please enter a valid positive number.");
             return;
         }
-    
+
         setSalaryDetails((prevDetails) => ({
             ...prevDetails,
             [field]: value,
@@ -59,6 +62,7 @@ function EmployeeSalary() {
             .get(SEARCH_EMPLOYEE + searchData.value + "/" + searchData.searchBy, {})
             .then((response) => {
                 setEmployeeDetails(response.data);
+                salaryDetails.employeeId = response.data.employeeId;
                 setShowDeleteButton(true);
             })
             .catch((error) => {
@@ -80,21 +84,41 @@ function EmployeeSalary() {
     };
 
     const handleAssignSalary = () => {
-        // Validation for salary details
-        if (!salaryDetails.basicSalary || !salaryDetails.allowance || !salaryDetails.performanceBasedSalary) {
-            errorAlert("Please fill in all salary details.");
-            return;
-        }
 
-        // Proceed with assigning salary
         axios.post(ASSIGN_SALARY, salaryDetails)
             .then((response) => {
                 successAlert(response.data.message);
+                generatePDFReport();
             })
             .catch((error) => {
                 console.log(error);
                 errorAlert(error.response.data.message);
             });
+    };
+
+    const generatePDFReport = () => {
+        const doc = new jsPDF();
+        const tableHead = [
+            ['Employee Id', 'Basic Salary', 'Allowance', 'Performance', 'Date'],
+        ];
+        const tableBody = [
+            [
+                salaryDetails.employeeId,
+                salaryDetails.basicSalary,
+                salaryDetails.allowance,
+                salaryDetails.performanceBasedSalary,
+                moment().format('MM-YYYY,')
+            ]
+        ];
+
+        doc.text('Salary Report', 10, 15);
+        doc.autoTable({
+            head: tableHead,
+            body: tableBody,
+            startY: 20,
+            columnWidths: [50, 50, 30, 30],
+        });
+        doc.save("Salary_report.pdf");
     };
 
 
@@ -172,7 +196,7 @@ function EmployeeSalary() {
                     </Grid>
                 </Grid>
             </Grid>
-           <Grid item md={3.5} sx={theme.palette.gridBody} textAlign="center">
+            <Grid item md={3.5} sx={theme.palette.gridBody} textAlign="center">
                 <Typography variant="h4" gutterBottom>
                     Assign Salary
                 </Typography>
@@ -221,7 +245,7 @@ function EmployeeSalary() {
                     </Button>
                 </Grid>
             </Grid>
-            </Grid>
+        </Grid>
     );
 
 }

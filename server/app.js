@@ -17,6 +17,7 @@ import complaintRouter from "./routes/ComplaintRouter.js";
 import feedbackRouter from "./routes/feedbackRouter.js";
 import attendanceRouter from "./routes/AttendanceRouter.js";
 import leaveRouter from "./routes/LeaveRouter.js";
+import employeeSalaryRouter from "./routes/EmployeeSalaryRouter.js";
 
 const app = express();
 
@@ -41,6 +42,7 @@ app.use('/feedback', feedbackRouter);
 app.use('/auth', authRouter);
 app.use('/attendance', attendanceRouter);
 app.use('/leave', leaveRouter);
+app.use('/salary', employeeSalaryRouter);
 
 app.get('/', (req, res) => {
     res.send('Server is Running! 🚀');
