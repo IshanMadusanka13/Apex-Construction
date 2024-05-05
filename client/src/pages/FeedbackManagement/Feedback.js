@@ -1,8 +1,10 @@
-import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, TextField, Box } from "@mui/material";
+import { Paper, Button, Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography, TextField, Box, styled, tableCellClasses, TablePagination } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { CREATE_FFEDBACK, DELETE_FEEDBACK, GET_FEEDBACK, UPDATE_FEEDBACK } from "../../EndPoints";
-import { errorAlert } from "../../utils";
+import { errorAlert, userTypes } from "../../utils";
 
 const Feedbacks = () => {
   const [feedbacks, setFeedbacks] = useState([]);
@@ -11,10 +13,18 @@ const Feedbacks = () => {
   const [isEdit, setIsEdit] = useState(false);
   const [searchId, setSearchId] = useState('');
   const [totalFeedbackCount, setTotalFeedbackCount] = useState(0);
+  const [isAuthorizedUser, setIsAuthorizedUser] = useState(false);
+
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const loggedUser = useSelector((state) => state.user);
 
   useEffect(() => {
-    getFeedbacks();
-  }, []);
+    if (loggedUser.userType == userTypes.ADMIN || loggedUser.userType == userTypes.CUSTOMER_RELATIONSHIP_MANAGER) {
+      setIsAuthorizedUser(true);
+      getFeedbacks();
+    }
+  }, [navigate]);
 
   const getFeedbacks = () => {
     Axios.get(GET_FEEDBACK)
@@ -127,25 +137,27 @@ const Feedbacks = () => {
         </Grid>
       </Grid>
 
-      <Grid container>
-        <Grid item md={12}>
-          <Typography variant="h6" component="h2">
-            Total Feedback: {totalFeedbackCount}
-          </Typography>
+      {isAuthorizedUser &&
+        <Grid container sx={theme.palette.gridBody}>
+          <Grid item md={12}>
+            <Typography variant="h6" component="h2">
+              Total Feedback: {totalFeedbackCount}
+            </Typography>
+          </Grid>
+          <Grid item md={12}>
+            <FeedbacksTable
+              rows={feedbacks}
+              selectedFeedback={data => {
+                setSelectedFeedback(data);
+                setIsEdit(true);
+              }}
+              deleteFeedback={data => {
+                window.confirm("Are you sure?") && deleteFeedback(data);
+              }}
+            />
+          </Grid>
         </Grid>
-        <Grid item md={12}>
-          <FeedbacksTable
-            rows={feedbacks}
-            selectedFeedback={data => {
-              setSelectedFeedback(data);
-              setIsEdit(true);
-            }}
-            deleteFeedback={data => {
-              window.confirm("Are you sure?") && deleteFeedback(data);
-            }}
-          />
-        </Grid>
-      </Grid>
+      }
     </Box>
   );
 }
@@ -174,7 +186,7 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
     <Grid container spacing={2}>
       <Grid item xs={12}>
         <Typography variant="h4" component="h1">
-          Feedback Form
+          Provide Feedback
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -182,7 +194,8 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
           ID
         </Typography>
         <TextField
-          type="text"
+          required
+          type="number"
           id="id"
           name="id"
           value={id}
@@ -195,6 +208,7 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
           Feedback
         </Typography>
         <TextField
+          required
           multiline
           fullWidth
           id="feedback"
@@ -222,23 +236,63 @@ const FeedbackForm = ({ addFeedback, updateFeedback, submitted, data, isEdit }) 
 }
 
 const FeedbacksTable = ({ rows, selectedFeedback, deleteFeedback }) => {
+
+  const theme = useTheme();
+
+  //--------------------------Table Functions------------------------------
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const StyledTableCell = styled(TableCell)(() => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.text.default,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+
+  const StyledTableRow = styled(TableRow)(() => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.primary.mainOpacity,
+    },
+    '&:nth-of-type(even)': {
+      backgroundColor: theme.palette.primary.mainOpacity2,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  //--------------------------Table Functions end------------------------------
+
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
       <Table>
         <TableHead>
-          <TableRow>
-            <TableCell>ID</TableCell>
-            <TableCell>Feedback</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
+          <StyledTableRow>
+            <StyledTableCell>ID</StyledTableCell>
+            <StyledTableCell>Feedback</StyledTableCell>
+            <StyledTableCell>Action</StyledTableCell>
+          </StyledTableRow>
         </TableHead>
         <TableBody>
           {rows && rows.length > 0 ? (
             rows.map(row => (
-              <TableRow key={row.id}>
-                <TableCell>{row.id}</TableCell>
-                <TableCell>{row.feedback}</TableCell>
-                <TableCell>
+              <StyledTableRow key={row.id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <StyledTableCell component='th' scope="row">{row.id}</StyledTableCell>
+                <StyledTableCell>{row.feedback}</StyledTableCell>
+                <StyledTableCell>
                   <Button
                     variant="contained"
                     color="primary"
@@ -256,8 +310,8 @@ const FeedbacksTable = ({ rows, selectedFeedback, deleteFeedback }) => {
                   >
                     Delete
                   </Button>
-                </TableCell>
-              </TableRow>
+                </StyledTableCell>
+              </StyledTableRow>
             ))
           ) : (
             <TableRow>
@@ -266,6 +320,14 @@ const FeedbacksTable = ({ rows, selectedFeedback, deleteFeedback }) => {
           )}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </TableContainer>
   );
 }

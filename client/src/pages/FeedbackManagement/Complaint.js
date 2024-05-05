@@ -1,21 +1,29 @@
-import { Box, Button, Grid, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TextField, Typography, useTheme } from "@mui/material";
+import { Box, Button, Grid, MenuItem, Paper, Select, styled, Table, TableBody, TableCell, tableCellClasses, TableContainer, TableHead, TablePagination, TableRow, TextField, Typography, useTheme } from "@mui/material";
 import Axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { CREATE_COMPLAINT, DELETE_COMPLAINT, GET_COMPLAINT, UPDATE_COMPLAINT } from "../../EndPoints";
-import { errorAlert } from "../../utils";
+import { errorAlert, userTypes } from "../../utils";
 
 const Complaints = () => {
   const [complaints, setComplaints] = useState([]);
   const [submitted, setSubmitted] = useState(false);
   const [selectedComplaint, setSelectedComplaint] = useState({});
   const [isEdit, setIsEdit] = useState(false);
+  const [isAuthorizedUser, setIsAuthorizedUser] = useState(false);
   const [totalComplaintCount, setTotalComplaintCount] = useState(0);
 
   const theme = useTheme();
+  const navigate = useNavigate();
+  const loggedUser = useSelector((state) => state.user);
 
   useEffect(() => {
-    getComplaints();
-  }, []);
+    if (loggedUser.userType == userTypes.ADMIN || loggedUser.userType == userTypes.CUSTOMER_RELATIONSHIP_MANAGER) {
+      setIsAuthorizedUser(true);
+      getComplaints();
+    }
+  }, [navigate]);
 
   const getComplaints = () => {
     Axios.get(GET_COMPLAINT)
@@ -100,25 +108,28 @@ const Complaints = () => {
           />
         </Grid>
       </Grid>
-      <Grid container sx={theme.palette.gridBody}>
-        <Grid item md={12}>
-          <Typography variant="h6" component="h2">
-            Total Complaint: {totalComplaintCount}
-          </Typography>
+
+      {isAuthorizedUser &&
+        <Grid container sx={theme.palette.gridBody}>
+          <Grid item md={12}>
+            <Typography variant="h6" component="h2">
+              Total Complaint: {totalComplaintCount}
+            </Typography>
+          </Grid>
+          <Grid item md={12}>
+            <ComplaintsTable
+              rows={complaints}
+              selectedComplaint={data => {
+                setSelectedComplaint(data);
+                setIsEdit(true);
+              }}
+              deleteComplaint={data => {
+                window.confirm("Are you sure?") && deleteComplaint(data);
+              }}
+            />
+          </Grid>
         </Grid>
-        <Grid item md={12}>
-          <ComplaintsTable
-            rows={complaints}
-            selectedComplaint={data => {
-              setSelectedComplaint(data);
-              setIsEdit(true);
-            }}
-            deleteComplaint={data => {
-              window.confirm("Are you sure?") && deleteComplaint(data);
-            }}
-          />
-        </Grid>
-      </Grid>
+      }
     </Box>
   );
 }
@@ -242,13 +253,12 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
             fullWidth
             displayEmpty
           >
-            <MenuItem value="" disabled>Type</MenuItem>
-            <MenuItem value="employee">Employee</MenuItem>
-            <MenuItem value="Site">Site</MenuItem>
-            <MenuItem value="Package">Package</MenuItem>
-            <MenuItem value="Stock">Stock</MenuItem>
-            <MenuItem value="Transportation">Transportation</MenuItem>
-            <MenuItem value="HR">HR</MenuItem>
+            {Object.values(userTypes)
+              .map((type) => (
+                <MenuItem key={type} value={type}>
+                  {type.toUpperCase()}
+                </MenuItem>
+              ))}
           </Select>
         </Grid>
         <Grid item xs={12}>
@@ -298,31 +308,70 @@ const ComplaintForm = ({ addComplaint, updateComplaint, submitted, data, isEdit 
 
 const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
 
+  const theme = useTheme();
+
+  //--------------------------Table Functions------------------------------
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(5);
+
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0);
+  };
+
+  const StyledTableCell = styled(TableCell)(() => ({
+    [`&.${tableCellClasses.head}`]: {
+      backgroundColor: theme.palette.primary.main,
+      color: theme.palette.text.default,
+    },
+    [`&.${tableCellClasses.body}`]: {
+      fontSize: 14,
+    },
+  }));
+
+  const StyledTableRow = styled(TableRow)(() => ({
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.primary.mainOpacity,
+    },
+    '&:nth-of-type(even)': {
+      backgroundColor: theme.palette.primary.mainOpacity2,
+    },
+    // hide last border
+    '&:last-child td, &:last-child th': {
+      border: 0,
+    },
+  }));
+  //--------------------------Table Functions end------------------------------
+
   return (
-    <TableContainer component={Paper}>
+    <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
       <Table>
         <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Email</TableCell>
-            <TableCell>Phone</TableCell>
-            <TableCell>Type</TableCell>
-            <TableCell>Subject</TableCell>
-            <TableCell>Complaint</TableCell>
-            <TableCell>Action</TableCell>
-          </TableRow>
+          <StyledTableRow>
+            <StyledTableCell>Name</StyledTableCell>
+            <StyledTableCell>Email</StyledTableCell>
+            <StyledTableCell>Phone</StyledTableCell>
+            <StyledTableCell>Type</StyledTableCell>
+            <StyledTableCell>Subject</StyledTableCell>
+            <StyledTableCell>Complaint</StyledTableCell>
+            <StyledTableCell>Action</StyledTableCell>
+          </StyledTableRow>
         </TableHead>
         <TableBody>
           {rows && rows.length > 0 ? (
             rows.map(row => (
-              <TableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                <TableCell component='th' scope="row">{row.name}</TableCell>
-                <TableCell>{row.email}</TableCell>
-                <TableCell>{row.phone}</TableCell>
-                <TableCell>{row.type}</TableCell>
-                <TableCell>{row.subject}</TableCell>
-                <TableCell>{row.complaint}</TableCell>
-                <TableCell>
+              <StyledTableRow key={row.name} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                <StyledTableCell component='th' scope="row">{row.name}</StyledTableCell>
+                <StyledTableCell>{row.email}</StyledTableCell>
+                <StyledTableCell>{row.phone}</StyledTableCell>
+                <StyledTableCell>{row.type}</StyledTableCell>
+                <StyledTableCell>{row.subject}</StyledTableCell>
+                <StyledTableCell>{row.complaint}</StyledTableCell>
+                <StyledTableCell>
                   <Button variant="contained"
                     color="primary"
                     size="small"
@@ -338,16 +387,24 @@ const ComplaintsTable = ({ rows, selectedComplaint, deleteComplaint }) => {
                     onClick={() => deleteComplaint(row)}>
                     Delete
                   </Button>
-                </TableCell>
-              </TableRow>
+                </StyledTableCell>
+              </StyledTableRow>
             ))
           ) : (
-            <TableRow>
-              <TableCell colSpan={3}>No Data</TableCell>
-            </TableRow>
+            <StyledTableRow>
+              <StyledTableCell colSpan={3}>No Data</StyledTableCell>
+            </StyledTableRow>
           )}
         </TableBody>
       </Table>
+      <TablePagination
+        rowsPerPageOptions={[5, 10, 25, { label: 'All', value: -1 }]}
+        count={rows.length}
+        rowsPerPage={rowsPerPage}
+        page={page}
+        onPageChange={handleChangePage}
+        onRowsPerPageChange={handleChangeRowsPerPage}
+      />
     </TableContainer>
   );
 }
