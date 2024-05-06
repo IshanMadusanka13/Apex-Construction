@@ -18,7 +18,7 @@ const authorizeUser = async (req, res, next) => {
             [UserType.SITE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/site', '/package', '/customer/search', '/packageaddon', '/stock/getall'],
             [UserType.FINANCE_MANAGER]: ['/user', '/employee/search', '/employee/update', '/finance', '/biller', 'customer/search'],
             [UserType.STOCK_MANAGER]: ['/user', '/employee/search', '/employee/update', '/stock'],
-            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update', '/fleet', '/vehicle'],
+            [UserType.FLEET_MANAGER]: ['/user', '/employee/search', '/employee/update', '/fleet', '/vehicle', '/site/requpdate', '/site/getrequeststatus'],
             [UserType.CUSTOMER_RELATIONSHIP_MANAGER]: ['/user', '/employee/search', '/employee/update'],
             [UserType.CUSTOMER]: ['/user', '/customer', '/site/getall', '/site/get', '/site/getrequest', '/site/getstatus', '/package/get', '/package/getall', '/package/buy', '/package/boughts', '/packageaddon/getbyid', '/packageaddon/getall', '/finance/cuspay', '/finance/getall'],
             [UserType.DRIVER]: ['/user', '/employee/search', '/employee/update'],

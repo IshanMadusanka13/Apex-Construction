@@ -105,6 +105,12 @@ function ExisitngStock({ rows, requestStock }) {
     };
 
     const handleClick = () => {
+
+        if (isNaN(qty) || qty == 0) {
+            errorAlert("Add a Qty");
+            return;
+        }
+
         if (qty > existingQty) {
             errorAlert("Insufficent Stock");
         } else {
@@ -139,7 +145,6 @@ function ExisitngStock({ rows, requestStock }) {
             </Grid>
             <Grid item md={4}>
                 <TextField
-                    type="number"
                     margin="normal"
                     required
                     fullWidth
@@ -147,7 +152,7 @@ function ExisitngStock({ rows, requestStock }) {
                     label="Qty"
                     name="qty"
                     value={qty}
-                    onChange={e => setQty(e.target.value)}
+                    onChange={e => setQty(e.target.value.replace(/\D/g, ''))}
                 />
             </Grid>
             <Grid item md={4}>
@@ -282,7 +287,13 @@ function RequestedStock({ data, submitted }) {
     };
 
     const handleSubmit = () => {
-        
+
+        const sid = /^S\d+$/;
+        if (!sid.test(siteId)) {
+            errorAlert("Invalid Site Id");
+            return;
+        }
+
         Axios.post(REQUEST_STOCK, {
             equipments: rows,
             siteId: siteId

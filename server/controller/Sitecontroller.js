@@ -147,6 +147,13 @@ const SiteController = {
         try {
             const { siteId, equipments } = req.body;
 
+            const site = await Site.findOne({ siteId: siteId });
+
+            if(!site) {
+                res.status(404).json({ message: "Site Not Found" });
+                return;
+            }
+
             equipments.forEach(equipment => {
                 StockController.updateQty(equipment.equipmentId, (equipment.existingQty - equipment.qty));
             });
