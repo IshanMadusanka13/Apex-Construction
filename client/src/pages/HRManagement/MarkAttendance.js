@@ -1,3 +1,6 @@
+//existence code
+
+
 import React, { useState, useEffect } from "react";
 import { Box, Typography, Grid, Button, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from "@mui/material";
 import axios from 'axios';
@@ -7,18 +10,24 @@ import { errorAlert, successAlert } from "../../utils";
 
 function Attendance() {
     const [attendanceRecords, setAttendanceRecords] = useState([]);
+    const [attendanceMarked, setAttendanceMarked] = useState(false);
     const loggedUser = useSelector((state) => state.user);
 
     const handleSubmit = () => {
-        axios
+        if(!attendanceMarked){
+            axios
             .get(SEARCH_EMPLOYEE + loggedUser._id + "/userId", {})
             .then((response) => {
+                setAttendanceMarked(true);
                 handleMarkAttendance(response.data.employeeId);
             })
             .catch((error) => {
                 console.log(error);
                 errorAlert(error.response.data.message);
-            });
+            }); 
+        }else{
+            errorAlert("Attendance Already Marked");
+        }
     }
 
     const handleMarkAttendance = (employeeId) => {

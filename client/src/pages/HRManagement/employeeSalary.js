@@ -35,7 +35,7 @@ function EmployeeSalary() {
     });
 
     const handleSalaryChange = (field, value) => {
-        // Validate for positive numbers
+        // Validation
         if (isNaN(value) || value < 0) {
             errorAlert("Please enter a valid positive number.");
             return;
