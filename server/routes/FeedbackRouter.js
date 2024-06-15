@@ -1,14 +1,11 @@
 import express from 'express';
-import feedbackController from '../controller/feedbackController.js';
+import FeedbackController from '../controller/FeedbackController.js';
 
 const feedbackRouter = express.Router();
 
-feedbackRouter.get('/get', feedbackController.getFeedback);
-feedbackRouter.get('/get/:id', feedbackController.getFeedbackById);
-feedbackRouter.post('/create', feedbackController.addFeedback);
-feedbackRouter.put('/update', feedbackController.updateFeedback);
-feedbackRouter.delete('/delete/:id', feedbackController.deleteFeedback);
-feedbackRouter.get('/count', feedbackController.getTotalFeedbackCount);
-
+feedbackRouter.get('/get', FeedbackController.getAllFeedbacks);
+feedbackRouter.get('/getnew', FeedbackController.getNewFeedbacks);
+feedbackRouter.post('/create', FeedbackController.addFeedback);
+feedbackRouter.put('/reply', FeedbackController.replyToFeedback);
 
 export default feedbackRouter;

@@ -26,14 +26,14 @@ import AddAddOns from "../PackageManagement/AddAddOns";
 import PackageList from "../PackageManagement/PackageList";
 import FinancialReport from "../FinanceManagement/FinancialReport";
 import Feedbacks from "../FeedbackManagement/Feedback";
-import Complaints from "../FeedbackManagement/Complaint";
 import Auths from "../FeedbackManagement/Auth";
 import Vehicles from "../FleetManagement/Vehcile";
 import ViewAttendance from "../HRManagement/ViewAttendance.js";
 import AttendanceMark from "../HRManagement/MarkAttendance.js";
 import LeaveRequest from "../HRManagement/RequestLeave.js";
 import ResponseLeaveApplication from "../HRManagement/LeaveResponse.js";
-import EmployeeSalary from "../HRManagement/employeeSalary.js";
+import EmployeeSalary from "../HRManagement/EmployeeSalary.js";
+import FeedbackReply from "../FeedbackManagement/FeedbackReply.js";
 
 export default function UserDashboard() {
 
@@ -94,8 +94,7 @@ export default function UserDashboard() {
                     {selectedContent === "viewAddOns" && <ViewAddOns />}
                     {selectedContent === "addAddOns" && <AddAddOns />}
 
-                    {selectedContent === "feedback" && <Feedbacks />}
-                    {selectedContent === "complaint" && <Complaints />}
+                    {selectedContent === "replyFeedback" && <FeedbackReply />}
                     {selectedContent === "auth" && <Auths />}
 
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}

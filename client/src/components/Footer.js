@@ -60,7 +60,7 @@ const Footer = () => {
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li style={{ marginBottom: "1em" }}>
                 <Link
-                  href="#"
+                  href="/"
                   style={{
                     textDecoration: "none",
                     backgroundColor: "transparent",
@@ -77,7 +77,7 @@ const Footer = () => {
               </li>
               <li style={{ marginBottom: "1em" }}>
                 <Link
-                  href="#"
+                  href="/"
                   style={{
                     textDecoration: "none",
                     backgroundColor: "transparent",
@@ -94,7 +94,7 @@ const Footer = () => {
               </li>
               <li style={{ marginBottom: "1em" }}>
                 <Link
-                  href="#"
+                  href="/signup"
                   style={{
                     textDecoration: "none",
                     backgroundColor: "transparent",
@@ -128,7 +128,7 @@ const Footer = () => {
             <ul style={{ listStyle: "none", padding: 0 }}>
               <li style={{ marginBottom: "1em" }}>
                 <Link
-                  href="#"
+                  href="/"
                   style={{
                     textDecoration: "none",
                     backgroundColor: "transparent",
@@ -145,7 +145,7 @@ const Footer = () => {
               </li>
               <li style={{ marginBottom: "1em" }}>
                 <Link
-                  href="#"
+                  href="/"
                   style={{
                     textDecoration: "none",
                     backgroundColor: "transparent",
@@ -162,7 +162,7 @@ const Footer = () => {
               </li>
               <li style={{ marginBottom: "1em" }}>
                 <Link
-                  href="#"
+                  href="/feedback"
                   style={{
                     textDecoration: "none",
                     backgroundColor: "transparent",

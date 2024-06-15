@@ -8,6 +8,8 @@ import Signup from "../pages/UserManagement/SignUp.js";
 import UserDashboard from "../pages/UserManagement/UserDashboard.js";
 import UpdatePackage from "../pages/PackageManagement/UpdatePackage.js";
 import PackageList from "../pages/PackageManagement/PackageList.js";
+import DisplayQR from "../pages/HRManagement/DisplayQR.js";
+import Feedback from "../pages/FeedbackManagement/Feedback.js";
 
 const AppRoutes = () => {
   return (
@@ -22,6 +24,8 @@ const AppRoutes = () => {
         {/* General Routes */}
         <Route path="/report" element={<GenarateReport />} />
         <Route path="/packages" element={<PackageList />} />
+        <Route path="/qr" element={<DisplayQR />} />
+        <Route path="/feedback" element={<Feedback />} />
 
         {/* General Routes */}
         <Route path="/home" element={<Home />} />

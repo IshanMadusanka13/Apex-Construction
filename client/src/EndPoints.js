@@ -1,5 +1,5 @@
 //Server Address
-export const API_BASE_URL = 'http://localhost:3001';
+export const API_BASE_URL = 'http://192.168.43.26:3001';
 
 //User Management
 export const LOGIN = API_BASE_URL + "/user/login"
@@ -92,16 +92,13 @@ export const GET_AUTH = API_BASE_URL + "/auth/get"
 export const DELETE_AUTH = API_BASE_URL + "/auth/delete/"
 
 export const CREATE_FFEDBACK = API_BASE_URL + "/feedback/create"
-export const UPDATE_FEEDBACK = API_BASE_URL + "/feedback/update"
-export const GET_FEEDBACK = API_BASE_URL + "/feedback/get"
-export const DELETE_FEEDBACK = API_BASE_URL + "/feedback/delete/"
-
-export const CREATE_COMPLAINT = API_BASE_URL + "/complaint/create"
-export const UPDATE_COMPLAINT = API_BASE_URL + "/complaint/update"
-export const GET_COMPLAINT = API_BASE_URL + "/complaint/get"
-export const DELETE_COMPLAINT = API_BASE_URL + "/complaint/delete/"
+export const REPLY_FEEDBACK = API_BASE_URL + "/feedback/reply"
+export const GET_NEW_FEEDBACK = API_BASE_URL + "/feedback/getnew"
 
 //HR Management
+export const CREATE_QR = API_BASE_URL + "/attendance/createQR"
+export const DISPLAY_QR = API_BASE_URL + "/attendance/getQR"
+
 export const GET_ATTENDANCE_BY_ID = API_BASE_URL + "/attendance/getid/"
 export const GET_ATTENDANCE_BY_MONTH = API_BASE_URL + "/attendance/getmonth/"
 export const MARK_ATTENDANCE = API_BASE_URL + "/attendance/mark"

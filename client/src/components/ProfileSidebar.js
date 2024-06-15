@@ -22,10 +22,9 @@ import {
   Description as DescriptionIcon,
   DirectionsCarOutlined as DirectionsCarOutlinedIcon,
   PhotoLibraryOutlined as PhotoLibraryOutlinedIcon,
-  Feedback as FeedbackIcon,
   Report as ReportIcon,
+  Lightbulb as LightbulbIcon,
 } from "@mui/icons-material";
-
 import { Lock } from '@mui/icons-material';
 import { userTypes } from "../utils.js";
 
@@ -73,20 +72,6 @@ const ProfileSidebar = (props) => {
           selected={selectedContent === "leaveReq"}
           primary="Request Leave"
           icon={<DescriptionIcon />}
-        />
-
-        <SideBarListItem
-          onClick={() => handleItemClick("feedback")}
-          selected={selectedContent === "feedback"}
-          primary="Feedback"
-          icon={<FeedbackIcon />}
-        />
-
-        <SideBarListItem
-          onClick={() => handleItemClick("complaint")}
-          selected={selectedContent === "complaint"}
-          primary="Complaint"
-          icon={<ReportIcon />}
         />
 
         <SideBarListItem
@@ -271,6 +256,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "empSalary"}
             primary="Employee Salary"
             icon={<VisibilityIcon />}
+          />
+
+          <SideBarListItem
+            onClick={() => handleItemClick("replyFeedback")}
+            selected={selectedContent === "replyFeedback"}
+            primary="Reply to Feedbacks"
+            icon={<LightbulbIcon />}
           />
 
           <SideBarListItem
@@ -502,6 +494,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
     case userTypes.CUSTOMER_RELATIONSHIP_MANAGER:
       return (
         <span>
+
+          <SideBarListItem
+            onClick={() => handleItemClick("replyFeedback")}
+            selected={selectedContent === "replyFeedback"}
+            primary="Reply to Feedbacks"
+            icon={<LightbulbIcon />}
+          />
 
           <SideBarListItem
             onClick={() => handleItemClick("auth")}
