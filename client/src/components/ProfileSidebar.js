@@ -61,6 +61,13 @@ const ProfileSidebar = (props) => {
         <SetSideBarLists handleItemClick={handleItemClick} selectedContent={selectedContent} />
 
         <SideBarListItem
+            onClick={() => handleItemClick("attView")}
+            selected={selectedContent === "attView"}
+            primary="View Employee Attendence"
+            icon={<VisibilityIcon />}
+          />
+          
+        <SideBarListItem
           onClick={() => handleItemClick("attMark")}
           selected={selectedContent === "attMark"}
           primary="Mark Attendance"
@@ -122,13 +129,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             onClick={() => handleItemClick("viewEmployee")}
             selected={selectedContent === "viewEmployee"}
             primary="View Employee"
-            icon={<VisibilityIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("attView")}
-            selected={selectedContent === "attView"}
-            primary="View Employee Attendence"
             icon={<VisibilityIcon />}
           />
 
@@ -245,6 +245,13 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
           />
 
           <SideBarListItem
+            onClick={() => handleItemClick("disableQR")}
+            selected={selectedContent === "disableQR"}
+            primary="Disable QR"
+            icon={<DescriptionIcon />}
+          />
+
+          <SideBarListItem
             onClick={() => handleItemClick("resLeaveApplication")}
             selected={selectedContent === "resLeaveApplication"}
             primary="Respond To Leaves"
@@ -270,13 +277,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "LogReport"}
             primary="Log Report"
             icon={<DescriptionIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("auth")}
-            selected={selectedContent === "auth"}
-            primary="Auhorization"
-            icon={<ReportIcon />}
           />
         </span>
       )
@@ -481,13 +481,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             icon={<CreditCardIcon />}
           />
 
-          <SideBarListItem
-            onClick={() => handleItemClick("auth")}
-            selected={selectedContent === "auth"}
-            primary="Auhorization"
-            icon={<ReportIcon />}
-          />
-
         </span>
       )
 
@@ -500,13 +493,6 @@ function SetSideBarLists({ handleItemClick, selectedContent }) {
             selected={selectedContent === "replyFeedback"}
             primary="Reply to Feedbacks"
             icon={<LightbulbIcon />}
-          />
-
-          <SideBarListItem
-            onClick={() => handleItemClick("auth")}
-            selected={selectedContent === "auth"}
-            primary="Auhorization"
-            icon={<ReportIcon />}
           />
 
         </span>

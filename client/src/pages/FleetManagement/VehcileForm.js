@@ -41,6 +41,20 @@ const VehicleForm = ({ addVehicle, updateVehicle, submitted, data, isEdit }) => 
 
       <Grid item md={6}>
         <TextField
+          margin="normal"
+          required
+          fullWidth
+          id='VehicleNo'
+          label="Vehicle No"
+          name="VehicleNo"
+          value={VehicleNo}
+          onChange={e => setVehicleNo(e.target.value)}
+        />
+      </Grid>
+
+      <Grid item md={6}>
+        <TextField
+          margin="normal"
           type="number"
           required
           fullWidth
@@ -56,20 +70,8 @@ const VehicleForm = ({ addVehicle, updateVehicle, submitted, data, isEdit }) => 
 
       <Grid item md={6}>
         <TextField
-          margin="normal"
-          required
-          fullWidth
-          id='VehicleNo'
-          label="Vehicle No"
-          name="VehicleNo"
-          value={VehicleNo}
-          onChange={e => setVehicleNo(e.target.value)}
-        />
-      </Grid>
-
-      <Grid item md={6}>
-        <TextField
           select
+          margin="normal"
           id='VehicleType'
           required
           fullWidth

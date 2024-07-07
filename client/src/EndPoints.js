@@ -98,10 +98,12 @@ export const GET_NEW_FEEDBACK = API_BASE_URL + "/feedback/getnew"
 //HR Management
 export const CREATE_QR = API_BASE_URL + "/attendance/createQR"
 export const DISPLAY_QR = API_BASE_URL + "/attendance/getQR"
+export const DISABLE_QR = API_BASE_URL + "/attendance/disableQR"
 
 export const GET_ATTENDANCE_BY_ID = API_BASE_URL + "/attendance/getid/"
 export const GET_ATTENDANCE_BY_MONTH = API_BASE_URL + "/attendance/getmonth/"
 export const MARK_ATTENDANCE = API_BASE_URL + "/attendance/mark"
+export const GET_WORKING_DAYS_BY_MONTH = API_BASE_URL + "/attendance/getworkingdays"
 
 export const CREATE_LEAVE = API_BASE_URL + "/leave/create"
 export const GET_LEAVES = API_BASE_URL + "/leave/getall"

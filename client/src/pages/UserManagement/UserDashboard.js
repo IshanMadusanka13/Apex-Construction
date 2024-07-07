@@ -25,8 +25,6 @@ import ViewAddOns from "../PackageManagement/ViewAddOns.js";
 import AddAddOns from "../PackageManagement/AddAddOns";
 import PackageList from "../PackageManagement/PackageList";
 import FinancialReport from "../FinanceManagement/FinancialReport";
-import Feedbacks from "../FeedbackManagement/Feedback";
-import Auths from "../FeedbackManagement/Auth";
 import Vehicles from "../FleetManagement/Vehcile";
 import ViewAttendance from "../HRManagement/ViewAttendance.js";
 import AttendanceMark from "../HRManagement/MarkAttendance.js";
@@ -34,6 +32,8 @@ import LeaveRequest from "../HRManagement/RequestLeave.js";
 import ResponseLeaveApplication from "../HRManagement/LeaveResponse.js";
 import EmployeeSalary from "../HRManagement/EmployeeSalary.js";
 import FeedbackReply from "../FeedbackManagement/FeedbackReply.js";
+import { DisabledByDefault } from "@mui/icons-material";
+import DisableQR from "../HRManagement/DisableQR.js";
 
 export default function UserDashboard() {
 
@@ -74,6 +74,7 @@ export default function UserDashboard() {
                     {selectedContent === "resLeaveApplication" && <ResponseLeaveApplication />}
                     {selectedContent === "attMark" && <AttendanceMark/>}
                     {selectedContent === "leaveReq" && <LeaveRequest />}
+                    {selectedContent === "disableQR" && <DisableQR />}
 
                     {selectedContent === "addSite" && <AddSite />}
                     {selectedContent === "viewSite" && <ViewAllSites />}
@@ -95,7 +96,6 @@ export default function UserDashboard() {
                     {selectedContent === "addAddOns" && <AddAddOns />}
 
                     {selectedContent === "replyFeedback" && <FeedbackReply />}
-                    {selectedContent === "auth" && <Auths />}
 
                     {selectedContent === "changePassword" && <ChangePassword setSelectedContent={setSelectedContent} />}
 

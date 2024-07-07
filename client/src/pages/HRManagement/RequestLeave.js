@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Box, Typography, Grid, TextField, Button, useTheme, tableCellClasses, styled, Paper, TableContainer, Table, TableHead, TableBody, TablePagination, TableCell, TableRow } from "@mui/material";
+import { Box, Typography, Grid, TextField, Button, useTheme, tableCellClasses, styled, Paper, TableContainer, Table, TableHead, TableBody, TablePagination, TableCell, TableRow, RadioGroup, FormControlLabel, Radio } from "@mui/material";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
@@ -57,12 +57,17 @@ function LeaveRequest() {
     });
 
     const [leaveRequests, setLeaveRequests] = useState([]);
+    const [selectedValue, setSelectedValue] = useState("All");
 
     const handleChange = (field, value) => {
         setFormData((prevDetails) => ({
             ...prevDetails,
             [field]: value,
         }));
+    };
+
+    const handleRadioChange = (event) => {
+        setSelectedValue(event.target.value);
     };
 
     useEffect(() => {
@@ -185,10 +190,18 @@ function LeaveRequest() {
 
             <Grid item md={12}>
                 <Grid container sx={theme.palette.gridBody}>
-                    <Grid item xs={12}>
+                    <Grid item md={12}>
                         <Typography variant="h5" gutterBottom>
                             My leaves
                         </Typography>
+                    </Grid>
+                    <Grid item md={12}>
+                        <RadioGroup value={selectedValue} onChange={handleRadioChange} row>
+                            <FormControlLabel value="All" control={<Radio />} label="All" />
+                            <FormControlLabel value="Pending" control={<Radio />} label="Pending" />
+                            <FormControlLabel value="Accepted" control={<Radio />} label="Accepted" />
+                            <FormControlLabel value="Declined" control={<Radio />} label="Declined" />
+                        </RadioGroup>
                     </Grid>
                     <Grid item md={12}>
                         <TableContainer component={Paper} sx={{ backgroundColor: theme.palette.primary.main }}>
@@ -203,6 +216,12 @@ function LeaveRequest() {
                                 </TableHead>
                                 <TableBody>
                                     {leaveRequests.length > 0 ? leaveRequests
+                                    .filter(
+                                        (row) =>
+                                          selectedValue === "All" ||
+                                          (selectedValue !== "All" && row.status === selectedValue.toLowerCase())
+                                      )
+                                        .sort((a, b) => new Date(b.date) - new Date(a.date))
                                         .map(row => (
                                             <StyledTableRow key={row._id}>
                                                 <StyledTableCell>{moment(row.date).format('YYYY-MM-DD')}</StyledTableCell>
